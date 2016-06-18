@@ -25,10 +25,18 @@ public class PPAModel : NSObject {
         super.init()
     }
     
-    var timeLogs : [TimeLog] {
+    func getAllTimeLogs() throws -> [TimeLog] {
         let request = NSFetchRequest(entityName: TimeLog.EntityName)
         request.sortDescriptors = [NSSortDescriptor(key: "activity", ascending: true)]
-        return try! managedObjectContext.executeFetchRequest(request) as! [TimeLog]
+        
+        do {
+            let result = try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
+            return result
+        }
+        catch let error as NSError {
+            NSLog("Error saving: %@", error)
+            throw error
+        }
     }
     
     func createTimeLog(activityName: String) -> TimeLog {
@@ -41,12 +49,13 @@ public class PPAModel : NSObject {
         return timeLog
     }
     
-    func save() {
+    func save() throws {
         do {
             try self.managedObjectContext.save()
         }
         catch let error as NSError {
             NSLog("Error saving: %@", error)
+            throw error
         }
     }
     

@@ -20,6 +20,9 @@
 		D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
 		D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
 		D4F84C281D1552A20041FCF0 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C271D1552A20041FCF0 /* CoreData.swift */; };
+		D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */; };
+		D4F84C2D1D15BEDB0041FCF0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2C1D15BEDB0041FCF0 /* Result.swift */; };
+		D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2F1D15C76A0041FCF0 /* NSError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
 		D4F84C271D1552A20041FCF0 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogRepository.swift; sourceTree = "<group>"; };
+		D4F84C2C1D15BEDB0041FCF0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		D4F84C2F1D15C76A0041FCF0 /* NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		D4B660551D142AAE000FE897 /* PersonalProductivityAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				D4F84C2B1D15BECD0041FCF0 /* Utilities */,
 				D4F84C1F1D15516F0041FCF0 /* Model */,
 				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 				D4B660581D142AAE000FE897 /* ViewController.swift */,
@@ -146,6 +153,7 @@
 				D4F84C261D15517D0041FCF0 /* Entities */,
 				D4F84C201D15516F0041FCF0 /* PPAModel.swift */,
 				D4F84C271D1552A20041FCF0 /* CoreData.swift */,
+				D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +165,23 @@
 				D4F84C221D15516F0041FCF0 /* TimeLog.swift */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		D4F84C2B1D15BECD0041FCF0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D4F84C2E1D15C7600041FCF0 /* Extensions */,
+				D4F84C2C1D15BEDB0041FCF0 /* Result.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		D4F84C2E1D15C7600041FCF0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4F84C2F1D15C76A0041FCF0 /* NSError.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,10 +319,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */,
+				D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */,
 				D4B660591D142AAE000FE897 /* ViewController.swift in Sources */,
 				D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */,
+				D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */,
 				D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */,
 				D4F84C281D1552A20041FCF0 /* CoreData.swift in Sources */,
+				D4F84C2D1D15BEDB0041FCF0 /* Result.swift in Sources */,
 				D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */,
 				D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */,
 				D4B6605F1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld in Sources */,

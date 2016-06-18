@@ -60,31 +60,52 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     // MARK: Helper methods
     func displayPersistedActivities() {
-        let model = PPAModel.New()
+        let timeLogRepository = TimeLogRepository()
+        let getAllResult = timeLogRepository.getAll()
         
-        for timeLog in model.timeLogs {
-          activityNames.append(timeLog.activity!)
+        guard getAllResult.isSucessful == true else {
+            showAlertDialog("Error loading all time logs \(getAllResult.errorMessage)")
+            return
         }
+        
+        if let timeLogs = getAllResult.value as [TimeLog]! {
+            for timeLog in timeLogs {
+                activityNames.append(timeLog.activity!)
+            }
+        }
+        
     }
     
     func addANewActivity(activity activityInput: String?) {
-        guard let activity = activityInput else {
+        let timeLogRepository = TimeLogRepository()
+        
+        guard let enteredActivityName = activityInput else {
             NSLog("could not add a Nil activity")
             return
         }
         
         do {
-            let model = PPAModel.New()
-            model.createTimeLog(activity)
-            model.save()
-        
-            activityNames.append(textEditActivity.text!)
+            try timeLogRepository.addNew(enteredActivityName)
+            
+            activityNames.append(enteredActivityName)
             activityNames.sortInPlace()
         
             tableViewActivities.reloadData()
         } catch let error as NSError {
-            NSLog("Error saving a TimeLog: \(error); \(error.userInfo)")
+            showAlertDialog("Error add time log: \(error.getDefaultErrorMessage())")
         }
+    }
+    
+    func showAlertDialog(errorMessage: String) {
+        let alertController =
+            UIAlertController(
+                title: "PPA",
+                message: errorMessage,
+                preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
