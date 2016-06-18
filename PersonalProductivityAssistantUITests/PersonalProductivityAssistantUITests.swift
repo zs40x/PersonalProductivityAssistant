@@ -17,6 +17,14 @@ extension XCUIElement {
     }
 }
 
+extension NSDate {
+    static func getCurrentDateTimeAsFormattedString(format: String) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.stringFromDate(NSDate())
+    }
+}
+
 class PersonalProductivityAssistantUITests: XCTestCase {
         
     var app = XCUIApplication()
@@ -45,15 +53,20 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func testAddAnActitivty() {
-        let activityName = "Name of the activity"
-      
+        let activityName = "Activity " + NSDate.getCurrentDateTimeAsFormattedString("dd.MM.YYYY HH:mm")
+        
+        // Input Activity name in the Text field
+        XCTAssert(activityInputField!.exists)
         activityInputField!.tap()
         activityInputField!.typeText(activityName)
         
+        // Press the add button
+        XCTAssert(addActivityButton!.exists)
         XCTAssertEqual(activityName, activityInputField!.getValueAsStringSafe())
-        
         addActivityButton!.tap()
         
+        // Make sure a activity with the name is in the list
+        XCTAssert(app.tables.cells.staticTexts[activityName].exists)
         
     }
     
