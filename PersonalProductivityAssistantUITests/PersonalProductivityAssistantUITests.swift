@@ -8,8 +8,21 @@
 
 import XCTest
 
+extension XCUIElement {
+    func getValueAsStringSafe() -> String {
+        guard let valueAsString = self.value as? String else {
+            return ""
+        }
+        return valueAsString
+    }
+}
+
 class PersonalProductivityAssistantUITests: XCTestCase {
         
+    var app = XCUIApplication()
+    var activityInputField: XCUIElement?
+    var addActivityButton: XCUIElement?
+    
     override func setUp() {
         super.setUp()
         
@@ -18,9 +31,12 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
+        activityInputField = app.textFields["textEditActivity"]
+        addActivityButton = app.buttons["buttonLogActivity"]
     }
     
     override func tearDown() {
@@ -28,9 +44,17 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAddAnActitivty() {
+        let activityName = "Name of the activity"
+      
+        activityInputField!.tap()
+        activityInputField!.typeText(activityName)
+        
+        XCTAssertEqual(activityName, activityInputField!.getValueAsStringSafe())
+        
+        addActivityButton!.tap()
+        
+        
     }
     
 }

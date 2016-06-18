@@ -15,6 +15,10 @@
 		D4B660641D142AAE000FE897 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */; };
 		D4B6606F1D142AAE000FE897 /* PersonalProductivityAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6606E1D142AAE000FE897 /* PersonalProductivityAssistantTests.swift */; };
 		D4B6607A1D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */; };
+		D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */; };
+		D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
+		D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
+		D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		D4B660751D142AAE000FE897 /* PersonalProductivityAssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalProductivityAssistantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalProductivityAssistantUITests.swift; sourceTree = "<group>"; };
 		D4B6607B1D142AAE000FE897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PPADataModel.xcdatamodel; sourceTree = "<group>"; };
+		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
+		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		D4B660551D142AAE000FE897 /* PersonalProductivityAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				D4F84C1F1D15516F0041FCF0 /* Model */,
 				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 				D4B660581D142AAE000FE897 /* ViewController.swift */,
 				D4B6605A1D142AAE000FE897 /* Main.storyboard */,
@@ -106,6 +115,7 @@
 				D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */,
 				D4B660651D142AAE000FE897 /* Info.plist */,
 				D4B6605D1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld */,
+				D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */,
 			);
 			path = PersonalProductivityAssistant;
 			sourceTree = "<group>";
@@ -126,6 +136,24 @@
 				D4B6607B1D142AAE000FE897 /* Info.plist */,
 			);
 			path = PersonalProductivityAssistantUITests;
+			sourceTree = "<group>";
+		};
+		D4F84C1F1D15516F0041FCF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D4F84C261D15517D0041FCF0 /* Entities */,
+				D4F84C201D15516F0041FCF0 /* PPAModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D4F84C261D15517D0041FCF0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */,
+				D4F84C221D15516F0041FCF0 /* TimeLog.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +290,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */,
 				D4B660591D142AAE000FE897 /* ViewController.swift in Sources */,
+				D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */,
+				D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */,
+				D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */,
 				D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */,
 				D4B6605F1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld in Sources */,
 			);
@@ -489,6 +521,7 @@
 				D4B660801D142AAE000FE897 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4B660811D142AAE000FE897 /* Build configuration list for PBXNativeTarget "PersonalProductivityAssistantTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +530,7 @@
 				D4B660831D142AAE000FE897 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4B660841D142AAE000FE897 /* Build configuration list for PBXNativeTarget "PersonalProductivityAssistantUITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +539,7 @@
 				D4B660861D142AAE000FE897 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -516,6 +551,16 @@
 			);
 			currentVersion = D4B6605E1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodel */;
 			path = PersonalProductivityAssistant.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */,
+			);
+			currentVersion = D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */;
+			path = PPADataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
