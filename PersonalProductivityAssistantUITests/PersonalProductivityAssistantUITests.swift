@@ -53,7 +53,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func testAddAnActitivty() {
-        let activityName = "Activity " + NSDate.getCurrentDateTimeAsFormattedString("dd.MM.YYYY HH:mm")
+        let activityName = "A " + NSDate.getCurrentDateTimeAsFormattedString("dd.MM.YYYY HH:mm")
         
         // Input Activity name in the Text field
         XCTAssert(activityInputField!.exists)

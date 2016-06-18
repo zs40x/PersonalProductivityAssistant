@@ -15,29 +15,24 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     var activityNames = [String]()
     
-    @IBAction func actionAddActivity(sender: AnyObject) {
-        activityNames.append(textEditActivity.text!)
-        tableViewActivities.reloadData()
-        
-        let model = PPAModel.New()
-        model.createTimeLog(textEditActivity.text!)
-        model.save()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         tableViewActivities.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         displayPersistedActivities()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+    
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -56,11 +51,39 @@ class ViewController: UIViewController, UITableViewDataSource {
         return cell!
     }
     
+    
+    // MARK: Actions
+    @IBAction func actionAddActivity(sender: AnyObject) {
+        addANewActivity(activity: textEditActivity.text!)
+    }
+    
+    
+    // MARK: Helper methods
     func displayPersistedActivities() {
         let model = PPAModel.New()
         
         for timeLog in model.timeLogs {
           activityNames.append(timeLog.activity!)
+        }
+    }
+    
+    func addANewActivity(activity activityInput: String?) {
+        guard let activity = activityInput else {
+            NSLog("could not add a Nil activity")
+            return
+        }
+        
+        do {
+            let model = PPAModel.New()
+            model.createTimeLog(activity)
+            model.save()
+        
+            activityNames.append(textEditActivity.text!)
+            activityNames.sortInPlace()
+        
+            tableViewActivities.reloadData()
+        } catch let error as NSError {
+            NSLog("Error saving a TimeLog: \(error); \(error.userInfo)")
         }
     }
 }
