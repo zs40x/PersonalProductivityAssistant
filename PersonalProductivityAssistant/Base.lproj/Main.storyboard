@@ -43,11 +43,33 @@
                                                     <constraint firstAttribute="width" constant="46" id="8QW-RR-mGC"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="actionAddActivity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Odn-p5-j1N"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SU6-Su-eCx">
                                         <rect key="frame" x="0.0" y="30" width="560" height="532"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NbO-cw-QcK" userLabel="tableViewActivities">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="532"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xqr-u0-y0A">
+                                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xqr-u0-y0A" id="y9Q-WF-LW0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="frn-wM-yDg"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -60,6 +82,10 @@
                             <constraint firstItem="IQQ-oJ-R1K" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="snk-tm-psm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableViewActivities" destination="NbO-cw-QcK" id="a6f-N7-fzs"/>
+                        <outlet property="textEditActivity" destination="2qg-VO-APj" id="a5a-Ta-rXY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

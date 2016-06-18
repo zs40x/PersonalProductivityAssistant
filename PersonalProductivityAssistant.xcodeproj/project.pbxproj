@@ -19,6 +19,7 @@
 		D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
 		D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
 		D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
+		D4F84C281D1552A20041FCF0 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C271D1552A20041FCF0 /* CoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
 		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
+		D4F84C271D1552A20041FCF0 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				D4F84C261D15517D0041FCF0 /* Entities */,
 				D4F84C201D15516F0041FCF0 /* PPAModel.swift */,
+				D4F84C271D1552A20041FCF0 /* CoreData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				D4B660591D142AAE000FE897 /* ViewController.swift in Sources */,
 				D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */,
 				D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */,
+				D4F84C281D1552A20041FCF0 /* CoreData.swift in Sources */,
 				D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */,
 				D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */,
 				D4B6605F1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld in Sources */,

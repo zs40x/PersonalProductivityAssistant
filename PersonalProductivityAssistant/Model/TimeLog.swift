@@ -12,5 +12,6 @@ import CoreData
 
 class TimeLog: NSManagedObject {
 
+static let EntityName = "TimeLog"
     
 }
