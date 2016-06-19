@@ -8,7 +8,19 @@
 
 import UIKit
 
+struct TimeLogData {
+    var Activity: String
+}
+
+protocol TimeLogAddedDelegate: class {
+    func timeLogAdded(timeLog: TimeLogData)
+}
+
 class ViewControllerAddTimeLog: UIViewController {
+    
+    @IBOutlet weak var textEditActivity: UITextField!
+    
+    weak var timeLogAddedDelegate: TimeLogAddedDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +44,28 @@ class ViewControllerAddTimeLog: UIViewController {
     }
     */
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+    }
+    
     @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
         
     }
 
+    @IBAction func actionAddTimeLog(sender: AnyObject) {
+        view.endEditing(true)
+        
+        if let delegate = timeLogAddedDelegate {
+            delegate.timeLogAdded(getTimeLogData())
+       
+            textEditActivity.text = ""
+            
+            performSegueWithIdentifier("UnwindToMainView", sender: self)
+        }
+    }
+    
+    
+    func getTimeLogData() -> TimeLogData {
+        return TimeLogData(Activity: textEditActivity.text!)
+    }
 }

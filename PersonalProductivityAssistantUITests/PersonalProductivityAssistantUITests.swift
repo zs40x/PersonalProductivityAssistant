@@ -28,6 +28,7 @@ extension NSDate {
 class PersonalProductivityAssistantUITests: XCTestCase {
         
     var app = XCUIApplication()
+    var toolbarAddActivityButton: XCUIElement?
     var activityInputField: XCUIElement?
     var addActivityButton: XCUIElement?
     var tableView: XCUIElement?
@@ -47,6 +48,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         
         activityInputField = app.textFields["textEditActivity"]
         addActivityButton = app.buttons["buttonLogActivity"]
+        toolbarAddActivityButton = app.toolbars.buttons["Log Time"]
     }
     
     override func tearDown() {
@@ -57,15 +59,17 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     func testAddAnActitivty() {
         let activityName = getActivityNameWithDateTime()
         
+        XCTAssert(toolbarAddActivityButton!.hittable)
+        toolbarAddActivityButton!.tap()
+        toolbarAddActivityButton!.tap()
+        
         doTypeInActivityName(activityName)
         
         XCTAssertEqual(activityName, activityInputField!.getValueAsStringSafe())
         
-        doTapAddActivityButton()
-        
+        app.navigationBars["Title"].buttons["add"].tap()
+
         XCTAssert(getTableStaticTextElement(activityName).exists)
-        
-        XCTAssertEqual("", activityInputField!.getValueAsStringSafe())
     }
     
     func testCanDeleteActivityFromTable() {

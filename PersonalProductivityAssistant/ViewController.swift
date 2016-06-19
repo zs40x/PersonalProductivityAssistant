@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogAddedDelegate {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var tableViewActivities: UITableView!
@@ -31,6 +31,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let viewControllerAddTimeLog  = segue.destinationViewController as? ViewControllerAddTimeLog {
+            viewControllerAddTimeLog.timeLogAddedDelegate = self
+        }
     }
 
     
@@ -57,6 +64,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if editingStyle == .Delete {
             deleteActivity(tableView, indexPath: indexPath)
         }
+    }
+    
+    // MARK: TimeLogAddedDelegate
+    func timeLogAdded(timeLog: TimeLogData) {
+        addANewActivity(activity: timeLog.Activity)
     }
     
     
