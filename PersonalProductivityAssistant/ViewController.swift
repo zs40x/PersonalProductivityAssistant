@@ -61,6 +61,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     // MARK: Actions
+    @IBAction func unwindToMainView(segue: UIStoryboardSegue) {
+        
+    }
+    
     @IBAction func actionAddActivity(sender: AnyObject) {
         addANewActivity(activity: textEditActivity.text!)
         

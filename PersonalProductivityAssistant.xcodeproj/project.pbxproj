@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D48740EB1D16D16D002D3918 /* ViewControllerAddTimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */; };
 		D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660561D142AAE000FE897 /* AppDelegate.swift */; };
 		D4B660591D142AAE000FE897 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660581D142AAE000FE897 /* ViewController.swift */; };
 		D4B6605C1D142AAE000FE897 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B6605A1D142AAE000FE897 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAddTimeLog.swift; sourceTree = "<group>"; };
 		D4B660531D142AAE000FE897 /* PersonalProductivityAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalProductivityAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B660561D142AAE000FE897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B660581D142AAE000FE897 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 				D4B660581D142AAE000FE897 /* ViewController.swift */,
 				D4B6605A1D142AAE000FE897 /* Main.storyboard */,
+				D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */,
 				D4B660601D142AAE000FE897 /* Assets.xcassets */,
 				D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */,
 				D4B660651D142AAE000FE897 /* Info.plist */,
@@ -328,6 +331,7 @@
 				D4F84C2D1D15BEDB0041FCF0 /* Result.swift in Sources */,
 				D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */,
 				D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */,
+				D48740EB1D16D16D002D3918 /* ViewControllerAddTimeLog.swift in Sources */,
 				D4B6605F1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
