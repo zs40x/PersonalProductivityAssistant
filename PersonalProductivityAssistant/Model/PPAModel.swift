@@ -49,11 +49,14 @@ public class PPAModel : NSObject {
         return timeLog
     }
     
+    func deleteTimeLog(timeLogToDelete: TimeLog) {
+        managedObjectContext.deleteObject(timeLogToDelete)
+    }
+    
     func save() throws {
         do {
             try self.managedObjectContext.save()
-        }
-        catch let error as NSError {
+        } catch let error as NSError {
             NSLog("Error saving: %@", error)
             throw error
         }

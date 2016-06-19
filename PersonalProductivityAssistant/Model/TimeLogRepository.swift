@@ -24,10 +24,22 @@ public class TimeLogRepository {
         
     }
     
-    func addNew(activity: String) throws -> Result {
+    func addNew(activity: String) -> ResultValue<TimeLog> {
         
         do {
-            model.createTimeLog(activity)
+            let newTimeLog = model.createTimeLog(activity)
+            try model.save()
+            
+            return ResultValue.Success(newTimeLog)
+        } catch let error as NSError {
+            return ResultValue.Failure(error.getDefaultErrorMessage())
+        }
+    }
+    
+    func delete(timeLogToDelete: TimeLog) -> Result {
+        
+        do {
+            model.deleteTimeLog(timeLogToDelete)
             try model.save()
             return Result.Success()
         } catch let error as NSError {

@@ -30,6 +30,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var app = XCUIApplication()
     var activityInputField: XCUIElement?
     var addActivityButton: XCUIElement?
+    var tableView: XCUIElement?
     
     override func setUp() {
         super.setUp()
@@ -53,21 +54,69 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func testAddAnActitivty() {
-        let activityName = "A " + NSDate.getCurrentDateTimeAsFormattedString("dd.MM.YYYY HH:mm")
+        let activityName = getActivityNameWithDateTime()
         
-        // Input Activity name in the Text field
-        XCTAssert(activityInputField!.exists)
-        activityInputField!.tap()
-        activityInputField!.typeText(activityName)
+        doTypeInActivityName(activityName)
         
-        // Press the add button
-        XCTAssert(addActivityButton!.exists)
         XCTAssertEqual(activityName, activityInputField!.getValueAsStringSafe())
-        addActivityButton!.tap()
+        
+        doTapAddActivityButton()
         
         // Make sure a activity with the name is in the list
         XCTAssert(app.tables.cells.staticTexts[activityName].exists)
-        
     }
     
+    func testCanDeleteActivityFromTable() {
+       let activityName = getActivityNameWithDateTime()
+        
+        doTypeInActivityName(activityName)
+        doTapAddActivityButton()
+        
+        // new Activity must exist
+        XCTAssert(app.tables.cells.staticTexts[activityName].exists)
+        
+        let newActivityCell = app.tables.staticTexts[activityName]
+        XCTAssert(newActivityCell.exists)
+        
+        /*let hittable = NSPredicate(format: "hittable == 1")
+        expectationForPredicate(hittable, evaluatedWithObject: newActivityCell, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+        
+        newActivityCell.tap()
+        
+        let cellDeleteButton = app.tables.buttons["Delete"]
+        XCTAssert(cellDeleteButton.exists)
+        cellDeleteButton.tap()*/
+        
+        
+        let tablesQuery = XCUIApplication().tables
+        
+        while(!tablesQuery.staticTexts[activityName].hittable) {
+            app.swipeUp()
+        }
+        
+        
+        tablesQuery.staticTexts[activityName].tap()
+        tablesQuery.staticTexts[activityName].swipeLeft()
+        tablesQuery.buttons["Delete"].tap()
+        
+        // Activity must be removed
+        XCTAssert(!app.tables.cells.staticTexts[activityName].exists)
+    }
+    
+    
+    func doTypeInActivityName(activityName: String) {
+        XCTAssert(activityInputField!.exists)
+        activityInputField!.tap()
+        activityInputField!.typeText(activityName)
+    }
+    
+    func doTapAddActivityButton() {
+        XCTAssert(addActivityButton!.exists)
+        addActivityButton!.tap()
+    }
+    
+    func getActivityNameWithDateTime() -> String {
+        return "A " + NSDate.getCurrentDateTimeAsFormattedString("dd.MM.YYYY HH:mm:ss")
+    }
 }

@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var tableViewActivities: UITableView!
     
-    var activityNames = [String]()
+    let timeLogRepository = TimeLogRepository()
+    var activityNames = [TimeLog]()
     
 
     override func viewDidLoad() {
@@ -46,21 +47,28 @@ class ViewController: UIViewController, UITableViewDataSource {
         let cell =
             tableView.dequeueReusableCellWithIdentifier("Cell")
         
-        cell!.textLabel!.text = activityNames[indexPath.row]
+        cell!.textLabel!.text = activityNames[indexPath.row].activity
         
         return cell!
+    }
+    
+    // MARK: UITableViewDelegate
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            deleteActivity(tableView, indexPath: indexPath)
+        }
     }
     
     
     // MARK: Actions
     @IBAction func actionAddActivity(sender: AnyObject) {
         addANewActivity(activity: textEditActivity.text!)
+        view.endEditing(true)
     }
     
     
     // MARK: Helper methods
     func displayPersistedActivities() {
-        let timeLogRepository = TimeLogRepository()
         let getAllResult = timeLogRepository.getAll()
         
         guard getAllResult.isSucessful == true else {
@@ -70,30 +78,47 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         if let timeLogs = getAllResult.value as [TimeLog]! {
             for timeLog in timeLogs {
-                activityNames.append(timeLog.activity!)
+                activityNames.append(timeLog)
             }
         }
         
     }
     
     func addANewActivity(activity activityInput: String?) {
-        let timeLogRepository = TimeLogRepository()
         
         guard let enteredActivityName = activityInput else {
             NSLog("could not add a Nil activity")
             return
         }
         
-        do {
-            try timeLogRepository.addNew(enteredActivityName)
-            
-            activityNames.append(enteredActivityName)
-            activityNames.sortInPlace()
+        let newTimeLogResult = timeLogRepository.addNew(enteredActivityName)
         
-            tableViewActivities.reloadData()
-        } catch let error as NSError {
-            showAlertDialog("Error add time log: \(error.getDefaultErrorMessage())")
+        guard newTimeLogResult.isSucessful == true else {
+            showAlertDialog("Error adding a new time log \(newTimeLogResult.errorMessage)")
+            return
         }
+        
+        guard let newTimeLog = newTimeLogResult.value as TimeLog! else {
+            NSLog("New TimeLog is of an unexpected type")
+            return;
+        }
+        
+        activityNames.append(newTimeLog)
+        // ToDo: Sort activityNames.sortInPlace()
+        tableViewActivities.reloadData()
+    }
+    
+    func deleteActivity(tableView: UITableView, indexPath: NSIndexPath) {
+        let timeLogToDelete = activityNames[indexPath.row]
+        let deleteRsult = timeLogRepository.delete(timeLogToDelete)
+        
+        guard deleteRsult.isSucessful else {
+            showAlertDialog("failed to delete TimeLog \(deleteRsult.errorMessage)")
+            return
+        }
+        
+        activityNames.removeAtIndex(indexPath.row)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
     func showAlertDialog(errorMessage: String) {
