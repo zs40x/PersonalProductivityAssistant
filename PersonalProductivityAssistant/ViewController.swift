@@ -68,7 +68,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         view.endEditing(true)
     }
     
+    @IBAction func actionLogTime(sender: AnyObject) {
+        showAlertDialog("Test")
+    }
     
+
     // MARK: Helper methods
     func displayPersistedActivities() {
         let getAllResult = timeLogRepository.getAll()

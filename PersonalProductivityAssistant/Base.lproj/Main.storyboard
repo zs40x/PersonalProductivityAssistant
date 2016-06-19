@@ -49,11 +49,11 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SU6-Su-eCx">
-                                        <rect key="frame" x="0.0" y="30" width="560" height="532"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SU6-Su-eCx">
+                                        <rect key="frame" x="0.0" y="30" width="560" height="488"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NbO-cw-QcK" userLabel="tableViewActivities">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="532"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="488"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="frn-wM-yDg"/>
@@ -61,6 +61,16 @@
                                             </tableView>
                                         </subviews>
                                     </stackView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-7U-mgS">
+                                        <rect key="frame" x="0.0" y="518" width="560" height="44"/>
+                                        <items>
+                                            <barButtonItem title="Log Time" id="FXj-6K-ONI" userLabel="buttonLogTime">
+                                                <connections>
+                                                    <action selector="actionLogTime:" destination="BYZ-38-t0r" id="81i-Nk-LkJ"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
                                 </subviews>
                             </stackView>
                         </subviews>

@@ -86,6 +86,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     func doTypeInActivityName(activityName: String) {
         XCTAssert(activityInputField!.exists)
         activityInputField!.tap()
+        activityInputField!.tap()
         activityInputField!.typeText(activityName)
     }
     
