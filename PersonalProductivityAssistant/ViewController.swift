@@ -63,6 +63,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: Actions
     @IBAction func actionAddActivity(sender: AnyObject) {
         addANewActivity(activity: textEditActivity.text!)
+        
+        textEditActivity.text = ""
         view.endEditing(true)
     }
     
@@ -80,6 +82,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             for timeLog in timeLogs {
                 activityNames.append(timeLog)
             }
+            
+            activityNames.sortInPlace{ $0.activity > $1.activity }
         }
         
     }
@@ -104,7 +108,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         activityNames.append(newTimeLog)
-        // ToDo: Sort activityNames.sortInPlace()
+        activityNames.sortInPlace{ $0.activity > $1.activity }
+        
         tableViewActivities.reloadData()
     }
     

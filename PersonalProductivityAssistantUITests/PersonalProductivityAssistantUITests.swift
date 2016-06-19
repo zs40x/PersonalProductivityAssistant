@@ -31,6 +31,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var activityInputField: XCUIElement?
     var addActivityButton: XCUIElement?
     var tableView: XCUIElement?
+    let tablesQuery = XCUIApplication().tables
     
     override func setUp() {
         super.setUp()
@@ -62,8 +63,9 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         
         doTapAddActivityButton()
         
-        // Make sure a activity with the name is in the list
-        XCTAssert(app.tables.cells.staticTexts[activityName].exists)
+        XCTAssert(getTableStaticTextElement(activityName).exists)
+        
+        XCTAssertEqual("", activityInputField!.getValueAsStringSafe())
     }
     
     func testCanDeleteActivityFromTable() {
@@ -72,36 +74,12 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         doTypeInActivityName(activityName)
         doTapAddActivityButton()
         
-        // new Activity must exist
-        XCTAssert(app.tables.cells.staticTexts[activityName].exists)
+        XCTAssert(getTableStaticTextElement(activityName).exists)
         
-        let newActivityCell = app.tables.staticTexts[activityName]
-        XCTAssert(newActivityCell.exists)
+        doSwipeUpUntilTableStaticTextIsHittable(activityName)
+        doDeleteTableRow(activityName)
         
-        /*let hittable = NSPredicate(format: "hittable == 1")
-        expectationForPredicate(hittable, evaluatedWithObject: newActivityCell, handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
-        
-        newActivityCell.tap()
-        
-        let cellDeleteButton = app.tables.buttons["Delete"]
-        XCTAssert(cellDeleteButton.exists)
-        cellDeleteButton.tap()*/
-        
-        
-        let tablesQuery = XCUIApplication().tables
-        
-        while(!tablesQuery.staticTexts[activityName].hittable) {
-            app.swipeUp()
-        }
-        
-        
-        tablesQuery.staticTexts[activityName].tap()
-        tablesQuery.staticTexts[activityName].swipeLeft()
-        tablesQuery.buttons["Delete"].tap()
-        
-        // Activity must be removed
-        XCTAssert(!app.tables.cells.staticTexts[activityName].exists)
+        XCTAssert(!getTableStaticTextElement(activityName).exists)
     }
     
     
@@ -114,6 +92,22 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     func doTapAddActivityButton() {
         XCTAssert(addActivityButton!.exists)
         addActivityButton!.tap()
+    }
+    
+    func doSwipeUpUntilTableStaticTextIsHittable(name: String) {
+        while(!tablesQuery.staticTexts[name].hittable) {
+            app.swipeUp()
+        }
+    }
+    
+    func doDeleteTableRow(name: String) {
+        tablesQuery.staticTexts[name].tap()
+        tablesQuery.staticTexts[name].swipeLeft()
+        tablesQuery.buttons["Delete"].tap()
+    }
+    
+    func getTableStaticTextElement(name: String) -> XCUIElement {
+        return tablesQuery.staticTexts[name]
     }
     
     func getActivityNameWithDateTime() -> String {
