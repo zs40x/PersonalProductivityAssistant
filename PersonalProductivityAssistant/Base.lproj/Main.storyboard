@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IQQ-oJ-R1K">
-                                <rect key="frame" x="20" y="28" width="560" height="562"/>
+                                <rect key="frame" x="20" y="28" width="560" height="516"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTp-1d-3pk">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
@@ -50,10 +50,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SU6-Su-eCx">
-                                        <rect key="frame" x="0.0" y="30" width="560" height="488"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="516"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NbO-cw-QcK" userLabel="tableViewActivities">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="488"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="516"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="frn-wM-yDg"/>
@@ -61,26 +61,37 @@
                                             </tableView>
                                         </subviews>
                                     </stackView>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-7U-mgS">
-                                        <rect key="frame" x="0.0" y="518" width="560" height="44"/>
-                                        <items>
-                                            <barButtonItem title="Log Time" id="FXj-6K-ONI" userLabel="toolbarButtonLogTime">
-                                                <connections>
-                                                    <action selector="actionLogTime:" destination="BYZ-38-t0r" id="81i-Nk-LkJ"/>
-                                                    <segue destination="wEc-tL-ERe" kind="show" id="zBb-Kd-Fll"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </items>
-                                    </toolbar>
                                 </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="wTp-1d-3pk"/>
+                                    </mask>
+                                </variation>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-7U-mgS">
+                                <rect key="frame" x="20" y="548" width="560" height="44"/>
+                                <items>
+                                    <barButtonItem title="Log Time" id="FXj-6K-ONI" userLabel="toolbarButtonLogTime">
+                                        <connections>
+                                            <action selector="actionLogTime:" destination="BYZ-38-t0r" id="81i-Nk-LkJ"/>
+                                            <segue destination="wEc-tL-ERe" kind="show" id="zBb-Kd-Fll"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IQQ-oJ-R1K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DDq-QP-7cg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IQQ-oJ-R1K" secondAttribute="bottom" constant="10" id="KE4-ma-ZrG"/>
-                            <constraint firstItem="IQQ-oJ-R1K" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="T6g-8h-zor"/>
-                            <constraint firstItem="IQQ-oJ-R1K" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="snk-tm-psm"/>
+                            <constraint firstItem="USQ-7U-mgS" firstAttribute="top" secondItem="IQQ-oJ-R1K" secondAttribute="bottom" constant="4" id="0Hg-K7-24d"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="USQ-7U-mgS" secondAttribute="bottom" constant="8" id="29d-aS-cLU"/>
+                            <constraint firstItem="IQQ-oJ-R1K" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="6Uw-jx-dDG"/>
+                            <constraint firstItem="IQQ-oJ-R1K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AYg-MT-Uan"/>
+                            <constraint firstItem="USQ-7U-mgS" firstAttribute="top" secondItem="IQQ-oJ-R1K" secondAttribute="bottom" constant="4" id="IeQ-DC-3mU"/>
+                            <constraint firstItem="USQ-7U-mgS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="P6s-F0-SaJ"/>
+                            <constraint firstItem="USQ-7U-mgS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dla-2c-9Rn"/>
+                            <constraint firstItem="USQ-7U-mgS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="lbN-51-aFb"/>
+                            <constraint firstItem="IQQ-oJ-R1K" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="oid-AO-ATn"/>
+                            <constraint firstItem="USQ-7U-mgS" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="yDi-pV-cd9"/>
                         </constraints>
                     </view>
                     <connections>
