@@ -91,6 +91,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // MARK: Helper methods
     func displayPersistedActivities() {
+        
+        activityNames.removeAll()
+        
         let getAllResult = timeLogRepository.getAll()
         
         guard getAllResult.isSucessful == true else {
