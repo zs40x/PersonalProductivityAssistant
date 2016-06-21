@@ -30,7 +30,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var app = XCUIApplication()
     var toolbarAddActivityButton: XCUIElement?
     var activityInputField: XCUIElement?
-    var addActivityButton: XCUIElement?
+
     var tableView: XCUIElement?
     let tablesQuery = XCUIApplication().tables
     
@@ -47,7 +47,6 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
         
         activityInputField = app.textFields["textEditActivity"]
-        addActivityButton = app.buttons["buttonLogActivity"]
         toolbarAddActivityButton = app.toolbars.buttons["Log Time"]
     }
     
@@ -59,7 +58,6 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     func testAddAnActitivty() {
         let activityName = getActivityNameWithDateTime()
         
-        XCTAssert(toolbarAddActivityButton!.hittable)
         toolbarAddActivityButton!.tap()
         toolbarAddActivityButton!.tap()
         
@@ -75,8 +73,12 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     func testCanDeleteActivityFromTable() {
        let activityName = getActivityNameWithDateTime()
         
+        toolbarAddActivityButton!.tap()
+        toolbarAddActivityButton!.tap()
+
         doTypeInActivityName(activityName)
-        doTapAddActivityButton()
+        
+        app.navigationBars["Title"].buttons["add"].tap()
         
         XCTAssert(getTableStaticTextElement(activityName).exists)
         
@@ -92,11 +94,6 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         activityInputField!.tap()
         activityInputField!.tap()
         activityInputField!.typeText(activityName)
-    }
-    
-    func doTapAddActivityButton() {
-        XCTAssert(addActivityButton!.exists)
-        addActivityButton!.tap()
     }
     
     func doSwipeUpUntilTableStaticTextIsHittable(name: String) {
