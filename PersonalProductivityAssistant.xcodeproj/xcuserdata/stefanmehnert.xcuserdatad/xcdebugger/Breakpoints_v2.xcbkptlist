@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllerAddTimeLog.swift"
-            timestampString = "488057780.298356"
+            timestampString = "488222966.558422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "actionAddTimeLog(_:)"
             landmarkType = "5">
          </BreakpointContent>
