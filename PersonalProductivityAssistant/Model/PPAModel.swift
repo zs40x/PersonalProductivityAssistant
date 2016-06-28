@@ -39,12 +39,13 @@ public class PPAModel : NSObject {
         }
     }
     
-    func createTimeLog(activityName: String) -> TimeLog {
+    func createTimeLog(timeLogData: TimeLogData) -> TimeLog {
         let timeLog =
             NSEntityDescription.insertNewObjectForEntityForName(
                 TimeLog.EntityName, inManagedObjectContext: self.managedObjectContext) as! TimeLog
         
-        timeLog.activity = activityName
+        timeLog.activity = timeLogData.Activity
+        timeLog.from = timeLogData.From
         
         return timeLog
     }

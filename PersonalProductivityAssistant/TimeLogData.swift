@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct TimeLogData {
+    var Activity: String
+    var From: NSDate
+}

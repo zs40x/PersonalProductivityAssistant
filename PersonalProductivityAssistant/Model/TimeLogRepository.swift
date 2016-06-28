@@ -24,10 +24,10 @@ public class TimeLogRepository {
         
     }
     
-    func addNew(activity: String) -> ResultValue<TimeLog> {
+    func addNew(timeLogData: TimeLogData) -> ResultValue<TimeLog> {
         
         do {
-            let newTimeLog = model.createTimeLog(activity)
+            let newTimeLog = model.createTimeLog(timeLogData)
             try model.save()
             
             return ResultValue.Success(newTimeLog)

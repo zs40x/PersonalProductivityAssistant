@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D48740EB1D16D16D002D3918 /* ViewControllerAddTimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */; };
+		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
+		D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* NSDate.swift */; };
 		D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660561D142AAE000FE897 /* AppDelegate.swift */; };
 		D4B660591D142AAE000FE897 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660581D142AAE000FE897 /* ViewController.swift */; };
 		D4B6605C1D142AAE000FE897 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B6605A1D142AAE000FE897 /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAddTimeLog.swift; sourceTree = "<group>"; };
+		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogData.swift; sourceTree = "<group>"; };
+		D48F19B51D230FA9009BD069 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		D4B660531D142AAE000FE897 /* PersonalProductivityAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalProductivityAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B660561D142AAE000FE897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B660581D142AAE000FE897 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D48F19B21D1C36FA009BD069 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D48F19B31D1C3714009BD069 /* TimeLogData.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		D4B6604A1D142AAE000FE897 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +185,7 @@
 		D4F84C2B1D15BECD0041FCF0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D48F19B21D1C36FA009BD069 /* Data */,
 				D4F84C2E1D15C7600041FCF0 /* Extensions */,
 				D4F84C2C1D15BEDB0041FCF0 /* Result.swift */,
 			);
@@ -183,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				D4F84C2F1D15C76A0041FCF0 /* NSError.swift */,
+				D48F19B51D230FA9009BD069 /* NSDate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -321,9 +335,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */,
 				D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */,
 				D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */,
 				D4B660591D142AAE000FE897 /* ViewController.swift in Sources */,
+				D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */,
 				D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */,
 				D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */,
 				D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */,

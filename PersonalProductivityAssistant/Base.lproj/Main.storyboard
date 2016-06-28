@@ -21,40 +21,66 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IQQ-oJ-R1K">
                                 <rect key="frame" x="20" y="28" width="560" height="516"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTp-1d-3pk">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZO-Nh-Rfj">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2qg-VO-APj" userLabel="textEditActivity">
-                                                <rect key="frame" x="42" y="0.0" width="472" height="30"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="textEditActivity"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8g-mZ-VJp" userLabel="buttonLogActivity">
-                                                <rect key="frame" x="514" y="0.0" width="46" height="30"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="buttonLogActivity"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="46" id="8QW-RR-mGC"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <action selector="actionAddActivity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Odn-p5-j1N"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SU6-Su-eCx">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="516"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NbO-cw-QcK" userLabel="tableViewActivities">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="516"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellPrototypeActivity" id="xXs-KY-Gl3" userLabel="CellPrototypeActivity" customClass="TableViewActivityCell" customModule="PersonalProductivityAssistant" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xXs-KY-Gl3" id="8b1-op-bQW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VES-Qi-zJ2">
+                                                                    <rect key="frame" x="8" y="0.0" width="82" height="41"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIw-2s-jJk" userLabel="textViewActivity">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="21"/>
+                                                                            <accessibility key="accessibilityConfiguration" identifier="textViewActivity"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPK-5U-2o8">
+                                                                            <rect key="frame" x="0.0" y="21" width="82" height="21"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weN-jH-DSP" userLabel="textViewFrom">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="21"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qT9-Xf-W2R" userLabel="textViewUntil">
+                                                                                    <rect key="frame" x="40" y="0.0" width="42" height="21"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="RPK-5U-2o8" firstAttribute="top" secondItem="BIw-2s-jJk" secondAttribute="bottom" id="McA-Ia-tt1"/>
+                                                                    </constraints>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="VES-Qi-zJ2" firstAttribute="top" secondItem="8b1-op-bQW" secondAttribute="top" id="4v1-D7-gjB"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="VES-Qi-zJ2" secondAttribute="bottom" constant="-5.5" id="Boy-hB-EW8"/>
+                                                                <constraint firstItem="VES-Qi-zJ2" firstAttribute="leading" secondItem="8b1-op-bQW" secondAttribute="leadingMargin" id="wKI-Ai-Orb"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="textViewActivity" destination="BIw-2s-jJk" id="Wff-tU-yQx"/>
+                                                            <outlet property="textViewFrom" destination="weN-jH-DSP" id="8Ya-ne-G6E"/>
+                                                            <outlet property="textViewUntil" destination="qT9-Xf-W2R" id="nH0-X3-YcP"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="frn-wM-yDg"/>
                                                 </connections>
@@ -62,11 +88,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="wTp-1d-3pk"/>
-                                    </mask>
-                                </variation>
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-7U-mgS">
                                 <rect key="frame" x="20" y="548" width="560" height="44"/>
@@ -96,7 +117,6 @@
                     </view>
                     <connections>
                         <outlet property="tableViewActivities" destination="NbO-cw-QcK" id="a6f-N7-fzs"/>
-                        <outlet property="textEditActivity" destination="2qg-VO-APj" id="a5a-Ta-rXY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -162,7 +182,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MNI-jp-L2v">
+                                    <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MNI-jp-L2v" userLabel="datePickerStart">
                                         <rect key="frame" x="0.0" y="21" width="560" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="488222889.02964002">
                                             <!--2016-06-21 17:28:09 +0000-->
@@ -186,6 +206,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="datePickerStart" destination="MNI-jp-L2v" id="9Rj-kl-R6j"/>
                         <outlet property="textEditActivity" destination="JkN-kj-7Zh" id="WwL-ah-4V9"/>
                     </connections>
                 </viewController>

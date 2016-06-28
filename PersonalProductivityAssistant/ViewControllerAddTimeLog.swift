@@ -8,10 +8,6 @@
 
 import UIKit
 
-struct TimeLogData {
-    var Activity: String
-}
-
 protocol TimeLogAddedDelegate: class {
     func timeLogAdded(timeLog: TimeLogData)
 }
@@ -19,6 +15,7 @@ protocol TimeLogAddedDelegate: class {
 class ViewControllerAddTimeLog: UIViewController {
     
     @IBOutlet weak var textEditActivity: UITextField!
+    @IBOutlet weak var datePickerStart: UIDatePicker!
     
     weak var timeLogAddedDelegate: TimeLogAddedDelegate?
 
@@ -56,6 +53,8 @@ class ViewControllerAddTimeLog: UIViewController {
     }
     
     func getTimeLogData() -> TimeLogData {
-        return TimeLogData(Activity: textEditActivity.text!)
+        return TimeLogData(
+            Activity: textEditActivity.text!,
+            From: datePickerStart.date )
     }
 }

@@ -8,6 +8,12 @@
 
 import UIKit
 
+class TableViewActivityCell : UITableViewCell {
+    @IBOutlet weak var textViewUntil: UILabel!
+    @IBOutlet weak var textViewFrom: UILabel!
+    @IBOutlet weak var textViewActivity: UILabel!
+}
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogAddedDelegate {
     
     @IBOutlet weak var textEditActivity: UITextField!
@@ -48,15 +54,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView,
-                   cellForRowAtIndexPath
-        indexPath: NSIndexPath) -> UITableViewCell {
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell =
-            tableView.dequeueReusableCellWithIdentifier("Cell")
+            tableView.dequeueReusableCellWithIdentifier(
+                "CellPrototypeActivity", forIndexPath: indexPath) as! TableViewActivityCell
         
-        cell!.textLabel!.text = activityNames[indexPath.row].activity
+        let timeLog = activityNames[indexPath.row]
         
-        return cell!
+        cell.textViewActivity?.text = timeLog.activity
+        cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
+        cell.textViewUntil?.text = timeLog.until?.asFormattedString("dd.MM.YYYY HH:mm:ss")
+        
+        return cell
     }
     
     // MARK: UITableViewDelegate
@@ -67,25 +77,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: TimeLogAddedDelegate
-    func timeLogAdded(timeLog: TimeLogData) {
-        addANewActivity(activity: timeLog.Activity)
+    func timeLogAdded(timeLogData: TimeLogData) {
+        addANewActivity(timeLogData)
     }
     
     
     // MARK: Actions
     @IBAction func unwindToMainView(segue: UIStoryboardSegue) {
         
-    }
-    
-    @IBAction func actionAddActivity(sender: AnyObject) {
-        addANewActivity(activity: textEditActivity.text!)
-        
-        textEditActivity.text = ""
-        view.endEditing(true)
-    }
-    
-    @IBAction func actionLogTime(sender: AnyObject) {
-        showAlertDialog("Test")
     }
     
 
@@ -111,14 +110,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    func addANewActivity(activity activityInput: String?) {
-        
-        guard let enteredActivityName = activityInput else {
-            NSLog("could not add a Nil activity")
-            return
-        }
-        
-        let newTimeLogResult = timeLogRepository.addNew(enteredActivityName)
+    func addANewActivity(timeLogData: TimeLogData) {
+        let newTimeLogResult = timeLogRepository.addNew(timeLogData)
         
         guard newTimeLogResult.isSucessful == true else {
             showAlertDialog("Error adding a new time log \(newTimeLogResult.errorMessage)")
