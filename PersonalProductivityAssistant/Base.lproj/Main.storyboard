@@ -176,13 +176,33 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qOF-Gi-uv8">
                                 <rect key="frame" x="20" y="131" width="560" height="237"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thz-O3-Q5G">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thz-O3-Q5G" userLabel="From">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MNI-jp-L2v" userLabel="datePickerFrom">
+                                        <rect key="frame" x="0.0" y="21" width="560" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="488222889.02964002">
+                                            <!--2016-06-21 17:28:09 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="pickerValueChanged:" destination="wEc-tL-ERe" eventType="valueChanged" id="wWw-29-d2t"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8ad-Tf-NGA">
+                                <rect key="frame" x="20" y="376" width="560" height="237"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Until" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVR-cr-1Hg">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tNt-aS-5gu" userLabel="datePickerUntil">
                                         <rect key="frame" x="0.0" y="21" width="560" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="488222889.02964002">
                                             <!--2016-06-21 17:28:09 +0000-->
@@ -197,15 +217,19 @@
                             <constraint firstItem="47a-HG-uvN" firstAttribute="leading" secondItem="YAE-mg-hLV" secondAttribute="leadingMargin" id="36d-TN-zA0"/>
                             <constraint firstItem="D0G-26-ZqR" firstAttribute="leading" secondItem="YAE-mg-hLV" secondAttribute="leadingMargin" id="CLu-Lu-YHC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D0G-26-ZqR" secondAttribute="trailing" id="N6X-1k-y5U"/>
+                            <constraint firstItem="8ad-Tf-NGA" firstAttribute="top" secondItem="qOF-Gi-uv8" secondAttribute="bottom" constant="8" id="U8Y-Bo-8qY"/>
                             <constraint firstItem="D0G-26-ZqR" firstAttribute="top" secondItem="47a-HG-uvN" secondAttribute="bottom" constant="8" id="Vcn-Zf-DEW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8ad-Tf-NGA" secondAttribute="trailing" id="WwR-mT-cPj"/>
                             <constraint firstItem="47a-HG-uvN" firstAttribute="top" secondItem="Kbr-3u-014" secondAttribute="bottom" id="bK5-8s-iri"/>
                             <constraint firstItem="qOF-Gi-uv8" firstAttribute="top" secondItem="D0G-26-ZqR" secondAttribute="bottom" constant="8" id="hRC-8a-lpI"/>
                             <constraint firstItem="qOF-Gi-uv8" firstAttribute="leading" secondItem="YAE-mg-hLV" secondAttribute="leadingMargin" id="jtU-aT-YSv"/>
+                            <constraint firstItem="8ad-Tf-NGA" firstAttribute="leading" secondItem="YAE-mg-hLV" secondAttribute="leadingMargin" id="pPZ-c1-PsE"/>
                             <constraint firstItem="47a-HG-uvN" firstAttribute="trailing" secondItem="YAE-mg-hLV" secondAttribute="trailingMargin" id="waP-QB-ce2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qOF-Gi-uv8" secondAttribute="trailing" id="x5g-W6-1Uo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="datePickerEnd" destination="tNt-aS-5gu" id="Obq-6r-v8l"/>
                         <outlet property="datePickerStart" destination="MNI-jp-L2v" id="9Rj-kl-R6j"/>
                         <outlet property="textEditActivity" destination="JkN-kj-7Zh" id="WwL-ah-4V9"/>
                     </connections>

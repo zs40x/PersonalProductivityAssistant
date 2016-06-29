@@ -31,6 +31,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var toolbarAddActivityButton: XCUIElement?
     var activityInputField: XCUIElement?
     var datePickerFrom: XCUIElement?
+    var datePickerUntil: XCUIElement?
 
     var tableView: XCUIElement?
     let tablesQuery = XCUIApplication().tables
@@ -50,6 +51,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         activityInputField = app.textFields["textEditActivity"]
         toolbarAddActivityButton = app.toolbars.buttons["Log Time"]
         datePickerFrom = app.datePickers.elementBoundByIndex(0)
+        datePickerUntil = app.datePickers.elementBoundByIndex(1)
     }
     
     override func tearDown() {
@@ -68,7 +70,8 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         // Type new time log informations
         waitForElementToAppear(activityInputField!)
         doTypeInActivityName(activityName)
-        setDatePickerValues(datePickerFrom!, monthAndDay: "Aug 1", hour: "12", minute: "20", amPm: "AM")
+        setDatePickerValues(datePickerFrom!, monthAndDay: "Aug 1", hour: "10", minute: "30", amPm: "AM")
+        setDatePickerValues(datePickerUntil!, monthAndDay: "Aug 1", hour: "11", minute: "15", amPm: "AM")
         
         // Press add button
         app.navigationBars["Title"].buttons["add"].tap()

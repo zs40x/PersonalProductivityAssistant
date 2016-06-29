@@ -19,10 +19,12 @@ class ViewControllerAddTimeLog: UIViewController {
     
     weak var timeLogAddedDelegate: TimeLogAddedDelegate?
 
+    @IBOutlet weak var datePickerEnd: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        textEditActivity.resignFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +36,11 @@ class ViewControllerAddTimeLog: UIViewController {
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        
+    }
+    
+    @IBAction func pickerValueChanged(sender: AnyObject) {
+        view.endEditing(true)
     }
     
     @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
