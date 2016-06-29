@@ -281,9 +281,11 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="pieChartView" destination="cDJ-a8-cFL" id="KJx-nt-9BE"/>
+                        <segue destination="0oP-wh-TpN" kind="unwind" identifier="UnwindToMainView" unwindAction="unwindToMainView:" id="SjT-hH-zer"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3W-Tq-kRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0oP-wh-TpN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1020" y="1142"/>
         </scene>

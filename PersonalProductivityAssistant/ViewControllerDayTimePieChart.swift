@@ -5,10 +5,12 @@
 //  Created by Stefan Mehnert on 29/06/16.
 //  Copyright © 2016 Stefan Mehnert. All rights reserved.
 //
+// ::>> http://www.appcoda.com/ios-charts-api-tutorial/
+//
 
 import UIKit
 
-class ViewControllerDayTimePieChart: UIViewController {
+class ViewControllerDayTimePieChart: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var pieChartView: PieChartView!
     
@@ -20,10 +22,10 @@ class ViewControllerDayTimePieChart: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        pieChartView.delegate = self
+        
         let chartData = chartDataSource.getChartData()
-        
         setChart(chartData.dataPoints, values: chartData.values)
-        
         pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInCirc)
     }
 
@@ -33,8 +35,6 @@ class ViewControllerDayTimePieChart: UIViewController {
     }
     
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -42,7 +42,15 @@ class ViewControllerDayTimePieChart: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
+    @IBAction func unwindToDayTimePieChart(segue: UIStoryboardSegue) {
+        
+    }
+    
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        performSegueWithIdentifier("UnwindToMainView", sender: self)
+    }
 
     func setChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []

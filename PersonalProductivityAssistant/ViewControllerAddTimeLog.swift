@@ -36,8 +36,6 @@ class ViewControllerAddTimeLog: UIViewController {
 
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        
     }
     
     @IBAction func pickerValueChanged(sender: AnyObject) {
@@ -45,7 +43,6 @@ class ViewControllerAddTimeLog: UIViewController {
     }
     
     @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
-        
     }
 
     @IBAction func actionAddTimeLog(sender: AnyObject) {
