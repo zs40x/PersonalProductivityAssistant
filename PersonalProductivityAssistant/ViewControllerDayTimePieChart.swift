@@ -12,15 +12,19 @@ class ViewControllerDayTimePieChart: UIViewController {
     
     @IBOutlet weak var pieChartView: PieChartView!
     
+    let chartDataSource = ChartSourceFreeVsUsedTime()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        let months = ["Free", "Spent"]
-        let unitsSold = [20.0, 4.0]
+        let chartData = chartDataSource.getChartData()
         
-        setChart(months, values: unitsSold)
+        setChart(chartData.dataPoints, values: chartData.values)
+        
+        pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInCirc)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,16 +56,12 @@ class ViewControllerDayTimePieChart: UIViewController {
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         
+        
         var colors: [UIColor] = []
         
-        for _ in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
+        colors.append(UIColor.greenColor())
+        colors.append(UIColor.redColor())
         
-        pieChartDataSet.colors = colors    }
+        pieChartDataSet.colors = colors
+    }
 }
