@@ -30,6 +30,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var app = XCUIApplication()
     var toolbarAddActivityButton: XCUIElement?
     var activityInputField: XCUIElement?
+    var datePickerFrom: XCUIElement?
 
     var tableView: XCUIElement?
     let tablesQuery = XCUIApplication().tables
@@ -48,6 +49,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         
         activityInputField = app.textFields["textEditActivity"]
         toolbarAddActivityButton = app.toolbars.buttons["Log Time"]
+        datePickerFrom = app.datePickers.elementBoundByIndex(0)
     }
     
     override func tearDown() {
@@ -63,10 +65,12 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         toolbarAddActivityButton!.tap()
         toolbarAddActivityButton!.tap()
         
-        // type new time log informations
+        // Type new time log informations
         waitForElementToAppear(activityInputField!)
         doTypeInActivityName(activityName)
-        // pres add button
+        setDatePickerValues(datePickerFrom!, monthAndDay: "Aug 1", hour: "12", minute: "20", amPm: "AM")
+        
+        // Press add button
         app.navigationBars["Title"].buttons["add"].tap()
         
         // Verify element has been added
@@ -94,6 +98,13 @@ class PersonalProductivityAssistantUITests: XCTestCase {
                                                   inFile: file, atLine: line, expected: true)
             }
         }
+    }
+    
+    func setDatePickerValues(datePicker: XCUIElement, monthAndDay: String, hour: String, minute: String, amPm: String) {
+        datePicker.pickerWheels.elementBoundByIndex(0).adjustToPickerWheelValue(monthAndDay)
+        datePicker.pickerWheels.elementBoundByIndex(1).adjustToPickerWheelValue(hour)
+        datePicker.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue(minute)
+        datePicker.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue(amPm)
     }
     
     func doTypeInActivityName(activityName: String) {
