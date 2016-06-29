@@ -32,32 +32,32 @@
                                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xXs-KY-Gl3" id="8b1-op-bQW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VES-Qi-zJ2">
-                                                                    <rect key="frame" x="8" y="0.0" width="82" height="41"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VES-Qi-zJ2">
+                                                                    <rect key="frame" x="8" y="0.0" width="544" height="41"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIw-2s-jJk" userLabel="textViewActivity">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="21"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="22"/>
                                                                             <accessibility key="accessibilityConfiguration" identifier="textViewActivity"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPK-5U-2o8">
-                                                                            <rect key="frame" x="0.0" y="21" width="82" height="21"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RPK-5U-2o8">
+                                                                            <rect key="frame" x="0.0" y="22" width="544" height="20"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weN-jH-DSP" userLabel="textViewFrom">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="21"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="272" height="20"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qT9-Xf-W2R" userLabel="textViewUntil">
-                                                                                    <rect key="frame" x="40" y="0.0" width="42" height="21"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                    <rect key="frame" x="272" y="0.0" width="272" height="20"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                                    <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
@@ -65,12 +65,14 @@
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="RPK-5U-2o8" firstAttribute="top" secondItem="BIw-2s-jJk" secondAttribute="bottom" id="McA-Ia-tt1"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="RPK-5U-2o8" secondAttribute="trailing" id="WGZ-Lv-I8T"/>
                                                                     </constraints>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="VES-Qi-zJ2" firstAttribute="top" secondItem="8b1-op-bQW" secondAttribute="top" id="4v1-D7-gjB"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="VES-Qi-zJ2" secondAttribute="bottom" constant="-5.5" id="Boy-hB-EW8"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="VES-Qi-zJ2" secondAttribute="trailing" id="gK2-qa-wWD"/>
                                                                 <constraint firstItem="VES-Qi-zJ2" firstAttribute="leading" secondItem="8b1-op-bQW" secondAttribute="leadingMargin" id="wKI-Ai-Orb"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
