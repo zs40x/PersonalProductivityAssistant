@@ -55,39 +55,46 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testAddAnActitivty() {
-        let activityName = getActivityNameWithDateTime()
-        
-        toolbarAddActivityButton!.tap()
-        toolbarAddActivityButton!.tap()
-        
-        doTypeInActivityName(activityName)
-        
-        XCTAssertEqual(activityName, activityInputField!.getValueAsStringSafe())
-        
-        app.navigationBars["Title"].buttons["add"].tap()
-
-        XCTAssert(getTableStaticTextElement(activityName).exists)
-    }
-    
-    func testCanDeleteActivityFromTable() {
+    func testCanAddAndDeleteActivityFromTable() {
        let activityName = getActivityNameWithDateTime()
         
+        // Open the add time log view
+        waitForElementToAppear(toolbarAddActivityButton!)
         toolbarAddActivityButton!.tap()
         toolbarAddActivityButton!.tap()
-
-        doTypeInActivityName(activityName)
         
+        // type new time log informations
+        waitForElementToAppear(activityInputField!)
+        doTypeInActivityName(activityName)
+        // pres add button
         app.navigationBars["Title"].buttons["add"].tap()
         
+        // Verify element has been added
         XCTAssert(getTableStaticTextElement(activityName).exists)
         
+        // Swipe up until the new element ist visible
         doSwipeUpUntilTableStaticTextIsHittable(activityName)
+        // Swipe left and push delete button
         doDeleteTableRow(activityName)
         
+        // Verify the element has been deleted
         XCTAssert(!getTableStaticTextElement(activityName).exists)
     }
     
+    private func waitForElementToAppear(element: XCUIElement,
+                                        file: String = #file, line: UInt = #line) {
+        let existsPredicate = NSPredicate(format: "exists == true")
+        expectationForPredicate(existsPredicate,
+                                evaluatedWithObject: element, handler: nil)
+        
+        waitForExpectationsWithTimeout(5) { (error) -> Void in
+            if (error != nil) {
+                let message = "Failed to find \(element) after 5 seconds."
+                self.recordFailureWithDescription(message,
+                                                  inFile: file, atLine: line, expected: true)
+            }
+        }
+    }
     
     func doTypeInActivityName(activityName: String) {
         XCTAssert(activityInputField!.exists)
