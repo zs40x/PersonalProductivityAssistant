@@ -14,4 +14,14 @@ class TimeLog: NSManagedObject {
 
     static let EntityName = "TimeLog"
     
+    func getDurationInMinutes() -> Int {
+        guard let timeFrom = from else {
+            return 0
+        }
+        guard let timeUntil = until else {
+            return 0
+        }
+        
+        return Int(timeUntil.timeIntervalSinceDate(timeFrom) / 60)
+    }
 }

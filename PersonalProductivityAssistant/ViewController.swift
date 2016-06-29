@@ -12,6 +12,7 @@ class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewUntil: UILabel!
     @IBOutlet weak var textViewFrom: UILabel!
     @IBOutlet weak var textViewActivity: UILabel!
+    @IBOutlet weak var textViewDuration: UILabel!
 }
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogAddedDelegate {
@@ -65,6 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textViewActivity?.text = timeLog.activity
         cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
         cell.textViewUntil?.text = timeLog.until?.asFormattedString("dd.MM.YYYY HH:mm:ss")
+        cell.textViewDuration?.text = String(timeLog.getDurationInMinutes()) + " Minutes"
         
         return cell
     }
