@@ -46,6 +46,7 @@ public class PPAModel : NSObject {
         
         timeLog.activity = timeLogData.Activity
         timeLog.from = timeLogData.From
+        timeLog.until = timeLogData.Until
         
         return timeLog
     }

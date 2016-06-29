@@ -16,10 +16,11 @@ class ViewControllerAddTimeLog: UIViewController {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var datePickerStart: UIDatePicker!
+    @IBOutlet weak var datePickerEnd: UIDatePicker!
     
     weak var timeLogAddedDelegate: TimeLogAddedDelegate?
-
-    @IBOutlet weak var datePickerEnd: UIDatePicker!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,6 +63,7 @@ class ViewControllerAddTimeLog: UIViewController {
     func getTimeLogData() -> TimeLogData {
         return TimeLogData(
             Activity: textEditActivity.text!,
-            From: datePickerStart.date )
+            From: datePickerStart.date,
+            Until: datePickerEnd.date )
     }
 }
