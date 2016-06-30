@@ -15,7 +15,7 @@ class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewDuration: UILabel!
 }
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogAddedDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogEditDelegate {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var tableViewActivities: UITableView!
@@ -42,8 +42,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let viewControllerAddTimeLog  = segue.destinationViewController as? AddTimeLogViewController {
-            viewControllerAddTimeLog.timeLogAddedDelegate = self
+        if let viewControllerAddTimeLog = segue.destinationViewController as? AddTimeLogViewController {
+            viewControllerAddTimeLog.timeLogEditDelegate = self
         }
     }
 
@@ -70,21 +70,29 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    
     // MARK: UITableViewDelegate
+    var timeLogToEdit: TimeLog?
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let timeLog = activityNames[indexPath.row]
+        timeLogToEdit = activityNames[indexPath.row]
         
         performSegueWithIdentifier("ShowSegueToAddTimeLog", sender: self)
     }
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             deleteActivity(tableView, indexPath: indexPath)
         }
     }
 
-    // MARK: TimeLogAddedDelegate
+    // MARK: TimeLogEditDelegate
     func timeLogAdded(timeLogData: TimeLogData) {
         addANewActivity(timeLogData)
+    }
+    
+    func getTimeLogToEdit() -> TimeLog? {
+        return timeLogToEdit
     }
     
     
@@ -93,6 +101,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    @IBAction func actionToolbarAddTimeLog(sender: AnyObject) {
+        timeLogToEdit = nil
+        
+        performSegueWithIdentifier("ShowSegueToAddTimeLog", sender: self)
+    }
 
     // MARK: Helper methods
     func displayPersistedActivities() {

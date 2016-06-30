@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol TimeLogAddedDelegate: class {
+protocol TimeLogEditDelegate: class {
     func timeLogAdded(timeLog: TimeLogData)
+    func getTimeLogToEdit() -> TimeLog?
 }
 
 class AddTimeLogViewController: UIViewController {
@@ -18,7 +19,7 @@ class AddTimeLogViewController: UIViewController {
     @IBOutlet weak var datePickerStart: UIDatePicker!
     @IBOutlet weak var datePickerEnd: UIDatePicker!
     
-    weak var timeLogAddedDelegate: TimeLogAddedDelegate?
+    weak var timeLogEditDelegate: TimeLogEditDelegate?
     
     
     override func viewDidLoad() {
@@ -26,6 +27,14 @@ class AddTimeLogViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         textEditActivity.resignFirstResponder()
+        
+        if let timeEditDelegate = self.timeLogEditDelegate {
+            if let timeLogToEdit = timeEditDelegate.getTimeLogToEdit() {
+                self.textEditActivity.text = timeLogToEdit.activity
+                self.datePickerStart.date = timeLogToEdit.from!
+                self.datePickerEnd.date = timeLogToEdit.until!
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +57,7 @@ class AddTimeLogViewController: UIViewController {
     @IBAction func actionAddTimeLog(sender: AnyObject) {
         view.endEditing(true)
         
-        if let delegate = timeLogAddedDelegate {
+        if let delegate = timeLogEditDelegate {
             delegate.timeLogAdded(getTimeLogData())
        
             textEditActivity.text = ""

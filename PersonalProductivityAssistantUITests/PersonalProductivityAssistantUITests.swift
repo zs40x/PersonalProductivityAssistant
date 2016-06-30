@@ -124,7 +124,6 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func doDeleteTableRow(name: String) {
-        tablesQuery.staticTexts[name].tap()
         tablesQuery.staticTexts[name].swipeLeft()
         tablesQuery.buttons["Delete"].tap()
     }

@@ -107,8 +107,7 @@
                                         <items>
                                             <barButtonItem title="Log Time" id="FXj-6K-ONI" userLabel="toolbarButtonLogTime">
                                                 <connections>
-                                                    <action selector="actionLogTime:" destination="BYZ-38-t0r" id="81i-Nk-LkJ"/>
-                                                    <segue destination="wEc-tL-ERe" kind="show" identifier="ShowSegueToAddTimeLog" id="zBb-Kd-Fll"/>
+                                                    <action selector="actionToolbarAddTimeLog:" destination="BYZ-38-t0r" id="TvP-c1-tZO"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Chart" id="qa8-B1-kfW" userLabel="toolbarButtonLogTime">
@@ -132,6 +131,7 @@
                     </view>
                     <connections>
                         <outlet property="tableViewActivities" destination="NbO-cw-QcK" id="a6f-N7-fzs"/>
+                        <segue destination="wEc-tL-ERe" kind="show" identifier="ShowSegueToAddTimeLog" id="yMS-gh-ZoW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
