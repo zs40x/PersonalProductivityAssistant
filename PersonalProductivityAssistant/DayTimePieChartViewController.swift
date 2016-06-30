@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ViewControllerDayTimePieChart: UIViewController, ChartViewDelegate {
+class DayTimePieChartViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var pieChartView: PieChartView!
     

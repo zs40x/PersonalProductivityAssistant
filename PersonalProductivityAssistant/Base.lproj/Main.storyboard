@@ -253,10 +253,10 @@
             </objects>
             <point key="canvasLocation" x="1032" y="381"/>
         </scene>
-        <!--View Controller Day Time Pie Chart-->
+        <!--Day Time Pie Chart View Controller-->
         <scene sceneID="Xgh-It-8NR">
             <objects>
-                <viewController id="hea-1L-t8h" customClass="ViewControllerDayTimePieChart" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hea-1L-t8h" customClass="DayTimePieChartViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SwM-51-Ouw"/>
                         <viewControllerLayoutGuide type="bottom" id="QD0-ZL-BON"/>

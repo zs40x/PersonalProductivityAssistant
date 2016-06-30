@@ -124,7 +124,7 @@
 		D48F1AA51D2402FB009BD069 /* ChartTransformerHorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F1A341D2402FB009BD069 /* ChartTransformerHorizontalBarChart.swift */; };
 		D48F1AA61D2402FB009BD069 /* ChartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F1A351D2402FB009BD069 /* ChartUtils.swift */; };
 		D48F1AA71D2402FB009BD069 /* ChartViewPortHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F1A361D2402FB009BD069 /* ChartViewPortHandler.swift */; };
-		D48F1AAC1D240486009BD069 /* ViewControllerDayTimePieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F1AAB1D240486009BD069 /* ViewControllerDayTimePieChart.swift */; };
+		D48F1AAC1D240486009BD069 /* DayTimePieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */; };
 		D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660561D142AAE000FE897 /* AppDelegate.swift */; };
 		D4B660591D142AAE000FE897 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660581D142AAE000FE897 /* ViewController.swift */; };
 		D4B6605C1D142AAE000FE897 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B6605A1D142AAE000FE897 /* Main.storyboard */; };
@@ -278,7 +278,7 @@
 		D48F1A341D2402FB009BD069 /* ChartTransformerHorizontalBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTransformerHorizontalBarChart.swift; sourceTree = "<group>"; };
 		D48F1A351D2402FB009BD069 /* ChartUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartUtils.swift; sourceTree = "<group>"; };
 		D48F1A361D2402FB009BD069 /* ChartViewPortHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewPortHandler.swift; sourceTree = "<group>"; };
-		D48F1AAB1D240486009BD069 /* ViewControllerDayTimePieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDayTimePieChart.swift; sourceTree = "<group>"; };
+		D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTimePieChartViewController.swift; sourceTree = "<group>"; };
 		D4B660531D142AAE000FE897 /* PersonalProductivityAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalProductivityAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B660561D142AAE000FE897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B660581D142AAE000FE897 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 			children = (
 				D4B660581D142AAE000FE897 /* ViewController.swift */,
 				D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */,
-				D48F1AAB1D240486009BD069 /* ViewControllerDayTimePieChart.swift */,
+				D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -898,7 +898,7 @@
 				D48F1A901D2402FB009BD069 /* ChartRendererBase.swift in Sources */,
 				D48F1A9C1D2402FB009BD069 /* LineScatterCandleRadarChartRenderer.swift in Sources */,
 				D48F1A7A1D2402FB009BD069 /* ChartRange.swift in Sources */,
-				D48F1AAC1D240486009BD069 /* ViewControllerDayTimePieChart.swift in Sources */,
+				D48F1AAC1D240486009BD069 /* DayTimePieChartViewController.swift in Sources */,
 				D48F1A4F1D2402FB009BD069 /* BarChartDataSet.swift in Sources */,
 				D48F1A5F1D2402FB009BD069 /* LineScatterCandleRadarChartDataSet.swift in Sources */,
 				D48F1A6D1D2402FB009BD069 /* ILineScatterCandleRadarChartDataSet.swift in Sources */,
