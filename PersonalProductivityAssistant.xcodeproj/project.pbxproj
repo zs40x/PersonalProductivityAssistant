@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
-		D48740EB1D16D16D002D3918 /* ViewControllerAddTimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */; };
+		D48740EB1D16D16D002D3918 /* AddTimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */; };
 		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
 		D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* NSDate.swift */; };
 		D48F1A371D2402FB009BD069 /* ChartAnimationEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B91D2402FB009BD069 /* ChartAnimationEasing.swift */; };
@@ -162,7 +162,7 @@
 
 /* Begin PBXFileReference section */
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
-		D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAddTimeLog.swift; sourceTree = "<group>"; };
+		D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		D48F19B91D2402FB009BD069 /* ChartAnimationEasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAnimationEasing.swift; sourceTree = "<group>"; };
@@ -328,6 +328,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D43AF1D21D252EF20084B9C7 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D48F19B71D2402FB009BD069 /* Charts */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		D43AF1D31D252F1B0084B9C7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4B660581D142AAE000FE897 /* ViewController.swift */,
+				D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */,
+				D48F1AAB1D240486009BD069 /* ViewControllerDayTimePieChart.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		D43B896E1D2444120065248D /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,15 +617,13 @@
 		D4B660551D142AAE000FE897 /* PersonalProductivityAssistant */ = {
 			isa = PBXGroup;
 			children = (
-				D43B896E1D2444120065248D /* Reporting */,
-				D48F19B71D2402FB009BD069 /* Charts */,
+				D43AF1D21D252EF20084B9C7 /* Libraries */,
 				D4F84C2B1D15BECD0041FCF0 /* Utilities */,
 				D4F84C1F1D15516F0041FCF0 /* Model */,
 				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
+				D43B896E1D2444120065248D /* Reporting */,
 				D4B6605A1D142AAE000FE897 /* Main.storyboard */,
-				D4B660581D142AAE000FE897 /* ViewController.swift */,
-				D48740EA1D16D16D002D3918 /* ViewControllerAddTimeLog.swift */,
-				D48F1AAB1D240486009BD069 /* ViewControllerDayTimePieChart.swift */,
+				D43AF1D31D252F1B0084B9C7 /* ViewControllers */,
 				D4B660601D142AAE000FE897 /* Assets.xcassets */,
 				D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */,
 				D4B660651D142AAE000FE897 /* Info.plist */,
@@ -917,7 +933,7 @@
 				D48F1A4C1D2402FB009BD069 /* ChartBaseDataSet.swift in Sources */,
 				D48F1A601D2402FB009BD069 /* PieChartData.swift in Sources */,
 				D48F1AA51D2402FB009BD069 /* ChartTransformerHorizontalBarChart.swift in Sources */,
-				D48740EB1D16D16D002D3918 /* ViewControllerAddTimeLog.swift in Sources */,
+				D48740EB1D16D16D002D3918 /* AddTimeLogViewController.swift in Sources */,
 				D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */,
 				D48F1A8B1D2402FB009BD069 /* BubbleChartRenderer.swift in Sources */,
 				D48F1A741D2402FB009BD069 /* ChartDefaultXAxisValueFormatter.swift in Sources */,

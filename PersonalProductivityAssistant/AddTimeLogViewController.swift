@@ -12,7 +12,7 @@ protocol TimeLogAddedDelegate: class {
     func timeLogAdded(timeLog: TimeLogData)
 }
 
-class ViewControllerAddTimeLog: UIViewController {
+class AddTimeLogViewController: UIViewController {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var datePickerStart: UIDatePicker!

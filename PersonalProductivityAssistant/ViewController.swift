@@ -42,7 +42,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let viewControllerAddTimeLog  = segue.destinationViewController as? ViewControllerAddTimeLog {
+        if let viewControllerAddTimeLog  = segue.destinationViewController as? AddTimeLogViewController {
             viewControllerAddTimeLog.timeLogAddedDelegate = self
         }
     }
