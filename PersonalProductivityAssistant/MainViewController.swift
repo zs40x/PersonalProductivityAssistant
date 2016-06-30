@@ -15,7 +15,7 @@ class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewDuration: UILabel!
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogAddedDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogAddedDelegate {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var tableViewActivities: UITableView!

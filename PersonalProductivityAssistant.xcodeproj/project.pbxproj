@@ -126,7 +126,7 @@
 		D48F1AA71D2402FB009BD069 /* ChartViewPortHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F1A361D2402FB009BD069 /* ChartViewPortHandler.swift */; };
 		D48F1AAC1D240486009BD069 /* DayTimePieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */; };
 		D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660561D142AAE000FE897 /* AppDelegate.swift */; };
-		D4B660591D142AAE000FE897 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660581D142AAE000FE897 /* ViewController.swift */; };
+		D4B660591D142AAE000FE897 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660581D142AAE000FE897 /* MainViewController.swift */; };
 		D4B6605C1D142AAE000FE897 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B6605A1D142AAE000FE897 /* Main.storyboard */; };
 		D4B6605F1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B6605D1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld */; };
 		D4B660611D142AAE000FE897 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B660601D142AAE000FE897 /* Assets.xcassets */; };
@@ -281,7 +281,7 @@
 		D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTimePieChartViewController.swift; sourceTree = "<group>"; };
 		D4B660531D142AAE000FE897 /* PersonalProductivityAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalProductivityAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B660561D142AAE000FE897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D4B660581D142AAE000FE897 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D4B660581D142AAE000FE897 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D4B6605B1D142AAE000FE897 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4B6605E1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalProductivityAssistant.xcdatamodel; sourceTree = "<group>"; };
 		D4B660601D142AAE000FE897 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 		D43AF1D31D252F1B0084B9C7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D4B660581D142AAE000FE897 /* ViewController.swift */,
+				D4B660581D142AAE000FE897 /* MainViewController.swift */,
 				D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */,
 				D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */,
 			);
@@ -841,7 +841,7 @@
 				D48F1A771D2402FB009BD069 /* BarChartHighlighter.swift in Sources */,
 				D48F1A441D2402FB009BD069 /* ScatterChartView.swift in Sources */,
 				D48F1A3B1D2402FB009BD069 /* BubbleChartView.swift in Sources */,
-				D4B660591D142AAE000FE897 /* ViewController.swift in Sources */,
+				D4B660591D142AAE000FE897 /* MainViewController.swift in Sources */,
 				D48F1A851D2402FB009BD069 /* AnimatedViewPortJob.swift in Sources */,
 				D48F1A521D2402FB009BD069 /* BubbleChartData.swift in Sources */,
 				D48F1A911D2402FB009BD069 /* ChartXAxisRenderer.swift in Sources */,
