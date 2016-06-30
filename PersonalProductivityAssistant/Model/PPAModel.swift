@@ -7,14 +7,15 @@
 //
 
 import Foundation
-
+import UIKit
 import CoreData
 
 public class PPAModel : NSObject {
-    private static let coreData = try! CoreData(sqliteDocumentName: "PPA.db", schemaName:"PPADataModel")
     
     public static func New() -> PPAModel {
-        return PPAModel(managedObjectContext:coreData.createManagedObjectContext())
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        return PPAModel(managedObjectContext:appDelegate.managedObjectContext)
     }
     
     

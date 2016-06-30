@@ -128,7 +128,6 @@
 		D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660561D142AAE000FE897 /* AppDelegate.swift */; };
 		D4B660591D142AAE000FE897 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660581D142AAE000FE897 /* MainViewController.swift */; };
 		D4B6605C1D142AAE000FE897 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B6605A1D142AAE000FE897 /* Main.storyboard */; };
-		D4B6605F1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B6605D1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld */; };
 		D4B660611D142AAE000FE897 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B660601D142AAE000FE897 /* Assets.xcassets */; };
 		D4B660641D142AAE000FE897 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */; };
 		D4B6606F1D142AAE000FE897 /* PersonalProductivityAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6606E1D142AAE000FE897 /* PersonalProductivityAssistantTests.swift */; };
@@ -137,7 +136,6 @@
 		D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
 		D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
 		D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
-		D4F84C281D1552A20041FCF0 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C271D1552A20041FCF0 /* CoreData.swift */; };
 		D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */; };
 		D4F84C2D1D15BEDB0041FCF0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2C1D15BEDB0041FCF0 /* Result.swift */; };
 		D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2F1D15C76A0041FCF0 /* NSError.swift */; };
@@ -283,7 +281,6 @@
 		D4B660561D142AAE000FE897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B660581D142AAE000FE897 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D4B6605B1D142AAE000FE897 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D4B6605E1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalProductivityAssistant.xcdatamodel; sourceTree = "<group>"; };
 		D4B660601D142AAE000FE897 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4B660631D142AAE000FE897 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4B660651D142AAE000FE897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -297,7 +294,6 @@
 		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
 		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
-		D4F84C271D1552A20041FCF0 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogRepository.swift; sourceTree = "<group>"; };
 		D4F84C2C1D15BEDB0041FCF0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		D4F84C2F1D15C76A0041FCF0 /* NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSError.swift; sourceTree = "<group>"; };
@@ -339,11 +335,21 @@
 		D43AF1D31D252F1B0084B9C7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 				D4B660581D142AAE000FE897 /* MainViewController.swift */,
 				D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */,
 				D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D43AF1D41D25356F0084B9C7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D4B6605A1D142AAE000FE897 /* Main.storyboard */,
+				D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		D43B896E1D2444120065248D /* Reporting */ = {
@@ -620,15 +626,11 @@
 				D43AF1D21D252EF20084B9C7 /* Libraries */,
 				D4F84C2B1D15BECD0041FCF0 /* Utilities */,
 				D4F84C1F1D15516F0041FCF0 /* Model */,
-				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 				D43B896E1D2444120065248D /* Reporting */,
-				D4B6605A1D142AAE000FE897 /* Main.storyboard */,
+				D43AF1D41D25356F0084B9C7 /* Storyboards */,
 				D43AF1D31D252F1B0084B9C7 /* ViewControllers */,
 				D4B660601D142AAE000FE897 /* Assets.xcassets */,
-				D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */,
 				D4B660651D142AAE000FE897 /* Info.plist */,
-				D4B6605D1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld */,
-				D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */,
 			);
 			path = PersonalProductivityAssistant;
 			sourceTree = "<group>";
@@ -656,8 +658,8 @@
 			children = (
 				D4F84C261D15517D0041FCF0 /* Entities */,
 				D4F84C201D15516F0041FCF0 /* PPAModel.swift */,
-				D4F84C271D1552A20041FCF0 /* CoreData.swift */,
 				D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */,
+				D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -884,7 +886,6 @@
 				D48F1A881D2402FB009BD069 /* MoveChartViewJob.swift in Sources */,
 				D48F1A401D2402FB009BD069 /* LineChartView.swift in Sources */,
 				D48F1A8E1D2402FB009BD069 /* ChartDataRendererBase.swift in Sources */,
-				D4F84C281D1552A20041FCF0 /* CoreData.swift in Sources */,
 				D48F1A8C1D2402FB009BD069 /* CandleStickChartRenderer.swift in Sources */,
 				D48F1A421D2402FB009BD069 /* PieRadarChartViewBase.swift in Sources */,
 				D48F1A3D1D2402FB009BD069 /* ChartViewBase.swift in Sources */,
@@ -949,7 +950,6 @@
 				D48F1A5B1D2402FB009BD069 /* CombinedChartData.swift in Sources */,
 				D48F1A591D2402FB009BD069 /* ChartDataEntry.swift in Sources */,
 				D48F1A5C1D2402FB009BD069 /* LineChartData.swift in Sources */,
-				D4B6605F1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld in Sources */,
 				D48F1A6E1D2402FB009BD069 /* IPieChartDataSet.swift in Sources */,
 				D48F1A661D2402FB009BD069 /* IBarChartDataSet.swift in Sources */,
 				D48F1A8D1D2402FB009BD069 /* ChartAxisRendererBase.swift in Sources */,
@@ -1203,23 +1203,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D4B6605D1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D4B6605E1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodel */,
-			);
-			currentVersion = D4B6605E1D142AAE000FE897 /* PersonalProductivityAssistant.xcdatamodel */;
-			path = PersonalProductivityAssistant.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */,
 			);
 			currentVersion = D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */;
-			path = PPADataModel.xcdatamodeld;
+			name = PPADataModel.xcdatamodeld;
+			path = ../PPADataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
