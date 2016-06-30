@@ -46,4 +46,13 @@ public class TimeLogRepository {
             return Result.Failure(error.getDefaultErrorMessage())
         }
     }
+    
+    func save() -> Result {
+        do {
+            try model.save()
+            return Result.Success()
+        } catch let error as NSError {
+            return Result.Failure(error.getDefaultErrorMessage())
+        }
+    }
 }

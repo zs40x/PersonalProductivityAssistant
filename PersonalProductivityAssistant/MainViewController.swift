@@ -130,20 +130,35 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func addANewActivity(timeLogData: TimeLogData) {
-        let newTimeLogResult = timeLogRepository.addNew(timeLogData)
         
-        guard newTimeLogResult.isSucessful == true else {
-            showAlertDialog("Error adding a new time log \(newTimeLogResult.errorMessage)")
-            return
+        if let editTimeLog = timeLogToEdit {
+            editTimeLog.activity = timeLogData.Activity
+            editTimeLog.from = timeLogData.From
+            editTimeLog.until = timeLogData.Until
+            
+            let saveChangesResult = timeLogRepository.save()
+            
+            guard saveChangesResult.isSucessful == true else {
+                showAlertDialog("Error saving timrLog changes \(saveChangesResult.errorMessage)")
+                return
+            }
         }
+        else {
+            let newTimeLogResult = timeLogRepository.addNew(timeLogData)
         
-        guard let newTimeLog = newTimeLogResult.value as TimeLog! else {
-            NSLog("New TimeLog is of an unexpected type")
-            return;
+            guard newTimeLogResult.isSucessful == true else {
+                showAlertDialog("Error adding a new time log \(newTimeLogResult.errorMessage)")
+                return
+            }
+            
+            guard let newTimeLog = newTimeLogResult.value as TimeLog! else {
+                NSLog("New TimeLog is of an unexpected type")
+                return;
+            }
+        
+            activityNames.append(newTimeLog)
+            activityNames.sortInPlace{ $0.activity > $1.activity }
         }
-        
-        activityNames.append(newTimeLog)
-        activityNames.sortInPlace{ $0.activity > $1.activity }
         
         tableViewActivities.reloadData()
     }
