@@ -49,8 +49,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activityNames.count
     }
     
@@ -72,12 +71,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let timeLog = activityNames[indexPath.row]
+        
+        performSegueWithIdentifier("ShowSegueToAddTimeLog", sender: self)
+    }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             deleteActivity(tableView, indexPath: indexPath)
         }
     }
-    
+
     // MARK: TimeLogAddedDelegate
     func timeLogAdded(timeLogData: TimeLogData) {
         addANewActivity(timeLogData)

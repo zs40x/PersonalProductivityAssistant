@@ -99,6 +99,7 @@
                                         </prototypes>
                                         <connections>
                                             <outlet property="dataSource" destination="BYZ-38-t0r" id="frn-wM-yDg"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Gzi-pE-2If"/>
                                         </connections>
                                     </tableView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-7U-mgS">
@@ -107,7 +108,7 @@
                                             <barButtonItem title="Log Time" id="FXj-6K-ONI" userLabel="toolbarButtonLogTime">
                                                 <connections>
                                                     <action selector="actionLogTime:" destination="BYZ-38-t0r" id="81i-Nk-LkJ"/>
-                                                    <segue destination="wEc-tL-ERe" kind="show" id="zBb-Kd-Fll"/>
+                                                    <segue destination="wEc-tL-ERe" kind="show" identifier="ShowSegueToAddTimeLog" id="zBb-Kd-Fll"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="Chart" id="qa8-B1-kfW" userLabel="toolbarButtonLogTime">
