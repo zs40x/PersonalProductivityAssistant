@@ -335,7 +335,6 @@
 		D43AF1D31D252F1B0084B9C7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 				D4B660581D142AAE000FE897 /* MainViewController.swift */,
 				D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */,
 				D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */,
@@ -631,6 +630,7 @@
 				D43AF1D31D252F1B0084B9C7 /* ViewControllers */,
 				D4B660601D142AAE000FE897 /* Assets.xcassets */,
 				D4B660651D142AAE000FE897 /* Info.plist */,
+				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 			);
 			path = PersonalProductivityAssistant;
 			sourceTree = "<group>";
@@ -657,8 +657,8 @@
 			isa = PBXGroup;
 			children = (
 				D4F84C261D15517D0041FCF0 /* Entities */,
-				D4F84C201D15516F0041FCF0 /* PPAModel.swift */,
 				D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */,
+				D4F84C201D15516F0041FCF0 /* PPAModel.swift */,
 				D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */,
 			);
 			path = Model;
