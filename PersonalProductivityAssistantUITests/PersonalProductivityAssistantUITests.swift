@@ -73,6 +73,8 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        
+        app.terminate()
     }
     
     func testCanAddAndEditAndDeleteActivityFromTable() {
@@ -146,13 +148,6 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         datePicker.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue(minute)
         datePicker.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue(amPm)
     }
-    
-    /*
-     texteditactivityTextField.tap()
-     texteditactivityTextField.tap()
-     app.menuItems["Select All"].tap()
-     app.menuItems["Cut"].tap()
-    */
     
     func typeActivityName(activityName: String) {
         XCTAssert(activityInputField!.exists)
