@@ -15,7 +15,7 @@ class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewDuration: UILabel!
 }
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimeLogEditDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType, TimeLogEditDelegate {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var tableViewActivities: UITableView!
@@ -23,7 +23,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let timeLogRepository = TimeLogRepository()
     var tableViewTimeLogs = [TimeLog]()
     
+    enum SegueIdentifier : String {
+        case ShowSegueToAddTimeLog
+    }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,7 +81,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
-        performSegueWithIdentifier("ShowSegueToAddTimeLog", sender: self)
+        performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -104,7 +108,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func actionToolbarAddTimeLog(sender: AnyObject) {
         timeLogToEdit = nil
         
-        performSegueWithIdentifier("ShowSegueToAddTimeLog", sender: self)
+        performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
 
     // MARK: Helper methods
@@ -115,7 +119,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let getAllResult = timeLogRepository.getAll()
         
         guard getAllResult.isSucessful == true else {
-            showAlertDialog("Error loading all time logs \(getAllResult.errorMessage)")
+            showAlertDialog("Error loading time logs \(getAllResult.errorMessage)")
             return
         }
         
@@ -139,7 +143,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let saveChangesResult = timeLogRepository.save()
             
             guard saveChangesResult.isSucessful == true else {
-                showAlertDialog("Error saving timrLog changes \(saveChangesResult.errorMessage)")
+                showAlertDialog("Error saving timeLog changes \(saveChangesResult.errorMessage)")
                 return
             }
         }
@@ -168,7 +172,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let deleteRsult = timeLogRepository.delete(timeLogToDelete)
         
         guard deleteRsult.isSucessful else {
-            showAlertDialog("failed to delete TimeLog \(deleteRsult.errorMessage)")
+            showAlertDialog("Failed to delete TimeLog \(deleteRsult.errorMessage)")
             return
         }
         

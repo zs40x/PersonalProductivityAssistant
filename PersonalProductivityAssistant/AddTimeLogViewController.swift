@@ -13,13 +13,17 @@ protocol TimeLogEditDelegate: class {
     func getTimeLogToEdit() -> TimeLog?
 }
 
-class AddTimeLogViewController: UIViewController {
+class AddTimeLogViewController: UIViewController, SegueHandlerType {
     
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var datePickerStart: UIDatePicker!
     @IBOutlet weak var datePickerEnd: UIDatePicker!
     
     weak var timeLogEditDelegate: TimeLogEditDelegate?
+    
+    enum SegueIdentifier : String {
+        case UnwindToMainView
+    }
     
     
     override func viewDidLoad() {
@@ -42,13 +46,16 @@ class AddTimeLogViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
 
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }
     
     @IBAction func pickerValueChanged(sender: AnyObject) {
-        view.endEditing(true)
     }
     
     @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
@@ -62,7 +69,7 @@ class AddTimeLogViewController: UIViewController {
        
             textEditActivity.text = ""
             
-            performSegueWithIdentifier("UnwindToMainView", sender: self)
+            performSegueWithIdentifier(.UnwindToMainView, sender: self)
         }
     }
     

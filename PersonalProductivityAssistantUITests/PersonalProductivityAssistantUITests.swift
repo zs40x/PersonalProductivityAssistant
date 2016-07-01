@@ -15,6 +15,22 @@ extension XCUIElement {
         }
         return valueAsString
     }
+    func clearAndEnterText(text: String) -> Void {
+        guard let stringValue = self.value as? String else {
+            XCTFail("Tried to clear and enter text into a non string value")
+            return
+        }
+        
+        self.tap()
+        
+        var deleteString: String = ""
+        for _ in stringValue.characters {
+            deleteString += "\u{8}"
+        }
+        self.typeText(deleteString)
+        
+        self.typeText(text)
+    }
 }
 
 extension NSDate {
@@ -59,9 +75,10 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testCanAddAndDeleteActivityFromTable() {
-       let activityName = getActivityNameWithDateTime()
-        
+    func testCanAddAndEditAndDeleteActivityFromTable() {
+        //
+        // Add
+        //
         // Open the add time log view
         waitForElementToAppear(toolbarAddActivityButton!)
         toolbarAddActivityButton!.tap()
@@ -69,7 +86,8 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         
         // Type new time log informations
         waitForElementToAppear(activityInputField!)
-        doTypeInActivityName(activityName)
+        let initialActivityName = getActivityNameWithDateTime()
+        typeActivityName(initialActivityName)
         setDatePickerValues(datePickerFrom!, monthAndDay: "Aug 1", hour: "10", minute: "30", amPm: "AM")
         setDatePickerValues(datePickerUntil!, monthAndDay: "Aug 1", hour: "11", minute: "15", amPm: "AM")
         
@@ -77,15 +95,34 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         app.navigationBars["Title"].buttons["add"].tap()
         
         // Verify element has been added
-        XCTAssert(getTableStaticTextElement(activityName).exists)
+        XCTAssert(getTableStaticTextElement(initialActivityName).exists)
         
+        //
+        // Edit
+        //
+        // tap the actiity to open the add/edit segue
+        getTableStaticTextElement(initialActivityName).tap()
+        
+        let changedActivityName = getActivityNameWithDateTime()
+        waitForElementToAppear(activityInputField!)
+        clearAndTypeActivityName(changedActivityName)
+        
+        // Press add button
+        app.navigationBars["Title"].buttons["add"].tap()
+        
+        // Verify element has been added
+        XCTAssert(getTableStaticTextElement(changedActivityName).exists)
+        
+        //
+        // Delete
+        //
         // Swipe up until the new element ist visible
-        doSwipeUpUntilTableStaticTextIsHittable(activityName)
+        doSwipeUpUntilTableStaticTextIsHittable(changedActivityName)
         // Swipe left and push delete button
-        doDeleteTableRow(activityName)
+        doDeleteTableRow(changedActivityName)
         
         // Verify the element has been deleted
-        XCTAssert(!getTableStaticTextElement(activityName).exists)
+        XCTAssert(!getTableStaticTextElement(changedActivityName).exists)
     }
     
     private func waitForElementToAppear(element: XCUIElement,
@@ -110,10 +147,25 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         datePicker.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue(amPm)
     }
     
-    func doTypeInActivityName(activityName: String) {
+    /*
+     texteditactivityTextField.tap()
+     texteditactivityTextField.tap()
+     app.menuItems["Select All"].tap()
+     app.menuItems["Cut"].tap()
+    */
+    
+    func typeActivityName(activityName: String) {
         XCTAssert(activityInputField!.exists)
         activityInputField!.tap()
         activityInputField!.tap()
+        activityInputField!.typeText(activityName)
+    }
+
+    func clearAndTypeActivityName(activityName: String) {
+        XCTAssert(activityInputField!.exists)
+        activityInputField!.tap()
+        activityInputField!.tap()
+        app.menuItems["Select All"].tap()
         activityInputField!.typeText(activityName)
     }
     

@@ -10,11 +10,15 @@
 
 import UIKit
 
-class DayTimePieChartViewController: UIViewController, ChartViewDelegate {
+class DayTimePieChartViewController: UIViewController, SegueHandlerType, ChartViewDelegate {
     
     @IBOutlet weak var pieChartView: PieChartView!
     
     let chartDataSource = ChartSourceFreeVsUsedTime()
+    
+    enum SegueIdentifier : String {
+        case UnwindToMainView
+    }
     
     
     override func viewDidLoad() {
@@ -49,7 +53,7 @@ class DayTimePieChartViewController: UIViewController, ChartViewDelegate {
     
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        performSegueWithIdentifier("UnwindToMainView", sender: self)
+        performSegueWithIdentifier(.UnwindToMainView, sender: self)
     }
 
     func setChart(dataPoints: [String], values: [Double]) {
