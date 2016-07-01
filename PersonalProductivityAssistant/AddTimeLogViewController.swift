@@ -15,15 +15,16 @@ protocol TimeLogEditDelegate: class {
 
 class AddTimeLogViewController: UIViewController, SegueHandlerType {
     
-    @IBOutlet weak var textEditActivity: UITextField!
-    @IBOutlet weak var datePickerStart: UIDatePicker!
-    @IBOutlet weak var datePickerEnd: UIDatePicker!
-    
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     
     enum SegueIdentifier : String {
         case UnwindToMainView
     }
+    
+    
+    @IBOutlet weak var textEditActivity: UITextField!
+    @IBOutlet weak var datePickerStart: UIDatePicker!
+    @IBOutlet weak var datePickerEnd: UIDatePicker!
     
     
     override func viewDidLoad() {
@@ -69,7 +70,8 @@ class AddTimeLogViewController: UIViewController, SegueHandlerType {
         }
     }
     
-    // Helper Method
+    
+    // MAKR: Helper Methods
     func getTimeLogData() -> TimeLogData {
         return TimeLogData(
             Activity: textEditActivity.text!,
