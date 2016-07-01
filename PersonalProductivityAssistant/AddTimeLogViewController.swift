@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol TimeLogEditDelegate: class {
-    func timeLogAdded(timeLog: TimeLogData)
-    func editTimeLogData() -> TimeLogData?
-}
-
 class AddTimeLogViewController: UIViewController, SegueHandlerType {
     
     weak var timeLogEditDelegate: TimeLogEditDelegate?

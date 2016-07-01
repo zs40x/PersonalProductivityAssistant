@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
 		D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B10471D262B720052A845 /* SegueHandlerType.swift */; };
+		D47B104B1D263C7F0052A845 /* TimeLogEditDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B104A1D263C7F0052A845 /* TimeLogEditDelegate.swift */; };
 		D48740EB1D16D16D002D3918 /* AddTimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */; };
 		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
 		D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* NSDate.swift */; };
@@ -162,6 +163,7 @@
 /* Begin PBXFileReference section */
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
 		D47B10471D262B720052A845 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
+		D47B104A1D263C7F0052A845 /* TimeLogEditDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogEditDelegate.swift; sourceTree = "<group>"; };
 		D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
@@ -337,10 +339,10 @@
 		D43AF1D31D252F1B0084B9C7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D47B10491D263C620052A845 /* Shared */,
 				D4B660581D142AAE000FE897 /* MainViewController.swift */,
 				D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */,
 				D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */,
-				D47B10471D262B720052A845 /* SegueHandlerType.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -360,6 +362,15 @@
 				D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */,
 			);
 			name = Reporting;
+			sourceTree = "<group>";
+		};
+		D47B10491D263C620052A845 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D47B10471D262B720052A845 /* SegueHandlerType.swift */,
+				D47B104A1D263C7F0052A845 /* TimeLogEditDelegate.swift */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		D48F19B21D1C36FA009BD069 /* Data */ = {
@@ -899,6 +910,7 @@
 				D48F1A821D2402FB009BD069 /* LineChartDataProvider.swift in Sources */,
 				D48F1A651D2402FB009BD069 /* ScatterChartDataSet.swift in Sources */,
 				D48F1A6F1D2402FB009BD069 /* IRadarChartDataSet.swift in Sources */,
+				D47B104B1D263C7F0052A845 /* TimeLogEditDelegate.swift in Sources */,
 				D48F1A371D2402FB009BD069 /* ChartAnimationEasing.swift in Sources */,
 				D48F1A901D2402FB009BD069 /* ChartRendererBase.swift in Sources */,
 				D48F1A9C1D2402FB009BD069 /* LineScatterCandleRadarChartRenderer.swift in Sources */,
