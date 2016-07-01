@@ -14,7 +14,7 @@ class TimeLog: NSManagedObject {
 
     static let EntityName = "TimeLog"
     
-    func getDurationInMinutes() -> Int {
+    func durationInMinutes() -> Int {
         guard let timeFrom = from else {
             return 0
         }
@@ -23,5 +23,9 @@ class TimeLog: NSManagedObject {
         }
         
         return Int(timeUntil.timeIntervalSinceDate(timeFrom) / 60)
+    }
+    
+    func asTimeLogData() -> TimeLogData {
+        return TimeLogData(Activity: activity!, From: from!, Until: until!)
     }
 }

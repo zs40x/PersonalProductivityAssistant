@@ -38,7 +38,7 @@ class ChartSourceFreeVsUsedTime {
         }
         
         for var timeLog in getAllTimeLogsResult.value! {
-                totalTime = totalTime + (Double(timeLog.getDurationInMinutes()) / 60.0)
+                totalTime = totalTime + (Double(timeLog.durationInMinutes()) / 60.0)
         }
         
         return totalTime

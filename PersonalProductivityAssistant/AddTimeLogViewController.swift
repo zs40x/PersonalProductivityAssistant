@@ -10,7 +10,7 @@ import UIKit
 
 protocol TimeLogEditDelegate: class {
     func timeLogAdded(timeLog: TimeLogData)
-    func getTimeLogToEdit() -> TimeLog?
+    func editTimeLogData() -> TimeLogData?
 }
 
 class AddTimeLogViewController: UIViewController, SegueHandlerType {
@@ -29,14 +29,13 @@ class AddTimeLogViewController: UIViewController, SegueHandlerType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         textEditActivity.resignFirstResponder()
         
         if let timeEditDelegate = self.timeLogEditDelegate {
-            if let timeLogToEdit = timeEditDelegate.getTimeLogToEdit() {
-                self.textEditActivity.text = timeLogToEdit.activity
-                self.datePickerStart.date = timeLogToEdit.from!
-                self.datePickerEnd.date = timeLogToEdit.until!
+            if let editTimeLogData = timeEditDelegate.editTimeLogData() {
+                self.textEditActivity.text = editTimeLogData.Activity
+                self.datePickerStart.date = editTimeLogData.From
+                self.datePickerEnd.date = editTimeLogData.Until
             }
         }
     }
@@ -55,9 +54,6 @@ class AddTimeLogViewController: UIViewController, SegueHandlerType {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }
     
-    @IBAction func pickerValueChanged(sender: AnyObject) {
-    }
-    
     @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
     }
 
@@ -73,6 +69,7 @@ class AddTimeLogViewController: UIViewController, SegueHandlerType {
         }
     }
     
+    // Helper Method
     func getTimeLogData() -> TimeLogData {
         return TimeLogData(
             Activity: textEditActivity.text!,

@@ -69,7 +69,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.textViewActivity?.text = timeLog.activity
         cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
         cell.textViewUntil?.text = timeLog.until?.asFormattedString("dd.MM.YYYY HH:mm:ss")
-        cell.textViewDuration?.text = String(timeLog.getDurationInMinutes()) + " Minutes"
+        cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
         
         return cell
     }
@@ -95,8 +95,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         addANewActivity(timeLogData)
     }
     
-    func getTimeLogToEdit() -> TimeLog? {
-        return timeLogToEdit
+    func editTimeLogData() -> TimeLogData? {
+        return timeLogToEdit?.asTimeLogData()
     }
     
     
