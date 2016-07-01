@@ -21,7 +21,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableViewActivities: UITableView!
     
     let timeLogRepository = TimeLogRepository()
-    var activityNames = [TimeLog]()
+    var tableViewTimeLogs = [TimeLog]()
     
 
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activityNames.count
+        return tableViewTimeLogs.count
     }
     
     func tableView(tableView: UITableView,
@@ -60,7 +60,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.dequeueReusableCellWithIdentifier(
                 "CellPrototypeActivity", forIndexPath: indexPath) as! TableViewActivityCell
         
-        let timeLog = activityNames[indexPath.row]
+        let timeLog = tableViewTimeLogs[indexPath.row]
         
         cell.textViewActivity?.text = timeLog.activity
         cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var timeLogToEdit: TimeLog?
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        timeLogToEdit = activityNames[indexPath.row]
+        timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
         performSegueWithIdentifier("ShowSegueToAddTimeLog", sender: self)
     }
@@ -110,7 +110,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: Helper methods
     func displayPersistedActivities() {
         
-        activityNames.removeAll()
+        tableViewTimeLogs.removeAll()
         
         let getAllResult = timeLogRepository.getAll()
         
@@ -121,10 +121,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if let timeLogs = getAllResult.value as [TimeLog]! {
             for timeLog in timeLogs {
-                activityNames.append(timeLog)
+                tableViewTimeLogs.append(timeLog)
             }
             
-            activityNames.sortInPlace{ $0.activity > $1.activity }
+            tableViewTimeLogs.sortInPlace{ $1.activity > $0.activity }
         }
         
     }
@@ -156,15 +156,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 return;
             }
         
-            activityNames.append(newTimeLog)
-            activityNames.sortInPlace{ $0.activity > $1.activity }
+            tableViewTimeLogs.append(newTimeLog)
+            tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
         }
         
         tableViewActivities.reloadData()
     }
     
     func deleteActivity(tableView: UITableView, indexPath: NSIndexPath) {
-        let timeLogToDelete = activityNames[indexPath.row]
+        let timeLogToDelete = tableViewTimeLogs[indexPath.row]
         let deleteRsult = timeLogRepository.delete(timeLogToDelete)
         
         guard deleteRsult.isSucessful else {
@@ -172,7 +172,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         }
         
-        activityNames.removeAtIndex(indexPath.row)
+        tableViewTimeLogs.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
