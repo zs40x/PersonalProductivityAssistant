@@ -13,7 +13,6 @@ struct ChartFreeVsUsedTimeData {
     let values: [Double]
 }
 
-
 class ChartSourceFreeVsUsedTime {
     
     let timeLogRepository = TimeLogRepository();
@@ -30,18 +29,20 @@ class ChartSourceFreeVsUsedTime {
     }
     
     func getUsedTimeAmount() -> Double {
-        var totalTime: Double = 0
+        var totalHours: Double = 0
+        let minutesPerHour = 60.0
+        
         let getAllTimeLogsResult = timeLogRepository.getAll()
         
         guard getAllTimeLogsResult.isSucessful else {
             return 0
         }
         
-        for var timeLog in getAllTimeLogsResult.value! {
-                totalTime = totalTime + (Double(timeLog.durationInMinutes()) / 60.0)
+        for timeLog in getAllTimeLogsResult.value! {
+            totalHours += Double(timeLog.durationInMinutes()) / minutesPerHour
         }
         
-        return totalTime
+        return totalHours
     }
     
 }
