@@ -328,6 +328,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D41726E01D26AF7B002F15A4 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				D41726E11D26AF96002F15A4 /* Hashtags */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		D41726E11D26AF96002F15A4 /* Hashtags */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Hashtags;
+			sourceTree = "<group>";
+		};
 		D43AF1D21D252EF20084B9C7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +655,7 @@
 				D4F84C2B1D15BECD0041FCF0 /* Utilities */,
 				D4F84C1F1D15516F0041FCF0 /* Model */,
 				D43B896E1D2444120065248D /* Reporting */,
+				D41726E01D26AF7B002F15A4 /* Logic */,
 				D43AF1D41D25356F0084B9C7 /* Storyboards */,
 				D43AF1D31D252F1B0084B9C7 /* ViewControllers */,
 				D4B660601D142AAE000FE897 /* Assets.xcassets */,
