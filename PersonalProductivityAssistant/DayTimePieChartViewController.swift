@@ -12,8 +12,6 @@ import UIKit
 
 class DayTimePieChartViewController: UIViewController, SegueHandlerType, ChartViewDelegate {
     
-    @IBOutlet weak var pieChartView: PieChartView!
-    
     let chartDataSource = ChartSourceFreeVsUsedTime()
     
     enum SegueIdentifier : String {
@@ -21,16 +19,15 @@ class DayTimePieChartViewController: UIViewController, SegueHandlerType, ChartVi
     }
     
     
+    @IBOutlet weak var pieChartView: PieChartView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         pieChartView.delegate = self
         
-        let chartData = chartDataSource.getChartData()
-        setChart(chartData.dataPoints, values: chartData.values)
-        pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInCirc)
+        self.loadDataAndDisplayChart()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,17 +37,20 @@ class DayTimePieChartViewController: UIViewController, SegueHandlerType, ChartVi
     
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
     @IBAction func unwindToDayTimePieChart(segue: UIStoryboardSegue) {
         
     }
     
+    
+    // MARK: - Helper Methods
+    func loadDataAndDisplayChart() {
+        let chartData = chartDataSource.getChartData()
+        setChart(chartData.dataPoints, values: chartData.values)
+        pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInCirc)
+    }
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
         performSegueWithIdentifier(.UnwindToMainView, sender: self)
