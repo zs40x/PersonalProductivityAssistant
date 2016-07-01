@@ -17,9 +17,6 @@ class TableViewActivityCell : UITableViewCell {
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType, TimeLogEditDelegate {
     
-    @IBOutlet weak var textEditActivity: UITextField!
-    @IBOutlet weak var tableViewActivities: UITableView!
-    
     let timeLogRepository = TimeLogRepository()
     var tableViewTimeLogs = [TimeLog]()
     
@@ -27,6 +24,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case ShowSegueToAddTimeLog
     }
 
+    
+    @IBOutlet weak var textEditActivity: UITextField!
+    @IBOutlet weak var tableViewActivities: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +91,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
+    
     // MARK: TimeLogEditDelegate
     func timeLogAdded(timeLogData: TimeLogData) {
         addANewActivity(timeLogData)
@@ -110,6 +112,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
+    
 
     // MARK: Helper methods
     func displayPersistedActivities() {
