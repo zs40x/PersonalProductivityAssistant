@@ -19,7 +19,17 @@ class HashtagsInStringFinder {
     
     func hashtagsInString() -> [String] {
         var foundHashtags = [String]()
+        
+        let words = searchString.characters.split(" ")
     
+        for word in words {
+            let wordAsString = String(word)
+            
+            if wordAsString.hasPrefix("#") {
+               foundHashtags.append(wordAsString)
+            }
+        }
+        
         return foundHashtags
     }
 }

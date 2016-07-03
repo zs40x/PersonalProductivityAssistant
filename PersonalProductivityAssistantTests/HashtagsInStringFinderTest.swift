@@ -28,4 +28,24 @@ class HashtagsInStringFinderTest: XCTestCase {
     func testNoKeywordsReturnEmptyArray() {
         XCTAssertEqual([String](), excerciseHashtagsInString(""))
     }
+    
+    func testNonHashtagWordReturnsEmptyArray() {
+        XCTAssertEqual([String](), excerciseHashtagsInString("test"))
+    }
+    
+    func testSingleHashtagReturnsAnArrayWithHashtag() {
+        XCTAssertEqual(["#test"], excerciseHashtagsInString("#test"))
+    }
+    
+    func testHashtagAndWorkRetunsArrayWithOnlyTheHashtag() {
+        XCTAssertEqual(["#thehashtag"], excerciseHashtagsInString("#thehashtag word"))
+    }
+    
+    func testToHashtagsReturnsanArrayWithBoth() {
+        XCTAssertEqual(["#hashtag1", "#hashtag2"], excerciseHashtagsInString("#hashtag1 #hashtag2"))
+    }
+    
+    func testHashtagsWithOtherWordsReturnsOnlyHashtags() {
+        XCTAssertEqual(["#ht1", "#ht2"], excerciseHashtagsInString("foo #ht1 bar #ht2 nope"))
+    }
 }
