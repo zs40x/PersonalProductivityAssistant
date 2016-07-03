@@ -202,9 +202,6 @@
                                         <date key="date" timeIntervalSinceReferenceDate="488222889.02964002">
                                             <!--2016-06-21 17:28:09 +0000-->
                                         </date>
-                                        <connections>
-                                            <action selector="pickerValueChanged:" destination="wEc-tL-ERe" eventType="valueChanged" id="wWw-29-d2t"/>
-                                        </connections>
                                     </datePicker>
                                 </subviews>
                             </stackView>
