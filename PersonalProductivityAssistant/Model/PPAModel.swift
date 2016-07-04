@@ -26,6 +26,32 @@ public class PPAModel : NSObject {
         super.init()
     }
     
+    
+    var TimeLogs: TimeLogModel {
+        get {
+            return TimeLogModel(managedObjectContext: managedObjectContext)
+        }
+    }
+    
+    
+    func save() throws {
+        do {
+            try self.managedObjectContext.save()
+        } catch let error as NSError {
+            NSLog("Error saving: %@", error)
+            throw error
+        }
+    }
+}
+
+internal class TimeLogModel {
+    
+    private let managedObjectContext : NSManagedObjectContext
+    
+    init(managedObjectContext : NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
+    }
+    
     func getAllTimeLogs() throws -> [TimeLog] {
         let request = NSFetchRequest(entityName: TimeLog.EntityName)
         request.sortDescriptors = [NSSortDescriptor(key: "activity", ascending: true)]
@@ -55,14 +81,4 @@ public class PPAModel : NSObject {
     func deleteTimeLog(timeLogToDelete: TimeLog) {
         managedObjectContext.deleteObject(timeLogToDelete)
     }
-    
-    func save() throws {
-        do {
-            try self.managedObjectContext.save()
-        } catch let error as NSError {
-            NSLog("Error saving: %@", error)
-            throw error
-        }
-    }
-    
 }

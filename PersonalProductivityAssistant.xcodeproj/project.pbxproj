@@ -138,6 +138,7 @@
 		D4B660641D142AAE000FE897 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */; };
 		D4B6607A1D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */; };
 		D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */; };
+		D4DD6AA31D2A2CF400FC6B0E /* HashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */; };
 		D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
 		D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
 		D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
@@ -301,6 +302,7 @@
 		D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalProductivityAssistantUITests.swift; sourceTree = "<group>"; };
 		D4B6607B1D142AAE000FE897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PPADataModel.xcdatamodel; sourceTree = "<group>"; };
+		D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagRepository.swift; sourceTree = "<group>"; };
 		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
 		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				D48F19B21D1C36FA009BD069 /* Data */,
 				D4F84C261D15517D0041FCF0 /* Entities */,
 				D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */,
+				D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */,
 				D4F84C201D15516F0041FCF0 /* PPAModel.swift */,
 				D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */,
 			);
@@ -999,6 +1002,7 @@
 				D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */,
 				D48F1A8B1D2402FB009BD069 /* BubbleChartRenderer.swift in Sources */,
 				D48F1A741D2402FB009BD069 /* ChartDefaultXAxisValueFormatter.swift in Sources */,
+				D4DD6AA31D2A2CF400FC6B0E /* HashtagRepository.swift in Sources */,
 				D48F1A9F1D2402FB009BD069 /* ScatterChartRenderer.swift in Sources */,
 				D48F1A4B1D2402FB009BD069 /* ChartYAxis.swift in Sources */,
 				D48F1A551D2402FB009BD069 /* CandleChartData.swift in Sources */,

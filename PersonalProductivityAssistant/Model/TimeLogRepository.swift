@@ -16,7 +16,7 @@ public class TimeLogRepository {
     func getAll() -> ResultValue<[TimeLog]> {
         
         do {
-            let allTimeLogs = try model.getAllTimeLogs()
+            let allTimeLogs = try model.TimeLogs.getAllTimeLogs()
             return ResultValue.Success(allTimeLogs)
         } catch let error as NSError {
             return ResultValue.Failure(error.getDefaultErrorMessage())
@@ -25,9 +25,9 @@ public class TimeLogRepository {
     }
     
     func addNew(timeLogData: TimeLogData) -> ResultValue<TimeLog> {
-        
+  
         do {
-            let newTimeLog = model.createTimeLog(timeLogData)
+            let newTimeLog = model.TimeLogs.createTimeLog(timeLogData)
             try model.save()
             
             return ResultValue.Success(newTimeLog)
@@ -39,7 +39,7 @@ public class TimeLogRepository {
     func delete(timeLogToDelete: TimeLog) -> Result {
         
         do {
-            model.deleteTimeLog(timeLogToDelete)
+            model.TimeLogs.deleteTimeLog(timeLogToDelete)
             try model.save()
             return Result.Success()
         } catch let error as NSError {
