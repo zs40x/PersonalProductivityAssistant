@@ -21,7 +21,6 @@ public class TimeLogRepository {
         } catch let error as NSError {
             return ResultValue.Failure(error.getDefaultErrorMessage())
         }
-        
     }
     
     func addNew(timeLogData: TimeLogData) -> ResultValue<TimeLog> {
