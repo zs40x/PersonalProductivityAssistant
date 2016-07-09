@@ -139,6 +139,7 @@
 		D4B6607A1D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */; };
 		D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */; };
 		D4DD6AA31D2A2CF400FC6B0E /* HashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */; };
+		D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */; };
 		D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
 		D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
 		D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
@@ -303,6 +304,7 @@
 		D4B6607B1D142AAE000FE897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PPADataModel.xcdatamodel; sourceTree = "<group>"; };
 		D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagRepository.swift; sourceTree = "<group>"; };
+		D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagFinderTest.swift; sourceTree = "<group>"; };
 		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
 		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */,
+				D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */,
 			);
 			name = Hashtags;
 			sourceTree = "<group>";
@@ -1025,6 +1028,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */,
 				D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

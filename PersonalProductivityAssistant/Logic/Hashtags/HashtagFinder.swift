@@ -8,7 +8,23 @@
 
 import Foundation
 
-class HashtagsInStringFinder {
+class HashtagFinder {
+    
+    var hashtagRepository: HashtagRepository
+    
+    init(hashtagRepository: HashtagRepository) {
+        self.hashtagRepository = hashtagRepository
+    }
+    
+    func resolveHashtags(stringWithHastags string: String) -> ResultValue<[Hashtag]> {
+        
+        
+        return ResultValue.Failure("")
+    }
+}
+
+
+internal class HashtagsInStringFinder {
     
     let searchString: String
     

@@ -8,7 +8,13 @@
 
 import Foundation
 
-class HashtagRepository {
+protocol HashtagRepository {
+    
+    func getAll() -> ResultValue<[Hashtag]>
+    func addNew(withName name: String) -> ResultValue<Hashtag>
+}
+
+class HashtagCoreDataRepository : HashtagRepository {
     
     private var model = PPAModel.New()
     
