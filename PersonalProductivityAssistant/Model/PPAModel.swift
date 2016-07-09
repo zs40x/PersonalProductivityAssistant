@@ -33,6 +33,11 @@ public class PPAModel : NSObject {
         }
     }
     
+    var Hashtags: HashtagModel {
+        get {
+            return HashtagModel(managedObjectContext: managedObjectContext)
+        }
+    }
     
     func save() throws {
         do {
@@ -44,13 +49,18 @@ public class PPAModel : NSObject {
     }
 }
 
-internal class TimeLogModel {
+
+internal class AbstractModel {
     
     private let managedObjectContext : NSManagedObjectContext
     
-    init(managedObjectContext : NSManagedObjectContext) {
+    private init(managedObjectContext : NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
     }
+    
+}
+
+internal class TimeLogModel : AbstractModel {
     
     func getAllTimeLogs() throws -> [TimeLog] {
         let request = NSFetchRequest(entityName: TimeLog.EntityName)
@@ -83,13 +93,7 @@ internal class TimeLogModel {
     }
 }
 
-internal class HastagModel {
-    
-    private let managedObjectContext : NSManagedObjectContext
-    
-    init(managedObjectContext : NSManagedObjectContext) {
-        self.managedObjectContext = managedObjectContext
-    }
+internal class HashtagModel : AbstractModel {
     
     func getAllHashtags() throws -> [Hashtag] {
         let request = NSFetchRequest(entityName: Hashtag.EntityName)
