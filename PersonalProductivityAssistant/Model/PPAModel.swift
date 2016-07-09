@@ -61,7 +61,7 @@ internal class TimeLogModel {
             return result
         }
         catch let error as NSError {
-            NSLog("Error saving: %@", error)
+            NSLog("Error fetching: %@", error)
             throw error
         }
     }
@@ -80,5 +80,37 @@ internal class TimeLogModel {
     
     func deleteTimeLog(timeLogToDelete: TimeLog) {
         managedObjectContext.deleteObject(timeLogToDelete)
+    }
+}
+
+internal class HastagModel {
+    
+    private let managedObjectContext : NSManagedObjectContext
+    
+    init(managedObjectContext : NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
+    }
+    
+    func getAllHashtags() throws -> [Hashtag] {
+        let request = NSFetchRequest(entityName: Hashtag.EntityName)
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        do {
+            let result = try managedObjectContext.executeFetchRequest(request) as! [Hashtag]
+            return result
+        }
+        catch let error as NSError {
+            NSLog("Error fetching: %@", error)
+            throw error
+        }
+    }
+    
+    func createHashtag(withName name: String) -> Hashtag {
+        let hashTag =
+            NSEntityDescription.insertNewObjectForEntityForName(Hashtag.EntityName, inManagedObjectContext: self.managedObjectContext) as! Hashtag
+        
+        hashTag.name = name
+        
+        return hashTag
     }
 }
