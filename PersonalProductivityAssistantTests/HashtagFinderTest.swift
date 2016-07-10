@@ -82,16 +82,14 @@ class HashtagFinderTest: XCTestCase {
     }
     
     func testIgnoresDuplicates() {
-        excersiseHashtagFinder(forString: "#test_xy")
-        excersiseHashtagFinder(forString: "#test_xy")
+        let firstResult = excersiseHashtagFinder(forString: "#test_xy")
+        let secondResult = excersiseHashtagFinder(forString: "#test_xy")
         
+        XCTAssertEqual(firstResult, secondResult)
         XCTAssertEqual(hashtagRepository.getAll().value!.count, 1)
     }
     
     
-    func existsHashtagWithNameInDatabase(name: String) -> Bool {
-        return ( hashtagRepository.getAll().value!.filter({ $0.name == name }).count > 0 )
-    }
     
     func excersiseHashtagFinder(forString string: String, existingHashtags: [String] = [String]()) -> [Hashtag] {
         
@@ -101,6 +99,10 @@ class HashtagFinderTest: XCTestCase {
         XCTAssertTrue(hashtagFinderResult.isSucessful, "Hashtag Finder Result must be successful")
         
         return hashtagFinderResult.value!
+    }
+    
+    func existsHashtagWithNameInDatabase(name: String) -> Bool {
+        return ( hashtagRepository.getAll().value!.filter({ $0.name == name }).count > 0 )
     }
     
 }
