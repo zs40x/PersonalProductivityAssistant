@@ -19,7 +19,8 @@ class HashtagFinder {
     func resolveHashtags(stringWithHastags string: String) -> ResultValue<[Hashtag]> {
         
         
-        return ResultValue.Failure("")
+        
+        return ResultValue.Success([Hashtag]())
     }
 }
 
