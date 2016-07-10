@@ -19,7 +19,7 @@ public class PPAModel : NSObject {
     }
     
     
-    private let managedObjectContext : NSManagedObjectContext
+    var managedObjectContext : NSManagedObjectContext
     
     init(managedObjectContext : NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext

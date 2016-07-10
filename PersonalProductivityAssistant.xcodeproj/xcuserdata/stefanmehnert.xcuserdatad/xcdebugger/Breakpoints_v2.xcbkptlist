@@ -150,13 +150,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/Logic/Hashtags/HashtagFinder.swift"
-            timestampString = "489816461.186284"
+            timestampString = "489817806.5605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "hashtagsInString()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistantTests/HashtagFinderTest.swift"
+            timestampString = "489819508.650546"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "setUp()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/Logic/Hashtags/HashtagFinder.swift"
+            timestampString = "489837233.165679"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "newOrExistingInstanceFromRepository(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistantTests/HashtagFinderTest.swift"
+            timestampString = "489837556.887804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "testAddsANewHashtag()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalProductivityAssistantTests.HashtagFinderTest.testAddsANewHashtag () -&gt; ()"
+                  moduleName = "PersonalProductivityAssistantTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistantTests/HashtagFinderTest.swift"
+                  timestampString = "489837558.221321"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "121">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalProductivityAssistantTests.HashtagFinderTest.(testAddsANewHashtag () -&gt; ()).(implicit closure #1)"
+                  moduleName = "PersonalProductivityAssistantTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistantTests/HashtagFinderTest.swift"
+                  timestampString = "489837558.22156"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalProductivityAssistantTests.HashtagFinderTest.(testAddsANewHashtag () -&gt; ()).(implicit closure #2)"
+                  moduleName = "PersonalProductivityAssistantTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistantTests/HashtagFinderTest.swift"
+                  timestampString = "489837558.221789"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

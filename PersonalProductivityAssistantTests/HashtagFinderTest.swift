@@ -7,86 +7,80 @@
 //
 
 import XCTest
+import CoreData
 @testable import PersonalProductivityAssistant
 
 class HashtagFinderTest: XCTestCase {
     
+    var storeCoordinator: NSPersistentStoreCoordinator!
+    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectModel: NSManagedObjectModel!
+    var store: NSPersistentStore!
+    var hashtagRepository: HashtagRepository!
+    
+    override func setUp() {
+        managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(nil)
+        storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        do {
+            store = try storeCoordinator.addPersistentStoreWithType(
+                            NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
+        }
+        catch let error as NSError {
+            XCTFail("could't initialize persistent store \(error)")
+        }
+        
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = storeCoordinator
+        
+        hashtagRepository = HashtagRepository()
+        hashtagRepository.managedObjectContext = managedObjectContext
+        
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        managedObjectContext = nil
+        
+        do {
+            try storeCoordinator.removePersistentStore(store)
+        }
+        catch let error as NSError {
+            XCTFail("couldn't remove persistent store: \(error)")
+        }
+        
+        super.tearDown()
+    }
+    
+    
+    func testThatStoreIsSetUp() {
+        XCTAssertNotNil(store, "no persistent store")
+    }
+    
     func testNoHashtags() {
-        let result = excersiseHashtagFinder(forString: "test", existingHashtags: [String]())
+        excersiseHashtagFinder(forString: "test")
         
-        XCTAssertEqual(result.addedHashtags, [String]())
-        XCTAssertEqual(result.storedHashtags, [String]())
+        XCTAssertEqual(hashtagRepository.getAll().value!.count, 0)
     }
     
-    func testExistingHashtag() {
-        let result = excersiseHashtagFinder(forString: "#test", existingHashtags: ["#test"])
+    func testAddsANewHashtag() {
+        let foundHashtags = excersiseHashtagFinder(forString: "#test")
         
-        XCTAssertEqual(result.addedHashtags, [String]())
-        XCTAssertEqual(result.storedHashtags, ["#test"])
+        XCTAssertEqual(foundHashtags.count, 1)
+        XCTAssertEqual(hashtagRepository.getAll().value!.count, 1)
+        
+        XCTAssertEqual(foundHashtags.first, hashtagRepository.getAll().value!.first)
+        
+        XCTAssertEqual(foundHashtags.first?.name, "#test")
     }
     
-    
-    func excersiseHashtagFinder(forString string: String, existingHashtags: [String]) -> (addedHashtags: [String], storedHashtags: [String]) {
-        let fakeHashtagRepository = makeFakeHashtagRepository(existingHashtags)
+    func excersiseHashtagFinder(forString string: String, existingHashtags: [String] = [String]()) -> [Hashtag] {
         
         let hashtagFinderResult =  HashtagFinder(
-            hashtagRepository: fakeHashtagRepository).resolveHashtags(stringWithHastags: string)
+            hashtagRepository: hashtagRepository).resolveHashtags(stringWithHastags: string)
         
         XCTAssertTrue(hashtagFinderResult.isSucessful, "Hashtag Finder Result must be successful")
-
-        return (addedHashtags: fakeHashtagRepository.Added, storedHashtags: fakeHashtagRepository.Stored)
-    }
-    
-    func makeFakeHashtagRepository(existingHashtags: [String]) -> FakeHashtagRepository {
-        return FakeHashtagRepository(existingHashtags: existingHashtags)
-    }
-}
-
-class FakeHashtagRepository : HashtagRepository {
-    
-    private var storedHashtags: [String]
-    private var addedHashtags = [String]()
-    
-    init(existingHashtags: [String]) {
-        self.storedHashtags = existingHashtags
-    }
-    
-    var Added: [String] {
-        get {
-            return addedHashtags;
-        }
-    }
-    var Stored: [String] {
-        get {
-            return storedHashtags
-        }
-    }
-    
-    
-    func getAll() -> ResultValue<[Hashtag]> {
-        return ResultValue.Success(knownHashtagsFromStringArray())
-    }
-    
-    func addNew(withName name: String) -> ResultValue<Hashtag> {
-        self.addedHashtags.append(name)
-        self.storedHashtags.append(name)
         
-        return ResultValue.Success(makeHashtag(withName: name))
+        return hashtagFinderResult.value!
     }
     
-    func knownHashtagsFromStringArray() -> [Hashtag] {
-        var hashtags = [Hashtag]()
-        
-        for hashtagName in self.storedHashtags {
-            hashtags.append(makeHashtag(withName: hashtagName))
-        }
-        
-        return hashtags
-    }
-    
-    func makeHashtag(withName name: String) -> Hashtag {
-        let newHashtag = Hashtag()
-        newHashtag.name = name
-        return newHashtag
-    }
 }

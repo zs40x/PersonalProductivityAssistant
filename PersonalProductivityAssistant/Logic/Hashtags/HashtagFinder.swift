@@ -18,9 +18,26 @@ class HashtagFinder {
     
     func resolveHashtags(stringWithHastags string: String) -> ResultValue<[Hashtag]> {
         
+        var allHashtags = [Hashtag]()
+        let hashtagInStringFinder = HashtagsInStringFinder(searchString: string)
+        let hashtagsAsString = hashtagInStringFinder.hashtagsInString()
         
+        for hashtagName in hashtagsAsString {
+            allHashtags.append(newOrExistingInstanceFromRepository(hashtagName))
+        }
         
-        return ResultValue.Success([Hashtag]())
+        return ResultValue.Success(allHashtags)
+    }
+    
+    func newOrExistingInstanceFromRepository(hashtagName: String) -> Hashtag {
+        
+        let allHashtags = self.hashtagRepository.getAll().value!
+        
+        if let existingHashtag = allHashtags.filter({ $0.name == hashtagName }).first {
+            return existingHashtag
+        }
+        
+        return hashtagRepository.addNew(withName: hashtagName).value!
     }
 }
 

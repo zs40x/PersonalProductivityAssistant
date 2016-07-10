@@ -7,16 +7,20 @@
 //
 
 import Foundation
+import CoreData
 
-protocol HashtagRepository {
-    
-    func getAll() -> ResultValue<[Hashtag]>
-    func addNew(withName name: String) -> ResultValue<Hashtag>
-}
-
-class HashtagCoreDataRepository : HashtagRepository {
+class HashtagRepository {
     
     private var model = PPAModel.New()
+    
+    var managedObjectContext: NSManagedObjectContext {
+        get {
+            return model.managedObjectContext
+        }
+        set (value) {
+            model.managedObjectContext = value
+        }
+    }
     
     func getAll() -> ResultValue<[Hashtag]> {
         
