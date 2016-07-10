@@ -19,12 +19,14 @@ class XCTestCaseCoreDataInMemory: XCTestCase {
     override func setUp() {
         managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(nil)
         storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        
         do {
-            store = try storeCoordinator.addPersistentStoreWithType(
-                NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
+            store =
+                try storeCoordinator.addPersistentStoreWithType(
+                    NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
         }
         catch let error as NSError {
-            XCTFail("could't initialize coreData inMemory store \(error)")
+            XCTFail("could't initialize core data inMemory store \(error)")
         }
         
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -40,7 +42,7 @@ class XCTestCaseCoreDataInMemory: XCTestCase {
             try storeCoordinator.removePersistentStore(store)
         }
         catch let error as NSError {
-            XCTFail("couldn't remove coreData inMemory store: \(error)")
+            XCTFail("couldn't remove core data inMemory store: \(error)")
         }
         
         super.tearDown()
