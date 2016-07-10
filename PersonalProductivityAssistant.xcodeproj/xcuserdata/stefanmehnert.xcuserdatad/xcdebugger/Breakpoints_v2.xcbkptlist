@@ -198,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistantTests/HashtagFinderTest.swift"
-            timestampString = "489837556.887804"
+            timestampString = "489838114.965908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "testAddsANewHashtag()"
             landmarkType = "5">
             <Locations>

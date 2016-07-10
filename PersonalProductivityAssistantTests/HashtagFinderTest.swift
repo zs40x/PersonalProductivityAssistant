@@ -64,13 +64,33 @@ class HashtagFinderTest: XCTestCase {
     
     func testAddsANewHashtag() {
         let foundHashtags = excersiseHashtagFinder(forString: "#test")
+        let allHashtagsInDb = hashtagRepository.getAll().value!
         
         XCTAssertEqual(foundHashtags.count, 1)
+        XCTAssertEqual(foundHashtags.first!.name, "#test")
+        
+        XCTAssertEqual(allHashtagsInDb.count, 1)
+        XCTAssertEqual(foundHashtags.first, allHashtagsInDb.first)
+    }
+    
+    func testPersistsNewHashtagsInDb() {
+        excersiseHashtagFinder(forString: "#test_1")
+        excersiseHashtagFinder(forString: "#test_2")
+        
+        XCTAssertTrue(existsHashtagWithNameInDatabase("#test_1"))
+        XCTAssertTrue(existsHashtagWithNameInDatabase("#test_2"))
+    }
+    
+    func testIgnoresDuplicates() {
+        excersiseHashtagFinder(forString: "#test_xy")
+        excersiseHashtagFinder(forString: "#test_xy")
+        
         XCTAssertEqual(hashtagRepository.getAll().value!.count, 1)
-        
-        XCTAssertEqual(foundHashtags.first, hashtagRepository.getAll().value!.first)
-        
-        XCTAssertEqual(foundHashtags.first?.name, "#test")
+    }
+    
+    
+    func existsHashtagWithNameInDatabase(name: String) -> Bool {
+        return ( hashtagRepository.getAll().value!.filter({ $0.name == name }).count > 0 )
     }
     
     func excersiseHashtagFinder(forString string: String, existingHashtags: [String] = [String]()) -> [Hashtag] {
