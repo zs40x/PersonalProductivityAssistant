@@ -89,12 +89,19 @@ class HashtagFinderTest: XCTestCase {
         XCTAssertEqual(hashtagRepository.getAll().value!.count, 1)
     }
     
+    func testAddsMultiple() {
+        excersiseHashtagFinder(forString: "#this is a #test")
+        
+        XCTAssertTrue(existsHashtagWithNameInDatabase("#this"))
+        XCTAssertTrue(existsHashtagWithNameInDatabase("#test"))
+        XCTAssertEqual(hashtagRepository.getAll().value!.count, 2)
+    }
     
     
-    func excersiseHashtagFinder(forString string: String, existingHashtags: [String] = [String]()) -> [Hashtag] {
+    func excersiseHashtagFinder(forString string: String) -> [Hashtag] {
         
         let hashtagFinderResult =  HashtagFinder(
-            hashtagRepository: hashtagRepository).resolveHashtags(stringWithHastags: string)
+                hashtagRepository: hashtagRepository).resolveHashtags(stringWithHastags: string)
         
         XCTAssertTrue(hashtagFinderResult.isSucessful, "Hashtag Finder Result must be successful")
         
