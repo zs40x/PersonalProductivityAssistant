@@ -10,45 +10,15 @@ import XCTest
 import CoreData
 @testable import PersonalProductivityAssistant
 
-class HashtagFinderTest: XCTestCase {
+class HashtagFinderTest: XCTestCaseCoreDataInMemory {
     
-    var storeCoordinator: NSPersistentStoreCoordinator!
-    var managedObjectContext: NSManagedObjectContext!
-    var managedObjectModel: NSManagedObjectModel!
-    var store: NSPersistentStore!
     var hashtagRepository: HashtagRepository!
     
     override func setUp() {
-        managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(nil)
-        storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        do {
-            store = try storeCoordinator.addPersistentStoreWithType(
-                            NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
-        }
-        catch let error as NSError {
-            XCTFail("could't initialize persistent store \(error)")
-        }
-        
-        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = storeCoordinator
+        super.setUp()
         
         hashtagRepository = HashtagRepository()
         hashtagRepository.managedObjectContext = managedObjectContext
-        
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        managedObjectContext = nil
-        
-        do {
-            try storeCoordinator.removePersistentStore(store)
-        }
-        catch let error as NSError {
-            XCTFail("couldn't remove persistent store: \(error)")
-        }
-        
-        super.tearDown()
     }
     
     

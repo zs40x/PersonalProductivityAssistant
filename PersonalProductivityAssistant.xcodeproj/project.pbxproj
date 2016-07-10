@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */; };
 		D41726E41D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E21D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift */; };
 		D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E31D26AFFB002F15A4 /* Hashtag.swift */; };
 		D41726E71D28EF7E002F15A4 /* HashtagFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */; };
@@ -166,6 +167,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseCoreDataInMemory.swift; sourceTree = "<group>"; };
 		D41726E21D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Hashtag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D41726E31D26AFFB002F15A4 /* Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
 		D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HashtagFinder.swift; path = Logic/Hashtags/HashtagFinder.swift; sourceTree = "<group>"; };
@@ -699,6 +701,7 @@
 			children = (
 				D41726E81D28F04F002F15A4 /* Logic */,
 				D4B660701D142AAE000FE897 /* Info.plist */,
+				D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */,
 			);
 			path = PersonalProductivityAssistantTests;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */,
+				D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */,
 				D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

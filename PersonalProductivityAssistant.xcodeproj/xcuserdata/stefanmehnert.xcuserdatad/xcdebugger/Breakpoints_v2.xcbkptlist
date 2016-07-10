@@ -165,22 +165,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistantTests/HashtagFinderTest.swift"
-            timestampString = "489819508.650546"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "setUp()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/Logic/Hashtags/HashtagFinder.swift"
             timestampString = "489837233.165679"
             startingColumnNumber = "9223372036854775807"
@@ -198,11 +182,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistantTests/HashtagFinderTest.swift"
-            timestampString = "489838114.965908"
+            timestampString = "489839375.084003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "testAddsANewHashtag()"
             landmarkType = "5">
             <Locations>
