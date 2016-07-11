@@ -17,5 +17,5 @@ extension TimeLog {
     @NSManaged var activity: String?
     @NSManaged var from: NSDate?
     @NSManaged var until: NSDate?
-
+    @NSManaged var hashtags: NSSet?
 }
