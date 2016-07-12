@@ -8,7 +8,12 @@
 
 import Foundation
 
+enum TimeLogEditMode {
+    case New
+    case Updated
+}
+
 protocol TimeLogEditDelegate: class {
-    func timeLogAdded(timeLog: TimeLogData)
+    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData)
     func editTimeLogData() -> TimeLogData?
 }

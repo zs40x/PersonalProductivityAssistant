@@ -10,6 +10,8 @@ import UIKit
 
 class TimeLogViewController: UIViewController, SegueHandlerType {
     
+    private var editMode = TimeLogEditMode.New
+    
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     
     enum SegueIdentifier : String {
@@ -32,6 +34,10 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
                 self.textEditActivity.text = editTimeLogData.Activity
                 self.datePickerStart.date = editTimeLogData.From
                 self.datePickerEnd.date = editTimeLogData.Until
+                
+                editMode = TimeLogEditMode.Updated
+            } else {
+                editMode = TimeLogEditMode.New
             }
         }
     }
@@ -57,7 +63,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         view.endEditing(true)
         
         if let delegate = timeLogEditDelegate {
-            delegate.timeLogAdded(getTimeLogData())
+            delegate.timeLogEdited(editMode, timeLog: getTimeLogData())
        
             textEditActivity.text = ""
             

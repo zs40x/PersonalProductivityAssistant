@@ -98,8 +98,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     // MARK: TimeLogEditDelegate
-    func timeLogAdded(timeLogData: TimeLogData) {
-        addANewTimeLog(timeLogData)
+    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) {
+        editedTimeLog(editMode, timeLogData: timeLog)
     }
     
     func editTimeLogData() -> TimeLogData? {
@@ -135,9 +135,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewTimeLogs.sortInPlace{ $1.activity > $0.activity }
     }
     
-    func addANewTimeLog(timeLogData: TimeLogData) {
+    func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) {
         
-        if let editTimeLog = timeLogToEdit {
+        if editMode == TimeLogEditMode.Updated {
+            
+            guard let editTimeLog = timeLogToEdit else {
+                return
+            }
+            
             editTimeLog.updateFromTimeLogData(timeLogData)
 
             let saveChangesResult = timeLogRepository.save()
