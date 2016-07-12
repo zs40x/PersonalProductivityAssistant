@@ -61,7 +61,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView,
                    cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell =
             tableView.dequeueReusableCellWithIdentifier(
                 "CellPrototypeActivity", forIndexPath: indexPath) as! TableViewActivityCell
@@ -79,12 +78,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == .Delete {
             deleteTimeLog(tableView, indexPath: indexPath)
         }
@@ -133,11 +134,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if editMode == TimeLogEditMode.Updated {
             
-            guard let editTimeLog = timeLogToEdit else {
+            guard let editedTimeLog = timeLogToEdit else {
                 return Result.Failure("invalid timeLog")
             }
             
-            editTimeLog.updateFromTimeLogData(timeLogData)
+            editedTimeLog.updateFromTimeLogData(timeLogData)
 
             let saveChangesResult = timeLogRepository.save()
             
