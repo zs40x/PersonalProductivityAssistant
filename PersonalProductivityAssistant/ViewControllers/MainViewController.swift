@@ -23,8 +23,9 @@ extension String {
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType, TimeLogEditDelegate {
     
-    let timeLogRepository = TimeLogRepository()
-    var tableViewTimeLogs = [TimeLog]()
+    private let timeLogRepository = TimeLogRepository()
+    private var tableViewTimeLogs = [TimeLog]()
+    private var timeLogToEdit: TimeLog?
     
     enum SegueIdentifier : String {
         case ShowSegueToAddTimeLog
@@ -83,8 +84,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     // MARK: UITableViewDelegate
-    var timeLogToEdit: TimeLog?
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
@@ -127,19 +126,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let getAllResult = timeLogRepository.getAll()
         
-        guard getAllResult.isSucessful == true else {
+        if !getAllResult.isSucessful {
             showAlertDialog("Error loading time logs \(getAllResult.errorMessage)")
             return
         }
         
-        if let timeLogs = getAllResult.value as [TimeLog]! {
-            for timeLog in timeLogs {
-                tableViewTimeLogs.append(timeLog)
-            }
-            
-            tableViewTimeLogs.sortInPlace{ $1.activity > $0.activity }
-        }
-        
+        tableViewTimeLogs.appendContentsOf(getAllResult.value!)
+        tableViewTimeLogs.sortInPlace{ $1.activity > $0.activity }
     }
     
     func addANewTimeLog(timeLogData: TimeLogData) {
@@ -149,7 +142,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             let saveChangesResult = timeLogRepository.save()
             
-            guard saveChangesResult.isSucessful == true else {
+            if !saveChangesResult.isSucessful {
                 showAlertDialog("Error saving timeLog changes \(saveChangesResult.errorMessage)")
                 return
             }
@@ -157,17 +150,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else {
             let newTimeLogResult = timeLogRepository.addNew(timeLogData)
         
-            guard newTimeLogResult.isSucessful == true else {
+            if !newTimeLogResult.isSucessful {
                 showAlertDialog("Error adding a new time log \(newTimeLogResult.errorMessage)")
                 return
             }
             
-            guard let newTimeLog = newTimeLogResult.value as TimeLog! else {
-                NSLog("New TimeLog is of an unexpected type")
-                return;
-            }
-        
-            tableViewTimeLogs.append(newTimeLog)
+            tableViewTimeLogs.append(newTimeLogResult.value!)
             tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
         }
         
@@ -176,10 +164,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func deleteTimeLog(tableView: UITableView, indexPath: NSIndexPath) {
         let timeLogToDelete = tableViewTimeLogs[indexPath.row]
-        let deleteRsult = timeLogRepository.delete(timeLogToDelete)
+        let deleteResult = timeLogRepository.delete(timeLogToDelete)
         
-        guard deleteRsult.isSucessful else {
-            showAlertDialog("Failed to delete TimeLog \(deleteRsult.errorMessage)")
+        if !deleteResult.isSucessful {
+            showAlertDialog("Failed to delete TimeLog \(deleteResult.errorMessage)")
             return
         }
         
