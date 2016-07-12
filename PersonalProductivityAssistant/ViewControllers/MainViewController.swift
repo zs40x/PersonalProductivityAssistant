@@ -98,8 +98,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     // MARK: TimeLogEditDelegate
-    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) {
-        editedTimeLog(editMode, timeLogData: timeLog)
+    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result {
+        return editedTimeLog(editMode, timeLogData: timeLog)
     }
     
     func editTimeLogData() -> TimeLogData? {
@@ -135,29 +135,27 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         sortTimeLogTable()
     }
     
-    func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) {
+    func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) -> Result {
         
         if editMode == TimeLogEditMode.Updated {
             
             guard let editTimeLog = timeLogToEdit else {
-                return
+                return Result.Failure("invalid timeLog")
             }
             
             editTimeLog.updateFromTimeLogData(timeLogData)
 
             let saveChangesResult = timeLogRepository.save()
             
-            if !saveChangesResult.isSucessful {
-                showAlertDialog("Error saving timeLog changes \(saveChangesResult.errorMessage)")
-                return
+            if timeLogRepository.save().isSucessful {
+                return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
             }
         }
         else {
             let newTimeLogResult = timeLogRepository.addNew(timeLogData)
         
             if !newTimeLogResult.isSucessful {
-                showAlertDialog("Error adding a new time log \(newTimeLogResult.errorMessage)")
-                return
+                return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
             }
             
             tableViewTimeLogs.append(newTimeLogResult.value!)
@@ -165,6 +163,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         sortTimeLogTable()
         tableViewActivities.reloadData()
+        return Result.Success()
     }
     
     func deleteTimeLog(tableView: UITableView, indexPath: NSIndexPath) {

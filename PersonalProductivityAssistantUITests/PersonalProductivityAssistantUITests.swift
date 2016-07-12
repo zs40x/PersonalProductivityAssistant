@@ -112,7 +112,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         // Press add button
         app.navigationBars["Title"].buttons["add"].tap()
         
-        // Verify element has been added
+        // Verify element has been modifed
         XCTAssert(getTableStaticTextElement(changedActivityName).exists)
         
         //

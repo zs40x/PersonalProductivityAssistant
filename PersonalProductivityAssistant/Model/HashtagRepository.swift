@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class HashtagRepository : NSObject {
+class HashtagRepository {
     
     private var model = PPAModel.New()
     

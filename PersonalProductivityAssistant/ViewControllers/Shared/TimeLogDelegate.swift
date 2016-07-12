@@ -14,6 +14,6 @@ enum TimeLogEditMode {
 }
 
 protocol TimeLogEditDelegate: class {
-    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData)
+    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result
     func editTimeLogData() -> TimeLogData?
 }

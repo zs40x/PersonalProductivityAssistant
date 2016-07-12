@@ -63,10 +63,14 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         view.endEditing(true)
         
         if let delegate = timeLogEditDelegate {
-            delegate.timeLogEdited(editMode, timeLog: getTimeLogData())
-       
-            textEditActivity.text = ""
+            let result = delegate.timeLogEdited(editMode, timeLog: getTimeLogData())
             
+            if !result.isSucessful {
+                    showAlertDialog(result.errorMessage)
+                return
+            }
+            
+            textEditActivity.text = ""
             performSegueWithIdentifier(.UnwindToMainView, sender: self)
         }
     }
