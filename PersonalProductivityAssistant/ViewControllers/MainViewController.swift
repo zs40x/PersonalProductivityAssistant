@@ -140,12 +140,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         if let editTimeLog = timeLogToEdit {
-            editTimeLog.activity = timeLogData.Activity
-            editTimeLog.from = timeLogData.From
-            editTimeLog.until = timeLogData.Until
-            
-            editTimeLog.updateHashtags()
-            
+            editTimeLog.updateFromTimeLogData(timeLogData)
+
             let saveChangesResult = timeLogRepository.save()
             
             guard saveChangesResult.isSucessful == true else {
