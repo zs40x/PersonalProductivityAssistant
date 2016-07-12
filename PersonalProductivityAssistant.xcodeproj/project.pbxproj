@@ -16,7 +16,7 @@
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B10471D262B720052A845 /* SegueHandlerType.swift */; };
 		D47B104B1D263C7F0052A845 /* TimeLogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */; };
-		D48740EB1D16D16D002D3918 /* AddTimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */; };
+		D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */; };
 		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
 		D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* NSDate.swift */; };
 		D48F1A371D2402FB009BD069 /* ChartAnimationEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B91D2402FB009BD069 /* ChartAnimationEasing.swift */; };
@@ -178,7 +178,7 @@
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D47B10471D262B720052A845 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = ViewControllers/Shared/SegueHandlerType.swift; sourceTree = "<group>"; };
 		D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogDelegate.swift; path = ViewControllers/Shared/TimeLogDelegate.swift; sourceTree = "<group>"; };
-		D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddTimeLogViewController.swift; path = ViewControllers/AddTimeLogViewController.swift; sourceTree = "<group>"; };
+		D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewController.swift; path = ViewControllers/TimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogData.swift; path = Model/Data/TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDate.swift; path = Utilities/Extensions/NSDate.swift; sourceTree = "<group>"; };
 		D48F19B91D2402FB009BD069 /* ChartAnimationEasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAnimationEasing.swift; sourceTree = "<group>"; };
@@ -389,7 +389,7 @@
 			children = (
 				D47B10491D263C620052A845 /* Shared */,
 				D4B660581D142AAE000FE897 /* MainViewController.swift */,
-				D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */,
+				D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */,
 				D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */,
 			);
 			name = ViewControllers;
@@ -1009,7 +1009,7 @@
 				D48F1A4C1D2402FB009BD069 /* ChartBaseDataSet.swift in Sources */,
 				D48F1A601D2402FB009BD069 /* PieChartData.swift in Sources */,
 				D48F1AA51D2402FB009BD069 /* ChartTransformerHorizontalBarChart.swift in Sources */,
-				D48740EB1D16D16D002D3918 /* AddTimeLogViewController.swift in Sources */,
+				D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */,
 				D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */,
 				D48F1A8B1D2402FB009BD069 /* BubbleChartRenderer.swift in Sources */,
 				D48F1A741D2402FB009BD069 /* ChartDefaultXAxisValueFormatter.swift in Sources */,

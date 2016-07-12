@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTimeLogViewController: UIViewController, SegueHandlerType {
+class TimeLogViewController: UIViewController, SegueHandlerType {
     
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     

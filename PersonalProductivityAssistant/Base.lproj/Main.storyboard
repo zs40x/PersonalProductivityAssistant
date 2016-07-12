@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="340" y="362"/>
         </scene>
-        <!--Add Time Log View Controller-->
+        <!--Time Log View Controller-->
         <scene sceneID="cNx-4V-aAU">
             <objects>
-                <viewController id="wEc-tL-ERe" customClass="AddTimeLogViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wEc-tL-ERe" customClass="TimeLogViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kbr-3u-014"/>
                         <viewControllerLayoutGuide type="bottom" id="NOS-4g-ri7"/>

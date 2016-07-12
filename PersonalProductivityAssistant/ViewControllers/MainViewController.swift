@@ -54,7 +54,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let viewControllerAddTimeLog = segue.destinationViewController as? AddTimeLogViewController {
+        if let viewControllerAddTimeLog = segue.destinationViewController as? TimeLogViewController {
             viewControllerAddTimeLog.timeLogEditDelegate = self
         }
     }
