@@ -13,6 +13,7 @@
 		D41726E71D28EF7E002F15A4 /* HashtagFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */; };
 		D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
+		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B10471D262B720052A845 /* SegueHandlerType.swift */; };
 		D47B104B1D263C7F0052A845 /* TimeLogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */; };
 		D48740EB1D16D16D002D3918 /* AddTimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */; };
@@ -174,6 +175,7 @@
 		D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagsInStringFinderTest.swift; sourceTree = "<group>"; };
 		D41DE9C61D34253D007A9B03 /* PPADataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PPADataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
+		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D47B10471D262B720052A845 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = ViewControllers/Shared/SegueHandlerType.swift; sourceTree = "<group>"; };
 		D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogDelegate.swift; path = ViewControllers/Shared/TimeLogDelegate.swift; sourceTree = "<group>"; };
 		D48740EA1D16D16D002D3918 /* AddTimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddTimeLogViewController.swift; path = ViewControllers/AddTimeLogViewController.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 			children = (
 				D4F84C2F1D15C76A0041FCF0 /* NSError.swift */,
 				D48F19B51D230FA9009BD069 /* NSDate.swift */,
+				D46CE0901D3499DF00CD797F /* UIViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				D48F1A651D2402FB009BD069 /* ScatterChartDataSet.swift in Sources */,
 				D48F1A6F1D2402FB009BD069 /* IRadarChartDataSet.swift in Sources */,
 				D47B104B1D263C7F0052A845 /* TimeLogDelegate.swift in Sources */,
+				D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */,
 				D48F1A371D2402FB009BD069 /* ChartAnimationEasing.swift in Sources */,
 				D48F1A901D2402FB009BD069 /* ChartRendererBase.swift in Sources */,
 				D48F1A9C1D2402FB009BD069 /* LineScatterCandleRadarChartRenderer.swift in Sources */,

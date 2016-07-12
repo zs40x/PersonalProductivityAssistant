@@ -38,7 +38,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        displayPersistedActivities()
+        displayPersistedTimeLogs()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,14 +87,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            deleteActivity(tableView, indexPath: indexPath)
+            deleteTimeLog(tableView, indexPath: indexPath)
         }
     }
 
     
     // MARK: TimeLogEditDelegate
     func timeLogAdded(timeLogData: TimeLogData) {
-        addANewActivity(timeLogData)
+        addANewTimeLog(timeLogData)
     }
     
     func editTimeLogData() -> TimeLogData? {
@@ -115,7 +115,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
 
     // MARK: Helper methods
-    func displayPersistedActivities() {
+    func displayPersistedTimeLogs() {
         
         tableViewTimeLogs.removeAll()
         
@@ -136,8 +136,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func addANewActivity(timeLogData: TimeLogData) {
-        
+    func addANewTimeLog(timeLogData: TimeLogData) {
         
         if let editTimeLog = timeLogToEdit {
             editTimeLog.updateFromTimeLogData(timeLogData)
@@ -169,7 +168,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableViewActivities.reloadData()
     }
     
-    func deleteActivity(tableView: UITableView, indexPath: NSIndexPath) {
+    func deleteTimeLog(tableView: UITableView, indexPath: NSIndexPath) {
         let timeLogToDelete = tableViewTimeLogs[indexPath.row]
         let deleteRsult = timeLogRepository.delete(timeLogToDelete)
         
@@ -180,18 +179,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableViewTimeLogs.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
-    
-    func showAlertDialog(errorMessage: String) {
-        let alertController =
-            UIAlertController(
-                title: "PPA",
-                message: errorMessage,
-                preferredStyle: UIAlertControllerStyle.Alert)
-        
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
