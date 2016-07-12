@@ -161,9 +161,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             tableViewTimeLogs.append(newTimeLogResult.value!)
-            tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
         }
         
+        tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
         tableViewActivities.reloadData()
     }
     
