@@ -8,11 +8,28 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 
 class TimeLog: NSManagedObject {
 
     static let EntityName = "TimeLog"
+    
+    func activityAsAttributedString() -> NSAttributedString {
+        let attributedActivity = NSMutableAttributedString(string: self.activity!)
+        
+        guard let hashtags = self.hashtags else {
+            return attributedActivity
+        }
+        
+        for hashtag in hashtags {
+            for hashtagRange in self.activity!.findOccurencesOf(text: hashtag.name!) {
+                attributedActivity.addAttribute(
+                    NSForegroundColorAttributeName, value: UIColor.blueColor(), range: hashtagRange)
+            }
+        }
+        
+        return attributedActivity
+    }
     
     func durationInMinutes() -> Int {
         guard let timeFrom = from else {

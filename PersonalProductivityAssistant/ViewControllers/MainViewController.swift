@@ -15,6 +15,12 @@ class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewDuration: UILabel!
 }
 
+extension String {
+    func findOccurencesOf(text text:String) -> [NSRange] {
+        return !text.isEmpty ? try! NSRegularExpression(pattern: text, options: []).matchesInString(self, options: [], range: NSRange(0..<characters.count)).map{ $0.range } : []
+    }
+}
+
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType, TimeLogEditDelegate {
     
     let timeLogRepository = TimeLogRepository()
@@ -67,7 +73,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let timeLog = tableViewTimeLogs[indexPath.row]
         
-        cell.textViewActivity?.text = timeLog.activity
+        cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
         cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
         cell.textViewUntil?.text = timeLog.until?.asFormattedString("dd.MM.YYYY HH:mm:ss")
         cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
