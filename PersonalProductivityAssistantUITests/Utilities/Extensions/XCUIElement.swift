@@ -16,6 +16,7 @@ extension XCUIElement {
         }
         return valueAsString
     }
+    
     func clearAndEnterText(text: String) -> Void {
         guard let stringValue = self.value as? String else {
             XCTFail("Tried to clear and enter text into a non string value")
