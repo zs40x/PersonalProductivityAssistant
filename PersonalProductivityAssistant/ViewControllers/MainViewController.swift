@@ -132,7 +132,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         tableViewTimeLogs.appendContentsOf(getAllResult.value!)
-        tableViewTimeLogs.sortInPlace{ $1.activity > $0.activity }
+        sortTimeLogTable()
     }
     
     func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) {
@@ -163,7 +163,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableViewTimeLogs.append(newTimeLogResult.value!)
         }
         
-        tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
+        sortTimeLogTable()
         tableViewActivities.reloadData()
     }
     
@@ -178,6 +178,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableViewTimeLogs.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+    
+    func sortTimeLogTable() {
+        tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
     }
 }
 
