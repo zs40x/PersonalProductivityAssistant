@@ -163,6 +163,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         sortTimeLogTable()
         tableViewActivities.reloadData()
+        
         return Result.Success()
     }
     

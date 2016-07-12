@@ -29,17 +29,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
 
         textEditActivity.resignFirstResponder()
         
-        if let timeEditDelegate = self.timeLogEditDelegate {
-            if let editTimeLogData = timeEditDelegate.editTimeLogData() {
-                self.textEditActivity.text = editTimeLogData.Activity
-                self.datePickerStart.date = editTimeLogData.From
-                self.datePickerEnd.date = editTimeLogData.Until
-                
-                editMode = TimeLogEditMode.Updated
-            } else {
-                editMode = TimeLogEditMode.New
-            }
-        }
+        initializeUpdateModeFromDelegate()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,7 +56,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
             let result = delegate.timeLogEdited(editMode, timeLog: getTimeLogData())
             
             if !result.isSucessful {
-                    showAlertDialog(result.errorMessage)
+                showAlertDialog(result.errorMessage)
                 return
             }
             
@@ -77,6 +67,23 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     
     
     // MAKR: Helper Methods
+    func initializeUpdateModeFromDelegate() {
+        
+        guard let timeEditDelegate = self.timeLogEditDelegate else {
+            return
+        }
+        
+        guard let editTimeLogData = timeEditDelegate.editTimeLogData() else {
+            return
+        }
+        
+        self.textEditActivity.text = editTimeLogData.Activity
+        self.datePickerStart.date = editTimeLogData.From
+        self.datePickerEnd.date = editTimeLogData.Until
+        
+        editMode = TimeLogEditMode.Updated
+    }
+    
     func getTimeLogData() -> TimeLogData {
         return TimeLogData(
             Activity: textEditActivity.text!,
