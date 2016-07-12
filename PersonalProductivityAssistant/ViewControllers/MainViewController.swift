@@ -144,10 +144,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             editTimeLog.from = timeLogData.From
             editTimeLog.until = timeLogData.Until
             
-            let foundHashtags =
-                HashtagFinder(hashtagRepository: HashtagRepository())
-                    .resolveHashtags(stringWithHastags: timeLogData.Activity).value!
-            editTimeLog.hashtags = NSSet(array: foundHashtags)
+            editTimeLog.updateHashtags()
             
             let saveChangesResult = timeLogRepository.save()
             

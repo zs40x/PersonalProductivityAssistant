@@ -31,11 +31,7 @@ public class TimeLogRepository {
   
         do {
             let newTimeLog = model.TimeLogs.createTimeLog(timeLogData)
-            
-            let foundHashtags =
-                HashtagFinder(hashtagRepository: HashtagRepository())
-                    .resolveHashtags(stringWithHastags: timeLogData.Activity).value!
-            newTimeLog.hashtags = NSSet(array: foundHashtags)
+            newTimeLog.updateHashtags()
             
             try model.save()
             

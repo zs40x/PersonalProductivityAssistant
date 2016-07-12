@@ -28,4 +28,12 @@ class TimeLog: NSManagedObject {
     func asTimeLogData() -> TimeLogData {
         return TimeLogData(Activity: activity!, From: from!, Until: until!)
     }
+    
+    func updateHashtags() {
+        let foundHashtags =
+            HashtagFinder(hashtagRepository: HashtagRepository())
+                .resolveHashtags(stringWithHastags: self.activity!).value!
+        
+        self.hashtags = NSSet(array: foundHashtags)
+    }
 }
