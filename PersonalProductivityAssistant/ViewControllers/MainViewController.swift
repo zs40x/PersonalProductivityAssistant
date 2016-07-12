@@ -147,7 +147,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             let saveChangesResult = timeLogRepository.save()
             
-            if timeLogRepository.save().isSucessful {
+            if !timeLogRepository.save().isSucessful {
                 return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
             }
         }
