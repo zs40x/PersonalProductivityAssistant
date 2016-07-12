@@ -13,6 +13,7 @@ public class TimeLogRepository {
     
     private var model = PPAModel.New()
     
+    
     func getManagedObjectContext() -> NSManagedObjectContext {
         return model.managedObjectContext
     }

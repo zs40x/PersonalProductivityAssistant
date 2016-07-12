@@ -15,12 +15,6 @@ class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewDuration: UILabel!
 }
 
-extension String {
-    func findOccurencesOf(text text:String) -> [NSRange] {
-        return !text.isEmpty ? try! NSRegularExpression(pattern: text, options: []).matchesInString(self, options: [], range: NSRange(0..<characters.count)).map{ $0.range } : []
-    }
-}
-
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType, TimeLogEditDelegate {
     
     private let timeLogRepository = TimeLogRepository()
