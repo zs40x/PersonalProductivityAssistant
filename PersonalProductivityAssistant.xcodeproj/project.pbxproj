@@ -14,6 +14,8 @@
 		D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
+		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
+		D46CE0971D34BB7C00CD797F /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0961D34BB7C00CD797F /* NSDate.swift */; };
 		D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B10471D262B720052A845 /* SegueHandlerType.swift */; };
 		D47B104B1D263C7F0052A845 /* TimeLogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */; };
 		D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */; };
@@ -176,6 +178,8 @@
 		D41DE9C61D34253D007A9B03 /* PPADataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PPADataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
+		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
+		D46CE0961D34BB7C00CD797F /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		D47B10471D262B720052A845 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = ViewControllers/Shared/SegueHandlerType.swift; sourceTree = "<group>"; };
 		D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogDelegate.swift; path = ViewControllers/Shared/TimeLogDelegate.swift; sourceTree = "<group>"; };
 		D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewController.swift; path = ViewControllers/TimeLogViewController.swift; sourceTree = "<group>"; };
@@ -410,6 +414,23 @@
 				D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */,
 			);
 			name = Reporting;
+			sourceTree = "<group>";
+		};
+		D46CE0921D34BB3700CD797F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D46CE0931D34BB4000CD797F /* Extensions */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		D46CE0931D34BB4000CD797F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D46CE0941D34BB5F00CD797F /* XCUIElement.swift */,
+				D46CE0961D34BB7C00CD797F /* NSDate.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		D47B10491D263C620052A845 /* Shared */ = {
@@ -712,6 +733,7 @@
 		D4B660781D142AAE000FE897 /* PersonalProductivityAssistantUITests */ = {
 			isa = PBXGroup;
 			children = (
+				D46CE0921D34BB3700CD797F /* Utilities */,
 				D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */,
 				D4B6607B1D142AAE000FE897 /* Info.plist */,
 			);
@@ -1047,6 +1069,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B6607A1D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift in Sources */,
+				D46CE0971D34BB7C00CD797F /* NSDate.swift in Sources */,
+				D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

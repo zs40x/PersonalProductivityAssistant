@@ -8,39 +8,6 @@
 
 import XCTest
 
-extension XCUIElement {
-    func getValueAsStringSafe() -> String {
-        guard let valueAsString = self.value as? String else {
-            return ""
-        }
-        return valueAsString
-    }
-    func clearAndEnterText(text: String) -> Void {
-        guard let stringValue = self.value as? String else {
-            XCTFail("Tried to clear and enter text into a non string value")
-            return
-        }
-        
-        self.tap()
-        
-        var deleteString: String = ""
-        for _ in stringValue.characters {
-            deleteString += "\u{8}"
-        }
-        self.typeText(deleteString)
-        
-        self.typeText(text)
-    }
-}
-
-extension NSDate {
-    static func getCurrentDateTimeAsFormattedString(format: String) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.stringFromDate(NSDate())
-    }
-}
-
 class PersonalProductivityAssistantUITests: XCTestCase {
         
     var app = XCUIApplication()
