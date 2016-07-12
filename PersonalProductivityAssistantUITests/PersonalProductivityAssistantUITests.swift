@@ -105,7 +105,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         // tap the actiity to open the add/edit segue
         getTableStaticTextElement(initialActivityName).tap()
         
-        let changedActivityName = getActivityNameWithDateTime()
+        let changedActivityName = "\(getActivityNameWithDateTime()) #test"
         waitForElementToAppear(activityInputField!)
         clearAndTypeActivityName(changedActivityName)
         

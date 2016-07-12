@@ -17,7 +17,7 @@ class HashtagFinderTest: XCTestCaseCoreDataInMemory {
         super.setUp()
         
         hashtagRepository = HashtagRepository()
-        hashtagRepository.managedObjectContext = managedObjectContext
+        hashtagRepository.replaceManagedObjectContext(managedObjectContext)
     }
     
     

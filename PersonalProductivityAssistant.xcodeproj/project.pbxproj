@@ -172,6 +172,7 @@
 		D41726E31D26AFFB002F15A4 /* Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
 		D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HashtagFinder.swift; path = Logic/Hashtags/HashtagFinder.swift; sourceTree = "<group>"; };
 		D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagsInStringFinderTest.swift; sourceTree = "<group>"; };
+		D41DE9C61D34253D007A9B03 /* PPADataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PPADataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
 		D47B10471D262B720052A845 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = ViewControllers/Shared/SegueHandlerType.swift; sourceTree = "<group>"; };
 		D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogDelegate.swift; path = ViewControllers/Shared/TimeLogDelegate.swift; sourceTree = "<group>"; };
@@ -1279,6 +1280,7 @@
 		D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D41DE9C61D34253D007A9B03 /* PPADataModel 2.xcdatamodel */,
 				D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */,
 			);
 			currentVersion = D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */;

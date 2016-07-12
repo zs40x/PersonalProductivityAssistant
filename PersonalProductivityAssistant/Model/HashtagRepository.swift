@@ -9,17 +9,13 @@
 import Foundation
 import CoreData
 
-class HashtagRepository {
+class HashtagRepository : NSObject {
     
     private var model = PPAModel.New()
     
-    var managedObjectContext: NSManagedObjectContext {
-        get {
-            return model.managedObjectContext
-        }
-        set (value) {
-            model.managedObjectContext = value
-        }
+    
+    func replaceManagedObjectContext(context: NSManagedObjectContext) {
+        model.managedObjectContext = context
     }
     
     func getAll() -> ResultValue<[Hashtag]> {

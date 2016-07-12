@@ -2,7 +2,7 @@
 //  TimeLog+CoreDataProperties.swift
 //  PersonalProductivityAssistant
 //
-//  Created by Stefan Mehnert on 18/06/16.
+//  Created by Stefan Mehnert on 11/07/16.
 //  Copyright © 2016 Stefan Mehnert. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -18,4 +18,5 @@ extension TimeLog {
     @NSManaged var from: NSDate?
     @NSManaged var until: NSDate?
     @NSManaged var hashtags: NSSet?
+
 }

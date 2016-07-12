@@ -138,10 +138,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func addANewActivity(timeLogData: TimeLogData) {
         
+        
         if let editTimeLog = timeLogToEdit {
             editTimeLog.activity = timeLogData.Activity
             editTimeLog.from = timeLogData.From
             editTimeLog.until = timeLogData.Until
+            
+            let foundHashtags =
+                HashtagFinder(hashtagRepository: HashtagRepository())
+                    .resolveHashtags(stringWithHastags: timeLogData.Activity).value!
+            editTimeLog.hashtags = NSSet(array: foundHashtags)
             
             let saveChangesResult = timeLogRepository.save()
             

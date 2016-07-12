@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import CoreData
 
 public class TimeLogRepository {
     
     private var model = PPAModel.New()
     
+    func getManagedObjectContext() -> NSManagedObjectContext {
+        return model.managedObjectContext
+    }
     
     func getAll() -> ResultValue<[TimeLog]> {
         
@@ -27,6 +31,12 @@ public class TimeLogRepository {
   
         do {
             let newTimeLog = model.TimeLogs.createTimeLog(timeLogData)
+            
+            let foundHashtags =
+                HashtagFinder(hashtagRepository: HashtagRepository())
+                    .resolveHashtags(stringWithHastags: timeLogData.Activity).value!
+            newTimeLog.hashtags = NSSet(array: foundHashtags)
+            
             try model.save()
             
             return ResultValue.Success(newTimeLog)
