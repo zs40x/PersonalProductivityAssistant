@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType {
+class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DateTimePickDelegate, SegueHandlerType {
     
     private var editMode = TimeLogEditMode.New
     private var autoCompleteItems = [String]()
@@ -48,6 +48,10 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
 
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let dateTimePickViewController = segue.destinationViewController as? DateTimePickViewController {
+            dateTimePickViewController.delegate = self
+        }
     }
     
     @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
@@ -116,6 +120,11 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    
+    // MARK: DateTimePickedDelegate
+    func dateTimePicked(dateTime: NSDate) {
+        self.buttonDateTimeFrom.titleLabel?.text = dateTime.asFormattedString("dd.MM.yyyy hh:mm")
+    }
     
     
     // MARK: Helper Methods

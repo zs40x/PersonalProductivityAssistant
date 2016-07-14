@@ -10,6 +10,8 @@ import UIKit
 
 class DateTimePickViewController: UIViewController {
 
+    var delegate: DateTimePickDelegate?
+    
     @IBOutlet weak var datePicker: UIDatePicker!
 
     
@@ -24,6 +26,15 @@ class DateTimePickViewController: UIViewController {
     
     
     @IBAction func actionTappedUse(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        defer {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        guard let dateTimePickedDelegate = self.delegate else {
+            return
+        }
+        
+        dateTimePickedDelegate.dateTimePicked(datePicker.date)
     }
 }

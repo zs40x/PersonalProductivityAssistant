@@ -13,6 +13,7 @@
 		D41726E71D28EF7E002F15A4 /* HashtagFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */; };
 		D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */; };
 		D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */; };
+		D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
@@ -180,6 +181,7 @@
 		D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagsInStringFinderTest.swift; sourceTree = "<group>"; };
 		D41DE9C61D34253D007A9B03 /* PPADataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PPADataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickViewController.swift; path = ViewControllers/DateTimePickViewController.swift; sourceTree = "<group>"; };
+		D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickDelegate.swift; path = ViewControllers/Shared/DateTimePickDelegate.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 			children = (
 				D47B10471D262B720052A845 /* SegueHandlerType.swift */,
 				D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */,
+				D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -955,6 +958,7 @@
 				D48F1A831D2402FB009BD069 /* ScatterChartDataProvider.swift in Sources */,
 				D48F1A4A1D2402FB009BD069 /* ChartXAxis.swift in Sources */,
 				D48F1A411D2402FB009BD069 /* PieChartView.swift in Sources */,
+				D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */,
 				D48F1A6A1D2402FB009BD069 /* IChartDataSet.swift in Sources */,
 				D48F1A611D2402FB009BD069 /* PieChartDataSet.swift in Sources */,
 				D48F1A4D1D2402FB009BD069 /* BarChartData.swift in Sources */,
