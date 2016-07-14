@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TimeLogViewController: UIViewController, SegueHandlerType {
+class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType {
     
     private var editMode = TimeLogEditMode.New
+    private var autoCompleteItems = [String]()
     
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     
@@ -22,12 +23,13 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var datePickerStart: UIDatePicker!
     @IBOutlet weak var datePickerEnd: UIDatePicker!
-    
+    @IBOutlet weak var autoCompleteTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         textEditActivity.resignFirstResponder()
+        autoCompleteTableView.hidden = true
         
         initializeUpdateModeFromDelegate()
     }
@@ -49,6 +51,8 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
     }
 
+    
+    // MARK: Actions
     @IBAction func actionAddTimeLog(sender: AnyObject) {
         view.endEditing(true)
         
@@ -65,8 +69,40 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         }
     }
     
+    @IBAction func actionActitivityValueChanged(sender: AnyObject) {
+        autoCompleteTableView.hidden = false
+    }
     
-    // MAKR: Helper Methods
+    
+    // MARK: UITableViewDataSource
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return autoCompleteItems.count
+    }
+    
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell =
+            tableView.dequeueReusableCellWithIdentifier(
+                "CellPrototypeAutocomplete", forIndexPath: indexPath) as! TableViewActivityCell
+        
+        let autoCompleteItem = autoCompleteItems[indexPath.row]
+        
+        //cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
+        //cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
+        //cell.textViewUntil?.text = timeLog.until?.asFormattedString("dd.MM.YYYY HH:mm:ss")
+        //cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
+        
+        return cell
+    }
+    
+    
+    // MARK: UITableViewDelegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
+    
+    // MARK: Helper Methods
     func initializeUpdateModeFromDelegate() {
         
         guard let timeEditDelegate = self.timeLogEditDelegate else {
