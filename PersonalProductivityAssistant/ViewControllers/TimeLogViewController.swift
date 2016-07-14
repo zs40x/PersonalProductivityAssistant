@@ -41,6 +41,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
+        autoCompleteTableView.hidden = true
     }
     
 
@@ -70,6 +71,10 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func actionActitivityValueChanged(sender: AnyObject) {
+        //autoCompleteTableView.hidden = false
+    }
+    
+    @IBAction func actionActivityEditingChanged(sender: AnyObject) {
         autoCompleteTableView.hidden = false
     }
     
