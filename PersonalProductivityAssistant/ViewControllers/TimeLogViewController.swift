@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType {
+class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, SegueHandlerType {
     
     private var editMode = TimeLogEditMode.New
     private var autoCompleteItems = [String]()
@@ -79,6 +79,28 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         autoCompleteTableView.hidden = false
     }
     
+    @IBAction func actionTapedDateTimeStart(sender: AnyObject) {
+        let storyboard : UIStoryboard = UIStoryboard(
+            name: "Main",
+            bundle: nil)
+        let dateTimePickViewController =
+            storyboard.instantiateViewControllerWithIdentifier("DateTimePickViewController") as UIViewController
+        dateTimePickViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        dateTimePickViewController.preferredContentSize = CGSizeMake(400, 200)
+        
+        presentViewController(dateTimePickViewController, animated: true, completion: nil)
+        
+        let popoverPresentationController = dateTimePickViewController.popoverPresentationController
+        popoverPresentationController?.delegate = self
+        popoverPresentationController?.permittedArrowDirections = .Any
+        popoverPresentationController?.sourceView = sender as! UIView
+        popoverPresentationController?.sourceRect = sender.bounds
+        
+    }
+    
+    @IBAction func actionTappedDateTimeEnd(sender: AnyObject) {
+    }
+    
     
     // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,6 +128,25 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         
+    }
+    
+    
+    // MARK: UIPopoverPresentationControllerDelegate
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
+
+    func prepareForPopoverPresentation(popoverPresentationController: UIPopoverPresentationController) {
+        print("prepare for presentation")
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+        print("did dismiss")
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        print("should dismiss")
+        return true
     }
     
     // MARK: Helper Methods

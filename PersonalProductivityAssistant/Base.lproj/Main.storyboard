@@ -233,6 +233,9 @@
                                                 <state key="normal" title="dateTimeFrom">
                                                     <color key="titleColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="actionTapedDateTimeStart:" destination="wEc-tL-ERe" eventType="touchUpInside" id="QFx-3Q-5OX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -250,6 +253,9 @@
                                                 <state key="normal" title="dateTimeUntil">
                                                     <color key="titleColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="actionTappedDateTimeEnd:" destination="wEc-tL-ERe" eventType="touchUpInside" id="aYa-by-hdV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -276,6 +282,9 @@
                         <outlet property="buttonDateTimeFrom" destination="FWk-pr-bUN" id="ni5-4p-4hb"/>
                         <outlet property="buttonDateTimeUntil" destination="UYa-Xw-cgD" id="AwY-Y5-Gew"/>
                         <outlet property="textEditActivity" destination="JkN-kj-7Zh" id="WwL-ah-4V9"/>
+                        <segue destination="OYf-49-vJT" kind="popoverPresentation" identifier="showDatePickerFromPopover" popoverAnchorView="FWk-pr-bUN" id="CVI-M7-U6a">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Mx-8w-e1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,20 +295,38 @@
         <!--Date Time Pick View Controller-->
         <scene sceneID="P7j-GY-hyW">
             <objects>
-                <viewController id="OYf-49-vJT" customClass="DateTimePickViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DateTimePickViewController" id="OYf-49-vJT" customClass="DateTimePickViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sxH-c6-yLY"/>
                         <viewControllerLayoutGuide type="bottom" id="1y7-Gd-hVE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zpC-bS-hZB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Miz-0e-9Qt">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                                <date key="date" timeIntervalSinceReferenceDate="490169747.40824598">
+                                    <!--2016-07-14 06:15:47 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Miz-0e-9Qt" firstAttribute="top" secondItem="zpC-bS-hZB" secondAttribute="top" id="UKH-yH-RfI"/>
+                            <constraint firstAttribute="bottom" secondItem="Miz-0e-9Qt" secondAttribute="bottom" id="dFM-nZ-exn"/>
+                            <constraint firstItem="Miz-0e-9Qt" firstAttribute="leading" secondItem="zpC-bS-hZB" secondAttribute="leading" id="eNx-IL-mIU"/>
+                            <constraint firstAttribute="trailing" secondItem="Miz-0e-9Qt" secondAttribute="trailing" id="omh-8I-uHB"/>
+                        </constraints>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="200"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Utx-J5-KbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="477"/>
+            <point key="canvasLocation" x="1750" y="480"/>
         </scene>
         <!--Day Time Pie Chart View Controller-->
         <scene sceneID="Xgh-It-8NR">
