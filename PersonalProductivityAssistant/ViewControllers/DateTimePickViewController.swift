@@ -11,6 +11,7 @@ import UIKit
 class DateTimePickViewController: UIViewController {
 
     var delegate: DateTimePickDelegate?
+    var dateTimeFieldToPick: SelectedDateField?
     
     @IBOutlet weak var datePicker: UIDatePicker!
 
@@ -31,10 +32,14 @@ class DateTimePickViewController: UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         
+        guard dateTimeFieldToPick != nil else {
+            return
+        }
+        
         guard let dateTimePickedDelegate = self.delegate else {
             return
         }
         
-        dateTimePickedDelegate.dateTimePicked(datePicker.date)
+        dateTimePickedDelegate.dateTimePicked(fieldToPick: dateTimeFieldToPick, dateTime: datePicker.date)
     }
 }

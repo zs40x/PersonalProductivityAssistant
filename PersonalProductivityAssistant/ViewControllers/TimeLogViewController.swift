@@ -8,10 +8,18 @@
 
 import UIKit
 
+enum SelectedDateField {
+    case From
+    case Until
+}
+
 class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DateTimePickDelegate, SegueHandlerType {
     
     private var editMode = TimeLogEditMode.New
     private var autoCompleteItems = [String]()
+    private var dateTimeFieldToPick: SelectedDateField?
+    private var dateTimeFrom: NSDate?
+    private var dateTimeUntil: NSDate?
     
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     
@@ -51,6 +59,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if let dateTimePickViewController = segue.destinationViewController as? DateTimePickViewController {
             dateTimePickViewController.delegate = self
+            dateTimePickViewController.dateTimeFieldToPick = dateTimeFieldToPick
         }
     }
     
@@ -61,6 +70,14 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: Actions
     @IBAction func actionAddTimeLog(sender: AnyObject) {
         view.endEditing(true)
+        
+        guard dateTimeFrom != nil else {
+            return
+        }
+        
+        guard dateTimeUntil != nil else {
+            return
+        }
         
         if let delegate = timeLogEditDelegate {
             let result = delegate.timeLogEdited(editMode, timeLog: getTimeLogData())
@@ -84,11 +101,18 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func actionTapedDateTimeStart(sender: AnyObject) {
- 
+        
+        dateTimeFieldToPick = .From
+        
         self.performSegueWithIdentifier("showDatePicker", sender: self)
     }
     
     @IBAction func actionTappedDateTimeEnd(sender: AnyObject) {
+        
+        
+        dateTimeFieldToPick = .Until
+        
+        self.performSegueWithIdentifier("showDatePicker", sender: self)
     }
     
     
@@ -122,8 +146,20 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     // MARK: DateTimePickedDelegate
-    func dateTimePicked(dateTime: NSDate) {
-        self.buttonDateTimeFrom.titleLabel?.text = dateTime.asFormattedString("dd.MM.yyyy hh:mm")
+    func dateTimePicked(fieldToPick selectedDateTime: SelectedDateField?, dateTime: NSDate) {
+        
+        guard let dateField = selectedDateTime else {
+            return
+        }
+        
+        switch dateField {
+        case .From:
+            self.dateTimeFrom = dateTime
+        case .Until:
+            self.dateTimeUntil = dateTime
+        }
+        
+        displayFromAndUntilDateTime()
     }
     
     
@@ -138,15 +174,33 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
             return
         }
         
+        
         self.textEditActivity.text = editTimeLogData.Activity
-       
-        editMode = TimeLogEditMode.Updated
+        
+        self.dateTimeFrom = editTimeLogData.From
+        self.dateTimeUntil = editTimeLogData.Until
+        displayFromAndUntilDateTime()
+        
+        
+        self.editMode = TimeLogEditMode.Updated
     }
     
     func getTimeLogData() -> TimeLogData {
+        
         return TimeLogData(
             Activity: textEditActivity.text!,
-            From: NSDate(),
-            Until: NSDate() )
+            From: dateTimeFrom!,
+            Until: dateTimeUntil! )
+    }
+    
+    func displayFromAndUntilDateTime() {
+        
+        self.buttonDateTimeFrom.setTitle(convertNSDateToReadableStringOrDefaultValue(self.dateTimeFrom), forState: .Normal)
+        self.buttonDateTimeUntil.setTitle(convertNSDateToReadableStringOrDefaultValue(self.dateTimeUntil), forState: .Normal)
+    }
+    
+    func convertNSDateToReadableStringOrDefaultValue(date: NSDate?) -> String {
+        
+        return date != nil ? date!.asFormattedString("dd.MM.yyyy hh:mm") : "n/a"
     }
 }
