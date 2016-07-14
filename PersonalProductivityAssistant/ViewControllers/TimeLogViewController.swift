@@ -21,8 +21,8 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     @IBOutlet weak var textEditActivity: UITextField!
-    @IBOutlet weak var datePickerStart: UIDatePicker!
-    @IBOutlet weak var datePickerEnd: UIDatePicker!
+    @IBOutlet weak var buttonDateTimeUntil: UIButton!
+    @IBOutlet weak var buttonDateTimeFrom: UIButton!
     @IBOutlet weak var autoCompleteTableView: UITableView!
     
     override func viewDidLoad() {
@@ -41,6 +41,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
+        
         autoCompleteTableView.hidden = true
     }
     
@@ -119,16 +120,14 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         self.textEditActivity.text = editTimeLogData.Activity
-        self.datePickerStart.date = editTimeLogData.From
-        self.datePickerEnd.date = editTimeLogData.Until
-        
+       
         editMode = TimeLogEditMode.Updated
     }
     
     func getTimeLogData() -> TimeLogData {
         return TimeLogData(
             Activity: textEditActivity.text!,
-            From: datePickerStart.date,
-            Until: datePickerEnd.date )
+            From: NSDate(),
+            Until: NSDate() )
     }
 }
