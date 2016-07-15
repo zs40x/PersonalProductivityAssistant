@@ -320,10 +320,10 @@
             </objects>
             <point key="canvasLocation" x="1750" y="480"/>
         </scene>
-        <!--Chart View Controller-->
+        <!--Pie Chart View Controller-->
         <scene sceneID="KR2-gg-2WT">
             <objects>
-                <viewController id="V7F-lj-c6u" customClass="ChartViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PieChartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V7F-lj-c6u" customClass="PieChartViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bma-49-Ivf"/>
                         <viewControllerLayoutGuide type="bottom" id="lCF-rO-Mih"/>
@@ -331,8 +331,24 @@
                     <view key="view" contentMode="scaleToFill" id="2Rb-PL-rJG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zE2-UT-d5V" userLabel="Pie Chart View" customClass="PieChartView" customModule="PersonalProductivityAssistant" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" identifier="PieChartViewController"/>
+                        <constraints>
+                            <constraint firstItem="lCF-rO-Mih" firstAttribute="top" secondItem="zE2-UT-d5V" secondAttribute="bottom" id="NpE-Eq-zSY"/>
+                            <constraint firstItem="zE2-UT-d5V" firstAttribute="top" secondItem="2Rb-PL-rJG" secondAttribute="top" id="PUK-SB-uja"/>
+                            <constraint firstAttribute="trailing" secondItem="zE2-UT-d5V" secondAttribute="trailing" id="sIS-S4-aQu"/>
+                            <constraint firstItem="zE2-UT-d5V" firstAttribute="leading" secondItem="2Rb-PL-rJG" secondAttribute="leading" id="uaA-p9-CvR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pieChartView" destination="zE2-UT-d5V" id="Xcc-lg-mMG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgU-wx-hb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
