@@ -16,6 +16,7 @@ class TimeLogViewController:
     private var dateTimeFieldToPick: DateTimeFieldToPick?
     private var dateTimeFrom: NSDate?
     private var dateTimeUntil: NSDate?
+    private var hashtagAutocompleteAssistant = HashtagAutoCompleteAssistant()
     
     var timeLogDataToEdit: TimeLogData?
     
@@ -98,11 +99,7 @@ class TimeLogViewController:
     
     @IBAction func actionActivityEditingChanged(sender: AnyObject) {
         
-        if autoCompleteTableView.hidden {
-            autoCompleteTableView.hidden = false
-        }
-        
-        updateAutoCompleteValues()
+        toggleAutoCompletevisibilityForCurrentInput()
     }
     
     @IBAction func actionTapedDateTimeStart(sender: AnyObject) {
@@ -217,6 +214,20 @@ class TimeLogViewController:
             return self.dateTimeFrom
         case .Until:
             return self.dateTimeUntil
+        }
+    }
+    
+    func toggleAutoCompletevisibilityForCurrentInput() {
+        
+        let currentInput = self.textEditActivity.text!
+     
+        if hashtagAutocompleteAssistant.isAutoCompletePossible(forInputString: currentInput) {
+            
+            autoCompleteTableView.hidden = false
+            updateAutoCompleteValues()
+        }
+        else {
+            autoCompleteTableView.hidden = true
         }
     }
     
