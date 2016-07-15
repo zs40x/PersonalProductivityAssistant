@@ -23,7 +23,7 @@ class ChartSourceFreeVsUsedTime : ChartDataValueProvider {
             );
     }
     
-    func getUsedTimeAmount() -> Double {
+    private func getUsedTimeAmount() -> Double {
         var totalHours: Double = 0
         let minutesPerHour = 60.0
         

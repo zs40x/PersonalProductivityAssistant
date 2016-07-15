@@ -28,7 +28,7 @@ class ChartSourceHashtags : ChartDataValueProvider {
         );
     }
     
-    func getHashtagTotals() -> [String: Double] {
+    private func getHashtagTotals() -> [String: Double] {
         var hashtagTotalsDictionary = [String: Double]()
         
         let getAllTimeLogsResult = timeLogRepository.getAll()
