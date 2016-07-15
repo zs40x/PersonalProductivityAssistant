@@ -68,8 +68,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let timeLog = tableViewTimeLogs[indexPath.row]
         
         cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
-        cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
-        cell.textViewUntil?.text = timeLog.until?.asFormattedString("dd.MM.YYYY HH:mm:ss")
+        cell.textViewFrom?.text = timeLog.from?.asFormattedString()
+        cell.textViewUntil?.text = timeLog.until?.asFormattedString()
         cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
         
         return cell

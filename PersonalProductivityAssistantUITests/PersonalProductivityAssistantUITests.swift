@@ -139,6 +139,6 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func getActivityNameWithDateTime() -> String {
-        return "A " + NSDate.getCurrentDateTimeAsFormattedString("dd.MM.YYYY HH:mm:ss")
+        return "A " + NSDate.getCurrentDateTimeAsFormattedString()
     }
 }

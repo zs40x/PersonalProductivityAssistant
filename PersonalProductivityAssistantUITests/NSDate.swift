@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSDate {
-    static func getCurrentDateTimeAsFormattedString(format: String) -> String {
+    static func getCurrentDateTimeAsFormattedString(format: String = "dd.MM.YYYY HH:mm:ss") -> String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.stringFromDate(NSDate())

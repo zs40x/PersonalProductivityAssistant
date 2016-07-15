@@ -208,6 +208,6 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func convertNSDateToReadableStringOrDefaultValue(date: NSDate?) -> String {
         
-        return date != nil ? date!.asFormattedString("dd.MM.yyyy hh:mm") : "n/a"
+        return date != nil ? date!.asFormattedString() : "n/a"
     }
 }

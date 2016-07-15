@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSDate {
-    func asFormattedString(format: String) -> String {
+    func asFormattedString(format: String = Config.defaultDateTimeFormat) -> String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.stringFromDate(self)

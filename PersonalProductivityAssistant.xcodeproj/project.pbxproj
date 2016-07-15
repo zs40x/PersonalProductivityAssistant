@@ -14,6 +14,7 @@
 		D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */; };
 		D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */; };
 		D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */; };
+		D4355E701D38A08A000F678A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6F1D38A08A000F678A /* Config.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
@@ -182,6 +183,7 @@
 		D41DE9C61D34253D007A9B03 /* PPADataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PPADataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickViewController.swift; path = ViewControllers/DateTimePickViewController.swift; sourceTree = "<group>"; };
 		D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickDelegate.swift; path = ViewControllers/Shared/DateTimePickDelegate.swift; sourceTree = "<group>"; };
+		D4355E6F1D38A08A000F678A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 				D4B660601D142AAE000FE897 /* Assets.xcassets */,
 				D4B660651D142AAE000FE897 /* Info.plist */,
 				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
+				D4355E6F1D38A08A000F678A /* Config.swift */,
 			);
 			path = PersonalProductivityAssistant;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				D48F1A8F1D2402FB009BD069 /* ChartLegendRenderer.swift in Sources */,
 				D48F1A9B1D2402FB009BD069 /* LineRadarChartRenderer.swift in Sources */,
 				D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */,
+				D4355E701D38A08A000F678A /* Config.swift in Sources */,
 				D48F1A4E1D2402FB009BD069 /* BarChartDataEntry.swift in Sources */,
 				D48F1A5D1D2402FB009BD069 /* LineChartDataSet.swift in Sources */,
 				D48F1A761D2402FB009BD069 /* ChartXAxisValueFormatter.swift in Sources */,
