@@ -60,6 +60,13 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         if let dateTimePickViewController = segue.destinationViewController as? DateTimePickViewController {
             dateTimePickViewController.delegate = self
             dateTimePickViewController.dateTimeFieldToPick = dateTimeFieldToPick
+            
+            switch dateTimeFieldToPick! {
+            case .From:
+                dateTimePickViewController.selectedDateTime = self.dateTimeFrom
+            case .Until:
+                dateTimePickViewController.selectedDateTime = self.dateTimeUntil
+            }
         }
     }
     

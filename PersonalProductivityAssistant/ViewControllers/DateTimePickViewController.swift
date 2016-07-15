@@ -12,12 +12,17 @@ class DateTimePickViewController: UIViewController {
 
     var delegate: DateTimePickDelegate?
     var dateTimeFieldToPick: SelectedDateField?
+    var selectedDateTime: NSDate?
     
     @IBOutlet weak var datePicker: UIDatePicker!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let preSelectedDateTime = self.selectedDateTime {
+            self.datePicker.date = preSelectedDateTime
+        }
     }
     
     override func didReceiveMemoryWarning() {
