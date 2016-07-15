@@ -325,11 +325,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/TimeLogViewController.swift"
-            timestampString = "490248593.228373"
+            timestampString = "490251048.151626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "actionActitivityValueChanged(_:)"
             landmarkType = "5">
          </BreakpointContent>

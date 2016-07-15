@@ -39,6 +39,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         textEditActivity.resignFirstResponder()
         autoCompleteTableView.hidden = true
         
+        initializeDefaultValues()
         initializeUpdateModeFromDelegate()
     }
 
@@ -171,6 +172,13 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     // MARK: Helper Methods
+    func initializeDefaultValues() {
+        self.dateTimeFrom = NSDate()
+        self.dateTimeUntil = NSDate()
+        
+        self.displayFromAndUntilDateTime()
+    }
+    
     func initializeUpdateModeFromDelegate() {
         
         guard let timeEditDelegate = self.timeLogEditDelegate else {
