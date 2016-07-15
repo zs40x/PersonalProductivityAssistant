@@ -9,5 +9,5 @@
 import Foundation
 
 protocol DateTimePickDelegate {
-    func dateTimePicked(fieldToPick selectedFieldToPick: SelectedDateField?, dateTime: NSDate);
+    func dateTimePicked(fieldToPick selectedFieldToPick: DateTimeFieldToPick?, dateTime: NSDate);
 }

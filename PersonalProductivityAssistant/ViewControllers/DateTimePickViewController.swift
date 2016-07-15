@@ -11,7 +11,7 @@ import UIKit
 class DateTimePickViewController: UIViewController {
 
     var delegate: DateTimePickDelegate?
-    var dateTimeFieldToPick: SelectedDateField?
+    var dateTimeFieldToPick: DateTimeFieldToPick?
     var selectedDateTime: NSDate?
     
     @IBOutlet weak var datePicker: UIDatePicker!

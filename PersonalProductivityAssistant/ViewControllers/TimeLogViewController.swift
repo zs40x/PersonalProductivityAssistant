@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum SelectedDateField {
+enum DateTimeFieldToPick {
     case From
     case Until
 }
@@ -24,7 +24,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     private var editMode = TimeLogEditMode.New
     private var autoCompleteItems = [String]()
-    private var dateTimeFieldToPick: SelectedDateField?
+    private var dateTimeFieldToPick: DateTimeFieldToPick?
     private var dateTimeFrom: NSDate?
     private var dateTimeUntil: NSDate?
     
@@ -73,6 +73,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let dateTimePickViewController = segue.destinationViewController as? DateTimePickViewController {
+            
             dateTimePickViewController.delegate = self
             dateTimePickViewController.dateTimeFieldToPick = dateTimeFieldToPick
             
@@ -158,7 +159,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     // MARK: DateTimePickedDelegate
-    func dateTimePicked(fieldToPick selectedDateTime: SelectedDateField?, dateTime: NSDate) {
+    func dateTimePicked(fieldToPick selectedDateTime: DateTimeFieldToPick?, dateTime: NSDate) {
         
         guard let dateField = selectedDateTime else {
             return
@@ -195,7 +196,6 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         self.dateTimeUntil = editTimeLogData.Until
         displayFromAndUntilDateTime()
         
-        
         self.editMode = TimeLogEditMode.Updated
     }
     
@@ -218,7 +218,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         return date != nil ? date!.asFormattedString() : "n/a"
     }
     
-    func pickDateTime(targetField: SelectedDateField) {
+    func pickDateTime(targetField: DateTimeFieldToPick) {
         
         dateTimeFieldToPick = targetField
         
