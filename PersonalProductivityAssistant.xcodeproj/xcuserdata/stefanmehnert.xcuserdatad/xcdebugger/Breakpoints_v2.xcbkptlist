@@ -388,11 +388,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/TimeLogViewController.swift"
-            timestampString = "490279616.447678"
+            timestampString = "490279887.321993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "updateAutoCompleteValues()"
             landmarkType = "5">
          </BreakpointContent>

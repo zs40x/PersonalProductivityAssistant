@@ -138,6 +138,8 @@ class TimeLogViewController:
         
         self.textEditActivity.text =
             hashtagAutocompleteAssistant.appendHastag(withName: tappedHashtag, to: self.textEditActivity.text!)
+        
+        self.autoCompleteTableView.hidden = true
     }
     
     
