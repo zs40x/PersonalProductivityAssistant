@@ -188,7 +188,6 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <action selector="actionActitivityValueChanged:" destination="wEc-tL-ERe" eventType="valueChanged" id="vp0-pR-PJE"/>
                                                             <action selector="actionActivityEditingChanged:" destination="wEc-tL-ERe" eventType="editingChanged" id="bA1-a9-dwR"/>
                                                         </connections>
                                                     </textField>

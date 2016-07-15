@@ -34,6 +34,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     enum SegueIdentifier : String {
         case UnwindToMainView
+        case showDatePicker
     }
     
     
@@ -92,11 +93,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func actionAddTimeLog(sender: AnyObject) {
         view.endEditing(true)
         
-        guard dateTimeFrom != nil else {
-            return
-        }
-        
-        guard dateTimeUntil != nil else {
+        guard dateTimeFrom != nil && dateTimeUntil != nil else {
             return
         }
         
@@ -113,10 +110,6 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    @IBAction func actionActitivityValueChanged(sender: AnyObject) {
-        //autoCompleteTableView.hidden = false
-    }
-    
     @IBAction func actionActivityEditingChanged(sender: AnyObject) {
         
         if autoCompleteTableView.hidden {
@@ -128,17 +121,12 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBAction func actionTapedDateTimeStart(sender: AnyObject) {
         
-        dateTimeFieldToPick = .From
-        
-        self.performSegueWithIdentifier("showDatePicker", sender: self)
+        self.pickDateTime(.From)
     }
     
     @IBAction func actionTappedDateTimeEnd(sender: AnyObject) {
         
-        
-        dateTimeFieldToPick = .Until
-        
-        self.performSegueWithIdentifier("showDatePicker", sender: self)
+        self.pickDateTime(.Until)
     }
     
     
@@ -152,8 +140,8 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let autoCompleteItem = autoCompleteItems[indexPath.row]
         
-        let cell = self.autoCompleteTableView.dequeueReusableCellWithIdentifier("cell")!
-
+        let cell =
+            self.autoCompleteTableView.dequeueReusableCellWithIdentifier("cell")!
         cell.textLabel!.text = autoCompleteItem
         
         return cell
@@ -228,6 +216,13 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     func convertNSDateToReadableStringOrDefaultValue(date: NSDate?) -> String {
         
         return date != nil ? date!.asFormattedString() : "n/a"
+    }
+    
+    func pickDateTime(targetField: SelectedDateField) {
+        
+        dateTimeFieldToPick = targetField
+        
+        self.performSegueWithIdentifier(.showDatePicker, sender: self)
     }
     
     func updateAutoCompleteValues() {
