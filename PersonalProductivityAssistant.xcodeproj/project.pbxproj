@@ -152,6 +152,8 @@
 		D4B660641D142AAE000FE897 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4B660621D142AAE000FE897 /* LaunchScreen.storyboard */; };
 		D4B6607A1D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */; };
 		D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */; };
+		D4C392361D39599600F0062E /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C392351D39599600F0062E /* PieChartViewController.swift */; };
+		D4C392381D395B6700F0062E /* ChartsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C392371D395B6700F0062E /* ChartsPageViewController.swift */; };
 		D4DD6AA31D2A2CF400FC6B0E /* HashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */; };
 		D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */; };
 		D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
@@ -332,6 +334,8 @@
 		D4B660791D142AAE000FE897 /* PersonalProductivityAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalProductivityAssistantUITests.swift; sourceTree = "<group>"; };
 		D4B6607B1D142AAE000FE897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PPADataModel.xcdatamodel; sourceTree = "<group>"; };
+		D4C392351D39599600F0062E /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PieChartViewController.swift; path = ViewControllers/PieChartViewController.swift; sourceTree = "<group>"; };
+		D4C392371D395B6700F0062E /* ChartsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartsPageViewController.swift; path = ViewControllers/ChartsPageViewController.swift; sourceTree = "<group>"; };
 		D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagRepository.swift; sourceTree = "<group>"; };
 		D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagFinderTest.swift; sourceTree = "<group>"; };
 		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
@@ -427,6 +431,8 @@
 				D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */,
 				D48F1AAB1D240486009BD069 /* DayTimePieChartViewController.swift */,
 				D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */,
+				D4C392351D39599600F0062E /* PieChartViewController.swift */,
+				D4C392371D395B6700F0062E /* ChartsPageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -967,6 +973,7 @@
 				D48F1A561D2402FB009BD069 /* CandleChartDataEntry.swift in Sources */,
 				D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */,
 				D48F1A7E1D2402FB009BD069 /* BarLineScatterCandleBubbleChartDataProvider.swift in Sources */,
+				D4C392381D395B6700F0062E /* ChartsPageViewController.swift in Sources */,
 				D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */,
 				D48F1A631D2402FB009BD069 /* RadarChartDataSet.swift in Sources */,
 				D48F1A721D2402FB009BD069 /* ChartDataBaseFilter.swift in Sources */,
@@ -990,6 +997,7 @@
 				D48F1A4D1D2402FB009BD069 /* BarChartData.swift in Sources */,
 				D48F1A481D2402FB009BD069 /* ChartLimitLine.swift in Sources */,
 				D4355E7A1D393439000F678A /* ChartSourceHashtags.swift in Sources */,
+				D4C392361D39599600F0062E /* PieChartViewController.swift in Sources */,
 				D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */,
 				D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */,
 				D48F1A471D2402FB009BD069 /* ChartLegend.swift in Sources */,

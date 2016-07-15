@@ -113,7 +113,7 @@
                                             <barButtonItem title="Chart" id="qa8-B1-kfW" userLabel="toolbarButtonLogTime">
                                                 <connections>
                                                     <action selector="actionLogTime:" destination="BYZ-38-t0r" id="OOF-pS-Nhv"/>
-                                                    <segue destination="hea-1L-t8h" kind="show" id="cVc-eS-trT"/>
+                                                    <segue destination="0uj-nB-zyX" kind="show" id="3eP-zu-kH3"/>
                                                 </connections>
                                             </barButtonItem>
                                         </items>
@@ -319,6 +319,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Utx-J5-KbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1750" y="480"/>
+        </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="KR2-gg-2WT">
+            <objects>
+                <viewController id="V7F-lj-c6u" customClass="ChartViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bma-49-Ivf"/>
+                        <viewControllerLayoutGuide type="bottom" id="lCF-rO-Mih"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Rb-PL-rJG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VgU-wx-hb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-306" y="1147"/>
+        </scene>
+        <!--Charts Page View Controller-->
+        <scene sceneID="mzt-3G-O0r">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="0uj-nB-zyX" customClass="ChartsPageViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7D2-q0-ZP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="1143"/>
         </scene>
         <!--Day Time Pie Chart View Controller-->
         <scene sceneID="Xgh-It-8NR">
