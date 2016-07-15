@@ -12,6 +12,14 @@ class HashtagAutoCompleteAssistant {
     
     func isAutoCompletePossible(forInputString inputString: String) -> Bool {
         
+        guard let lastWord = inputString.lastWord else {
+            return false
+        }
+        
+        if lastWord.characters.startsWith(["#"]) {
+            return true
+        }
+        
         return false
     }
 }

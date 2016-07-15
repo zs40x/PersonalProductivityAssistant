@@ -15,6 +15,22 @@ class HashtagAutoCompleteAssistant_isAutocompletePossible_Tests : XCTestCase {
         XCTAssertFalse(forInput(""))
     }
     
+    func testStringWithoutDash_saysNo() {
+        XCTAssertFalse(forInput("test"))
+    }
+    
+    func testFirstCharacterIsADash_saysYes() {
+        XCTAssertTrue(forInput("#"))
+    }
+    
+    func testSingleHashtagWork_saysYes() {
+        XCTAssertTrue(forInput("#test"))
+    }
+    
+    func testTwoWordsFirstHashtagSecondNone_saysNo() {
+        XCTAssertFalse(forInput("#test no"))
+    }
+    
     
     func forInput(inputString: String) -> Bool {
         return HashtagAutoCompleteAssistant().isAutoCompletePossible(forInputString: inputString)

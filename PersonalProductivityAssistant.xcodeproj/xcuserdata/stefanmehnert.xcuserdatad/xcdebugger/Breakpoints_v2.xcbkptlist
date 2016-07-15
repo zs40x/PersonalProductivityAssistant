@@ -429,5 +429,85 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistantTests/HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift"
+            timestampString = "490264260.11228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "testSingleHashtagWork_saysYes()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalProductivityAssistantTests.HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.testSingleHashtagWork_saysYes () -&gt; ()"
+                  moduleName = "PersonalProductivityAssistantTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistantTests/HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift"
+                  timestampString = "490264722.733799"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalProductivityAssistantTests.HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.(testSingleHashtagWork_saysYes () -&gt; ()).(implicit closure #1)"
+                  moduleName = "PersonalProductivityAssistantTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistantTests/HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift"
+                  timestampString = "490264722.734037"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "63">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/Utilities/Extensions/String.swift"
+            timestampString = "490264721.336535"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "String"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/Utilities/Extensions/String.swift"
+            timestampString = "490264745.865513"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "String"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
