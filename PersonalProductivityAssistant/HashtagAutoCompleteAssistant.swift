@@ -26,6 +26,12 @@ class HashtagAutoCompleteAssistant {
     
     func appendHastag(withName hashtag: String, to: String) -> String {
         
-        return hashtag
+        var hashtagToAppend: String = hashtag
+        
+        if to.hasSuffix("#") {
+            hashtagToAppend.removeAtIndex(hashtagToAppend.startIndex)
+        }
+        
+        return "\(to)\(hashtagToAppend)"
     }
 }

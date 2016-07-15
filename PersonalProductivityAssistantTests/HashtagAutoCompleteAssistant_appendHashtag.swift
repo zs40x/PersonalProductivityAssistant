@@ -15,8 +15,15 @@ class HashtagAutoCompleteAssistant_appendHashtag: XCTestCase {
     
     
     func testAppendToEmptyString() {
-        
         XCTAssertEqual(appendTo(""), hashtagToAppend)
+    }
+    
+    func testAppendToWordWithTrailingSpace() {
+        XCTAssertEqual(appendTo("word "), "word \(hashtagToAppend)")
+    }
+    
+    func testReplacesTrailingDash() {
+        XCTAssertEqual(appendTo("word #"), "word \(hashtagToAppend)")
     }
     
     
