@@ -15,6 +15,8 @@
 		D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */; };
 		D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */; };
 		D4355E701D38A08A000F678A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6F1D38A08A000F678A /* Config.swift */; };
+		D4355E741D38D138000F678A /* HashtagAutoCompleteAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E731D38D138000F678A /* HashtagAutoCompleteAssistant.swift */; };
+		D4355E761D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E751D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
@@ -184,6 +186,8 @@
 		D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickViewController.swift; path = ViewControllers/DateTimePickViewController.swift; sourceTree = "<group>"; };
 		D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickDelegate.swift; path = ViewControllers/Shared/DateTimePickDelegate.swift; sourceTree = "<group>"; };
 		D4355E6F1D38A08A000F678A /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D4355E731D38D138000F678A /* HashtagAutoCompleteAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant.swift; sourceTree = "<group>"; };
+		D4355E751D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
@@ -369,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */,
+				D4355E731D38D138000F678A /* HashtagAutoCompleteAssistant.swift */,
 			);
 			name = Hashtags;
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 			children = (
 				D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */,
 				D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */,
+				D4355E751D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift */,
 			);
 			name = Hashtags;
 			sourceTree = "<group>";
@@ -997,6 +1003,7 @@
 				D48F1A6C1D2402FB009BD069 /* ILineRadarChartDataSet.swift in Sources */,
 				D48F1A681D2402FB009BD069 /* IBubbleChartDataSet.swift in Sources */,
 				D48F1A861D2402FB009BD069 /* AnimatedZoomViewJob.swift in Sources */,
+				D4355E741D38D138000F678A /* HashtagAutoCompleteAssistant.swift in Sources */,
 				D48F1A881D2402FB009BD069 /* MoveChartViewJob.swift in Sources */,
 				D48F1A401D2402FB009BD069 /* LineChartView.swift in Sources */,
 				D48F1A8E1D2402FB009BD069 /* ChartDataRendererBase.swift in Sources */,
@@ -1079,6 +1086,7 @@
 			files = (
 				D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */,
 				D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */,
+				D4355E761D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift in Sources */,
 				D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
