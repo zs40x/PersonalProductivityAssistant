@@ -103,4 +103,16 @@ extension ChartsPageViewController: UIPageViewControllerDataSource {
         return orderedViewControllers[nextIndex]
     }
     
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return orderedViewControllers.count
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = viewControllers?.first,
+            firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) else {
+                return 0
+        }
+        
+        return firstViewControllerIndex
+    }
 }

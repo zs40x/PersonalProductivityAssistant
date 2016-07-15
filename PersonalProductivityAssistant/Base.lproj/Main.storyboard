@@ -357,7 +357,7 @@
         <!--Charts Page View Controller-->
         <scene sceneID="mzt-3G-O0r">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="0uj-nB-zyX" customClass="ChartsPageViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0uj-nB-zyX" customClass="ChartsPageViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7D2-q0-ZP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="354" y="1143"/>
