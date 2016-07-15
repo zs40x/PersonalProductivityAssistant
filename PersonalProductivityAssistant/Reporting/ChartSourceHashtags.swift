@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ChartSourceHashtags {
+class ChartSourceHashtags : ChartDataValueProvider {
     
     private let timeLogRepository = TimeLogRepository();
     

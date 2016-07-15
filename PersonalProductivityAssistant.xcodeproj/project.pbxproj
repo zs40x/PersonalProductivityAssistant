@@ -19,7 +19,8 @@
 		D4355E761D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E751D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift */; };
 		D4355E781D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E771D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift */; };
 		D4355E7A1D393439000F678A /* ChartSourceHashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E791D393439000F678A /* ChartSourceHashtags.swift */; };
-		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
+		D4355E7D1D3953A4000F678A /* ChartDataValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */; };
+		D43B89701D24444C0065248D /* ChartSourceFreevsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
 		D46CE0971D34BB7C00CD797F /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0961D34BB7C00CD797F /* NSDate.swift */; };
@@ -192,7 +193,8 @@
 		D4355E751D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift; sourceTree = "<group>"; };
 		D4355E771D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant_appendHashtag.swift; sourceTree = "<group>"; };
 		D4355E791D393439000F678A /* ChartSourceHashtags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceHashtags.swift; path = Reporting/ChartSourceHashtags.swift; sourceTree = "<group>"; };
-		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
+		D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataValueProvider.swift; sourceTree = "<group>"; };
+		D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreevsUsedTime.swift; path = Reporting/ChartSourceFreevsUsedTime.swift; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
 		D46CE0961D34BB7C00CD797F /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
@@ -401,6 +403,14 @@
 			name = Hashtags;
 			sourceTree = "<group>";
 		};
+		D4355E7B1D39527F000F678A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		D43AF1D21D252EF20084B9C7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,7 +443,8 @@
 		D43B896E1D2444120065248D /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
-				D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */,
+				D4355E7B1D39527F000F678A /* Shared */,
+				D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */,
 				D4355E791D393439000F678A /* ChartSourceHashtags.swift */,
 			);
 			name = Reporting;
@@ -1055,6 +1066,7 @@
 				D48F1AA41D2402FB009BD069 /* ChartTransformer.swift in Sources */,
 				D48F1AA01D2402FB009BD069 /* ChartColorTemplates.swift in Sources */,
 				D48F1A6B1D2402FB009BD069 /* ILineChartDataSet.swift in Sources */,
+				D4355E7D1D3953A4000F678A /* ChartDataValueProvider.swift in Sources */,
 				D48F1A3F1D2402FB009BD069 /* HorizontalBarChartView.swift in Sources */,
 				D48F1A9A1D2402FB009BD069 /* LineChartRenderer.swift in Sources */,
 				D48F1A7B1D2402FB009BD069 /* CombinedHighlighter.swift in Sources */,
@@ -1065,7 +1077,7 @@
 				D48F1A601D2402FB009BD069 /* PieChartData.swift in Sources */,
 				D48F1AA51D2402FB009BD069 /* ChartTransformerHorizontalBarChart.swift in Sources */,
 				D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */,
-				D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */,
+				D43B89701D24444C0065248D /* ChartSourceFreevsUsedTime.swift in Sources */,
 				D48F1A8B1D2402FB009BD069 /* BubbleChartRenderer.swift in Sources */,
 				D48F1A741D2402FB009BD069 /* ChartDefaultXAxisValueFormatter.swift in Sources */,
 				D4DD6AA31D2A2CF400FC6B0E /* HashtagRepository.swift in Sources */,

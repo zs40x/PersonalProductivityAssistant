@@ -8,12 +8,7 @@
 
 import Foundation
 
-struct ChartDataValues {
-    let dataPoints: [String]
-    let values: [Double]
-}
-
-class ChartSourceFreeVsUsedTime {
+class ChartSourceFreeVsUsedTime : ChartDataValueProvider {
     
     let timeLogRepository = TimeLogRepository();
     
