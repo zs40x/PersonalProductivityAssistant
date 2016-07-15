@@ -8,19 +8,8 @@
 
 import UIKit
 
-enum DateTimeFieldToPick {
-    case From
-    case Until
-}
-
-class TableViewAutoCompleteCell: UITableViewCell {
-    
-    var xy: Int?
-    @IBOutlet weak var labelHashtag: UILabel!
-}
-
-
-class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DateTimePickDelegate, SegueHandlerType {
+class TimeLogViewController:
+        UIViewController, UITableViewDataSource, UITableViewDelegate, DateTimePickDelegate, SegueHandlerType {
     
     private var editMode = TimeLogEditMode.New
     private var autoCompleteItems = [String]()
@@ -42,6 +31,7 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var buttonDateTimeUntil: UIButton!
     @IBOutlet weak var buttonDateTimeFrom: UIButton!
     @IBOutlet weak var autoCompleteTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,17 +62,12 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let dateTimePickViewController = segue.destinationViewController as? DateTimePickViewController {
+        if let dateTimePickViewController =
+                segue.destinationViewController as? DateTimePickViewController {
             
             dateTimePickViewController.delegate = self
             dateTimePickViewController.dateTimeFieldToPick = dateTimeFieldToPick
-            
-            switch dateTimeFieldToPick! {
-            case .From:
-                dateTimePickViewController.selectedDateTime = self.dateTimeFrom
-            case .Until:
-                dateTimePickViewController.selectedDateTime = self.dateTimeUntil
-            }
+            dateTimePickViewController.selectedDateTime = getValueForDateTimeFieldToPick()
         }
     }
     
@@ -223,6 +208,16 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
         dateTimeFieldToPick = targetField
         
         self.performSegueWithIdentifier(.showDatePicker, sender: self)
+    }
+    
+    func getValueForDateTimeFieldToPick() -> NSDate? {
+        
+        switch dateTimeFieldToPick! {
+        case .From:
+            return self.dateTimeFrom
+        case .Until:
+            return self.dateTimeUntil
+        }
     }
     
     func updateAutoCompleteValues() {
