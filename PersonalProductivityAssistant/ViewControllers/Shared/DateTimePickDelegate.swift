@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum DateTimeFieldToPick {
+    case From
+    case Until
+}
+
 protocol DateTimePickDelegate {
     func dateTimePicked(fieldToPick selectedFieldToPick: DateTimeFieldToPick?, dateTime: NSDate);
 }
