@@ -13,8 +13,11 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var app = XCUIApplication()
     var toolbarAddActivityButton: XCUIElement?
     var activityInputField: XCUIElement?
-    var datePickerFrom: XCUIElement?
-    var datePickerUntil: XCUIElement?
+    var datePicker: XCUIElement?
+    var buttonPickDateTimeFrom: XCUIElement?
+    var buttonPickDateTimeUntil: XCUIElement?
+    var labelActivity: XCUIElement?
+    var useButton: XCUIElement?
 
     var tableView: XCUIElement?
     let tablesQuery = XCUIApplication().tables
@@ -28,8 +31,11 @@ class PersonalProductivityAssistantUITests: XCTestCase {
 
         activityInputField = app.textFields["textEditActivity"]
         toolbarAddActivityButton = app.toolbars.buttons["Log Time"]
-        datePickerFrom = app.datePickers.elementBoundByIndex(0)
-        datePickerUntil = app.datePickers.elementBoundByIndex(1)
+        datePicker = app.datePickers.elementBoundByIndex(0)
+        buttonPickDateTimeFrom = app.buttons["dateTimeFrom"]
+        buttonPickDateTimeUntil = app.buttons["dateTimeUntil"]
+        labelActivity = app.staticTexts.elementMatchingType(.Any, identifier: "Activity")
+        useButton = app.buttons["use"]
     }
     
     override func tearDown() {
@@ -51,8 +57,15 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         waitForElementToAppear(activityInputField!)
         let initialActivityName = getActivityNameWithDateTime()
         typeActivityName(initialActivityName)
-        setDatePickerValues(datePickerFrom!, monthAndDay: "Aug 1", hour: "10", minute: "30", amPm: "AM")
-        setDatePickerValues(datePickerUntil!, monthAndDay: "Aug 1", hour: "11", minute: "15", amPm: "AM")
+        labelActivity?.tap()
+        
+        buttonPickDateTimeFrom?.tap()
+        setDatePickerValues(monthAndDay: "Aug 1", hour: "10", minute: "30", amPm: "AM")
+        useButton?.tap()
+        
+        buttonPickDateTimeUntil?.tap()
+        setDatePickerValues(monthAndDay: "Aug 1", hour: "11", minute: "15", amPm: "AM")
+        useButton?.tap()
         
         // Press add button
         app.navigationBars["Title"].buttons["add"].tap()
@@ -88,11 +101,11 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         XCTAssert(!getTableStaticTextElement(changedActivityName).exists)
     }
     
-    func setDatePickerValues(datePicker: XCUIElement, monthAndDay: String, hour: String, minute: String, amPm: String) {
-        datePicker.pickerWheels.elementBoundByIndex(0).adjustToPickerWheelValue(monthAndDay)
-        datePicker.pickerWheels.elementBoundByIndex(1).adjustToPickerWheelValue(hour)
-        datePicker.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue(minute)
-        datePicker.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue(amPm)
+    func setDatePickerValues(monthAndDay monthAndDay: String, hour: String, minute: String, amPm: String) {
+        self.datePicker!.pickerWheels.elementBoundByIndex(0).adjustToPickerWheelValue(monthAndDay)
+        self.datePicker!.pickerWheels.elementBoundByIndex(1).adjustToPickerWheelValue(hour)
+        self.datePicker!.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue(minute)
+        self.datePicker!.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue(amPm)
     }
     
     func typeActivityName(activityName: String) {
