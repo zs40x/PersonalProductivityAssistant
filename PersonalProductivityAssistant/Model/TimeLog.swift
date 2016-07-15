@@ -17,12 +17,12 @@ class TimeLog: NSManagedObject {
     func activityAsAttributedString() -> NSAttributedString {
         let attributedActivity = NSMutableAttributedString(string: self.activity!)
         
-        guard let hashtags = self.hashtags else {
-            return attributedActivity
-        }
-        
-        for hashtag in hashtags {
-            for hashtagRange in self.activity!.findOccurencesOf(text: hashtag.name!) {
+        for word in self.activity!.byWords {
+            if !word.hasPrefix("#") {
+                continue
+            }
+            
+            for hashtagRange in self.activity!.findOccurencesOf(text: word) {
                 attributedActivity.addAttribute(
                     NSForegroundColorAttributeName, value: UIColor.blueColor(), range: hashtagRange)
             }
