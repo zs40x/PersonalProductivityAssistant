@@ -31,6 +31,10 @@ class HashtagAutoCompleteAssistant_isAutocompletePossible_Tests : XCTestCase {
         XCTAssertFalse(forInput("#test no"))
     }
     
+    func testLastWordIsAHashtagWithTrailingSpace_saysNo() {
+        XCTAssertFalse(forInput("word #hastag "))
+    }
+    
     
     func forInput(inputString: String) -> Bool {
         return HashtagAutoCompleteAssistant().isAutoCompletePossible(forInputString: inputString)

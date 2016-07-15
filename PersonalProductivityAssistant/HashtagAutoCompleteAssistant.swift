@@ -16,10 +16,16 @@ class HashtagAutoCompleteAssistant {
             return false
         }
         
-        if lastWord.characters.startsWith(["#"]) {
+        if lastWord.characters.startsWith(["#"])
+                && inputString.characters.last! != " " {
             return true
         }
         
         return false
+    }
+    
+    func appendHastag(withName hashtag: String, to: String) -> String {
+        
+        return hashtag
     }
 }
