@@ -18,6 +18,7 @@
 		D4355E741D38D138000F678A /* HashtagAutoCompleteAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E731D38D138000F678A /* HashtagAutoCompleteAssistant.swift */; };
 		D4355E761D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E751D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift */; };
 		D4355E781D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E771D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift */; };
+		D4355E7A1D393439000F678A /* ChartSourceHashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E791D393439000F678A /* ChartSourceHashtags.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreeVsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
@@ -190,6 +191,7 @@
 		D4355E731D38D138000F678A /* HashtagAutoCompleteAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant.swift; sourceTree = "<group>"; };
 		D4355E751D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift; sourceTree = "<group>"; };
 		D4355E771D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant_appendHashtag.swift; sourceTree = "<group>"; };
+		D4355E791D393439000F678A /* ChartSourceHashtags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceHashtags.swift; path = Reporting/ChartSourceHashtags.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreeVsUsedTime.swift; path = Charts/Reporting/ChartSourceFreeVsUsedTime.swift; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				D43B896F1D24444C0065248D /* ChartSourceFreeVsUsedTime.swift */,
+				D4355E791D393439000F678A /* ChartSourceHashtags.swift */,
 			);
 			name = Reporting;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				D48F1A611D2402FB009BD069 /* PieChartDataSet.swift in Sources */,
 				D48F1A4D1D2402FB009BD069 /* BarChartData.swift in Sources */,
 				D48F1A481D2402FB009BD069 /* ChartLimitLine.swift in Sources */,
+				D4355E7A1D393439000F678A /* ChartSourceHashtags.swift in Sources */,
 				D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */,
 				D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */,
 				D48F1A471D2402FB009BD069 /* ChartLegend.swift in Sources */,

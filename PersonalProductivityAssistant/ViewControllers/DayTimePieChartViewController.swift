@@ -12,7 +12,7 @@ import UIKit
 
 class DayTimePieChartViewController: UIViewController, SegueHandlerType, ChartViewDelegate {
     
-    let chartDataSource = ChartSourceFreeVsUsedTime()
+    let chartDataSource = ChartSourceHashtags()
     
     enum SegueIdentifier : String {
         case UnwindToMainView
@@ -73,6 +73,12 @@ class DayTimePieChartViewController: UIViewController, SegueHandlerType, ChartVi
         
         colors.append(UIColor.greenColor())
         colors.append(UIColor.redColor())
+        colors.append(UIColor.brownColor())
+        colors.append(UIColor.cyanColor())
+        colors.append(UIColor.purpleColor())
+        colors.append(UIColor.purpleColor())
+        colors.append(UIColor.orangeColor())
+        colors.append(UIColor.magentaColor())
         
         pieChartDataSet.colors = colors
     }

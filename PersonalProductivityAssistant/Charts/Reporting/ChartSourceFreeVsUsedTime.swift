@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ChartFreeVsUsedTimeData {
+struct ChartDataValues {
     let dataPoints: [String]
     let values: [Double]
 }
@@ -18,11 +18,11 @@ class ChartSourceFreeVsUsedTime {
     let timeLogRepository = TimeLogRepository();
     
     
-    func getChartData() -> ChartFreeVsUsedTimeData {
+    func getChartData() -> ChartDataValues {
         let usedTime = getUsedTimeAmount()
         let freeTime = 24.0 - usedTime
         
-        return ChartFreeVsUsedTimeData(
+        return ChartDataValues(
                 dataPoints: ["Free Time", "Used Time"],
                 values: [freeTime, usedTime]
             );
