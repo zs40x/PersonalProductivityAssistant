@@ -13,6 +13,13 @@ enum SelectedDateField {
     case Until
 }
 
+class TableViewAutoCompleteCell: UITableViewCell {
+    
+    var xy: Int?
+    @IBOutlet weak var labelHashtag: UILabel!
+}
+
+
 class TimeLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DateTimePickDelegate, SegueHandlerType {
     
     private var editMode = TimeLogEditMode.New
@@ -36,8 +43,12 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textEditActivity.resignFirstResponder()
+        autoCompleteTableView.delegate = self
+        autoCompleteTableView.dataSource = self
         autoCompleteTableView.hidden = true
+        autoCompleteTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        textEditActivity.resignFirstResponder()
         
         initializeDefaultValues()
         initializeUpdateModeFromDelegate()
@@ -105,7 +116,12 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func actionActivityEditingChanged(sender: AnyObject) {
-        autoCompleteTableView.hidden = false
+        
+        if autoCompleteTableView.hidden {
+            autoCompleteTableView.hidden = false
+        }
+        
+        updateAutoCompleteValues()
     }
     
     @IBAction func actionTapedDateTimeStart(sender: AnyObject) {
@@ -131,16 +147,12 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView,
                    cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell =
-            tableView.dequeueReusableCellWithIdentifier(
-                "CellPrototypeAutocomplete", forIndexPath: indexPath) as! TableViewActivityCell
         
         let autoCompleteItem = autoCompleteItems[indexPath.row]
         
-        //cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
-        //cell.textViewFrom?.text = timeLog.from?.asFormattedString("dd.MM.YYYY HH:mm:ss")
-        //cell.textViewUntil?.text = timeLog.until?.asFormattedString("dd.MM.YYYY HH:mm:ss")
-        //cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
+        let cell = self.autoCompleteTableView.dequeueReusableCellWithIdentifier("cell")!
+
+        cell.textLabel!.text = autoCompleteItem
         
         return cell
     }
@@ -217,5 +229,25 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     func convertNSDateToReadableStringOrDefaultValue(date: NSDate?) -> String {
         
         return date != nil ? date!.asFormattedString() : "n/a"
+    }
+    
+    func updateAutoCompleteValues() {
+        
+        autoCompleteItems.removeAll()
+        
+        let getAllHashtagsResult = HashtagRepository().getAll()
+        
+        guard getAllHashtagsResult.isSucessful else {
+            showAlertDialog(getAllHashtagsResult.errorMessage)
+            return
+        }
+        
+        if let allHashtags = getAllHashtagsResult.value {
+            for hashtag in allHashtags {
+                autoCompleteItems.append(hashtag.name!)
+            }
+        }
+        
+        self.autoCompleteTableView.reloadData()
     }
 }
