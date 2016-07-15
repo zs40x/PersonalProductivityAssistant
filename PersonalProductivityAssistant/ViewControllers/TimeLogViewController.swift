@@ -136,7 +136,8 @@ class TimeLogViewController:
         
         let tappedHashtag = autoCompleteItems[indexPath.row]
         
-        self.textEditActivity.text = "\(self.textEditActivity.text!)\(tappedHashtag) "
+        self.textEditActivity.text =
+            hashtagAutocompleteAssistant.appendHastag(withName: tappedHashtag, to: self.textEditActivity.text!)
     }
     
     
