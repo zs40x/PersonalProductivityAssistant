@@ -32,6 +32,6 @@ class HashtagAutoCompleteAssistant {
             hashtagToAppend.removeAtIndex(hashtagToAppend.startIndex)
         }
         
-        return "\(to)\(hashtagToAppend)"
+        return "\(to)\(hashtagToAppend) "
     }
 }
