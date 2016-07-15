@@ -28,6 +28,8 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     private var dateTimeFrom: NSDate?
     private var dateTimeUntil: NSDate?
     
+    var timeLogDataToEdit: TimeLogData?
+    
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     
     enum SegueIdentifier : String {
@@ -195,14 +197,9 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func initializeUpdateModeFromDelegate() {
         
-        guard let timeEditDelegate = self.timeLogEditDelegate else {
+        guard let editTimeLogData = self.timeLogDataToEdit else {
             return
         }
-        
-        guard let editTimeLogData = timeEditDelegate.editTimeLogData() else {
-            return
-        }
-        
         
         self.textEditActivity.text = editTimeLogData.Activity
         

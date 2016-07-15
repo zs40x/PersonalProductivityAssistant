@@ -50,6 +50,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if let viewControllerAddTimeLog = segue.destinationViewController as? TimeLogViewController {
             viewControllerAddTimeLog.timeLogEditDelegate = self
+            viewControllerAddTimeLog.timeLogDataToEdit = timeLogToEdit?.asTimeLogData()
         }
     }
 
@@ -96,11 +97,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result {
         return editedTimeLog(editMode, timeLogData: timeLog)
     }
-    
-    func editTimeLogData() -> TimeLogData? {
-        return timeLogToEdit?.asTimeLogData()
-    }
-    
     
     // MARK: Actions
     @IBAction func unwindToMainView(segue: UIStoryboardSegue) {
