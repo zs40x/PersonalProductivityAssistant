@@ -161,7 +161,9 @@ class TimeLogViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let tappedHashtag = autoCompleteItems[indexPath.row]
         
+        self.textEditActivity.text = "\(self.textEditActivity.text!)\(tappedHashtag) "
     }
     
     
