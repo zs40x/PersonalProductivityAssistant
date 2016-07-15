@@ -21,7 +21,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var tableViewTimeLogs = [TimeLog]()
     private var timeLogToEdit: TimeLog?
     
-    enum SegueIdentifier : String {
+    enum SegueIdentifier: String {
         case ShowSegueToAddTimeLog
     }
 
@@ -104,6 +104,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func actionToolbarAddTimeLog(sender: AnyObject) {
+        
         timeLogToEdit = nil
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
@@ -159,6 +160,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func deleteTimeLog(tableView: UITableView, indexPath: NSIndexPath) {
+        
         let timeLogToDelete = tableViewTimeLogs[indexPath.row]
         let deleteResult = timeLogRepository.delete(timeLogToDelete)
         
