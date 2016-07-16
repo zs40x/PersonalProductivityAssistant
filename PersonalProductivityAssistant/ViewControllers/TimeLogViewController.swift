@@ -93,7 +93,7 @@ class TimeLogViewController:
             }
             
             textEditActivity.text = ""
-            performSegueWithIdentifier(.UnwindToMainView, sender: self)
+            self.navigationController!.popViewControllerAnimated(true)
         }
     }
     
