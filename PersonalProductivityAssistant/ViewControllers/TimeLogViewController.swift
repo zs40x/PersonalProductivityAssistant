@@ -23,7 +23,6 @@ class TimeLogViewController:
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     
     enum SegueIdentifier : String {
-        case UnwindToMainView
         case showDatePicker
     }
     

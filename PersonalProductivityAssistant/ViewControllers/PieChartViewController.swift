@@ -8,14 +8,10 @@
 
 import UIKit
 
-class PieChartViewController: UIViewController, SegueHandlerType, ChartViewDelegate  {
+class PieChartViewController: UIViewController, ChartViewDelegate  {
     
     var chartDataValueProvider: ChartDataValueProvider?
-    
-    enum SegueIdentifier : String {
-        case UnwindToMainView
-    }
-    
+
     
     @IBOutlet weak var pieChartView: PieChartView!
     
