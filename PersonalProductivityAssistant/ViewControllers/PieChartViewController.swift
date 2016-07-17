@@ -11,7 +11,6 @@ import UIKit
 class PieChartViewController: UIViewController, SegueHandlerType, ChartViewDelegate  {
     
     var chartDataValueProvider: ChartDataValueProvider?
-    var unwindDelegate: UnwindDelegate?
     
     enum SegueIdentifier : String {
         case UnwindToMainView
@@ -50,11 +49,6 @@ class PieChartViewController: UIViewController, SegueHandlerType, ChartViewDeleg
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
         
-        guard let upperViewUnwindDelegate = self.unwindDelegate else {
-            return
-        }
-        
-        upperViewUnwindDelegate.unwind()
     }
     
     func setChart(dataPoints: [String], values: [Double]) {

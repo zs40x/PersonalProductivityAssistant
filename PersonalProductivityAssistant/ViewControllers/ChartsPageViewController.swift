@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChartsPageViewController: UIPageViewController, UnwindDelegate {
+class ChartsPageViewController: UIPageViewController {
     
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
@@ -24,7 +24,6 @@ class ChartsPageViewController: UIPageViewController, UnwindDelegate {
         
         let pieChartViewController = uiViewController as! PieChartViewController
         pieChartViewController.chartDataValueProvider = chartDataValueProvider
-        pieChartViewController.unwindDelegate = self
         
         return pieChartViewController
     }
@@ -115,9 +114,5 @@ extension ChartsPageViewController: UIPageViewControllerDataSource {
         }
         
         return firstViewControllerIndex
-    }
-    
-    func unwind() {
-        self.performSegueWithIdentifier("UnwindToMainView", sender: self)
     }
 }
