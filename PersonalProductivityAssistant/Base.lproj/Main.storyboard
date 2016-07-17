@@ -247,7 +247,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Time Log" id="PKF-rX-KmS">
-                        <barButtonItem key="rightBarButtonItem" title="save" id="tRq-AC-ILN">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="tRq-AC-ILN">
                             <connections>
                                 <action selector="actionAddTimeLog:" destination="wEc-tL-ERe" id="OdJ-ze-Vdv"/>
                             </connections>
@@ -265,7 +265,7 @@
             </objects>
             <point key="canvasLocation" x="1856" y="362"/>
         </scene>
-        <!--Date Time Pick View Controller-->
+        <!--Title-->
         <scene sceneID="P7j-GY-hyW">
             <objects>
                 <viewController id="OYf-49-vJT" customClass="DateTimePickViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
@@ -304,6 +304,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hb4-0p-rHi" secondAttribute="trailing" id="fCn-XV-Yjp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="ldu-v4-F3l">
+                        <barButtonItem key="rightBarButtonItem" title="Set" id="oUY-2v-NzJ">
+                            <connections>
+                                <action selector="actionTappedUse:" destination="OYf-49-vJT" id="LQb-cr-vqN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="200"/>
                     <connections>
                         <outlet property="datePicker" destination="Miz-0e-9Qt" id="pK2-6w-Kuf"/>

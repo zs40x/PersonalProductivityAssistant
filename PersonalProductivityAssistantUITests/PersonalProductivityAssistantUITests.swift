@@ -17,7 +17,9 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var buttonPickDateTimeFrom: XCUIElement?
     var buttonPickDateTimeUntil: XCUIElement?
     var labelActivity: XCUIElement?
-    var useButton: XCUIElement?
+    var setDateTimeFromButton: XCUIElement?
+    var setDateTimeUntilButton: XCUIElement?
+    var timeLogSaveButton: XCUIElement?
 
     var tableView: XCUIElement?
     let tablesQuery = XCUIApplication().tables
@@ -35,7 +37,9 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         buttonPickDateTimeFrom = app.buttons["dateTimeFrom"]
         buttonPickDateTimeUntil = app.buttons["dateTimeUntil"]
         labelActivity = app.staticTexts.elementMatchingType(.Any, identifier: "Activity")
-        useButton = app.buttons["use"]
+        setDateTimeFromButton = app.navigationBars["From"].buttons["Set"]
+        setDateTimeUntilButton = app.navigationBars["Until"].buttons["Set"]
+        timeLogSaveButton = app.navigationBars["Time Log"].buttons["Save"]
     }
     
     override func tearDown() {
@@ -61,14 +65,13 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         
         buttonPickDateTimeFrom?.tap()
         setDatePickerValues(monthAndDay: "Aug 1", hour: "10", minute: "30", amPm: "AM")
-        useButton?.tap()
+        setDateTimeFromButton?.tap()
         
         buttonPickDateTimeUntil?.tap()
         setDatePickerValues(monthAndDay: "Aug 1", hour: "11", minute: "15", amPm: "AM")
-        useButton?.tap()
+        setDateTimeUntilButton?.tap()
         
-        // Press add button
-        app.navigationBars["Title"].buttons["add"].tap()
+        timeLogSaveButton?.tap()
         
         // Verify element has been added
         XCTAssert(getTableStaticTextElement(initialActivityName).exists)
@@ -83,8 +86,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         waitForElementToAppear(activityInputField!)
         clearAndTypeActivityName(changedActivityName)
         
-        // Press add button
-        app.navigationBars["Title"].buttons["add"].tap()
+        timeLogSaveButton?.tap()
         
         // Verify element has been modifed
         XCTAssert(getTableStaticTextElement(changedActivityName).exists)

@@ -23,6 +23,15 @@ class DateTimePickViewController: UIViewController {
         if let preSelectedDateTime = self.selectedDateTime {
             self.datePicker.date = preSelectedDateTime
         }
+        
+        if let fieldToPick = self.dateTimeFieldToPick {
+            switch fieldToPick {
+            case .From:
+                navigationItem.title = "From"
+            case .Until:
+                navigationItem.title = "Until"
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,7 +43,7 @@ class DateTimePickViewController: UIViewController {
     @IBAction func actionTappedUse(sender: AnyObject) {
         
         defer {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popViewControllerAnimated(true)
         }
         
         guard dateTimeFieldToPick != nil else {
