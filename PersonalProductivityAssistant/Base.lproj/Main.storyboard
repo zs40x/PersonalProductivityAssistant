@@ -277,31 +277,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hb4-0p-rHi">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Miz-0e-9Qt">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="570"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="490169747.40824598">
-                                            <!--2016-07-14 06:15:47 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSa-zK-jKI">
-                                        <rect key="frame" x="0.0" y="570" width="560" height="30"/>
-                                        <state key="normal" title="use"/>
-                                        <connections>
-                                            <action selector="actionTappedUse:" destination="OYf-49-vJT" eventType="touchUpInside" id="Adf-qi-H9r"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Miz-0e-9Qt">
+                                <rect key="frame" x="8" y="72" width="584" height="520"/>
+                                <date key="date" timeIntervalSinceReferenceDate="490169747.40824598">
+                                    <!--2016-07-14 06:15:47 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1y7-Gd-hVE" firstAttribute="top" secondItem="hb4-0p-rHi" secondAttribute="bottom" id="BUA-w5-MRF"/>
-                            <constraint firstItem="hb4-0p-rHi" firstAttribute="top" secondItem="zpC-bS-hZB" secondAttribute="topMargin" id="NYu-pj-jdo"/>
-                            <constraint firstItem="hb4-0p-rHi" firstAttribute="leading" secondItem="zpC-bS-hZB" secondAttribute="leadingMargin" id="RCn-gb-n7X"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hb4-0p-rHi" secondAttribute="trailing" id="fCn-XV-Yjp"/>
+                            <constraint firstItem="1y7-Gd-hVE" firstAttribute="top" secondItem="Miz-0e-9Qt" secondAttribute="bottom" constant="8" id="GPp-kd-PFP"/>
+                            <constraint firstItem="Miz-0e-9Qt" firstAttribute="leading" secondItem="zpC-bS-hZB" secondAttribute="leading" constant="8" id="HPZ-PJ-4Ly"/>
+                            <constraint firstAttribute="trailing" secondItem="Miz-0e-9Qt" secondAttribute="trailing" constant="8" id="LPP-pk-C0B"/>
+                            <constraint firstItem="Miz-0e-9Qt" firstAttribute="top" secondItem="sxH-c6-yLY" secondAttribute="bottom" constant="8" id="boQ-sW-0O8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="ldu-v4-F3l">
