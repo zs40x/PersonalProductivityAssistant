@@ -345,13 +345,8 @@
         <!--Charts Page View Controller-->
         <scene sceneID="mzt-3G-O0r">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0uj-nB-zyX" customClass="ChartsPageViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="k1l-0f-FQE" kind="unwind" identifier="UnwindToMainView" unwindAction="unwindToMainView:" id="wgy-lG-Mda"/>
-                    </connections>
-                </pageViewController>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0uj-nB-zyX" customClass="ChartsPageViewController" customModule="PersonalProductivityAssistant" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7D2-q0-ZP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="k1l-0f-FQE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="340" y="1139"/>
         </scene>
