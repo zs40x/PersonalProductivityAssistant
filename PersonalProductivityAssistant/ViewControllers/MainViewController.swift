@@ -26,7 +26,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     
-    @IBOutlet weak var textEditActivity: UITextField!
     @IBOutlet weak var tableViewActivities: UITableView!
     
     
