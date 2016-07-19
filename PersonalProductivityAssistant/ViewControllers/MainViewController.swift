@@ -15,7 +15,7 @@ class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewDuration: UILabel!
 }
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegueHandlerType, TimeLogEditDelegate {
+class MainViewController: UIViewController, SegueHandlerType {
     
     private let timeLogRepository = TimeLogRepository()
     private var tableViewTimeLogs = [TimeLog]()
@@ -32,7 +32,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewActivities.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        //tableViewActivities.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -53,49 +53,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    
-    // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewTimeLogs.count
-    }
-    
-    func tableView(tableView: UITableView,
-                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell =
-            tableView.dequeueReusableCellWithIdentifier(
-                "CellPrototypeActivity", forIndexPath: indexPath) as! TableViewActivityCell
-        
-        let timeLog = tableViewTimeLogs[indexPath.row]
-        
-        cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
-        cell.textViewFrom?.text = timeLog.from?.asFormattedString()
-        cell.textViewUntil?.text = timeLog.until?.asFormattedString()
-        cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
-        
-        return cell
-    }
-    
-    
-    // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        timeLogToEdit = tableViewTimeLogs[indexPath.row]
-        
-        performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if editingStyle == .Delete {
-            deleteTimeLog(tableView, indexPath: indexPath)
-        }
-    }
-
-    
-    // MARK: TimeLogEditDelegate
-    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result {
-        return editedTimeLog(editMode, timeLogData: timeLog)
-    }
     
     // MARK: Actions
     @IBAction func unwindToMainView(segue: UIStoryboardSegue) {
@@ -177,3 +134,52 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 }
 
+
+extension MainViewController : UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewTimeLogs.count
+    }
+    
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell =
+            tableView.dequeueReusableCellWithIdentifier(
+                "CellPrototypeActivity", forIndexPath: indexPath) as! TableViewActivityCell
+        
+        let timeLog = tableViewTimeLogs[indexPath.row]
+        
+        cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
+        cell.textViewFrom?.text = timeLog.from?.asFormattedString()
+        cell.textViewUntil?.text = timeLog.until?.asFormattedString()
+        cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
+        
+        return cell
+    }
+}
+
+
+extension MainViewController : UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        timeLogToEdit = tableViewTimeLogs[indexPath.row]
+        
+        performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            deleteTimeLog(tableView, indexPath: indexPath)
+        }
+    }
+}
+
+
+extension MainViewController : TimeLogEditDelegate {
+    
+    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result {
+        return editedTimeLog(editMode, timeLogData: timeLog)
+    }
+}
