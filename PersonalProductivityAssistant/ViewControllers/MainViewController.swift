@@ -31,8 +31,6 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //tableViewActivities.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,10 +53,6 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     
     // MARK: Actions
-    @IBAction func unwindToMainView(segue: UIStoryboardSegue) {
-        
-    }
-    
     @IBAction func actionToolbarAddTimeLog(sender: AnyObject) {
         
         timeLogToEdit = nil
@@ -85,28 +79,31 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) -> Result {
         
-        if editMode == TimeLogEditMode.Updated {
+        switch editMode {
             
-            guard let editedTimeLog = timeLogToEdit else {
-                return Result.Failure("invalid timeLog")
-            }
+            case .Updated:
             
-            editedTimeLog.updateFromTimeLogData(timeLogData)
+                guard let editedTimeLog = timeLogToEdit else {
+                    return Result.Failure("invalid timeLog")
+                }
+            
+                editedTimeLog.updateFromTimeLogData(timeLogData)
 
-            let saveChangesResult = timeLogRepository.save()
-            
-            if !timeLogRepository.save().isSucessful {
-                return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
-            }
-        }
-        else {
-            let newTimeLogResult = timeLogRepository.addNew(timeLogData)
+                let saveChangesResult = timeLogRepository.save()
+                
+                if !timeLogRepository.save().isSucessful {
+                    return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
+                }
         
-            if !newTimeLogResult.isSucessful {
-                return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
-            }
+            case.New:
+                
+                let newTimeLogResult = timeLogRepository.addNew(timeLogData)
+        
+                if !newTimeLogResult.isSucessful {
+                    return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
+                }
             
-            tableViewTimeLogs.append(newTimeLogResult.value!)
+                tableViewTimeLogs.append(newTimeLogResult.value!)
         }
         
         sortTimeLogTable()
