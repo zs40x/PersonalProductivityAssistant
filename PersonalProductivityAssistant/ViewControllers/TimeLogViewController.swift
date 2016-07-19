@@ -9,7 +9,7 @@
 import UIKit
 
 class TimeLogViewController:
-        UIViewController, UITableViewDataSource, UITableViewDelegate, DateTimePickDelegate, SegueHandlerType {
+        UIViewController, DateTimePickDelegate, SegueHandlerType {
     
     private var editMode = TimeLogEditMode.New
     private var autoCompleteItems = [String]()
@@ -70,9 +70,6 @@ class TimeLogViewController:
             dateTimePickViewController.selectedDateTime = getValueForDateTimeFieldToPick()
         }
     }
-    
-    @IBAction func unwindToAddTimeLogView(segue: UIStoryboardSegue) {
-    }
 
     
     // MARK: Actions
@@ -111,36 +108,7 @@ class TimeLogViewController:
         self.pickDateTime(.Until)
     }
     
-    
-    // MARK: UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autoCompleteItems.count
-    }
-    
-    func tableView(tableView: UITableView,
-                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let autoCompleteItem = autoCompleteItems[indexPath.row]
-        
-        let cell =
-            self.autoCompleteTableView.dequeueReusableCellWithIdentifier("cell")!
-        cell.textLabel!.text = autoCompleteItem
-        
-        return cell
-    }
-    
-    
-    // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let tappedHashtag = autoCompleteItems[indexPath.row]
-        
-        self.textEditActivity.text =
-            hashtagAutocompleteAssistant.appendHastag(withName: tappedHashtag, to: self.textEditActivity.text!)
-        
-        self.autoCompleteTableView.hidden = true
-    }
-    
+
     
     // MARK: DateTimePickedDelegate
     func dateTimePicked(fieldToPick selectedDateTime: DateTimeFieldToPick?, dateTime: NSDate) {
@@ -193,8 +161,10 @@ class TimeLogViewController:
     
     func displayFromAndUntilDateTime() {
         
-        self.buttonDateTimeFrom.setTitle(convertNSDateToReadableStringOrDefaultValue(self.dateTimeFrom), forState: .Normal)
-        self.buttonDateTimeUntil.setTitle(convertNSDateToReadableStringOrDefaultValue(self.dateTimeUntil), forState: .Normal)
+        self.buttonDateTimeFrom.setTitle(
+            convertNSDateToReadableStringOrDefaultValue(self.dateTimeFrom), forState: .Normal)
+        self.buttonDateTimeUntil.setTitle(
+            convertNSDateToReadableStringOrDefaultValue(self.dateTimeUntil), forState: .Normal)
     }
     
     func convertNSDateToReadableStringOrDefaultValue(date: NSDate?) -> String {
@@ -251,5 +221,34 @@ class TimeLogViewController:
         }
         
         self.autoCompleteTableView.reloadData()
+    }
+}
+
+extension TimeLogViewController :  UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return autoCompleteItems.count
+    }
+    
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let autoCompleteItem = autoCompleteItems[indexPath.row]
+        
+        let cell =
+            self.autoCompleteTableView.dequeueReusableCellWithIdentifier("cell")!
+        cell.textLabel!.text = autoCompleteItem
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let tappedHashtag = autoCompleteItems[indexPath.row]
+        
+        self.textEditActivity.text =
+            hashtagAutocompleteAssistant.appendHastag(withName: tappedHashtag, to: self.textEditActivity.text!)
+        
+        self.autoCompleteTableView.hidden = true
     }
 }
