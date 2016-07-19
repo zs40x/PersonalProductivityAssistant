@@ -132,7 +132,7 @@ class MainViewController: UIViewController, SegueHandlerType {
 }
 
 
-extension MainViewController : UITableViewDataSource {
+extension MainViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewTimeLogs.count
@@ -153,11 +153,7 @@ extension MainViewController : UITableViewDataSource {
         
         return cell
     }
-}
 
-
-extension MainViewController : UITableViewDelegate {
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
