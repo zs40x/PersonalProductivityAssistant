@@ -23,8 +23,15 @@ class TimeLog: NSManagedObject {
             }
             
             for hashtagRange in self.activity!.findOccurencesOf(text: word) {
+                
+                let wordWithoutHashtag = word.characters.dropFirst()
+                
                 attributedActivity.addAttribute(
-                    NSForegroundColorAttributeName, value: UIColor.blueColor(), range: hashtagRange)
+                    NSLinkAttributeName, value:"hash:\(wordWithoutHashtag.dropFirst())", range: hashtagRange)
+                //attributedActivity.addAttribute(
+                //    NSFontAttributeName, value: UIFont.systemFontOfSize(15.0), range: hashtagRange)
+                attributedActivity.addAttribute(
+                    NSUnderlineStyleAttributeName, value: NSUnderlineStyle.PatternDot.rawValue, range: hashtagRange)
             }
         }
         

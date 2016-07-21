@@ -11,9 +11,10 @@ import UIKit
 class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewUntil: UILabel!
     @IBOutlet weak var textViewFrom: UILabel!
-    @IBOutlet weak var textViewActivity: UILabel!
+    @IBOutlet weak var textViewActivity: UITextView!
     @IBOutlet weak var textViewDuration: UILabel!
 }
+
 
 class MainViewController: UIViewController, SegueHandlerType {
     
@@ -132,7 +133,7 @@ class MainViewController: UIViewController, SegueHandlerType {
 }
 
 
-extension MainViewController : UITableViewDataSource, UITableViewDelegate {
+extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewTimeLogs.count
@@ -147,18 +148,32 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate {
         let timeLog = tableViewTimeLogs[indexPath.row]
         
         cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
+        cell.textViewActivity?.selectable = true
+        cell.textViewActivity?.delegate = self
+        cell.textViewActivity?.textContainerInset = UIEdgeInsetsZero
+        
         cell.textViewFrom?.text = timeLog.from?.asFormattedString()
         cell.textViewUntil?.text = timeLog.until?.asFormattedString()
         cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
         
         return cell
     }
+    
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        
+        let tappedHashtag =
+            textView.attributedText.attributedSubstringFromRange(characterRange).string
+        
+        print(tappedHashtag)
+        
+        return false
+    }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
-        performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
+        //performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
