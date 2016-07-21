@@ -30,10 +30,12 @@ class TimeLog: NSManagedObject {
                     NSLinkAttributeName, value:"hash:\(wordWithoutHashtag.dropFirst())", range: hashtagRange)
                 //attributedActivity.addAttribute(
                 //    NSFontAttributeName, value: UIFont.systemFontOfSize(15.0), range: hashtagRange)
-                attributedActivity.addAttribute(
-                    NSUnderlineStyleAttributeName, value: NSUnderlineStyle.PatternDot.rawValue, range: hashtagRange)
+                //attributedActivity.addAttribute(
+                    //NSUnderlineStyleAttributeName, value: NSUnderlineStyle.PatternDot.rawValue, range: hashtagRange)
             }
         }
+        
+        attributedActivity.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(16.0), range: NSRange(location: 0, length: attributedActivity.string.characters.count))
         
         return attributedActivity
     }

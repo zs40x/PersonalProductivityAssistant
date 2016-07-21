@@ -44,7 +44,7 @@
                                                                             <attributedString key="attributedText">
                                                                                 <fragment content="Activityss">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                                                        <font key="NSFont" size="18" name="ArialMT"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>

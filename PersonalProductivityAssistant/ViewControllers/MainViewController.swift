@@ -150,6 +150,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
         cell.textViewActivity?.selectable = true
         cell.textViewActivity?.delegate = self
+        cell.textViewActivity?.contentInset = UIEdgeInsetsMake(0,-4,0,0);
         cell.textViewActivity?.textContainerInset = UIEdgeInsetsZero
         
         cell.textViewFrom?.text = timeLog.from?.asFormattedString()
@@ -164,7 +165,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         let tappedHashtag =
             textView.attributedText.attributedSubstringFromRange(characterRange).string
         
-        print(tappedHashtag)
+        showAlertDialog(tappedHashtag)
         
         return false
     }
