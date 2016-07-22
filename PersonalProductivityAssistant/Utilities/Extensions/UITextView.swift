@@ -14,22 +14,22 @@ extension UITextView {
         
         let attributedText = NSMutableAttributedString(string: text)
         
-        for word in text.byWords {
-            if !word.hasPrefix("#") {
-                continue
-            }
+        
+        text.uniqueHashtags.forEach { (hashtag) in
             
-            for hashtagRange in text.findOccurencesOf(text: word) {
+            text.findOccurencesOf(text: hashtag).forEach { (hashtagRange ) in
                 
-                let wordWithoutHashtag = word.characters.dropFirst()
+                let withoutDash = hashtag.characters.dropFirst()
                 
                 attributedText.addAttribute(
-                    NSLinkAttributeName, value:"hash:\(wordWithoutHashtag.dropFirst())", range: hashtagRange)
+                    NSLinkAttributeName, value:"hash:\(withoutDash)", range: hashtagRange)
             }
         }
         
+        
         attributedText.addAttribute(
             NSFontAttributeName, value: UIFont.systemFontOfSize(16.0), range: NSRange(location: 0, length: attributedText.string.characters.count))
+        
         
         self.attributedText = attributedText
     }

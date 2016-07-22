@@ -35,4 +35,10 @@ extension String {
     func lastWords(maxWords: Int) -> [String] {
         return Array(byWords.suffix(maxWords))
     }
+    
+    var uniqueHashtags : [String] {
+        get {
+            return self.byWords.filter { $0.hasPrefix("#") }
+        }
+    }
 }
