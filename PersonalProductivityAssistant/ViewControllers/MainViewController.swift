@@ -147,7 +147,13 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         
         let timeLog = tableViewTimeLogs[indexPath.row]
         
-        cell.textViewActivity?.attributedText = timeLog.activityAsAttributedString()
+        if let activity = timeLog.activity {
+            cell.textViewActivity?.setTextWithHashtagLinks(activity)
+        }
+        else {
+            cell.textViewActivity.setTextWithHashtagLinks("n/a")
+        }
+        
         cell.textViewActivity?.selectable = true
         cell.textViewActivity?.delegate = self
         cell.textViewActivity?.contentInset = UIEdgeInsetsMake(0,-4,0,0);

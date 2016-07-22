@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */; };
+		D4130B371D41D1AE00F08828 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4130B361D41D1AE00F08828 /* UITextView.swift */; };
 		D41726E41D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E21D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift */; };
 		D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E31D26AFFB002F15A4 /* Hashtag.swift */; };
 		D41726E71D28EF7E002F15A4 /* HashtagFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */; };
@@ -182,6 +183,7 @@
 
 /* Begin PBXFileReference section */
 		D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseCoreDataInMemory.swift; sourceTree = "<group>"; };
+		D4130B361D41D1AE00F08828 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextView.swift; path = Utilities/Extensions/UITextView.swift; sourceTree = "<group>"; };
 		D41726E21D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Hashtag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D41726E31D26AFFB002F15A4 /* Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
 		D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HashtagFinder.swift; path = Logic/Hashtags/HashtagFinder.swift; sourceTree = "<group>"; };
@@ -820,6 +822,7 @@
 				D48F19B51D230FA9009BD069 /* NSDate.swift */,
 				D46CE0901D3499DF00CD797F /* UIViewController.swift */,
 				D46CE09A1D3546A300CD797F /* String.swift */,
+				D4130B361D41D1AE00F08828 /* UITextView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1016,6 +1019,7 @@
 				D48F1A391D2402FB009BD069 /* BarChartView.swift in Sources */,
 				D48F1AA11D2402FB009BD069 /* ChartFill.swift in Sources */,
 				D48F1A841D2402FB009BD069 /* AnimatedMoveViewJob.swift in Sources */,
+				D4130B371D41D1AE00F08828 /* UITextView.swift in Sources */,
 				D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */,
 				D48F1A541D2402FB009BD069 /* BubbleChartDataSet.swift in Sources */,
 				D48F1A791D2402FB009BD069 /* ChartHighlighter.swift in Sources */,
