@@ -16,8 +16,7 @@ class HashtagAutoCompleteAssistant {
             return false
         }
         
-        if lastWord.characters.startsWith(["#"])
-                && inputString.characters.last! != " " {
+        if lastWord.hasPrefix("#") && !inputString.hasSuffix(" ") {
             return true
         }
         
