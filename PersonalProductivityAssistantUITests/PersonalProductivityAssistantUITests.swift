@@ -54,8 +54,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         //
         // Open the add time log view
         waitForElementToAppear(toolbarAddActivityButton!)
-        toolbarAddActivityButton!.tap()
-        toolbarAddActivityButton!.tap()
+        toolbarAddActivityButton!.doubleTap()
         
         // Type new time log informations
         waitForElementToAppear(activityInputField!)
@@ -126,13 +125,13 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func doSwipeUpUntilTableStaticTextIsHittable(name: String) {
-        while(!tablesQuery.staticTexts[name].hittable) {
+        while(!tablesQuery.textViews[name].hittable) {
             app.swipeUp()
         }
     }
     
     func doDeleteTableRow(name: String) {
-        tablesQuery.staticTexts[name].swipeLeft()
+        tablesQuery.textViews[name].swipeLeft()
         tablesQuery.buttons["Delete"].tap()
     }
     
