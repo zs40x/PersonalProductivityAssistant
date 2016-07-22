@@ -15,15 +15,12 @@ extension String {
     }
     
     public var byWords: [String] {
-        var wordsInString = [String]()
+       
+        let wordsInString =
+            characters.split{ $0 == " " }.map(String.init)
         
-        let words = characters.split{ $0 == " " }.map(String.init)
-        for word in words  {
-            wordsInString.append(word)
-        }
-        
-        if wordsInString.count == 0 {
-            wordsInString.append(self)
+        guard wordsInString.count > 0 else {
+            return [String]()
         }
         
         return wordsInString
