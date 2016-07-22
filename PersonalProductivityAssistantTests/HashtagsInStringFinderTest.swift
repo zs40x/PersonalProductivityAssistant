@@ -21,7 +21,7 @@ class HashtagsInStringFinderTest: XCTestCase {
     }
 
     func excerciseHashtagsInString(searchString: String) -> [String] {
-        return HashtagsInStringFinder(searchString: searchString).hashtagsInString()
+        return searchString.hashtags
     }
 
     

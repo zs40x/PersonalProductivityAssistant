@@ -15,7 +15,7 @@ extension UITextView {
         let attributedText = NSMutableAttributedString(string: text)
         
         
-        text.uniqueHashtags.forEach { (hashtag) in
+        text.hashtags.forEach { (hashtag) in
             
             text.findOccurencesOf(text: hashtag).forEach { (hashtagRange ) in
                 

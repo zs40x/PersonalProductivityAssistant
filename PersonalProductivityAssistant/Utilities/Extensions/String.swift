@@ -9,11 +9,12 @@
 import Foundation
 
 extension String {
-    func findOccurencesOf(text text:String) -> [NSRange] {
+    
+    public func findOccurencesOf(text text:String) -> [NSRange] {
         return !text.isEmpty ? try! NSRegularExpression(pattern: text, options: []).matchesInString(self, options: [], range: NSRange(0..<characters.count)).map{ $0.range } : []
     }
     
-    var byWords: [String] {
+    public var byWords: [String] {
         var wordsInString = [String]()
         
         let words = characters.split{ $0 == " " }.map(String.init)
@@ -28,15 +29,15 @@ extension String {
         return wordsInString
     }
     
-    var lastWord: String? {
+    public var lastWord: String? {
         return byWords.last
     }
     
-    func lastWords(maxWords: Int) -> [String] {
+    public func lastWords(maxWords: Int) -> [String] {
         return Array(byWords.suffix(maxWords))
     }
     
-    var uniqueHashtags : [String] {
+    public var hashtags : [String] {
         get {
             return self.byWords.filter { $0.hasPrefix("#") }
         }

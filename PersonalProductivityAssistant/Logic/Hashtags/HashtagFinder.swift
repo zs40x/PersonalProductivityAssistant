@@ -18,15 +18,11 @@ class HashtagFinder {
     
     func resolveHashtags(stringWithHastags string: String) -> ResultValue<[Hashtag]> {
         
-        var allHashtags = [Hashtag]()
-        let hashtagInStringFinder = HashtagsInStringFinder(searchString: string)
-        let hashtagsAsString = hashtagInStringFinder.hashtagsInString()
-        
-        for hashtagName in hashtagsAsString {
-            allHashtags.append(newOrExistingInstanceFromRepository(hashtagName))
-        }
-        
-        return ResultValue.Success(allHashtags)
+        return ResultValue.Success(
+                string.hashtags.map {
+                    newOrExistingInstanceFromRepository($0)
+                }
+            )
     }
     
     func newOrExistingInstanceFromRepository(hashtagName: String) -> Hashtag {
@@ -38,32 +34,5 @@ class HashtagFinder {
         }
         
         return hashtagRepository.addNew(withName: hashtagName).value!
-    }
-}
-
-
-internal class HashtagsInStringFinder {
-    
-    let searchString: String
-    
-    init(searchString: String) {
-        self.searchString = searchString
-    }
-    
-    
-    func hashtagsInString() -> [String] {
-        var foundHashtags = [String]()
-        
-        let words = searchString.characters.split(" ")
-    
-        for word in words {
-            let wordAsString = String(word)
-            
-            if wordAsString.hasPrefix("#") {
-               foundHashtags.append(wordAsString)
-            }
-        }
-        
-        return foundHashtags
     }
 }
