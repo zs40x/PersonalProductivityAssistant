@@ -11,7 +11,13 @@ import Foundation
 extension String {
     
     public func findOccurencesOf(text text:String) -> [NSRange] {
-        return !text.isEmpty ? try! NSRegularExpression(pattern: text, options: []).matchesInString(self, options: [], range: NSRange(0..<characters.count)).map{ $0.range } : []
+        
+        guard !text.isEmpty else { return [] }
+        
+        return
+            try! NSRegularExpression(pattern: text, options: [])
+                    .matchesInString(self, options: [], range: NSRange(0..<characters.count))
+                    .map{ $0.range }
     }
     
     public var byWords: [String] {
@@ -19,11 +25,7 @@ extension String {
         let wordsInString =
             characters.split{ $0 == " " }.map(String.init)
         
-        guard wordsInString.count > 0 else {
-            return [String]()
-        }
-        
-        return wordsInString
+        return wordsInString.count > 0 ? wordsInString : []
     }
     
     public var lastWord: String? {
