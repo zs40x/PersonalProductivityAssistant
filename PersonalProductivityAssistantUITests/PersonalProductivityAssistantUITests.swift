@@ -137,7 +137,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func getTableStaticTextElement(name: String) -> XCUIElement {
-        return tablesQuery.staticTexts[name]
+        return tablesQuery.textViews[name]
     }
     
     func getActivityNameWithDateTime() -> String {

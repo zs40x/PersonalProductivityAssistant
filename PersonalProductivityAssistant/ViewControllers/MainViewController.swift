@@ -158,12 +158,26 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         cell.textViewActivity?.delegate = self
         cell.textViewActivity?.contentInset = UIEdgeInsetsMake(0,-4,0,0);
         cell.textViewActivity?.textContainerInset = UIEdgeInsetsZero
+        let tap = UITapGestureRecognizer(target: self, action: #selector(textViewActiviyTapped))
+        cell.textViewActivity.addGestureRecognizer(tap)
         
         cell.textViewFrom?.text = timeLog.from?.asFormattedString()
         cell.textViewUntil?.text = timeLog.until?.asFormattedString()
         cell.textViewDuration?.text = String(timeLog.durationInMinutes()) + " Minutes"
         
         return cell
+    }
+    
+    func textViewActiviyTapped(sender: UITapGestureRecognizer) {
+        
+        let touch = sender.locationInView(self.tableViewActivities)
+        
+        if let indexPath = self.tableViewActivities.indexPathForRowAtPoint(touch) {
+            
+            timeLogToEdit = tableViewTimeLogs[indexPath.row]
+            
+            performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
+        }
     }
     
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
@@ -175,12 +189,13 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         
         return false
     }
+    
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
-        //performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
+        performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
