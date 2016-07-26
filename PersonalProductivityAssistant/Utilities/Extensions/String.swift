@@ -33,7 +33,7 @@ extension String {
     }
     
     public func lastWords(maxWords: Int) -> [String] {
-        return Array(byWords.suffix(maxWords))
+        return [String](byWords.suffix(maxWords))
     }
     
     public var hashtags : [String] {
