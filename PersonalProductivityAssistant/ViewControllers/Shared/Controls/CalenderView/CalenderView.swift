@@ -20,7 +20,7 @@ class CalenderView: UIView {
         setupView()
     }
     
-    public required init?(coder aDecoder: NSCoder) {
+    internal required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
     }
