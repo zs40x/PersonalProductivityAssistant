@@ -14,21 +14,30 @@ class CalenderView: UIView {
     var view: UIView!
     
     var nibName: String = "CalenderView"
+    private var DaysInMonth = [String]()
     
     
     internal override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        self.commonInit()
     }
     
     internal required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
+        self.commonInit()
+    }
+    
+    private func commonInit() {
+        self.setupView()
+        self.setupCollectionView()
+        self.setupCalenderDataSource()
     }
     
     
+    
+    
     // MARK: Helper Methods
-    func setupView() {
+    private func setupView() {
         
         self.view = UINib(nibName: nibName, bundle: NSBundle(forClass: self.dynamicType)).instantiateWithOwner(self, options: nil)[0] as! UIView
         
@@ -36,6 +45,9 @@ class CalenderView: UIView {
         self.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         
         self.addSubview(self.view)
+    }
+    
+    private func setupCollectionView() {
         
         let nib = UINib(nibName: "CalenderViewCell", bundle: nil)
         self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "calenderViewCell")
@@ -47,14 +59,22 @@ class CalenderView: UIView {
 extension CalenderView : UICollectionViewDataSource {
     
     
+    
+    private func setupCalenderDataSource() {
+        
+        1.stride(to: NSDate().daysInMonth(), by: 1).forEach {
+            DaysInMonth.append(String($0))
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        return DaysInMonth.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("calenderViewCell", forIndexPath: indexPath) as! CalenderViewCell
         
-        cell.label.text = "test"
+        cell.label.text = DaysInMonth[indexPath.row]
         cell.label.textColor = UIColor.whiteColor()
         
         return cell
