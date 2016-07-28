@@ -40,6 +40,9 @@ class ChartsPageViewController: UIPageViewController {
                                animated: true,
                                completion: nil)
         }
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,15 +51,18 @@ class ChartsPageViewController: UIPageViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if let targetView = segue.destinationViewController as? MainViewController {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
-    */
+ 
 
 }
 
