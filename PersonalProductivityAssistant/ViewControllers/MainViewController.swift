@@ -42,6 +42,8 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         displayPersistedTimeLogs()
         displayCalender()
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +63,8 @@ class MainViewController: UIViewController, SegueHandlerType {
     @IBAction func actionToolbarAddTimeLog(sender: AnyObject) {
         
         timeLogToEdit = nil
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
@@ -85,6 +89,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     func displayCalender() {
         
         calendarView.dataSource = self
+        calendarView.delegate = self
         
         let dateComponents = NSDateComponents()
         dateComponents.day = -5
@@ -128,6 +133,9 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         sortTimeLogTable()
         tableViewActivities.reloadData()
+        
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         return Result.Success()
     }
@@ -195,6 +203,9 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
             
             timeLogToEdit = tableViewTimeLogs[indexPath.row]
             
+            
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            
             performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
         }
     }
@@ -226,7 +237,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
 }
 
 
-extension MainViewController : CalendarViewDataSource {
+extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     func startDate() -> NSDate? {
         
         let dateComponents = NSDateComponents()
@@ -257,9 +268,21 @@ extension MainViewController : CalendarViewDataSource {
         
         super.viewDidLayoutSubviews()
         
+        // TODO: center horizontally
         let width = self.view.frame.size.width - 16.0 * 2
-        let height = width + 20.0
-        self.calendarView.frame = CGRect(x: 16.0, y: 32.0, width: width, height: height)
+        let height = width
+        self.calendarView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+    }
+    
+    
+    func calendar(calendar: CalendarView, didSelectDate date : NSDate) {
+        
+        print("Did Select: \(date)")
+        
+    }
+    
+    func calendar(calendar: CalendarView, didScrollToMonth date : NSDate) {
+        
     }
 }
 

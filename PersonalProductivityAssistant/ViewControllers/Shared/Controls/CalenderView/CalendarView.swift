@@ -148,16 +148,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         self.addSubview(self.headerView)
         self.addSubview(self.calendarView)
-        
-        self.backgroundColor = UIColor.redColor()
-        self.headerView.backgroundColor = UIColor.orangeColor()
-        self.headerView.setContentHuggingPriority(UILayoutPriority.abs(755), forAxis: .Vertical)
-        self.calendarView.setContentCompressionResistancePriority(UILayoutPriority.abs(1000), forAxis: .Vertical)
-        
-        let pinTop =
-            NSLayoutConstraint(
-                item: headerView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0)
-        NSLayoutConstraint.activateConstraints([pinTop])
     }
     
     
