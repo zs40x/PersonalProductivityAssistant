@@ -28,16 +28,20 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     
     @IBOutlet weak var tableViewActivities: UITableView!
+    @IBOutlet weak var calendarView: CalendarView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         displayPersistedTimeLogs()
+        displayCalender()
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,6 +80,21 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         tableViewTimeLogs.appendContentsOf(getAllResult.value!)
         sortTimeLogTable()
+    }
+    
+    func displayCalender() {
+        
+        calendarView.dataSource = self
+        
+        let dateComponents = NSDateComponents()
+        dateComponents.day = -5
+        
+        let today = NSDate()
+        
+        if let date = self.calendarView.calendar.dateByAddingComponents(dateComponents, toDate: today, options: NSCalendarOptions()) {
+            self.calendarView.selectDate(date)
+            //self.calendarView.deselectDate(date)
+        }
     }
     
     func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) -> Result {
@@ -203,6 +222,44 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         if editingStyle == .Delete {
             deleteTimeLog(tableView, indexPath: indexPath)
         }
+    }
+}
+
+
+extension MainViewController : CalendarViewDataSource {
+    func startDate() -> NSDate? {
+        
+        let dateComponents = NSDateComponents()
+        dateComponents.month = -3
+        
+        let today = NSDate()
+        
+        let threeMonthsAgo = self.calendarView.calendar.dateByAddingComponents(dateComponents, toDate: today, options: NSCalendarOptions())
+        
+        
+        return threeMonthsAgo
+    }
+    
+    func endDate() -> NSDate? {
+        
+        let dateComponents = NSDateComponents()
+        
+        dateComponents.year = 2;
+        let today = NSDate()
+        
+        let twoYearsFromNow = self.calendarView.calendar.dateByAddingComponents(dateComponents, toDate: today, options: NSCalendarOptions())
+        
+        return twoYearsFromNow
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        let width = self.view.frame.size.width - 16.0 * 2
+        let height = width + 20.0
+        self.calendarView.frame = CGRect(x: 16.0, y: 32.0, width: width, height: height)
     }
 }
 

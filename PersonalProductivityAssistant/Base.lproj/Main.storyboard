@@ -24,7 +24,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lmv-Qg-aof">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" customClass="CalenderView" customModule="PersonalProductivityAssistant" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" userLabel="CalendarView" customClass="CalendarView" customModule="PersonalProductivityAssistant" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="246"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
@@ -148,6 +148,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Time Logs" id="sJp-xU-5aS"/>
                     <connections>
+                        <outlet property="calendarView" destination="zdN-EN-VWL" id="aEE-RV-f00"/>
                         <outlet property="tableViewActivities" destination="NbO-cw-QcK" id="a6f-N7-fzs"/>
                         <segue destination="wEc-tL-ERe" kind="show" identifier="ShowSegueToAddTimeLog" id="yMS-gh-ZoW"/>
                     </connections>

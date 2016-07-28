@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4088EEB1D49ED880059685B /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4088EEA1D49ED880059685B /* CalendarHeaderView.swift */; };
 		D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */; };
 		D4130B371D41D1AE00F08828 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4130B361D41D1AE00F08828 /* UITextView.swift */; };
 		D41726E41D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E21D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift */; };
@@ -29,10 +30,9 @@
 		D46CE09B1D3546A300CD797F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE09A1D3546A300CD797F /* String.swift */; };
 		D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B10471D262B720052A845 /* SegueHandlerType.swift */; };
 		D47B104B1D263C7F0052A845 /* TimeLogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */; };
-		D486C0501D4721B30043500C /* CalenderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D486C04F1D4721B30043500C /* CalenderView.xib */; };
-		D486C0521D4722350043500C /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D486C0511D4722350043500C /* CalenderView.swift */; };
-		D486C0541D4729650043500C /* CalenderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D486C0531D4729650043500C /* CalenderViewCell.swift */; };
-		D486C0581D4783CF0043500C /* CalenderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D486C0571D4783CF0043500C /* CalenderViewCell.xib */; };
+		D486C0521D4722350043500C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D486C0511D4722350043500C /* CalendarView.swift */; };
+		D486C0541D4729650043500C /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D486C0531D4729650043500C /* CalendarDayCell.swift */; };
+		D486C05B1D49ECF80043500C /* CalendarFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D486C05A1D49ECF80043500C /* CalendarFlowLayout.swift */; };
 		D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */; };
 		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
 		D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* NSDate.swift */; };
@@ -186,6 +186,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4088EEA1D49ED880059685B /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseCoreDataInMemory.swift; sourceTree = "<group>"; };
 		D4130B361D41D1AE00F08828 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextView.swift; path = Utilities/Extensions/UITextView.swift; sourceTree = "<group>"; };
 		D41726E21D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Hashtag+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -209,10 +210,9 @@
 		D46CE09A1D3546A300CD797F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Utilities/Extensions/String.swift; sourceTree = "<group>"; };
 		D47B10471D262B720052A845 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = ViewControllers/Shared/SegueHandlerType.swift; sourceTree = "<group>"; };
 		D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogDelegate.swift; path = ViewControllers/Shared/TimeLogDelegate.swift; sourceTree = "<group>"; };
-		D486C04F1D4721B30043500C /* CalenderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalenderView.xib; path = ViewControllers/Shared/Controls/CalenderView/CalenderView.xib; sourceTree = "<group>"; };
-		D486C0511D4722350043500C /* CalenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalenderView.swift; path = ViewControllers/Shared/Controls/CalenderView/CalenderView.swift; sourceTree = "<group>"; };
-		D486C0531D4729650043500C /* CalenderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalenderViewCell.swift; path = ViewControllers/Shared/Controls/CalenderView/CalenderViewCell.swift; sourceTree = "<group>"; };
-		D486C0571D4783CF0043500C /* CalenderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalenderViewCell.xib; path = ViewControllers/Shared/Controls/CalenderView/CalenderViewCell.xib; sourceTree = "<group>"; };
+		D486C0511D4722350043500C /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = ViewControllers/Shared/Controls/CalenderView/CalendarView.swift; sourceTree = "<group>"; };
+		D486C0531D4729650043500C /* CalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarDayCell.swift; path = ViewControllers/Shared/Controls/CalenderView/CalendarDayCell.swift; sourceTree = "<group>"; };
+		D486C05A1D49ECF80043500C /* CalendarFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarFlowLayout.swift; path = ViewControllers/Shared/Controls/CalenderView/CalendarFlowLayout.swift; sourceTree = "<group>"; };
 		D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewController.swift; path = ViewControllers/TimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogData.swift; path = Model/Data/TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDate.swift; path = Utilities/Extensions/NSDate.swift; sourceTree = "<group>"; };
@@ -496,20 +496,20 @@
 		D486C04D1D4720900043500C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				D486C04E1D4720D30043500C /* CalenderView */,
+				D486C04E1D4720D30043500C /* CalendarView */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
 		};
-		D486C04E1D4720D30043500C /* CalenderView */ = {
+		D486C04E1D4720D30043500C /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
-				D486C04F1D4721B30043500C /* CalenderView.xib */,
-				D486C0511D4722350043500C /* CalenderView.swift */,
-				D486C0531D4729650043500C /* CalenderViewCell.swift */,
-				D486C0571D4783CF0043500C /* CalenderViewCell.xib */,
+				D486C0511D4722350043500C /* CalendarView.swift */,
+				D486C0531D4729650043500C /* CalendarDayCell.swift */,
+				D486C05A1D49ECF80043500C /* CalendarFlowLayout.swift */,
+				D4088EEA1D49ED880059685B /* CalendarHeaderView.swift */,
 			);
-			name = CalenderView;
+			name = CalendarView;
 			sourceTree = "<group>";
 		};
 		D486C0591D48755F0043500C /* Calender */ = {
@@ -970,10 +970,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D486C0581D4783CF0043500C /* CalenderViewCell.xib in Resources */,
 				D4B660641D142AAE000FE897 /* LaunchScreen.storyboard in Resources */,
 				D4B660611D142AAE000FE897 /* Assets.xcassets in Resources */,
-				D486C0501D4721B30043500C /* CalenderView.xib in Resources */,
 				D4B6605C1D142AAE000FE897 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1012,6 +1010,7 @@
 				D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */,
 				D48F1A7E1D2402FB009BD069 /* BarLineScatterCandleBubbleChartDataProvider.swift in Sources */,
 				D4C392381D395B6700F0062E /* ChartsPageViewController.swift in Sources */,
+				D486C05B1D49ECF80043500C /* CalendarFlowLayout.swift in Sources */,
 				D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */,
 				D48F1A631D2402FB009BD069 /* RadarChartDataSet.swift in Sources */,
 				D48F1A721D2402FB009BD069 /* ChartDataBaseFilter.swift in Sources */,
@@ -1034,11 +1033,12 @@
 				D48F1A611D2402FB009BD069 /* PieChartDataSet.swift in Sources */,
 				D48F1A4D1D2402FB009BD069 /* BarChartData.swift in Sources */,
 				D48F1A481D2402FB009BD069 /* ChartLimitLine.swift in Sources */,
-				D486C0541D4729650043500C /* CalenderViewCell.swift in Sources */,
+				D486C0541D4729650043500C /* CalendarDayCell.swift in Sources */,
+				D4088EEB1D49ED880059685B /* CalendarHeaderView.swift in Sources */,
 				D4355E7A1D393439000F678A /* ChartSourceHashtags.swift in Sources */,
 				D4C392361D39599600F0062E /* PieChartViewController.swift in Sources */,
 				D48F19B61D230FA9009BD069 /* NSDate.swift in Sources */,
-				D486C0521D4722350043500C /* CalenderView.swift in Sources */,
+				D486C0521D4722350043500C /* CalendarView.swift in Sources */,
 				D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */,
 				D48F1A471D2402FB009BD069 /* ChartLegend.swift in Sources */,
 				D48F1A501D2402FB009BD069 /* BarLineScatterCandleBubbleChartData.swift in Sources */,
