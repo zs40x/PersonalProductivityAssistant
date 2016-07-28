@@ -14,7 +14,7 @@ let cellReuseIdentifier = "CalendarDayCell"
 let NUMBER_OF_DAYS_IN_WEEK = 7
 let MAXIMUM_NUMBER_OF_ROWS = 6
 
-let HEADER_DEFAULT_HEIGHT : CGFloat = 80.0
+let HEADER_DEFAULT_HEIGHT : CGFloat = 70.0
 
 
 let FIRST_DAY_INDEX = 0
