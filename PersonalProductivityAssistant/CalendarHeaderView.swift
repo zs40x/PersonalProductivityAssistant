@@ -14,7 +14,7 @@ class CalendarHeaderView: UIView {
         
         let lbl = UILabel()
         lbl.textAlignment = NSTextAlignment.Center
-        lbl.font = UIFont(name: "Helvetica", size: 20.0)
+        lbl.font = UIFont.init(name: "Helvetica", size: 20.0)
         lbl.textColor = UIColor.grayColor()
         
         self.addSubview(lbl)
@@ -34,7 +34,7 @@ class CalendarHeaderView: UIView {
             
             let weekdayLabel = UILabel()
             
-            weekdayLabel.font = UIFont(name: "Helvetica", size: 14.0)
+            weekdayLabel.font = UIFont.init(name: "Helvetica", size: 14.0)
             
             weekdayLabel.text = day.substringToIndex(2).uppercaseString
             weekdayLabel.textColor = UIColor.grayColor()

@@ -268,10 +268,9 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         
         super.viewDidLayoutSubviews()
         
-        // TODO: center horizontally
         let width = self.view.frame.size.width - 16.0 * 2
         let height = width
-        self.calendarView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+        self.calendarView.frame = CGRect(x: ((self.view.frame.width - width) / 2), y: 0.0, width: width, height: height)
     }
     
     
