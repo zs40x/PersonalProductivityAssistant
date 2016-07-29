@@ -26,14 +26,14 @@ protocol CalendarViewDataSource {
     
     func startDate() -> NSDate?
     func endDate() -> NSDate?
-    
+    func timeLogs() -> [TimeLog]?
 }
 
 @objc protocol CalendarViewDelegate {
     
     optional func calendar(calendar : CalendarView, canSelectDate date : NSDate) -> Bool
     func calendar(calendar : CalendarView, didScrollToMonth date : NSDate) -> Void
-    func calendar(calendar : CalendarView, didSelectDate date : NSDate)
+    func calendar(calendar : CalendarView, didSelectDate date : NSDate, with selectedTimelogs: [TimeLog])
     optional func calendar(calendar : CalendarView, didDeselectDate date : NSDate) -> Void
 }
 
@@ -73,6 +73,42 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     private(set) var selectedIndexPaths : [NSIndexPath] = [NSIndexPath]()
     private(set) var selectedDates : [NSDate] = [NSDate]()
+    
+    
+    private var timeLogsByIndexPath = [NSIndexPath:[TimeLog]]()
+    private var timeLogs : [TimeLog]? {
+        
+        didSet {
+            
+            timeLogsByIndexPath = [NSIndexPath:[TimeLog]]()
+            
+            guard let timeLogs = self.timeLogs else { return }
+            
+            for timeLog in timeLogs {
+                
+                guard let dateFrom = timeLog.from else { continue }
+                
+                let distanceFromStartComponent =
+                    self.gregorian.components(
+                        [.Month, .Day], fromDate: startOfMonthCache, toDate: dateFrom, options: NSCalendarOptions() )
+                
+                let indexPath =
+                    NSIndexPath(forItem: distanceFromStartComponent.day, inSection: distanceFromStartComponent.month)
+                
+                print(startOfMonthCache)
+                print("\(distanceFromStartComponent.day).\(distanceFromStartComponent.month).\(distanceFromStartComponent.year)")
+                
+                if var timeLogsInIndexPath : [TimeLog] = timeLogsByIndexPath[indexPath] {
+                    timeLogsInIndexPath.append(timeLog)
+                } else {
+                    timeLogsByIndexPath[indexPath] = [timeLog]
+                }
+            }
+            
+            self.calendarView.reloadData()
+            
+        }
+    }
     
     
     lazy var headerView : CalendarHeaderView = {
@@ -135,14 +171,11 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     
     
-    // MARK: Setup
-    
+    // MARK: Helper Methods
     private func initialSetup() {
-        
         
         self.clipsToBounds = true
         
-        // Register Class
         self.calendarView.registerClass(CalendarDayCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         
@@ -168,6 +201,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             return 0
         }
         
+        print("\(startDate)-\(endDate)")
         
         let firstDayOfStartMonth = self.gregorian.components( [.Era, .Year, .Month], fromDate: startDateCache)
         firstDayOfStartMonth.day = 1
@@ -219,15 +253,20 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         monthInfo[section] = [firstWeekdayOfMonthIndex, numberOfDaysInMonth]
         
         return NUMBER_OF_DAYS_IN_WEEK * MAXIMUM_NUMBER_OF_ROWS // 7 x 6 = 42
-        
-        
     }
+    
+    private var wereEntriesInitiallyLoaded = false
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let dayCell = collectionView.dequeueReusableCellWithReuseIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! CalendarDayCell
+        if !wereEntriesInitiallyLoaded {
+            wereEntriesInitiallyLoaded = true
+            //self.timeLogs = self.dataSource?.timeLogs()
+        }
         
-        let currentMonthInfo : [Int] = monthInfo[indexPath.section]! // we are guaranteed an array by the fact that we reached this line (so unwrap)
+        let dayCell =
+            collectionView.dequeueReusableCellWithReuseIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! CalendarDayCell
+        let currentMonthInfo : [Int] = monthInfo[indexPath.section]!
         
         let fdIndex = currentMonthInfo[FIRST_DAY_INDEX]
         let nDays = currentMonthInfo[NUMBER_OF_DAYS_INDEX]
@@ -256,24 +295,17 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             dayCell.isToday = (idx.section == indexPath.section && idx.item + fdIndex == indexPath.item)
         }
         
-        
-        dayCell.eventsCount = 0
-        /*if let eventsForDay = eventsByIndexPath[fromStartOfMonthIndexPath] {
-            
-            dayCell.eventsCount = eventsForDay.count
+        if let timeLogsForDay = timeLogsByIndexPath[fromStartOfMonthIndexPath] {
+            dayCell.eventsCount = timeLogsForDay.count
             
         } else {
             dayCell.eventsCount = 0
-        }*/
-        
-        
+        }
         
         return dayCell
     }
     
     // MARK: UIScrollViewDelegate
-    
-    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         self.calculateDateBasedOnScrollViewPosition(scrollView)
     }
@@ -419,13 +451,13 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         let fromStartOfMonthIndexPath = NSIndexPath(forItem: indexPath.item - currentMonthInfo[FIRST_DAY_INDEX], inSection: indexPath.section)
         
-        /*var eventsArray : [EKEvent] = [EKEvent]()
+        var timeLogsOnSelectedDate = [TimeLog]()
         
-        if let eventsForDay = eventsByIndexPath[fromStartOfMonthIndexPath] {
-            eventsArray = eventsForDay;
-        }*/
+        if let timeLogsOnDate = self.timeLogsByIndexPath[indexPath] {
+            timeLogsOnSelectedDate = timeLogsOnDate
+        }
         
-        //delegate?.calendar(self, didSelectDate: dateBeingSelectedByUser, withEvents: eventsArray)
+        delegate?.calendar(self, didSelectDate: dateBeingSelectedByUser, with: timeLogsOnSelectedDate)
         
         // Update model
         selectedIndexPaths.append(indexPath)
@@ -451,6 +483,8 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     
     func reloadData() {
+        self.timeLogs = self.dataSource?.timeLogs()
+        
         self.calendarView.reloadData()
     }
     

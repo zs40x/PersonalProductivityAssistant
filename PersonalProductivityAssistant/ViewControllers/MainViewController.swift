@@ -264,6 +264,17 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         
     }
     
+    func timeLogs() -> [TimeLog]? {
+        let getAllResult = timeLogRepository.getAll()
+        
+        if !getAllResult.isSucessful {
+            showAlertDialog("Error loading time logs \(getAllResult.errorMessage)")
+            return nil
+        }
+        
+        return getAllResult.value!
+    }
+    
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
@@ -274,10 +285,9 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     }
     
     
-    func calendar(calendar: CalendarView, didSelectDate date : NSDate) {
+    func calendar(calendar: CalendarView, didSelectDate date : NSDate, with selectedTimeLogs: [TimeLog]) {
         
-        print("Did Select: \(date)")
-        
+        showAlertDialog("Selected \(date), TimeLogs: \(selectedTimeLogs.count)")
     }
     
     func calendar(calendar: CalendarView, didScrollToMonth date : NSDate) {
