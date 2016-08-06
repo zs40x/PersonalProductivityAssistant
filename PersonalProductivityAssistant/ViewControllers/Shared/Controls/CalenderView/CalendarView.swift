@@ -40,7 +40,12 @@ protocol CalendarViewDataSource {
 
 class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var dataSource  : CalendarViewDataSource?
+    var dataSource  : CalendarViewDataSource? {
+        didSet {
+            self.timeLogs = self.dataSource?.timeLogs()
+            self.calendarView.reloadData()
+        }
+    }
     var delegate    : CalendarViewDelegate?
     
     lazy var gregorian : NSCalendar = {
@@ -84,13 +89,18 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             
             guard let timeLogs = self.timeLogs else { return }
             
+            let secondsFromGMTDifference = NSTimeInterval(NSTimeZone.localTimeZone().secondsFromGMT)
+            
             for timeLog in timeLogs {
                 
                 guard let dateFrom = timeLog.from else { continue }
                 
+                let startDate = dateFrom.dateByAddingTimeInterval(secondsFromGMTDifference)
+                
+                
                 let distanceFromStartComponent =
                     self.gregorian.components(
-                        [.Month, .Day], fromDate: startOfMonthCache, toDate: dateFrom, options: NSCalendarOptions() )
+                        [.Month, .Day], fromDate: startOfMonthCache, toDate: startDate, options: NSCalendarOptions() )
                 
                 let indexPath =
                     NSIndexPath(forItem: distanceFromStartComponent.day, inSection: distanceFromStartComponent.month)
@@ -104,9 +114,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
                     timeLogsByIndexPath[indexPath] = [timeLog]
                 }
             }
-            
-            self.calendarView.reloadData()
-            
         }
     }
     
@@ -211,6 +218,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
         
         startOfMonthCache = dateFromDayOneComponents
+        print("SOMD:\(startOfMonthCache)")
         
         
         let today = NSDate()
@@ -237,6 +245,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         let monthOffsetComponents = NSDateComponents()
         
+        
         // offset by the number of months
         monthOffsetComponents.month = section;
         
@@ -255,14 +264,8 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         return NUMBER_OF_DAYS_IN_WEEK * MAXIMUM_NUMBER_OF_ROWS // 7 x 6 = 42
     }
     
-    private var wereEntriesInitiallyLoaded = false
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        if !wereEntriesInitiallyLoaded {
-            wereEntriesInitiallyLoaded = true
-            //self.timeLogs = self.dataSource?.timeLogs()
-        }
         
         let dayCell =
             collectionView.dequeueReusableCellWithReuseIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! CalendarDayCell
@@ -273,8 +276,14 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         let fromStartOfMonthIndexPath = NSIndexPath(forItem: indexPath.item - fdIndex, inSection: indexPath.section) // if the first is wednesday, add 2
         
-        if indexPath.item >= fdIndex &&
-            indexPath.item < fdIndex + nDays {
+        
+        guard self.dataSource != nil else {
+            dayCell.textLabel.text="-"
+            return dayCell
+        }
+        
+        
+        if indexPath.item >= fdIndex && indexPath.item < fdIndex + nDays {
             
             dayCell.textLabel.text = String(fromStartOfMonthIndexPath.item + 1)
             dayCell.hidden = false
@@ -298,6 +307,9 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         if let timeLogsForDay = timeLogsByIndexPath[fromStartOfMonthIndexPath] {
             dayCell.eventsCount = timeLogsForDay.count
             
+            timeLogsForDay.forEach{ print($0.from) }
+            dayCell.textLabel.text = "XXX"
+           
         } else {
             dayCell.eventsCount = 0
         }

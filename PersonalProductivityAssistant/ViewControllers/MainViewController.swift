@@ -241,7 +241,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     func startDate() -> NSDate? {
         
         let dateComponents = NSDateComponents()
-        dateComponents.month = -3
+        dateComponents.month = -1
         
         let today = NSDate()
         
@@ -272,7 +272,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
             return nil
         }
         
-        return getAllResult.value!
+        return getAllResult.value!.sort({ $0.from?.compare($1.from!) == NSComparisonResult.OrderedAscending })
     }
     
     override func viewDidLayoutSubviews() {
