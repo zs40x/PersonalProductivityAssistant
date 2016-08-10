@@ -40,7 +40,7 @@ protocol CalendarViewDataSource {
 
 class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var dataSource  : CalendarViewDataSource? 
+    var dataSource  : CalendarViewDataSource?
     var delegate    : CalendarViewDelegate?
     
     lazy var gregorian : NSCalendar = {
@@ -105,6 +105,8 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
                 
                 if var timeLogsInIndexPath : [TimeLog] = timeLogsByIndexPath[indexPath] {
                     timeLogsInIndexPath.append(timeLog)
+                    timeLogsByIndexPath[indexPath] = timeLogsInIndexPath
+                    print(timeLogsInIndexPath.count)
                 } else {
                     timeLogsByIndexPath[indexPath] = [timeLog]
                 }
@@ -454,7 +456,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         var timeLogsOnSelectedDate = [TimeLog]()
         
-        if let timeLogsOnDate = self.timeLogsByIndexPath[indexPath] {
+        if let timeLogsOnDate = self.timeLogsByIndexPath[fromStartOfMonthIndexPath] {
             timeLogsOnSelectedDate = timeLogsOnDate
         }
         
