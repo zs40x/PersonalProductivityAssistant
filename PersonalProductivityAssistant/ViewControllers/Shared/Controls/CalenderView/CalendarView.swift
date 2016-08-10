@@ -40,11 +40,7 @@ protocol CalendarViewDataSource {
 
 class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var dataSource  : CalendarViewDataSource? {
-        didSet {
-            self.timeLogs = self.dataSource?.timeLogs()
-        }
-    }
+    var dataSource  : CalendarViewDataSource? 
     var delegate    : CalendarViewDelegate?
     
     lazy var gregorian : NSCalendar = {
