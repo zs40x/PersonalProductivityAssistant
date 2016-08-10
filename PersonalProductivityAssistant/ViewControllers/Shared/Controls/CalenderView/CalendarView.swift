@@ -43,7 +43,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var dataSource  : CalendarViewDataSource? {
         didSet {
             self.timeLogs = self.dataSource?.timeLogs()
-            self.calendarView.reloadData()
         }
     }
     var delegate    : CalendarViewDelegate?
@@ -276,15 +275,12 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         let fromStartOfMonthIndexPath = NSIndexPath(forItem: indexPath.item - fdIndex, inSection: indexPath.section) // if the first is wednesday, add 2
         
-        
         guard self.dataSource != nil else {
             dayCell.textLabel.text="-"
             return dayCell
         }
         
-        
         if indexPath.item >= fdIndex && indexPath.item < fdIndex + nDays {
-            
             dayCell.textLabel.text = String(fromStartOfMonthIndexPath.item + 1)
             dayCell.hidden = false
             
@@ -306,9 +302,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         if let timeLogsForDay = timeLogsByIndexPath[fromStartOfMonthIndexPath] {
             dayCell.eventsCount = timeLogsForDay.count
-            
-            timeLogsForDay.forEach{ print($0.from) }
-            dayCell.textLabel.text = "XXX"
            
         } else {
             dayCell.eventsCount = 0

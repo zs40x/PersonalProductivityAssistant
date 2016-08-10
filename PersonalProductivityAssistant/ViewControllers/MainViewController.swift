@@ -90,16 +90,6 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         calendarView.dataSource = self
         calendarView.delegate = self
-        
-        let dateComponents = NSDateComponents()
-        dateComponents.day = -5
-        
-        let today = NSDate()
-        
-        if let date = self.calendarView.calendar.dateByAddingComponents(dateComponents, toDate: today, options: NSCalendarOptions()) {
-            self.calendarView.selectDate(date)
-            //self.calendarView.deselectDate(date)
-        }
     }
     
     func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) -> Result {
@@ -133,7 +123,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         sortTimeLogTable()
         tableViewActivities.reloadData()
-        
+        calendarView.reloadData()
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
@@ -238,6 +228,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
 
 
 extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
+    
     func startDate() -> NSDate? {
         
         let dateComponents = NSDateComponents()
@@ -282,6 +273,8 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         let width = self.view.frame.size.width - 16.0 * 2
         let height = width
         self.calendarView.frame = CGRect(x: ((self.view.frame.width - width) / 2), y: 0.0, width: width, height: height)
+        
+        self.calendarView.reloadData()
     }
     
     
