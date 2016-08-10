@@ -139,7 +139,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         cv.backgroundColor = UIColor.clearColor()
         cv.showsHorizontalScrollIndicator = false
         cv.showsVerticalScrollIndicator = false
-        cv.allowsMultipleSelection = true
+        cv.allowsMultipleSelection = false
         
         return cv
         
