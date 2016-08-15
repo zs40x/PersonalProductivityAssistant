@@ -215,7 +215,6 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
-        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
@@ -283,7 +282,9 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     
     func calendar(calendar: CalendarView, didSelectDate date : NSDate, with selectedTimeLogs: [TimeLog]) {
         
-        showAlertDialog("Selected \(date), TimeLogs: \(selectedTimeLogs.count)")
+        //showAlertDialog("Selected \(date), TimeLogs: \(selectedTimeLogs.count)")
+        self.tableViewTimeLogs = selectedTimeLogs
+        self.tableViewActivities.reloadData()
     }
     
     func calendar(calendar: CalendarView, didScrollToMonth date : NSDate) {
