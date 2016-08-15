@@ -215,6 +215,9 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
     
