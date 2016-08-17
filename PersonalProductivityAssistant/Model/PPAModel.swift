@@ -67,8 +67,20 @@ internal class TimeLogModel : AbstractModel {
         request.sortDescriptors = [NSSortDescriptor(key: "activity", ascending: true)]
         
         do {
-            let result = try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
-            return result
+            return try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
+        }
+        catch let error as NSError {
+            NSLog("Error fetching: %@", error)
+            throw error
+        }
+    }
+    
+    func getTimeLogsForDateRange(dateFrom: NSDate, dateUntil: NSDate) throws -> [TimeLog] {
+        let request = NSFetchRequest(entityName: TimeLog.EntityName)
+        request.predicate = NSPredicate(format: "((from >= %@) AND (from < %@)) || (from = nil)", dateFrom, dateUntil)
+        
+        do {
+            return try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
         }
         catch let error as NSError {
             NSLog("Error fetching: %@", error)

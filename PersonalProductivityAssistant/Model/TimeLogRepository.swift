@@ -28,6 +28,34 @@ public class TimeLogRepository {
         }
     }
     
+    func forMonthOf(date: NSDate) -> ResultValue<[TimeLog]> {
+        
+        do {
+            let calendar = NSCalendar.currentCalendar()
+            
+            let startDateTime =
+                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: [])!
+            let endDateTime =
+                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: [])!
+            
+            let endOfMonthDateComponents = NSDateComponents()
+            endOfMonthDateComponents.month = 1
+            endOfMonthDateComponents.day = 0
+            
+            let endOfMonthDateTime =
+                calendar.dateByAddingComponents(endOfMonthDateComponents, toDate: endDateTime, options: [])!
+            
+            print("TimeLogRepository.forMonthOf() - Range: \(startDateTime)-\(endOfMonthDateTime)")
+            
+            
+            let allTimeLogs = try model.TimeLogs.getTimeLogsForDateRange(startDateTime, dateUntil: endOfMonthDateTime)
+            return ResultValue.Success(allTimeLogs)
+        } catch let error as NSError {
+            return ResultValue.Failure(error.getDefaultErrorMessage())
+        }
+    }
+
+    
     func addNew(timeLogData: TimeLogData) -> ResultValue<TimeLog> {
   
         do {

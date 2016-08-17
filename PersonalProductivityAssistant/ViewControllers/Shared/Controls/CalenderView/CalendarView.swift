@@ -100,13 +100,9 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
                 let indexPath =
                     NSIndexPath(forItem: distanceFromStartComponent.day, inSection: distanceFromStartComponent.month)
                 
-                print(startOfMonthCache)
-                print("\(distanceFromStartComponent.day).\(distanceFromStartComponent.month).\(distanceFromStartComponent.year)")
-                
                 if var timeLogsInIndexPath : [TimeLog] = timeLogsByIndexPath[indexPath] {
                     timeLogsInIndexPath.append(timeLog)
                     timeLogsByIndexPath[indexPath] = timeLogsInIndexPath
-                    print(timeLogsInIndexPath.count)
                 } else {
                     timeLogsByIndexPath[indexPath] = [timeLog]
                 }
@@ -205,8 +201,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             return 0
         }
         
-        print("\(startDate)-\(endDate)")
-        
         let firstDayOfStartMonth = self.gregorian.components( [.Era, .Year, .Month], fromDate: startDateCache)
         firstDayOfStartMonth.day = 1
         
@@ -215,7 +209,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
         
         startOfMonthCache = dateFromDayOneComponents
-        print("SOMD:\(startOfMonthCache)")
         
         
         let today = NSDate()
