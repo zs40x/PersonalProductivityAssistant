@@ -291,7 +291,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
       
         let timeLogsInMonth = self.timeLogRepository.forMonthOf(date)
         
-        
+        print("\(timeLogsInMonth.value!.count)")
     }
 }
 

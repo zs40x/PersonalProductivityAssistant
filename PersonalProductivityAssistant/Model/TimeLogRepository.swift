@@ -33,10 +33,13 @@ public class TimeLogRepository {
         do {
             let calendar = NSCalendar.currentCalendar()
             
+            let startOfMonthDateComponents = calendar.components([.Year, .Month], fromDate: NSDate())
+            let startOfMonthDate = calendar.dateFromComponents(startOfMonthDateComponents)!
+            
             let startDateTime =
-                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: [])!
+                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: startOfMonthDate, options: [])!
             let endDateTime =
-                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: date, options: [])!
+                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: startOfMonthDate, options: [])!
             
             let endOfMonthDateComponents = NSDateComponents()
             endOfMonthDateComponents.month = 1
