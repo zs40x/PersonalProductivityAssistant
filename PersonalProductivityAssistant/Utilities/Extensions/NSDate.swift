@@ -25,4 +25,25 @@ extension NSDate {
         
         return dayRange.length
     }
+    
+    func firstDayOfMonth() -> NSDate {
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        let startOfMonthDateComponents = calendar.components([.Year, .Month], fromDate: self)
+        
+        let startOfMonthDate = calendar.dateFromComponents(startOfMonthDateComponents)!
+        
+        let startOfMonthDateMidnight =
+            calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: startOfMonthDate, options: [])!
+        
+        return startOfMonthDateMidnight
+    }
+    
+    func addMonthCount(monthCount: Int) -> NSDate {
+    
+        let calendar = NSCalendar.currentCalendar()
+        
+        return calendar.dateByAddingUnit(.Month, value: monthCount, toDate: self, options: [])!
+    }
 }

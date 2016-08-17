@@ -160,6 +160,7 @@
 		D4C392381D395B6700F0062E /* ChartsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C392371D395B6700F0062E /* ChartsPageViewController.swift */; };
 		D4DD6AA31D2A2CF400FC6B0E /* HashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */; };
 		D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */; };
+		D4DF0F841D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF0F831D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift */; };
 		D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
 		D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
 		D4F84C251D15516F0041FCF0 /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
@@ -346,6 +347,7 @@
 		D4C392371D395B6700F0062E /* ChartsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartsPageViewController.swift; path = ViewControllers/ChartsPageViewController.swift; sourceTree = "<group>"; };
 		D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagRepository.swift; sourceTree = "<group>"; };
 		D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagFinderTest.swift; sourceTree = "<group>"; };
+		D4DF0F831D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_firstDayOfCurrentAndNextMonth.swift; sourceTree = "<group>"; };
 		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
 		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 		D4B6606D1D142AAE000FE897 /* PersonalProductivityAssistantTests */ = {
 			isa = PBXGroup;
 			children = (
+				D4DF0F821D6479F000E17AE4 /* Extensions */,
 				D41726E81D28F04F002F15A4 /* Logic */,
 				D4B660701D142AAE000FE897 /* Info.plist */,
 				D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */,
@@ -816,6 +819,14 @@
 				D4B6607B1D142AAE000FE897 /* Info.plist */,
 			);
 			path = PersonalProductivityAssistantUITests;
+			sourceTree = "<group>";
+		};
+		D4DF0F821D6479F000E17AE4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4DF0F831D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		D4F84C1F1D15516F0041FCF0 /* Model */ = {
@@ -1156,6 +1167,7 @@
 				D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */,
 				D4355E761D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift in Sources */,
 				D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */,
+				D4DF0F841D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

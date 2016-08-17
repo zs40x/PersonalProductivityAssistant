@@ -33,25 +33,13 @@ public class TimeLogRepository {
         do {
             let calendar = NSCalendar.currentCalendar()
             
-            let startOfMonthDateComponents = calendar.components([.Year, .Month], fromDate: date)
-            let startOfMonthDate = calendar.dateFromComponents(startOfMonthDateComponents)!
+            let firstOfMonthDate = date.firstDayOfMonth()
+            let firstOfNextMonthDate = firstOfMonthDate.addMonthCount(1)
             
-            let startDateTime =
-                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: startOfMonthDate, options: [])!
-            let endDateTime =
-                calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: startOfMonthDate, options: [])!
-            
-            let endOfMonthDateComponents = NSDateComponents()
-            endOfMonthDateComponents.month = 1
-            endOfMonthDateComponents.day = 0
-            
-            let endOfMonthDateTime =
-                calendar.dateByAddingComponents(endOfMonthDateComponents, toDate: endDateTime, options: [])!
-            
-            print("TimeLogRepository.forMonthOf() - Range: \(startDateTime)-\(endOfMonthDateTime)")
+            print("TimeLogRepository.forMonthOf() - Range: \(firstOfMonthDate)-\(firstOfNextMonthDate)")
             
             let allTimeLogs =
-                try model.TimeLogs.getTimeLogsForDateRange(startDateTime, dateUntil: endOfMonthDateTime)
+                try model.TimeLogs.getTimeLogsForDateRange(firstOfMonthDate, dateUntil: firstOfNextMonthDate)
             
             return ResultValue.Success(allTimeLogs)
         } catch let error as NSError {
