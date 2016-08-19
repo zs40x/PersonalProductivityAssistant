@@ -31,12 +31,10 @@ public class TimeLogRepository {
     func forMonthOf(date: NSDate) -> ResultValue<[TimeLog]> {
         
         do {
-            let calendar = NSCalendar.currentCalendar()
-            
             let firstOfMonthDate = date.firstDayOfMonth()
             let firstOfNextMonthDate = firstOfMonthDate.addMonthCount(1)
             
-            print("TimeLogRepository.forMonthOf() - Range: \(firstOfMonthDate)-\(firstOfNextMonthDate)")
+            print("TimeLogRepository.forMonthOf() ->  >= \(firstOfMonthDate) && < \(firstOfNextMonthDate)")
             
             let allTimeLogs =
                 try model.TimeLogs.getTimeLogsForDateRange(firstOfMonthDate, dateUntil: firstOfNextMonthDate)
