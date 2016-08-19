@@ -20,6 +20,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     var setDateTimeFromButton: XCUIElement?
     var setDateTimeUntilButton: XCUIElement?
     var timeLogSaveButton: XCUIElement?
+    var calenderViewDay1Button: XCUIElement?
 
     var tableView: XCUIElement?
     let tablesQuery = XCUIApplication().tables
@@ -40,6 +41,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         setDateTimeFromButton = app.navigationBars["From"].buttons["Set"]
         setDateTimeUntilButton = app.navigationBars["Until"].buttons["Set"]
         timeLogSaveButton = app.navigationBars["Time Log"].buttons["Save"]
+        calenderViewDay1Button = app.collectionViews.staticTexts["1"]
     }
     
     override func tearDown() {
@@ -49,6 +51,12 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     }
     
     func testCanAddAndEditAndDeleteActivityFromTable() {
+        //
+        // Swipe calender to August
+        //
+        calenderViewDay1Button?.swipeLeft()
+    
+        
         //
         // Add
         //
