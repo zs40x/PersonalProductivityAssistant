@@ -10,7 +10,7 @@ import Foundation
 
 enum TimeLogEditMode {
     case New
-    case Updated
+    case Update
 }
 
 protocol TimeLogEditDelegate: class {

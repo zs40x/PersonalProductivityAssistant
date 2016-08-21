@@ -80,7 +80,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         switch editMode {
             
-            case .Updated:
+            case .Update:
             
                 guard let editedTimeLog = timeLogToEdit else {
                     return Result.Failure("invalid timeLog")

@@ -148,7 +148,7 @@ class TimeLogViewController:
         self.dateTimeUntil = editTimeLogData.Until
         displayFromAndUntilDateTime()
         
-        self.editMode = TimeLogEditMode.Updated
+        self.editMode = TimeLogEditMode.Update
     }
     
     func getTimeLogData() -> TimeLogData {
