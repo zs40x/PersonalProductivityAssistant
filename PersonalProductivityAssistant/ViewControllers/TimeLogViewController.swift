@@ -35,15 +35,11 @@ class TimeLogViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        autoCompleteTableView.delegate = self
-        autoCompleteTableView.dataSource = self
-        autoCompleteTableView.hidden = true
-        autoCompleteTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        initializeAutocomple()
         
         textEditActivity.resignFirstResponder()
         
-        initializeDefaultValues()
-        initializeUpdateModeFromDelegate()
+        initializeViewContent()
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,6 +72,7 @@ class TimeLogViewController:
         view.endEditing(true)
         
         guard dateTimeFrom != nil && dateTimeUntil != nil else {
+            showAlertDialog("Start and end time must be provided")
             return
         }
         
@@ -128,24 +125,34 @@ class TimeLogViewController:
     
     
     // MARK: Helper Methods
-    func initializeDefaultValues() {
-        self.dateTimeFrom = NSDate()
-        self.dateTimeUntil = NSDate()
+    func initializeAutocomple() {
         
-        self.displayFromAndUntilDateTime()
+        autoCompleteTableView.delegate = self
+        autoCompleteTableView.dataSource = self
+        autoCompleteTableView.hidden = true
+        autoCompleteTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    func initializeUpdateModeFromDelegate() {
+    func initializeViewContent() {
         
         guard let editTimeLogData = self.timeLogDataToEdit else {
+            initializeDefaultValues()
             return
         }
         
         self.textEditActivity.text = editTimeLogData.Activity
-        
         self.dateTimeFrom = editTimeLogData.From
         self.dateTimeUntil = editTimeLogData.Until
+        
         displayFromAndUntilDateTime()
+    }
+    
+    func initializeDefaultValues() {
+        
+        self.dateTimeFrom = NSDate()
+        self.dateTimeUntil = NSDate()
+        
+        self.displayFromAndUntilDateTime()
     }
     
     func getTimeLogData() -> TimeLogData {
