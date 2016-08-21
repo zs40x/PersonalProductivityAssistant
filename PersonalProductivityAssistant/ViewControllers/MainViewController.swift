@@ -277,10 +277,14 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     
     func calendar(calendar: CalendarView, didSelectDate date : NSDate, with selectedTimeLogs: [TimeLog]) {
         
+        NSLog("Calender.didSelectDate: \(date), with \(selectedTimeLogs.count) timeLogs")
         
+        self.tableViewTimeLogs = selectedTimeLogs
+        self.tableViewActivities.reloadData()
     }
     
     func calendar(calendar: CalendarView, didScrollToMonth date : NSDate) {
+        
         NSLog("Calender.didScrollToMonth: \(date)")
       
         let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
@@ -291,11 +295,8 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         }
         
         let timeLogsInMonth = timeLogsInMonthResult.value!
-        
         self.tableViewTimeLogs = timeLogsInMonth
         self.tableViewActivities.reloadData()
-        
-        //self.calendarView.reloadData()
     }
 }
 
