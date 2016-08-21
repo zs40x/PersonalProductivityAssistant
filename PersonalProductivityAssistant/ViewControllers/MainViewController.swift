@@ -40,7 +40,6 @@ class MainViewController: UIViewController, SegueHandlerType {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        displayPersistedTimeLogs()
         displayCalender()
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -71,21 +70,6 @@ class MainViewController: UIViewController, SegueHandlerType {
     
 
     // MARK: Helper methods
-    func displayPersistedTimeLogs() {
-        
-        tableViewTimeLogs.removeAll()
-        
-        let getAllResult = timeLogRepository.getAll()
-        
-        if !getAllResult.isSucessful {
-            showAlertDialog("Error loading time logs \(getAllResult.errorMessage)")
-            return
-        }
-        
-        tableViewTimeLogs.appendContentsOf(getAllResult.value!)
-        sortTimeLogTable()
-    }
-    
     func displayCalender() {
         
         calendarView.dataSource = self
