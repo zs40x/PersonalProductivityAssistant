@@ -53,7 +53,18 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         if let viewControllerAddTimeLog = segue.destinationViewController as? TimeLogViewController {
             viewControllerAddTimeLog.timeLogEditDelegate = self
-            viewControllerAddTimeLog.timeLogDataToEdit = timeLogToEdit?.asTimeLogData()
+            
+            if timeLogToEdit != nil {
+                viewControllerAddTimeLog.editMode = .Update
+                
+                viewControllerAddTimeLog.timeLogDataToEdit = timeLogToEdit?.asTimeLogData()
+            } else {
+                viewControllerAddTimeLog.editMode = .New
+                
+                let dateForNewTimeLog = self.calendarView.selectedDates.first ?? NSDate()
+                
+                viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData(Activity: "", From: dateForNewTimeLog, Until: dateForNewTimeLog)
+            }
         }
     }
 

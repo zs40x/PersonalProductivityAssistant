@@ -11,7 +11,6 @@ import UIKit
 class TimeLogViewController:
         UIViewController, DateTimePickDelegate, SegueHandlerType {
     
-    private var editMode = TimeLogEditMode.New
     private var autoCompleteItems = [String]()
     private var dateTimeFieldToPick: DateTimeFieldToPick?
     private var dateTimeFrom: NSDate?
@@ -19,7 +18,7 @@ class TimeLogViewController:
     private var hashtagAutocompleteAssistant = HashtagAutoCompleteAssistant()
     
     var timeLogDataToEdit: TimeLogData?
-    
+    var editMode = TimeLogEditMode.New
     weak var timeLogEditDelegate: TimeLogEditDelegate?
     
     enum SegueIdentifier : String {
@@ -147,8 +146,6 @@ class TimeLogViewController:
         self.dateTimeFrom = editTimeLogData.From
         self.dateTimeUntil = editTimeLogData.Until
         displayFromAndUntilDateTime()
-        
-        self.editMode = TimeLogEditMode.Update
     }
     
     func getTimeLogData() -> TimeLogData {
