@@ -141,6 +141,9 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         tableViewTimeLogs.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        
+        calendarView.timeLogs = tableViewTimeLogs
+        calendarView.reloadData()
     }
     
     func sortTimeLogTable() {
