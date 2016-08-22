@@ -116,13 +116,17 @@ class MainViewController: UIViewController, SegueHandlerType {
                 if !newTimeLogResult.isSucessful {
                     return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
                 }
-            
+                
                 tableViewTimeLogs.append(newTimeLogResult.value!)
+            
+                if let dateFrom = newTimeLogResult.value?.from {
+                    updateCalenderFoDate(dateFrom)
+                }
         }
         
         sortTimeLogTable()
         tableViewActivities.reloadData()
-        calendarView.reloadData()
+        
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
@@ -281,6 +285,11 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         
         NSLog("Calender.didScrollToMonth: \(date)")
       
+        updateCalenderFoDate(date)
+    }
+    
+    func updateCalenderFoDate(date: NSDate) {
+        
         let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
         
         if !timeLogsInMonthResult.isSucessful {
