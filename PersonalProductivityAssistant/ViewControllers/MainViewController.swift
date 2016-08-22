@@ -44,6 +44,10 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -252,7 +256,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         
     }
     
-    func timeLogs() -> [TimeLog]? {
+    /*func timeLogs() -> [TimeLog]? {
         let getAllResult = timeLogRepository.getAll()
         
         if !getAllResult.isSucessful {
@@ -261,7 +265,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         }
         
         return getAllResult.value!.sort({ $0.from?.compare($1.from!) == NSComparisonResult.OrderedAscending })
-    }
+    }*/
     
     override func viewDidLayoutSubviews() {
         
@@ -270,8 +274,6 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         let width = self.view.frame.size.width - 16.0 * 2
         let height = width
         self.calendarView.frame = CGRect(x: ((self.view.frame.width - width) / 2), y: 0.0, width: width, height: height)
-        
-        self.calendarView.reloadData()
     }
     
     
@@ -295,8 +297,14 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         }
         
         let timeLogsInMonth = timeLogsInMonthResult.value!
+        
         self.tableViewTimeLogs = timeLogsInMonth
-        self.tableViewActivities.reloadData()
+        self.calendarView.timeLogs = timeLogsInMonth
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableViewActivities.reloadData()
+            self.calendarView.reloadData()
+        });
     }
 }
 

@@ -452,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/MainViewController.swift"
-            timestampString = "493501917.654544"
+            timestampString = "493582877.524486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "textView(_:shouldInteractWithURL:inRange:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -468,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/MainViewController.swift"
-            timestampString = "493501917.654544"
+            timestampString = "493582877.524486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "textView(_:shouldInteractWithURL:inRange:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -532,11 +532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "calculateDateBasedOnScrollViewPosition(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -548,87 +548,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
-            landmarkName = "calculateDateBasedOnScrollViewPosition(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "492542425.610635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "492542425.610635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099393.834935"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099393.834935"
+            timestampString = "493583329.505713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -644,11 +564,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493583329.505713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "CalendarView"
             landmarkType = "3">
          </BreakpointContent>
@@ -660,11 +596,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493583329.505713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "CalendarView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493583329.505713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "CalendarView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493583329.505713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "numberOfSectionsInCollectionView(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -676,7 +644,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
@@ -692,7 +660,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
@@ -708,7 +676,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
@@ -724,11 +692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493583329.505713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "CalendarView"
             landmarkType = "3">
          </BreakpointContent>
@@ -740,11 +708,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493583329.505713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "numberOfSectionsInCollectionView(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -756,7 +724,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "294"
@@ -772,11 +740,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "numberOfSectionsInCollectionView(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -788,13 +756,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/MainViewController.swift"
-            timestampString = "493501917.654544"
+            timestampString = "493582877.524486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "timeLogs()"
-            landmarkType = "5">
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -804,11 +772,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "492542425.610635"
+            timestampString = "493583329.505713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "CalendarView"
             landmarkType = "3">
          </BreakpointContent>
@@ -820,12 +788,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
-            timestampString = "493099465.527217"
+            timestampString = "493584068.369464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "453"
-            endingLineNumber = "453"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "collectionView(_:didSelectItemAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493580503.013154"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "CalendarView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493581390.108129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "CalendarView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493583329.505713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493584068.369464"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493583329.505713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "CalendarView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/ViewControllers/Shared/Controls/CalenderView/CalendarView.swift"
+            timestampString = "493584068.369464"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
+            landmarkName = "reloadData()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

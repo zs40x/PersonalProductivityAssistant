@@ -26,7 +26,6 @@ protocol CalendarViewDataSource {
     
     func startDate() -> NSDate?
     func endDate() -> NSDate?
-    func timeLogs() -> [TimeLog]?
 }
 
 @objc protocol CalendarViewDelegate {
@@ -76,22 +75,24 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     
     private var timeLogsByIndexPath = [NSIndexPath:[TimeLog]]()
-    private var timeLogs : [TimeLog]? {
+    
+    var timeLogs : [TimeLog]? {
         
         didSet {
             
             timeLogsByIndexPath = [NSIndexPath:[TimeLog]]()
             
-            guard let timeLogs = self.timeLogs else { return }
+            guard let currentTimeLogs = self.timeLogs else {
+                return
+            }
             
             let secondsFromGMTDifference = NSTimeInterval(NSTimeZone.localTimeZone().secondsFromGMT)
             
-            for timeLog in timeLogs {
+            for timeLog in currentTimeLogs {
                 
                 guard let dateFrom = timeLog.from else { continue }
                 
                 let startDate = dateFrom.dateByAddingTimeInterval(secondsFromGMTDifference)
-                
                 
                 let distanceFromStartComponent =
                     self.gregorian.components(
@@ -209,8 +210,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
         
         startOfMonthCache = dateFromDayOneComponents
-        
-        
+
         let today = NSDate()
         
         if  startOfMonthCache.compare(today) == NSComparisonResult.OrderedAscending &&
@@ -311,6 +311,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     
+    private var previousYearDate: NSDate?
     func calculateDateBasedOnScrollViewPosition(scrollView: UIScrollView) {
         
         let cvbounds = self.calendarView.bounds
@@ -332,19 +333,23 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
         
         let month = self.gregorian.component(NSCalendarUnit.Month, fromDate: yearDate) // get month
-        
         let monthName = NSDateFormatter().monthSymbols[(month-1) % 12] // 0 indexed array
-        
         let year = self.gregorian.component(NSCalendarUnit.Year, fromDate: yearDate)
         
         
         self.headerView.monthLabel.text = monthName + " " + String(year)
-        
         self.displayDate = yearDate
         
         
-        delegate.calendar(self, didScrollToMonth: yearDate)
+        if previousYearDate != nil {
+            if previousYearDate! != yearDate {
+                delegate.calendar(self, didScrollToMonth: yearDate)
+            }
+        } else {
+            delegate.calendar(self, didScrollToMonth: yearDate)
+        }
         
+        previousYearDate = yearDate
     }
     
     
@@ -479,8 +484,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     
     func reloadData() {
-        self.timeLogs = self.dataSource?.timeLogs()
-        
         self.calendarView.reloadData()
     }
     
