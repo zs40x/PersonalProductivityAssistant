@@ -98,7 +98,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             case .Update:
             
                 guard let editedTimeLog = timeLogToEdit else {
-                    return Result.Failure("invalid timeLog")
+                    return Result.Failure("Invalid timeLog")
                 }
             
                 editedTimeLog.updateFromTimeLogData(timeLogData)
