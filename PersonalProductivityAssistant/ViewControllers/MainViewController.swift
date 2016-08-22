@@ -256,17 +256,6 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         
     }
     
-    /*func timeLogs() -> [TimeLog]? {
-        let getAllResult = timeLogRepository.getAll()
-        
-        if !getAllResult.isSucessful {
-            showAlertDialog("Error loading time logs \(getAllResult.errorMessage)")
-            return nil
-        }
-        
-        return getAllResult.value!.sort({ $0.from?.compare($1.from!) == NSComparisonResult.OrderedAscending })
-    }*/
-    
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
