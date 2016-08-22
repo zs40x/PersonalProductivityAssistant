@@ -108,6 +108,10 @@ class MainViewController: UIViewController, SegueHandlerType {
                 if !timeLogRepository.save().isSucessful {
                     return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
                 }
+            
+                if let dateFrom = editedTimeLog.from {
+                    updateCalenderFoDate(dateFrom)
+                }
         
             case.New:
                 
