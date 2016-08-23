@@ -162,13 +162,11 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     
     func displayFromAndUntilDateTime() {
         
-        self.buttonDateTimeFrom.setTitle(
-            convertNSDateToReadableStringOrDefaultValue(from.date), forState: .Normal)
-        self.buttonDateTimeUntil.setTitle(
-            convertNSDateToReadableStringOrDefaultValue(until.date), forState: .Normal)
+        buttonDateTimeFrom.setTitle(dateAsFormattedString(from.date), forState: .Normal)
+        buttonDateTimeUntil.setTitle(dateAsFormattedString(until.date), forState: .Normal)
     }
     
-    func convertNSDateToReadableStringOrDefaultValue(date: NSDate?) -> String {
+    func dateAsFormattedString(date: NSDate?) -> String {
         
         return date != nil ? date!.asFormattedString() : "n/a"
     }
