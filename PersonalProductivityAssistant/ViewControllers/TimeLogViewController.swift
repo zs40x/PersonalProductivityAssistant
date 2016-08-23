@@ -18,8 +18,8 @@ class TimeLogViewController:
     private var hashtagAutocompleteAssistant = HashtagAutoCompleteAssistant()
     
     var timeLogDataToEdit: TimeLogData?
-    var editMode = TimeLogEditMode.New
     weak var timeLogEditDelegate: TimeLogEditDelegate?
+    var timeLogEntityPersistence: TimeLogEntityPersistence?
     
     enum SegueIdentifier : String {
         case showDatePicker
@@ -71,22 +71,35 @@ class TimeLogViewController:
     @IBAction func actionAddTimeLog(sender: AnyObject) {
         view.endEditing(true)
         
+        let timeLogData = getTimeLogData()
+        
         guard dateTimeFrom != nil && dateTimeUntil != nil else {
             showAlertDialog("Start and end time must be provided")
             return
         }
         
-        if let delegate = timeLogEditDelegate {
-            let result = delegate.timeLogEdited(editMode, timeLog: getTimeLogData())
-            
-            if !result.isSucessful {
-                showAlertDialog(result.errorMessage)
-                return
-            }
-            
-            textEditActivity.text = ""
-            self.navigationController!.popViewControllerAnimated(true)
+        guard let persistence = timeLogEntityPersistence else {
+            showAlertDialog("No Persistence set")
+            return
         }
+        
+        guard let delegate = self.timeLogEditDelegate else {
+            showAlertDialog("Delegate not initialized")
+            return
+        }
+        
+    
+        let result = persistence.persist(timeLogData)
+            
+        if !result.isSucessful {
+            showAlertDialog(result.errorMessage)
+            return
+        }
+        
+        delegate.timeLogModified(timeLogData.From)
+            
+        textEditActivity.text = ""
+        self.navigationController!.popViewControllerAnimated(true)
     }
     
     @IBAction func actionActivityEditingChanged(sender: AnyObject) {

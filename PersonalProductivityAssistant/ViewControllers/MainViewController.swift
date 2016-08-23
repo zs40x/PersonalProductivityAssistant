@@ -59,11 +59,11 @@ class MainViewController: UIViewController, SegueHandlerType {
             viewControllerAddTimeLog.timeLogEditDelegate = self
             
             if timeLogToEdit != nil {
-                viewControllerAddTimeLog.editMode = .Update
+                viewControllerAddTimeLog.timeLogEntityPersistence = UpdateTimeLogEntity(timeLog: timeLogToEdit!)
                 
                 viewControllerAddTimeLog.timeLogDataToEdit = timeLogToEdit?.asTimeLogData()
             } else {
-                viewControllerAddTimeLog.editMode = .New
+                viewControllerAddTimeLog.timeLogEntityPersistence = AddNewTimeLogEntity()
                 
                 let dateForNewTimeLog = self.calendarView.selectedDates.first ?? NSDate()
                 
@@ -110,6 +110,26 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     func sortTimeLogTable() {
         tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
+    }
+    
+    func updateViewForDate(date: NSDate) {
+        
+        let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
+        
+        if !timeLogsInMonthResult.isSucessful {
+            showAlertDialog("Error loading time logs \(timeLogsInMonthResult.errorMessage)")
+            return
+        }
+        
+        let timeLogsInMonth = timeLogsInMonthResult.value!
+        
+        self.tableViewTimeLogs = timeLogsInMonth
+        self.calendarView.timeLogs = timeLogsInMonth
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableViewActivities.reloadData()
+            self.calendarView.reloadData()
+        });
     }
 }
 
@@ -242,69 +262,14 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         
         NSLog("Calender.didScrollToMonth: \(date)")
       
-        updateCalenderFoDate(date)
-    }
-    
-    func updateCalenderFoDate(date: NSDate) {
-        
-        let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
-        
-        if !timeLogsInMonthResult.isSucessful {
-            showAlertDialog("Error loading time logs \(timeLogsInMonthResult.errorMessage)")
-            return
-        }
-        
-        let timeLogsInMonth = timeLogsInMonthResult.value!
-        
-        self.tableViewTimeLogs = timeLogsInMonth
-        self.calendarView.timeLogs = timeLogsInMonth
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableViewActivities.reloadData()
-            self.calendarView.reloadData()
-        });
+        updateViewForDate(date)
     }
 }
 
 
 extension MainViewController : TimeLogEditDelegate {
     
-    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result {
-        
-        switch editMode {
-            
-        case .Update:
-            
-            guard let editedTimeLog = timeLogToEdit else {
-                return Result.Failure("Invalid timeLog")
-            }
-            
-            editedTimeLog.updateFromTimeLogData(timeLog)
-            
-            let saveChangesResult = timeLogRepository.save()
-            
-            if !timeLogRepository.save().isSucessful {
-                return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
-            }
-            
-        case.New:
-            
-            let newTimeLogResult = timeLogRepository.addNew(timeLog)
-            
-            if !newTimeLogResult.isSucessful {
-                return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
-            }
-            
-            tableViewTimeLogs.append(newTimeLogResult.value!)
-        }
-        
-        updateCalenderFoDate(timeLog.From)
-        
-        sortTimeLogTable()
-        tableViewActivities.reloadData()
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        return Result.Success()
+    func timeLogModified(withStartDate: NSDate) {
+        updateViewForDate(withStartDate)
     }
 }

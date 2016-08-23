@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum TimeLogEditMode {
-    case New
-    case Update
-}
-
 protocol TimeLogEditDelegate: class {
-    func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result
+    func timeLogModified(withStartDate: NSDate)
 }
