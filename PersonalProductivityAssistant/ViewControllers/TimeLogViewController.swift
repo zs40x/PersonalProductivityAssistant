@@ -8,8 +8,7 @@
 
 import UIKit
 
-class TimeLogViewController:
-        UIViewController, DateTimePickDelegate, SegueHandlerType {
+class TimeLogViewController: UIViewController, SegueHandlerType {
     
     private var autoCompleteItems = [String]()
     private var dateTimeFieldToPick: DateTimeFieldToPick?
@@ -107,7 +106,7 @@ class TimeLogViewController:
         toggleAutoCompletevisibilityForCurrentInput()
     }
     
-    @IBAction func actionTapedDateTimeStart(sender: AnyObject) {
+    @IBAction func actionTapedDateTimeStart(sender: UIButton) {
         
         self.pickDateTime(.From)
     }
@@ -115,25 +114,6 @@ class TimeLogViewController:
     @IBAction func actionTappedDateTimeEnd(sender: AnyObject) {
         
         self.pickDateTime(.Until)
-    }
-    
-
-    
-    // MARK: DateTimePickedDelegate
-    func dateTimePicked(fieldToPick selectedDateTime: DateTimeFieldToPick?, dateTime: NSDate) {
-        
-        guard let dateField = selectedDateTime else {
-            return
-        }
-        
-        switch dateField {
-        case .From:
-            self.dateTimeFrom = dateTime
-        case .Until:
-            self.dateTimeUntil = dateTime
-        }
-        
-        displayFromAndUntilDateTime()
     }
     
     
@@ -238,6 +218,25 @@ class TimeLogViewController:
         }
         
         self.autoCompleteTableView.reloadData()
+    }
+}
+
+extension TimeLogViewController : DateTimePickDelegate {
+    
+    func dateTimePicked(fieldToPick selectedDateTime: DateTimeFieldToPick?, dateTime: NSDate) {
+        
+        guard let dateField = selectedDateTime else {
+            return
+        }
+        
+        switch dateField {
+        case .From:
+            self.dateTimeFrom = dateTime
+        case .Until:
+            self.dateTimeUntil = dateTime
+        }
+        
+        displayFromAndUntilDateTime()
     }
 }
 
