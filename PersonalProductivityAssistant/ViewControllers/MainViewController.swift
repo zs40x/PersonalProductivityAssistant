@@ -40,7 +40,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        displayCalender()
+        self.initializeCalendar()
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -78,63 +78,17 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         timeLogToEdit = nil
         
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
     
 
     // MARK: Helper methods
-    func displayCalender() {
+    func initializeCalendar() {
         
         calendarView.dataSource = self
         calendarView.delegate = self
-    }
-    
-    func editedTimeLog(editMode: TimeLogEditMode, timeLogData: TimeLogData) -> Result {
-        
-        switch editMode {
-            
-            case .Update:
-            
-                guard let editedTimeLog = timeLogToEdit else {
-                    return Result.Failure("Invalid timeLog")
-                }
-            
-                editedTimeLog.updateFromTimeLogData(timeLogData)
-
-                let saveChangesResult = timeLogRepository.save()
-                
-                if !timeLogRepository.save().isSucessful {
-                    return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
-                }
-            
-                if let dateFrom = editedTimeLog.from {
-                    updateCalenderFoDate(dateFrom)
-                }
-        
-            case.New:
-                
-                let newTimeLogResult = timeLogRepository.addNew(timeLogData)
-        
-                if !newTimeLogResult.isSucessful {
-                    return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
-                }
-                
-                tableViewTimeLogs.append(newTimeLogResult.value!)
-            
-                if let dateFrom = newTimeLogResult.value?.from {
-                    updateCalenderFoDate(dateFrom)
-                }
-        }
-        
-        sortTimeLogTable()
-        tableViewActivities.reloadData()
-        
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        return Result.Success()
     }
     
     func deleteTimeLog(tableView: UITableView, indexPath: NSIndexPath) {
@@ -203,8 +157,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
             
             timeLogToEdit = tableViewTimeLogs[indexPath.row]
             
-            
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            navigationController?.setNavigationBarHidden(false, animated: true)
             
             performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
         }
@@ -225,7 +178,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
@@ -317,6 +270,41 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
 extension MainViewController : TimeLogEditDelegate {
     
     func timeLogEdited(editMode: TimeLogEditMode, timeLog: TimeLogData) -> Result {
-        return editedTimeLog(editMode, timeLogData: timeLog)
+        
+        switch editMode {
+            
+        case .Update:
+            
+            guard let editedTimeLog = timeLogToEdit else {
+                return Result.Failure("Invalid timeLog")
+            }
+            
+            editedTimeLog.updateFromTimeLogData(timeLog)
+            
+            let saveChangesResult = timeLogRepository.save()
+            
+            if !timeLogRepository.save().isSucessful {
+                return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
+            }
+            
+        case.New:
+            
+            let newTimeLogResult = timeLogRepository.addNew(timeLog)
+            
+            if !newTimeLogResult.isSucessful {
+                return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
+            }
+            
+            tableViewTimeLogs.append(newTimeLogResult.value!)
+        }
+        
+        updateCalenderFoDate(timeLog.From)
+        
+        sortTimeLogTable()
+        tableViewActivities.reloadData()
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        return Result.Success()
     }
 }
