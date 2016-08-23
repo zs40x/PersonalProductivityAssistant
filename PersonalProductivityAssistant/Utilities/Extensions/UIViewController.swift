@@ -28,4 +28,12 @@ extension UIViewController {
             topController.presentViewController(alertController, animated: true, completion: nil)
         }
     }
+    
+    func showNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func hideNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }

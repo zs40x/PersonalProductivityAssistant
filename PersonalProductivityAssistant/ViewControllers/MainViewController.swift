@@ -42,7 +42,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         self.initializeCalendar()
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        hideNavigationBar()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -78,7 +78,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         timeLogToEdit = nil
         
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        showNavigationBar()
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
@@ -177,7 +177,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
             
             timeLogToEdit = tableViewTimeLogs[indexPath.row]
             
-            navigationController?.setNavigationBarHidden(false, animated: true)
+            showNavigationBar()
             
             performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
         }
@@ -198,7 +198,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         
         timeLogToEdit = tableViewTimeLogs[indexPath.row]
         
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        showNavigationBar()
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
