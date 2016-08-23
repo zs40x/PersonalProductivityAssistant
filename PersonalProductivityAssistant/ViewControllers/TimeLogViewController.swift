@@ -8,16 +8,33 @@
 
 import UIKit
 
+class PickableDate {
+    
+    private(set) var date: NSDate
+    private(set) var title: String
+    private(set) var field: DatePickTargetField
+    
+    init(title: String, field: DatePickTargetField, date: NSDate) {
+        self.date = date
+        self.title = title
+        self.field = field
+    }
+    
+    convenience init(title: String, field: DatePickTargetField) {
+        self.init(title: title, field: field,date: NSDate())
+    }
+}
+
 class TimeLogViewController: UIViewController, SegueHandlerType {
     
     private var autoCompleteItems = [String]()
-    private var dateTimeFieldToPick: DateTimeFieldToPick?
-    private var dateTimeFrom: NSDate?
-    private var dateTimeUntil: NSDate?
+    private var from: PickableDate = PickableDate(title: "From", field: .From)
+    private var until: PickableDate = PickableDate(title: "Until", field: .Until)
+    private var dateToPick: PickableDate?
     private var hashtagAutocompleteAssistant = HashtagAutoCompleteAssistant()
     
     var timeLogDataToEdit: TimeLogData?
-    weak var timeLogEditDelegate: TimeLogEditDelegate?
+    var timeLogEditDelegate: TimeLogEditDelegate?
     var timeLogEntityPersistence: TimeLogEntityPersistence?
     
     enum SegueIdentifier : String {
@@ -59,9 +76,8 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         if let dateTimePickViewController =
                 segue.destinationViewController as? DateTimePickViewController {
             
-            dateTimePickViewController.delegate = self
-            dateTimePickViewController.dateTimeFieldToPick = dateTimeFieldToPick
-            dateTimePickViewController.selectedDateTime = getValueForDateTimeFieldToPick()
+            dateTimePickViewController.pickDelegate = self
+            dateTimePickViewController.dateToPick = dateToPick
         }
     }
 
@@ -71,11 +87,6 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         view.endEditing(true)
         
         let timeLogData = getTimeLogData()
-        
-        guard dateTimeFrom != nil && dateTimeUntil != nil else {
-            showAlertDialog("Start and end time must be provided")
-            return
-        }
         
         guard let persistence = timeLogEntityPersistence else {
             showAlertDialog("No Persistence set")
@@ -108,12 +119,12 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     
     @IBAction func actionTapedDateTimeStart(sender: UIButton) {
         
-        self.pickDateTime(.From)
+        self.pickDateTime(from)
     }
     
     @IBAction func actionTappedDateTimeEnd(sender: AnyObject) {
         
-        self.pickDateTime(.Until)
+        self.pickDateTime(until)
     }
     
     
@@ -128,40 +139,33 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     
     func initializeViewContent() {
         
+        defer {
+            displayFromAndUntilDateTime()
+        }
+        
         guard let editTimeLogData = self.timeLogDataToEdit else {
-            initializeDefaultValues()
             return
         }
         
         self.textEditActivity.text = editTimeLogData.Activity
-        self.dateTimeFrom = editTimeLogData.From
-        self.dateTimeUntil = editTimeLogData.Until
-        
-        displayFromAndUntilDateTime()
-    }
-    
-    func initializeDefaultValues() {
-        
-        self.dateTimeFrom = NSDate()
-        self.dateTimeUntil = NSDate()
-        
-        self.displayFromAndUntilDateTime()
+        from = PickableDate(title: "From", field: .From, date: editTimeLogData.From)
+        until = PickableDate(title: "Until", field: .Until, date: editTimeLogData.Until)
     }
     
     func getTimeLogData() -> TimeLogData {
         
         return TimeLogData(
             Activity: textEditActivity.text!,
-            From: dateTimeFrom!,
-            Until: dateTimeUntil! )
+            From: from.date,
+            Until: until.date )
     }
     
     func displayFromAndUntilDateTime() {
         
         self.buttonDateTimeFrom.setTitle(
-            convertNSDateToReadableStringOrDefaultValue(self.dateTimeFrom), forState: .Normal)
+            convertNSDateToReadableStringOrDefaultValue(from.date), forState: .Normal)
         self.buttonDateTimeUntil.setTitle(
-            convertNSDateToReadableStringOrDefaultValue(self.dateTimeUntil), forState: .Normal)
+            convertNSDateToReadableStringOrDefaultValue(until.date), forState: .Normal)
     }
     
     func convertNSDateToReadableStringOrDefaultValue(date: NSDate?) -> String {
@@ -169,21 +173,11 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         return date != nil ? date!.asFormattedString() : "n/a"
     }
     
-    func pickDateTime(targetField: DateTimeFieldToPick) {
+    func pickDateTime(target: PickableDate) {
         
-        dateTimeFieldToPick = targetField
+        dateToPick = target
         
-        self.performSegueWithIdentifier(.showDatePicker, sender: self)
-    }
-    
-    func getValueForDateTimeFieldToPick() -> NSDate? {
-        
-        switch dateTimeFieldToPick! {
-        case .From:
-            return self.dateTimeFrom
-        case .Until:
-            return self.dateTimeUntil
-        }
+        performSegueWithIdentifier(.showDatePicker, sender: self)
     }
     
     func toggleAutoCompletevisibilityForCurrentInput() {
@@ -223,17 +217,14 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
 
 extension TimeLogViewController : DateTimePickDelegate {
     
-    func dateTimePicked(fieldToPick selectedDateTime: DateTimeFieldToPick?, dateTime: NSDate) {
+    func confirmedPick(pickedDate: PickableDate, date: NSDate) {
         
-        guard let dateField = selectedDateTime else {
-            return
-        }
+        let newPickableDate = PickableDate(title: pickedDate.title, field: pickedDate.field, date: date)
         
-        switch dateField {
-        case .From:
-            self.dateTimeFrom = dateTime
-        case .Until:
-            self.dateTimeUntil = dateTime
+        if pickedDate.field == .From {
+            from = newPickableDate
+        } else {
+            until = newPickableDate
         }
         
         displayFromAndUntilDateTime()

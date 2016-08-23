@@ -245,74 +245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/ViewControllers/TimeLogViewController.swift"
-            timestampString = "490262427.487881"
+            timestampString = "493665800.464707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10"
-            endingLineNumber = "10"
-            landmarkName = "TimeLogViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PersonalProductivityAssistant.TimeLogViewController.__deallocating_deinit"
-                  moduleName = "PersonalProductivityAssistant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistant/ViewControllers/TimeLogViewController.swift"
-                  timestampString = "490252582.800219"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PersonalProductivityAssistant.TimeLogViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; PersonalProductivityAssistant.TimeLogViewController"
-                  moduleName = "PersonalProductivityAssistant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistant/ViewControllers/TimeLogViewController.swift"
-                  timestampString = "490252582.800383"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "72">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PersonalProductivityAssistant.TimeLogViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;PersonalProductivityAssistant.TimeLogViewController&gt;"
-                  moduleName = "PersonalProductivityAssistant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stefanmehnert/Documents/dev/PersonalProductivityAssistant/PersonalProductivityAssistant/ViewControllers/TimeLogViewController.swift"
-                  timestampString = "490252582.800484"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/TimeLogViewController.swift"
-            timestampString = "493661080.409851"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "updateAutoCompleteValues()"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,22 +363,6 @@
             startingLineNumber = "13"
             endingLineNumber = "13"
             landmarkName = "String(key:value:comment:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/DateTimePickViewController.swift"
-            timestampString = "490423822.178915"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

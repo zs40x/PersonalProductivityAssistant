@@ -10,8 +10,8 @@ import UIKit
 
 class DateTimePickViewController: UIViewController {
 
-    var delegate: DateTimePickDelegate?
-    var dateTimeFieldToPick: DateTimeFieldToPick?
+    weak var dateToPick: PickableDate?
+    var pickDelegate: DateTimePickDelegate?
     var selectedDateTime: NSDate?
     
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -20,18 +20,11 @@ class DateTimePickViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let preSelectedDateTime = self.selectedDateTime {
-            self.datePicker.date = preSelectedDateTime
-        }
+        guard let target = dateToPick else { fatalError() }
         
-        if let fieldToPick = self.dateTimeFieldToPick {
-            switch fieldToPick {
-            case .From:
-                navigationItem.title = "From"
-            case .Until:
-                navigationItem.title = "Until"
-            }
-        }
+        datePicker.date = target.date
+        
+        navigationItem.title = target.title
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,14 +39,10 @@ class DateTimePickViewController: UIViewController {
             self.navigationController?.popViewControllerAnimated(true)
         }
         
-        guard dateTimeFieldToPick != nil else {
-            return
-        }
+        guard let pickedDate = dateToPick else { return }
         
-        guard let dateTimePickedDelegate = self.delegate else {
-            return
-        }
+        guard let delegate = pickDelegate else { return }
         
-        dateTimePickedDelegate.dateTimePicked(fieldToPick: dateTimeFieldToPick, dateTime: datePicker.date)
+        delegate.confirmedPick(pickedDate, date: datePicker.date)
     }
 }
