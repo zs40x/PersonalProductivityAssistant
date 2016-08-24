@@ -63,8 +63,10 @@ internal class AbstractModel {
 internal class TimeLogModel : AbstractModel {
     
     func getAllTimeLogs() throws -> [TimeLog] {
+        
         let request = NSFetchRequest(entityName: TimeLog.EntityName)
-        request.sortDescriptors = [NSSortDescriptor(key: "activity", ascending: true)]
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
         
         do {
             return try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
@@ -76,8 +78,12 @@ internal class TimeLogModel : AbstractModel {
     }
     
     func getTimeLogsForDateRange(dateFrom: NSDate, dateUntil: NSDate) throws -> [TimeLog] {
+        
         let request = NSFetchRequest(entityName: TimeLog.EntityName)
+        
         request.predicate = NSPredicate(format: "((from >= %@) AND (from < %@)) || (from = nil)", dateFrom, dateUntil)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
         
         do {
             return try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
@@ -89,6 +95,7 @@ internal class TimeLogModel : AbstractModel {
     }
     
     func createTimeLog(timeLogData: TimeLogData) -> TimeLog {
+        
         let timeLog =
             NSEntityDescription.insertNewObjectForEntityForName(
                 TimeLog.EntityName, inManagedObjectContext: self.managedObjectContext) as! TimeLog
