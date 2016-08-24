@@ -108,10 +108,6 @@ class MainViewController: UIViewController, SegueHandlerType {
         calendarView.reloadData()
     }
     
-    func sortTimeLogTable() {
-        tableViewTimeLogs.sortInPlace{ $0.activity > $1.activity }
-    }
-    
     func updateViewForDate(date: NSDate) {
         
         let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
