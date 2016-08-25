@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class PieChartViewController: UIViewController, ChartViewDelegate  {
     
@@ -43,7 +44,7 @@ class PieChartViewController: UIViewController, ChartViewDelegate  {
         pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInCirc)
     }
     
-    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlighter) {
         
     }
     
@@ -52,14 +53,16 @@ class PieChartViewController: UIViewController, ChartViewDelegate  {
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            let dataEntry = ChartDataEntry(x: values[i], y: Double(i))
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Free vs. spent time")
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Free vs. spent time")
         
-        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+
         pieChartView.data = pieChartData
+        
         
         pieChartDataSet.colors
             = [UIColor.greenColor(), UIColor.redColor(), UIColor.brownColor(), UIColor.cyanColor(),
