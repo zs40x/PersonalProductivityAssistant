@@ -9,14 +9,14 @@
 import Foundation
 
 protocol TimeLogEntityPersistence {
-    func persist(timeLogData: TimeLogData) -> Result;
+    func persist(_ timeLogData: TimeLogData) -> Result;
 }
 
 class AddNewTimeLogEntity : TimeLogEntityPersistence {
     
     var timeLogRepository =  TimeLogRepository()
     
-    func persist(timeLogData: TimeLogData) -> Result {
+    func persist(_ timeLogData: TimeLogData) -> Result {
         
         let newTimeLogResult = timeLogRepository.addNew(timeLogData)
         
@@ -37,7 +37,7 @@ class UpdateTimeLogEntity : TimeLogEntityPersistence {
         self.timeLog = timeLog
     }
     
-    func persist(timeLogData: TimeLogData) -> Result {
+    func persist(_ timeLogData: TimeLogData) -> Result {
         
         timeLog.updateFromTimeLogData(timeLogData)
         

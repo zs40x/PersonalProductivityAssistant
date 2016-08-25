@@ -15,8 +15,8 @@ import CoreData
 extension TimeLog {
 
     @NSManaged var activity: String?
-    @NSManaged var from: NSDate?
-    @NSManaged var until: NSDate?
+    @NSManaged var from: Date?
+    @NSManaged var until: Date?
     @NSManaged var hashtags: NSSet?
 
 }

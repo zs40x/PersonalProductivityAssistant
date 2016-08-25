@@ -14,7 +14,7 @@ class HashtagRepository {
     private var model = PPAModel.New()
     
     
-    func replaceManagedObjectContext(context: NSManagedObjectContext) {
+    func replaceManagedObjectContext(_ context: NSManagedObjectContext) {
         model.managedObjectContext = context
     }
     

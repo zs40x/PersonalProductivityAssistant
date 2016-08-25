@@ -10,13 +10,13 @@ import Foundation
 
 extension String {
     
-    public func findOccurencesOf(text text:String) -> [NSRange] {
+    public func findOccurencesOf(text:String) -> [NSRange] {
         
         guard !text.isEmpty else { return [] }
         
         return
             try! NSRegularExpression(pattern: text, options: [])
-                    .matchesInString(self, options: [], range: NSRange(0..<characters.count))
+                    .matches(in: self, options: [], range: NSRange(0..<characters.count))
                     .map{ $0.range }
     }
     
@@ -32,7 +32,7 @@ extension String {
         return byWords.last
     }
     
-    public func lastWords(maxWords: Int) -> [String] {
+    public func lastWords(_ maxWords: Int) -> [String] {
         return [String](byWords.suffix(maxWords))
     }
     

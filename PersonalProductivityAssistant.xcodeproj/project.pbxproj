@@ -946,15 +946,18 @@
 					D4B660521D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = VNN46H7VJU;
+						LastSwiftMigration = 0800;
 					};
 					D4B660691D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = VNN46H7VJU;
+						LastSwiftMigration = 0800;
 						TestTargetID = D4B660521D142AAE000FE897;
 					};
 					D4B660741D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = VNN46H7VJU;
+						LastSwiftMigration = 0800;
 						TestTargetID = D4B660521D142AAE000FE897;
 					};
 				};
@@ -1314,6 +1317,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1326,6 +1330,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1337,6 +1342,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalProductivityAssistant.app/PersonalProductivityAssistant";
 			};
 			name = Debug;
@@ -1349,6 +1355,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalProductivityAssistant.app/PersonalProductivityAssistant";
 			};
 			name = Release;
@@ -1360,6 +1367,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistantUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PersonalProductivityAssistant;
 			};
 			name = Debug;
@@ -1371,6 +1379,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistantUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PersonalProductivityAssistant;
 			};
 			name = Release;

@@ -8,42 +8,42 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
     
-    func asFormattedString(format: String = Config.defaultDateTimeFormat) -> String {
-        let dateFormatter = NSDateFormatter()
+    func asFormattedString(_ format: String = Config.defaultDateTimeFormat) -> String {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     func daysInMonth() -> Int {
         
-        let calender = NSCalendar.currentCalendar()
+        let calender = Calendar.current
         
         let dayRange =
-            calender.rangeOfUnit(.Day, inUnit: .Month, forDate: self)
+            (calender as Calendar).range(of: .firstWeekday, in: .monthSymbols, for: self)
         
         return dayRange.length
     }
     
-    func firstDayOfMonth() -> NSDate {
+    func firstDayOfMonth() -> Date {
         
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = NSCalendar.current
         
-        let startOfMonthDateComponents = calendar.components([.Year, .Month], fromDate: self)
+        let startOfMonthDateComponents = (calendar as Calendar).components([.year, .monthSymbols], from: self)
         
-        let startOfMonthDate = calendar.dateFromComponents(startOfMonthDateComponents)!
+        let startOfMonthDate = calendar.date(from: startOfMonthDateComponents)!
         
         let startOfMonthDateMidnight =
-            calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: startOfMonthDate, options: [])!
+            (calendar as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: startOfMonthDate, options: [])!
         
         return startOfMonthDateMidnight
     }
     
-    func addMonthCount(monthCount: Int) -> NSDate {
+    func addMonthCount(_ monthCount: Int) -> Date {
     
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = NSCalendar.current
         
-        return calendar.dateByAddingUnit(.Month, value: monthCount, toDate: self, options: [])!
+        return (calendar as NSCalendar).date(byAdding: .monthSymbols, value: monthCount, to: self, options: [])!
     }
 }

@@ -17,16 +17,16 @@ class NSDate_firstDayOfCurrentAndNextMonth: XCTestCase {
     let nextYear = 2017
     
     
-    func dayInMonth(day: Int, month: Int, year: Int = currentYear) -> NSDate {
+    func dayInMonth(_ day: Int, month: Int, year: Int = currentYear) -> Date {
         
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = NSCalendar.current
         
-        let dateComponents = NSDateComponents()
+        var dateComponents = DateComponents()
         dateComponents.day = day
         dateComponents.month = month
         dateComponents.year = year
         
-        return calendar.dateFromComponents(dateComponents)!
+        return calendar.date(from: dateComponents)!
     }
     
     

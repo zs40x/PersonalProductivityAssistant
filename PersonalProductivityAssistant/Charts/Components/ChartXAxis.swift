@@ -20,11 +20,11 @@ public class ChartXAxis: ChartAxisBase
     @objc(XAxisLabelPosition)
     public enum LabelPosition: Int
     {
-        case Top
-        case Bottom
-        case BothSided
-        case TopInside
-        case BottomInside
+        case top
+        case bottom
+        case bothSided
+        case topInside
+        case bottomInside
     }
     
     public var values = [String?]()
@@ -83,7 +83,7 @@ public class ChartXAxis: ChartAxisBase
     }
     
     /// the position of the x-labels relative to the chart
-    public var labelPosition = LabelPosition.Top
+    public var labelPosition = LabelPosition.top
     
     /// if set to true, word wrapping the labels will be enabled.
     /// word wrapping is done using `(value width * labelRotatedWidth)`
@@ -132,7 +132,7 @@ public class ChartXAxis: ChartAxisBase
     /// Sets the number of labels that should be skipped on the axis before the next label is drawn. 
     /// This will disable the feature that automatically calculates an adequate space between the axis labels and set the number of labels to be skipped to the fixed number provided by this method. 
     /// Call `resetLabelsToSkip(...)` to re-enable automatic calculation.
-    public func setLabelsToSkip(count: Int)
+    public func setLabelsToSkip(_ count: Int)
     {
         _isAxisModulusCustom = true
 

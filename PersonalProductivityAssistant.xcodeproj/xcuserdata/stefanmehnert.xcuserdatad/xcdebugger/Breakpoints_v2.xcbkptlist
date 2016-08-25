@@ -372,38 +372,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/MainViewController.swift"
-            timestampString = "493755832.824602"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "textView(_:shouldInteractWithURL:inRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalProductivityAssistant/ViewControllers/MainViewController.swift"
-            timestampString = "493755832.824602"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "textView(_:shouldInteractWithURL:inRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PersonalProductivityAssistant/Utilities/Extensions/UITextView.swift"
             timestampString = "490853211.661707"
             startingColumnNumber = "9223372036854775807"
@@ -442,8 +410,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "daysInMonth()"
-            landmarkType = "5">
+            landmarkName = "Date"
+            landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -458,7 +426,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "326"
             endingLineNumber = "326"
-            landmarkName = "calculateDateBasedOnScrollViewPosition(_:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -474,8 +442,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
             endingLineNumber = "103"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -490,7 +458,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "295"
             endingLineNumber = "295"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -506,8 +474,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -522,8 +490,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -538,8 +506,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
             endingLineNumber = "108"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -554,7 +522,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
             endingLineNumber = "202"
-            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -570,7 +538,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
             endingLineNumber = "228"
-            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -586,7 +554,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
             endingLineNumber = "260"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -602,7 +570,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
             endingLineNumber = "280"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -618,8 +586,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
             endingLineNumber = "111"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -634,7 +602,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
             endingLineNumber = "201"
-            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -650,7 +618,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "294"
             endingLineNumber = "294"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -666,7 +634,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -682,8 +650,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -698,7 +666,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "458"
             endingLineNumber = "458"
-            landmarkName = "collectionView(_:didSelectItemAtIndexPath:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -714,8 +682,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -730,8 +698,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -746,7 +714,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "209"
             endingLineNumber = "209"
-            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -762,7 +730,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
             endingLineNumber = "229"
-            landmarkName = "numberOfSectionsInCollectionView(_:)"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -778,8 +746,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "CalendarView"
-            landmarkType = "3">
+            landmarkName = "CalendarViewDataSource"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -794,8 +762,56 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "487"
             endingLineNumber = "487"
-            landmarkName = "reloadData()"
+            landmarkName = "CalendarViewDataSource"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/Charts/Utils/ChartTransformer.swift"
+            timestampString = "493758312.766761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "pixelToValue(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/Charts/Renderers/RadarChartRenderer.swift"
+            timestampString = "493758350.715221"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "drawHighlighted(context:indices:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalProductivityAssistant/Charts/Highlight/BarChartHighlighter.swift"
+            timestampString = "493758760.148721"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "getSelectionDetail(xIndex:y:dataSetIndex:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

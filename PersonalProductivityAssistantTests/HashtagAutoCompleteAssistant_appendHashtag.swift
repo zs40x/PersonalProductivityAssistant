@@ -27,7 +27,7 @@ class HashtagAutoCompleteAssistant_appendHashtag: XCTestCase {
     }
     
     
-    func appendTo(string: String) -> String {
+    func appendTo(_ string: String) -> String {
         return HashtagAutoCompleteAssistant()
             .appendHastag(withName: hashtagToAppend, to: string)
     }

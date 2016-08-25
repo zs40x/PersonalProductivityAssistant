@@ -21,7 +21,7 @@ public class Result {
         return Result(isSucessful: true)
     }
     
-    public class func Failure(errorMessage: String) -> Result {
+    public class func Failure(_ errorMessage: String) -> Result {
         return Result(isSucessful: false, errorMessage: errorMessage)
     }
 }
@@ -35,11 +35,11 @@ public class ResultValue<T> : Result {
         self.value = value
     }
     
-    public class func Success(value: T?) -> ResultValue {
+    public class func Success(_ value: T?) -> ResultValue {
         return ResultValue(isSucessful: true, value: value)
     }
     
-    public class override func Failure(errorMessage: String) -> ResultValue {
+    public class override func Failure(_ errorMessage: String) -> ResultValue {
         return ResultValue(isSucessful: false, errorMessage: errorMessage)
     }
 }

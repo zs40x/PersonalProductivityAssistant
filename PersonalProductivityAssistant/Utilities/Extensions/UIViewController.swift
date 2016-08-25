@@ -11,21 +11,21 @@ import UIKit
 
 extension UIViewController {
     
-    func showAlertDialog(errorMessage: String) {
+    func showAlertDialog(_ errorMessage: String) {
         let alertController =
             UIAlertController(
                 title: "PPA",
                 message: errorMessage,
-                preferredStyle: UIAlertControllerStyle.Alert)
+                preferredStyle: UIAlertControllerStyle.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
-        if var topController = UIApplication.sharedApplication().keyWindow?.rootViewController {
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
             
-            topController.presentViewController(alertController, animated: true, completion: nil)
+            topController.present(alertController, animated: true, completion: nil)
         }
     }
     

@@ -18,19 +18,19 @@ import CoreGraphics
 /// Base class for all axes
 public class ChartAxisBase: ChartComponentBase
 {
-    public var labelFont = NSUIFont.systemFontOfSize(10.0)
-    public var labelTextColor = NSUIColor.blackColor()
+    public var labelFont = NSUIFont.systemFont(ofSize: 10.0)
+    public var labelTextColor = NSUIColor.black
     
-    public var axisLineColor = NSUIColor.grayColor()
+    public var axisLineColor = NSUIColor.gray
     public var axisLineWidth = CGFloat(0.5)
     public var axisLineDashPhase = CGFloat(0.0)
     public var axisLineDashLengths: [CGFloat]!
     
-    public var gridColor = NSUIColor.grayColor().colorWithAlphaComponent(0.9)
+    public var gridColor = NSUIColor.gray.withAlphaComponent(0.9)
     public var gridLineWidth = CGFloat(0.5)
     public var gridLineDashPhase = CGFloat(0.0)
     public var gridLineDashLengths: [CGFloat]!
-    public var gridLineCap = CGLineCap.Butt
+    public var gridLineCap = CGLineCap.butt
     
     public var drawGridLinesEnabled = true
     public var drawAxisLineEnabled = true
@@ -90,19 +90,19 @@ public class ChartAxisBase: ChartComponentBase
     public var axisRange = Double(0)
     
     /// Adds a new ChartLimitLine to this axis.
-    public func addLimitLine(line: ChartLimitLine)
+    public func addLimitLine(_ line: ChartLimitLine)
     {
         _limitLines.append(line)
     }
     
     /// Removes the specified ChartLimitLine from the axis.
-    public func removeLimitLine(line: ChartLimitLine)
+    public func removeLimitLine(_ line: ChartLimitLine)
     {
         for i in 0 ..< _limitLines.count
         {
             if (_limitLines[i] === line)
             {
-                _limitLines.removeAtIndex(i)
+                _limitLines.remove(at: i)
                 return
             }
         }
@@ -111,7 +111,7 @@ public class ChartAxisBase: ChartComponentBase
     /// Removes all LimitLines from the axis.
     public func removeAllLimitLines()
     {
-        _limitLines.removeAll(keepCapacity: false)
+        _limitLines.removeAll(keepingCapacity: false)
     }
     
     /// - returns: the LimitLines of this axis.

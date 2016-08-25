@@ -36,7 +36,7 @@ class HashtagAutoCompleteAssistant_isAutocompletePossible_Tests : XCTestCase {
     }
     
     
-    func forInput(inputString: String) -> Bool {
+    func forInput(_ inputString: String) -> Bool {
         return HashtagAutoCompleteAssistant().isAutoCompletePossible(forInputString: inputString)
     }
 }

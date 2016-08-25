@@ -77,7 +77,7 @@ class HashtagFinderTest: XCTestCaseCoreDataInMemory {
         return hashtagFinderResult.value!
     }
     
-    func existsHashtagWithNameInDatabase(name: String) -> Bool {
+    func existsHashtagWithNameInDatabase(_ name: String) -> Bool {
         return ( hashtagRepository.getAll().value!.filter({ $0.name == name }).count > 0 )
     }
 }

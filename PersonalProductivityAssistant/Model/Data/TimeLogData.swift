@@ -10,6 +10,6 @@ import Foundation
 
 struct TimeLogData {
     var Activity: String
-    var From: NSDate
-    var Until: NSDate
+    var From: Date
+    var Until: Date
 }

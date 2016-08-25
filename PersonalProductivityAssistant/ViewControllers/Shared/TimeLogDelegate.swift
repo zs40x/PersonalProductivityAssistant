@@ -9,5 +9,5 @@
 import Foundation
 
 protocol TimeLogEditDelegate: class {
-    func timeLogModified(withStartDate: NSDate)
+    func timeLogModified(_ withStartDate: Date)
 }

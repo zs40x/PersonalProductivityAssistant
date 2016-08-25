@@ -35,7 +35,7 @@ public class PieChartView: PieRadarChartViewBase
     /// if true, the hole inside the chart will be drawn
     private var _drawHoleEnabled = true
     
-    private var _holeColor: NSUIColor? = NSUIColor.whiteColor()
+    private var _holeColor: NSUIColor? = NSUIColor.white
     
     /// if true, the hole will see-through to the inner tips of the slices
     private var _drawSlicesUnderHoleEnabled = false
@@ -82,9 +82,9 @@ public class PieChartView: PieRadarChartViewBase
         _xAxis = nil
     }
     
-    public override func drawRect(rect: CGRect)
+    public override func draw(_ rect: CGRect)
     {
-        super.drawRect(rect)
+        super.draw(rect)
         
         if _data === nil
         {
@@ -211,7 +211,7 @@ public class PieChartView: PieRadarChartViewBase
     }
     
     /// checks if the given index in the given DataSet is set for highlighting or not
-    public func needsHighlight(xIndex xIndex: Int, dataSetIndex: Int) -> Bool
+    public func needsHighlight(xIndex: Int, dataSetIndex: Int) -> Bool
     {
         // no highlight
         if (!valuesToHighlight() || dataSetIndex < 0)
@@ -233,13 +233,13 @@ public class PieChartView: PieRadarChartViewBase
     }
     
     /// calculates the needed angle for a given value
-    private func calcAngle(value: Double) -> CGFloat
+    private func calcAngle(_ value: Double) -> CGFloat
     {
         return calcAngle(value, yValueSum: (_data as! PieChartData).yValueSum)
     }
     
     /// calculates the needed angle for a given value
-    private func calcAngle(value: Double, yValueSum: Double) -> CGFloat
+    private func calcAngle(_ value: Double, yValueSum: Double) -> CGFloat
     {
         return CGFloat(value) / CGFloat(yValueSum) * _maxAngle
     }
@@ -250,7 +250,7 @@ public class PieChartView: PieRadarChartViewBase
         fatalError("PieChart has no XAxis")
     }
     
-    public override func indexForAngle(angle: CGFloat) -> Int
+    public override func indexForAngle(_ angle: CGFloat) -> Int
     {
         // take the current angle of the chart into consideration
         let a = ChartUtils.normalizedAngleFromAngle(angle - self.rotationAngle)
@@ -266,7 +266,7 @@ public class PieChartView: PieRadarChartViewBase
     }
     
     /// - returns: the index of the DataSet this x-index belongs to.
-    public func dataSetIndexForIndex(xIndex: Int) -> Int
+    public func dataSetIndexForIndex(_ xIndex: Int) -> Int
     {
         var dataSets = _data?.dataSets ?? []
         
@@ -373,14 +373,14 @@ public class PieChartView: PieRadarChartViewBase
             }
             else
             {
-                let paragraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-                paragraphStyle.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-                paragraphStyle.alignment = .Center
+                let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+                paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
+                paragraphStyle.alignment = .center
                 
                 attrString = NSMutableAttributedString(string: newValue!)
                 attrString?.setAttributes([
-                    NSForegroundColorAttributeName: NSUIColor.blackColor(),
-                    NSFontAttributeName: NSUIFont.systemFontOfSize(12.0),
+                    NSForegroundColorAttributeName: NSUIColor.black,
+                    NSFontAttributeName: NSUIFont.systemFont(ofSize: 12.0),
                     NSParagraphStyleAttributeName: paragraphStyle
                     ], range: NSMakeRange(0, attrString!.length))
             }

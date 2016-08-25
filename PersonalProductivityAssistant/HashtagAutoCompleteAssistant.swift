@@ -28,7 +28,7 @@ class HashtagAutoCompleteAssistant {
         var hashtagToAppend: String = hashtag
         
         if to.hasSuffix("#") {
-            hashtagToAppend.removeAtIndex(hashtagToAppend.startIndex)
+            hashtagToAppend.remove(at: hashtagToAppend.startIndex)
         }
         
         return "\(to)\(hashtagToAppend) "

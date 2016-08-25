@@ -10,7 +10,7 @@ import UIKit
 
 extension UITextView {
     
-    func setTextWithHashtagLinks(text: String) {
+    func setTextWithHashtagLinks(_ text: String) {
         
         let attributedText = NSMutableAttributedString(string: text)
         
@@ -28,7 +28,7 @@ extension UITextView {
         
         
         attributedText.addAttribute(
-            NSFontAttributeName, value: UIFont.systemFontOfSize(16.0), range: NSRange(location: 0, length: attributedText.string.characters.count))
+            NSFontAttributeName, value: UIFont.systemFont(ofSize: 16.0), range: NSRange(location: 0, length: attributedText.string.characters.count))
         
         
         self.attributedText = attributedText

@@ -22,14 +22,14 @@ class TimeLog: NSManagedObject {
             return 0
         }
         
-        return Int(timeUntil.timeIntervalSinceDate(timeFrom) / 60)
+        return Int(timeUntil.timeIntervalSince(timeFrom as Date) / 60)
     }
     
     func asTimeLogData() -> TimeLogData {
         return TimeLogData(Activity: activity!, From: from!, Until: until!)
     }
     
-    func updateFromTimeLogData(timeLogData: TimeLogData) {
+    func updateFromTimeLogData(_ timeLogData: TimeLogData) {
         self.activity = timeLogData.Activity
         self.from = timeLogData.From
         self.until = timeLogData.Until

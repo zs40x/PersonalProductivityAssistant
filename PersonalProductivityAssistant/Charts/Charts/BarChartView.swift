@@ -58,7 +58,7 @@ public class BarChartView: BarLineChartViewBase, BarChartDataProvider
     }
     
     /// - returns: the Highlight object (contains x-index and DataSet index) of the selected value at the given touch point inside the BarChart.
-    public override func getHighlightByTouchPoint(pt: CGPoint) -> ChartHighlight?
+    public override func getHighlightByTouchPoint(_ pt: CGPoint) -> ChartHighlight?
     {
         if _data === nil
         {
@@ -70,11 +70,11 @@ public class BarChartView: BarLineChartViewBase, BarChartDataProvider
     }
         
     /// - returns: the bounding box of the specified Entry in the specified DataSet. Returns null if the Entry could not be found in the charts data.
-    public func getBarBounds(e: BarChartDataEntry) -> CGRect
+    public func getBarBounds(_ e: BarChartDataEntry) -> CGRect
     {
         guard let
             set = _data?.getDataSetForEntry(e) as? IBarChartDataSet
-            else { return CGRectNull }
+            else { return CGRect.null }
         
         let barspace = set.barSpace
         let y = CGFloat(e.value)
@@ -101,7 +101,7 @@ public class BarChartView: BarLineChartViewBase, BarChartDataProvider
         let div = (step <= 1.0) ? 1.0 : step + (_data as! BarChartData).groupSpace
         
         var pt = CGPoint(x: _viewPortHandler.contentLeft, y: _viewPortHandler.contentBottom)
-        getTransformer(ChartYAxis.AxisDependency.Left).pixelToValue(&pt)
+        getTransformer(ChartYAxis.AxisDependency.left).pixelToValue(&pt)
         
         return Int((pt.x <= CGFloat(chartXMin)) ? 0.0 : (pt.x / div) + 1.0)
     }
@@ -112,7 +112,7 @@ public class BarChartView: BarLineChartViewBase, BarChartDataProvider
         let div = (step <= 1.0) ? 1.0 : step + (_data as! BarChartData).groupSpace
         
         var pt = CGPoint(x: _viewPortHandler.contentRight, y: _viewPortHandler.contentBottom)
-        getTransformer(ChartYAxis.AxisDependency.Left).pixelToValue(&pt)
+        getTransformer(ChartYAxis.AxisDependency.left).pixelToValue(&pt)
         
         return Int((pt.x >= CGFloat(chartXMax)) ? CGFloat(chartXMax) / div : (pt.x / div))
     }
