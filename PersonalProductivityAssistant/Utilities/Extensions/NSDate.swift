@@ -16,21 +16,11 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    func daysInMonth() -> Int {
-        
-        let calender = Calendar.current
-        
-        let dayRange =
-            (calender as Calendar).range(of: .firstWeekday, in: .monthSymbols, for: self)
-        
-        return dayRange.length
-    }
-    
     func firstDayOfMonth() -> Date {
         
-        let calendar = NSCalendar.current
+        let calendar = Calendar.current
         
-        let startOfMonthDateComponents = (calendar as Calendar).components([.year, .monthSymbols], from: self)
+        let startOfMonthDateComponents = calendar.dateComponents([.year, .month], from: self)
         
         let startOfMonthDate = calendar.date(from: startOfMonthDateComponents)!
         
@@ -42,8 +32,8 @@ extension Date {
     
     func addMonthCount(_ monthCount: Int) -> Date {
     
-        let calendar = NSCalendar.current
+        let calendar = Calendar.current
         
-        return (calendar as NSCalendar).date(byAdding: .monthSymbols, value: monthCount, to: self, options: [])!
+        return calendar.date(byAdding: .month, value: monthCount, to: self)!
     }
 }

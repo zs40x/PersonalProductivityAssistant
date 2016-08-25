@@ -64,12 +64,12 @@ internal class TimeLogModel : AbstractModel {
     
     func getAllTimeLogs() throws -> [TimeLog] {
         
-        let request = NSFetchRequest(entityName: TimeLog.EntityName)
+        let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
         
         request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
         
         do {
-            return try managedObjectContext.fetch(request) as! [TimeLog]
+            return try managedObjectContext.fetch(request)
         }
         catch let error as NSError {
             NSLog("Error fetching: %@", error)
@@ -79,14 +79,14 @@ internal class TimeLogModel : AbstractModel {
     
     func getTimeLogsForDateRange(_ dateFrom: Date, dateUntil: Date) throws -> [TimeLog] {
         
-        let request = NSFetchRequest(entityName: TimeLog.EntityName)
+        let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
         
         request.predicate = NSPredicate(format: "((from >= %@) AND (from < %@)) || (from = nil)", dateFrom, dateUntil)
         
         request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
         
         do {
-            return try managedObjectContext.fetch(request) as! [TimeLog]
+            return try managedObjectContext.fetch(request)
         }
         catch let error as NSError {
             NSLog("Error fetching: %@", error)
@@ -115,11 +115,11 @@ internal class TimeLogModel : AbstractModel {
 internal class HashtagModel : AbstractModel {
     
     func getAllHashtags() throws -> [Hashtag] {
-        let request = NSFetchRequest(entityName: Hashtag.EntityName)
+        let request = NSFetchRequest<Hashtag>(entityName: Hashtag.EntityName)
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         do {
-            let result = try managedObjectContext.fetch(request) as! [Hashtag]
+            let result = try managedObjectContext.fetch(request)
             return result
         }
         catch let error as NSError {

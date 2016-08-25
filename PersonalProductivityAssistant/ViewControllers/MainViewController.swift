@@ -217,7 +217,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         
         let today = Date()
         
-        let threeMonthsAgo = (self.calendarView.calendar as NSCalendar).date(byAdding: dateComponents, to: today, options: Calendar())
+        let threeMonthsAgo = self.calendarView.calendar.date(byAdding: dateComponents, to: today, options: NSCalendar.Options())
         
         
         return threeMonthsAgo
@@ -230,7 +230,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         dateComponents.year = 2;
         let today = Date()
         
-        let twoYearsFromNow = (self.calendarView.calendar as NSCalendar).date(byAdding: dateComponents, to: today, options: Calendar())
+        let twoYearsFromNow = self.calendarView.calendar.date(byAdding: dateComponents, to: today, options: NSCalendar.Options())
         
         return twoYearsFromNow
         
