@@ -53,7 +53,7 @@ class PieChartViewController: UIViewController, ChartViewDelegate  {
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(x: values[i], y: Double(i))
+            let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i])
             dataEntries.append(dataEntry)
         }
         
