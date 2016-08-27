@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>PersonalProductivityAssistantWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>D4B660741D142AAE000FE897</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D4C8E4701D714CFD0069EC94</key>
 		<dict>
 			<key>primary</key>
 			<true/>

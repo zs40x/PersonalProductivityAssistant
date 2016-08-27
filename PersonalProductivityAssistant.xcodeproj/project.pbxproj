@@ -46,6 +46,10 @@
 		D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */; };
 		D4C392361D39599600F0062E /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C392351D39599600F0062E /* PieChartViewController.swift */; };
 		D4C392381D395B6700F0062E /* ChartsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C392371D395B6700F0062E /* ChartsPageViewController.swift */; };
+		D4C8E4741D714CFD0069EC94 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C8E4731D714CFD0069EC94 /* NotificationCenter.framework */; };
+		D4C8E4771D714CFD0069EC94 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C8E4761D714CFD0069EC94 /* TodayViewController.swift */; };
+		D4C8E47A1D714CFD0069EC94 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C8E4781D714CFD0069EC94 /* MainInterface.storyboard */; };
+		D4C8E47E1D714CFD0069EC94 /* PersonalProductivityAssistantWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D4C8E4711D714CFD0069EC94 /* PersonalProductivityAssistantWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4DD6AA31D2A2CF400FC6B0E /* HashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */; };
 		D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */; };
 		D4DF0F841D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DF0F831D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift */; };
@@ -93,6 +97,13 @@
 			remoteGlobalIDString = D4B660521D142AAE000FE897;
 			remoteInfo = PersonalProductivityAssistant;
 		};
+		D4C8E47C1D714CFD0069EC94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4B6604B1D142AAE000FE897 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4C8E4701D714CFD0069EC94;
+			remoteInfo = PersonalProductivityAssistantWidget;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -104,6 +115,17 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4C8E4851D714CFD0069EC94 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D4C8E47E1D714CFD0069EC94 /* PersonalProductivityAssistantWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -156,6 +178,11 @@
 		D4B660881D142B18000FE897 /* PPADataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PPADataModel.xcdatamodel; sourceTree = "<group>"; };
 		D4C392351D39599600F0062E /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PieChartViewController.swift; path = ViewControllers/PieChartViewController.swift; sourceTree = "<group>"; };
 		D4C392371D395B6700F0062E /* ChartsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartsPageViewController.swift; path = ViewControllers/ChartsPageViewController.swift; sourceTree = "<group>"; };
+		D4C8E4711D714CFD0069EC94 /* PersonalProductivityAssistantWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalProductivityAssistantWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4C8E4731D714CFD0069EC94 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D4C8E4761D714CFD0069EC94 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		D4C8E4791D714CFD0069EC94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D4C8E47B1D714CFD0069EC94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagRepository.swift; sourceTree = "<group>"; };
 		D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagFinderTest.swift; sourceTree = "<group>"; };
 		D4DF0F831D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_firstDayOfCurrentAndNextMonth.swift; sourceTree = "<group>"; };
@@ -186,6 +213,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4C8E46E1D714CFD0069EC94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4C8E4741D714CFD0069EC94 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +393,8 @@
 				D4B660551D142AAE000FE897 /* PersonalProductivityAssistant */,
 				D4B6606D1D142AAE000FE897 /* PersonalProductivityAssistantTests */,
 				D4B660781D142AAE000FE897 /* PersonalProductivityAssistantUITests */,
+				D4C8E4751D714CFD0069EC94 /* PersonalProductivityAssistantWidget */,
+				D4C8E4721D714CFD0069EC94 /* Frameworks */,
 				D4B660541D142AAE000FE897 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -368,6 +405,7 @@
 				D4B660531D142AAE000FE897 /* PersonalProductivityAssistant.app */,
 				D4B6606A1D142AAE000FE897 /* PersonalProductivityAssistantTests.xctest */,
 				D4B660751D142AAE000FE897 /* PersonalProductivityAssistantUITests.xctest */,
+				D4C8E4711D714CFD0069EC94 /* PersonalProductivityAssistantWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -409,6 +447,24 @@
 				D4B6607B1D142AAE000FE897 /* Info.plist */,
 			);
 			path = PersonalProductivityAssistantUITests;
+			sourceTree = "<group>";
+		};
+		D4C8E4721D714CFD0069EC94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4C8E4731D714CFD0069EC94 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4C8E4751D714CFD0069EC94 /* PersonalProductivityAssistantWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D4C8E4761D714CFD0069EC94 /* TodayViewController.swift */,
+				D4C8E4781D714CFD0069EC94 /* MainInterface.storyboard */,
+				D4C8E47B1D714CFD0069EC94 /* Info.plist */,
+			);
+			path = PersonalProductivityAssistantWidget;
 			sourceTree = "<group>";
 		};
 		D4DF0F821D6479F000E17AE4 /* Extensions */ = {
@@ -475,10 +531,13 @@
 				D4B660501D142AAE000FE897 /* Frameworks */,
 				D4B660511D142AAE000FE897 /* Resources */,
 				D40B48951D6F6C7D00C350C4 /* Embed Frameworks */,
+				D4C8E4851D714CFD0069EC94 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D40B48941D6F6C7D00C350C4 /* PBXTargetDependency */,
+				D4C8E47D1D714CFD0069EC94 /* PBXTargetDependency */,
 			);
 			name = PersonalProductivityAssistant;
 			productName = PersonalProductivityAssistant;
@@ -521,6 +580,23 @@
 			productReference = D4B660751D142AAE000FE897 /* PersonalProductivityAssistantUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D4C8E4701D714CFD0069EC94 /* PersonalProductivityAssistantWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4C8E4841D714CFD0069EC94 /* Build configuration list for PBXNativeTarget "PersonalProductivityAssistantWidget" */;
+			buildPhases = (
+				D4C8E46D1D714CFD0069EC94 /* Sources */,
+				D4C8E46E1D714CFD0069EC94 /* Frameworks */,
+				D4C8E46F1D714CFD0069EC94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersonalProductivityAssistantWidget;
+			productName = PersonalProductivityAssistantWidget;
+			productReference = D4C8E4711D714CFD0069EC94 /* PersonalProductivityAssistantWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -548,6 +624,10 @@
 						LastSwiftMigration = 0800;
 						TestTargetID = D4B660521D142AAE000FE897;
 					};
+					D4C8E4701D714CFD0069EC94 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = VNN46H7VJU;
+					};
 				};
 			};
 			buildConfigurationList = D4B6604E1D142AAE000FE897 /* Build configuration list for PBXProject "PersonalProductivityAssistant" */;
@@ -572,6 +652,7 @@
 				D4B660521D142AAE000FE897 /* PersonalProductivityAssistant */,
 				D4B660691D142AAE000FE897 /* PersonalProductivityAssistantTests */,
 				D4B660741D142AAE000FE897 /* PersonalProductivityAssistantUITests */,
+				D4C8E4701D714CFD0069EC94 /* PersonalProductivityAssistantWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -622,6 +703,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4C8E46F1D714CFD0069EC94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4C8E47A1D714CFD0069EC94 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +783,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4C8E46D1D714CFD0069EC94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4C8E4771D714CFD0069EC94 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -706,6 +803,11 @@
 			isa = PBXTargetDependency;
 			target = D4B660521D142AAE000FE897 /* PersonalProductivityAssistant */;
 			targetProxy = D4B660761D142AAE000FE897 /* PBXContainerItemProxy */;
+		};
+		D4C8E47D1D714CFD0069EC94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4C8E4701D714CFD0069EC94 /* PersonalProductivityAssistantWidget */;
+			targetProxy = D4C8E47C1D714CFD0069EC94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -724,6 +826,14 @@
 				D4B660631D142AAE000FE897 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D4C8E4781D714CFD0069EC94 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4C8E4791D714CFD0069EC94 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -898,6 +1008,28 @@
 			};
 			name = Release;
 		};
+		D4C8E47F1D714CFD0069EC94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PersonalProductivityAssistantWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant.PersonalProductivityAssistantWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D4C8E4801D714CFD0069EC94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PersonalProductivityAssistantWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant.PersonalProductivityAssistantWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -936,6 +1068,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D4C8E4841D714CFD0069EC94 /* Build configuration list for PBXNativeTarget "PersonalProductivityAssistantWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4C8E47F1D714CFD0069EC94 /* Debug */,
+				D4C8E4801D714CFD0069EC94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
