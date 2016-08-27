@@ -72,6 +72,7 @@ public class TimeLogRepository {
     }
     
     func save() -> Result {
+        
         do {
             try model.save()
             return Result.Success()
