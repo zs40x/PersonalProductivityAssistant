@@ -632,12 +632,7 @@
 				TargetAttributes = {
 					D4B660521D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VNN46H7VJU;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
-							};
-						};
+						DevelopmentTeam = Y6U8S5243G;
 					};
 					D4B660691D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -969,6 +964,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PersonalProductivityAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -983,6 +979,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PersonalProductivityAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
