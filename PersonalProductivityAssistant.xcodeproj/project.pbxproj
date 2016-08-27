@@ -183,6 +183,8 @@
 		D4C8E4761D714CFD0069EC94 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		D4C8E4791D714CFD0069EC94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		D4C8E47B1D714CFD0069EC94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4C8E4861D71573A0069EC94 /* PersonalProductivityAssistantWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PersonalProductivityAssistantWidget.entitlements; sourceTree = "<group>"; };
+		D4C8E4871D7157900069EC94 /* PersonalProductivityAssistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PersonalProductivityAssistant.entitlements; sourceTree = "<group>"; };
 		D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagRepository.swift; sourceTree = "<group>"; };
 		D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagFinderTest.swift; sourceTree = "<group>"; };
 		D4DF0F831D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_firstDayOfCurrentAndNextMonth.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		D4B660551D142AAE000FE897 /* PersonalProductivityAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				D4C8E4871D7157900069EC94 /* PersonalProductivityAssistant.entitlements */,
 				D43AF1D21D252EF20084B9C7 /* Libraries */,
 				D4F84C2B1D15BECD0041FCF0 /* Utilities */,
 				D4F84C1F1D15516F0041FCF0 /* Model */,
@@ -460,6 +463,7 @@
 		D4C8E4751D714CFD0069EC94 /* PersonalProductivityAssistantWidget */ = {
 			isa = PBXGroup;
 			children = (
+				D4C8E4861D71573A0069EC94 /* PersonalProductivityAssistantWidget.entitlements */,
 				D4C8E4761D714CFD0069EC94 /* TodayViewController.swift */,
 				D4C8E4781D714CFD0069EC94 /* MainInterface.storyboard */,
 				D4C8E47B1D714CFD0069EC94 /* Info.plist */,
@@ -609,8 +613,12 @@
 				TargetAttributes = {
 					D4B660521D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = Y6U8S5243G;
-						LastSwiftMigration = 0800;
+						DevelopmentTeam = VNN46H7VJU;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					D4B660691D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -627,6 +635,11 @@
 					D4C8E4701D714CFD0069EC94 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = VNN46H7VJU;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -1076,6 +1089,7 @@
 				D4C8E4801D714CFD0069EC94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
