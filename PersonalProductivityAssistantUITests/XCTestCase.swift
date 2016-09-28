@@ -10,16 +10,16 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
-    func waitForElementToAppear(element: XCUIElement,
+    func waitForElementToAppear(_ element: XCUIElement,
                                         file: String = #file, line: UInt = #line) {
         let existsPredicate = NSPredicate(format: "exists == true")
-        expectationForPredicate(existsPredicate,
-                                evaluatedWithObject: element, handler: nil)
+        expectation(for: existsPredicate,
+                                evaluatedWith: element, handler: nil)
         
-        waitForExpectationsWithTimeout(5) { (error) -> Void in
+        waitForExpectations(timeout: 5) { (error) -> Void in
             if (error != nil) {
                 let message = "Failed to find \(element) after 5 seconds."
-                self.recordFailureWithDescription(message,
+                self.recordFailure(withDescription: message,
                                                   inFile: file, atLine: line, expected: true)
             }
         }

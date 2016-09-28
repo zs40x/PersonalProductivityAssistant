@@ -25,7 +25,7 @@ class HashtagFinder {
             )
     }
     
-    func newOrExistingInstanceFromRepository(hashtagName: String) -> Hashtag {
+    func newOrExistingInstanceFromRepository(_ hashtagName: String) -> Hashtag {
         
         let allHashtags = self.hashtagRepository.getAll().value!
         

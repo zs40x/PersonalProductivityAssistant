@@ -12,7 +12,7 @@ class DateTimePickViewController: UIViewController {
 
     weak var dateToPick: PickableDate?
     var pickDelegate: DateTimePickDelegate?
-    var selectedDateTime: NSDate?
+    var selectedDateTime: Date?
     
     @IBOutlet weak var datePicker: UIDatePicker!
 
@@ -22,7 +22,7 @@ class DateTimePickViewController: UIViewController {
         
         guard let target = dateToPick else { fatalError() }
         
-        datePicker.date = target.date
+        datePicker.date = target.date as Date
         
         navigationItem.title = target.title
     }
@@ -33,10 +33,10 @@ class DateTimePickViewController: UIViewController {
     }
     
     
-    @IBAction func actionTappedUse(sender: AnyObject) {
+    @IBAction func actionTappedUse(_ sender: AnyObject) {
         
         defer {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
         
         guard let pickedDate = dateToPick else { return }

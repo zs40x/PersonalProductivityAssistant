@@ -34,10 +34,10 @@ class PersonalProductivityAssistantUITests: XCTestCase {
 
         activityInputField = app.textFields["textEditActivity"]
         toolbarAddActivityButton = app.toolbars.buttons["Log Time"]
-        datePicker = app.datePickers.elementBoundByIndex(0)
+        datePicker = app.datePickers.element(boundBy: 0)
         buttonPickDateTimeFrom = app.buttons["dateTimeFrom"]
         buttonPickDateTimeUntil = app.buttons["dateTimeUntil"]
-        labelActivity = app.staticTexts.elementMatchingType(.Any, identifier: "Activity")
+        labelActivity = app.staticTexts.element(matching: .any, identifier: "Activity")
         setDateTimeFromButton = app.navigationBars["From"].buttons["Set"]
         setDateTimeUntilButton = app.navigationBars["Until"].buttons["Set"]
         timeLogSaveButton = app.navigationBars["Time Log"].buttons["Save"]
@@ -109,21 +109,21 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         XCTAssert(!getTableStaticTextElement(changedActivityName).exists)
     }
     
-    func setDatePickerValues(monthAndDay monthAndDay: String, hour: String, minute: String, amPm: String) {
-        self.datePicker!.pickerWheels.elementBoundByIndex(0).adjustToPickerWheelValue(monthAndDay)
-        self.datePicker!.pickerWheels.elementBoundByIndex(1).adjustToPickerWheelValue(hour)
-        self.datePicker!.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue(minute)
-        self.datePicker!.pickerWheels.elementBoundByIndex(3).adjustToPickerWheelValue(amPm)
+    func setDatePickerValues(monthAndDay: String, hour: String, minute: String, amPm: String) {
+        self.datePicker!.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: monthAndDay)
+        self.datePicker!.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: hour)
+        self.datePicker!.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: minute)
+        self.datePicker!.pickerWheels.element(boundBy: 3).adjust(toPickerWheelValue: amPm)
     }
     
-    func typeActivityName(activityName: String) {
+    func typeActivityName(_ activityName: String) {
         XCTAssert(activityInputField!.exists)
         activityInputField!.tap()
         activityInputField!.tap()
         activityInputField!.typeText(activityName)
     }
 
-    func clearAndTypeActivityName(activityName: String) {
+    func clearAndTypeActivityName(_ activityName: String) {
         XCTAssert(activityInputField!.exists)
         activityInputField!.tap()
         activityInputField!.tap()
@@ -131,22 +131,22 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         activityInputField!.typeText(activityName)
     }
     
-    func doSwipeUpUntilTableStaticTextIsHittable(name: String) {
-        while(!tablesQuery.textViews[name].hittable) {
+    func doSwipeUpUntilTableStaticTextIsHittable(_ name: String) {
+        while(!tablesQuery.textViews[name].isHittable) {
             app.swipeUp()
         }
     }
     
-    func doDeleteTableRow(name: String) {
+    func doDeleteTableRow(_ name: String) {
         tablesQuery.textViews[name].swipeLeft()
         tablesQuery.buttons["Delete"].tap()
     }
     
-    func getTableStaticTextElement(name: String) -> XCUIElement {
+    func getTableStaticTextElement(_ name: String) -> XCUIElement {
         return tablesQuery.textViews[name]
     }
     
     func getActivityNameWithDateTime() -> String {
-        return "A " + NSDate.getCurrentDateTimeAsFormattedString()
+        return "A " + Date.getCurrentDateTimeAsFormattedString()
     }
 }

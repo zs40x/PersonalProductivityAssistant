@@ -10,28 +10,28 @@ import UIKit
 
 class PickableDate {
     
-    private(set) var date: NSDate
-    private(set) var title: String
-    private(set) var field: DatePickTargetField
+    fileprivate(set) var date: Date
+    fileprivate(set) var title: String
+    fileprivate(set) var field: DatePickTargetField
     
-    init(title: String, field: DatePickTargetField, date: NSDate) {
+    init(title: String, field: DatePickTargetField, date: Date) {
         self.date = date
         self.title = title
         self.field = field
     }
     
     convenience init(title: String, field: DatePickTargetField) {
-        self.init(title: title, field: field,date: NSDate())
+        self.init(title: title, field: field,date: Date())
     }
 }
 
 class TimeLogViewController: UIViewController, SegueHandlerType {
     
-    private var autoCompleteItems = [String]()
-    private var from: PickableDate = PickableDate(title: "From", field: .From)
-    private var until: PickableDate = PickableDate(title: "Until", field: .Until)
-    private var dateToPick: PickableDate?
-    private var hashtagAutocompleteAssistant = HashtagAutoCompleteAssistant()
+    fileprivate var autoCompleteItems = [String]()
+    fileprivate var from: PickableDate = PickableDate(title: "From", field: .from)
+    fileprivate var until: PickableDate = PickableDate(title: "Until", field: .until)
+    fileprivate var dateToPick: PickableDate?
+    fileprivate var hashtagAutocompleteAssistant = HashtagAutoCompleteAssistant()
     
     var timeLogDataToEdit: TimeLogData?
     var timeLogEditDelegate: TimeLogEditDelegate?
@@ -63,18 +63,18 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         
-        autoCompleteTableView.hidden = true
+        autoCompleteTableView.isHidden = true
     }
     
 
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let dateTimePickViewController =
-                segue.destinationViewController as? DateTimePickViewController {
+                segue.destination as? DateTimePickViewController {
             
             dateTimePickViewController.pickDelegate = self
             dateTimePickViewController.dateToPick = dateToPick
@@ -83,7 +83,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
 
     
     // MARK: Actions
-    @IBAction func actionAddTimeLog(sender: AnyObject) {
+    @IBAction func actionAddTimeLog(_ sender: AnyObject) {
         view.endEditing(true)
         
         let timeLogData = getTimeLogData()
@@ -109,20 +109,20 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         delegate.timeLogModified(timeLogData.From)
             
         textEditActivity.text = ""
-        self.navigationController!.popViewControllerAnimated(true)
+        self.navigationController!.popViewController(animated: true)
     }
     
-    @IBAction func actionActivityEditingChanged(sender: AnyObject) {
+    @IBAction func actionActivityEditingChanged(_ sender: AnyObject) {
         
         toggleAutoCompletevisibilityForCurrentInput()
     }
     
-    @IBAction func actionTapedDateTimeStart(sender: UIButton) {
+    @IBAction func actionTapedDateTimeStart(_ sender: UIButton) {
         
         self.pickDateTime(from)
     }
     
-    @IBAction func actionTappedDateTimeEnd(sender: AnyObject) {
+    @IBAction func actionTappedDateTimeEnd(_ sender: AnyObject) {
         
         self.pickDateTime(until)
     }
@@ -133,8 +133,8 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         
         autoCompleteTableView.delegate = self
         autoCompleteTableView.dataSource = self
-        autoCompleteTableView.hidden = true
-        autoCompleteTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        autoCompleteTableView.isHidden = true
+        autoCompleteTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func initializeViewContent() {
@@ -148,8 +148,8 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         }
         
         self.textEditActivity.text = editTimeLogData.Activity
-        from = PickableDate(title: "From", field: .From, date: editTimeLogData.From)
-        until = PickableDate(title: "Until", field: .Until, date: editTimeLogData.Until)
+        from = PickableDate(title: "From", field: .from, date: editTimeLogData.From)
+        until = PickableDate(title: "Until", field: .until, date: editTimeLogData.Until)
     }
     
     func getTimeLogData() -> TimeLogData {
@@ -162,16 +162,16 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     
     func displayFromAndUntilDateTime() {
         
-        buttonDateTimeFrom.setTitle(dateAsFormattedString(from.date), forState: .Normal)
-        buttonDateTimeUntil.setTitle(dateAsFormattedString(until.date), forState: .Normal)
+        buttonDateTimeFrom.setTitle(dateAsFormattedString(from.date), for: UIControlState())
+        buttonDateTimeUntil.setTitle(dateAsFormattedString(until.date), for: UIControlState())
     }
     
-    func dateAsFormattedString(date: NSDate?) -> String {
+    func dateAsFormattedString(_ date: Date?) -> String {
         
         return date != nil ? date!.asFormattedString() : "n/a"
     }
     
-    func pickDateTime(target: PickableDate) {
+    func pickDateTime(_ target: PickableDate) {
         
         dateToPick = target
         
@@ -184,11 +184,11 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
      
         if hashtagAutocompleteAssistant.isAutoCompletePossible(forInputString: currentInput) {
             
-            autoCompleteTableView.hidden = false
+            autoCompleteTableView.isHidden = false
             updateAutoCompleteValues()
         }
         else {
-            autoCompleteTableView.hidden = true
+            autoCompleteTableView.isHidden = true
         }
     }
     
@@ -215,11 +215,11 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
 
 extension TimeLogViewController : DateTimePickDelegate {
     
-    func confirmedPick(pickedDate: PickableDate, date: NSDate) {
+    func confirmedPick(_ pickedDate: PickableDate, date: Date) {
         
         let newPickableDate = PickableDate(title: pickedDate.title, field: pickedDate.field, date: date)
         
-        if pickedDate.field == .From {
+        if pickedDate.field == .from {
             from = newPickableDate
         } else {
             until = newPickableDate
@@ -231,29 +231,29 @@ extension TimeLogViewController : DateTimePickDelegate {
 
 extension TimeLogViewController :  UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return autoCompleteItems.count
     }
     
-    func tableView(tableView: UITableView,
-                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let autoCompleteItem = autoCompleteItems[indexPath.row]
+        let autoCompleteItem = autoCompleteItems[(indexPath as NSIndexPath).row]
         
         let cell =
-            self.autoCompleteTableView.dequeueReusableCellWithIdentifier("cell")!
+            self.autoCompleteTableView.dequeueReusableCell(withIdentifier: "cell")!
         cell.textLabel!.text = autoCompleteItem
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let tappedHashtag = autoCompleteItems[indexPath.row]
+        let tappedHashtag = autoCompleteItems[(indexPath as NSIndexPath).row]
         
         self.textEditActivity.text =
             hashtagAutocompleteAssistant.appendHastag(withName: tappedHashtag, to: self.textEditActivity.text!)
         
-        self.autoCompleteTableView.hidden = true
+        self.autoCompleteTableView.isHidden = true
     }
 }

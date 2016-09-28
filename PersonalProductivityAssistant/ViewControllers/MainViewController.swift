@@ -18,9 +18,9 @@ class TableViewActivityCell : UITableViewCell {
 
 class MainViewController: UIViewController, SegueHandlerType {
     
-    private let timeLogRepository = TimeLogRepository()
-    private var tableViewTimeLogs = [TimeLog]()
-    private var timeLogToEdit: TimeLog?
+    fileprivate let timeLogRepository = TimeLogRepository()
+    fileprivate var tableViewTimeLogs = [TimeLog]()
+    fileprivate var timeLogToEdit: TimeLog?
     
     enum SegueIdentifier: String {
         case ShowSegueToAddTimeLog
@@ -37,7 +37,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         self.automaticallyAdjustsScrollViewInsets = false
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.initializeCalendar()
@@ -45,7 +45,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         hideNavigationBar()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
     }
 
@@ -53,9 +53,9 @@ class MainViewController: UIViewController, SegueHandlerType {
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let viewControllerAddTimeLog = segue.destinationViewController as? TimeLogViewController {
+        if let viewControllerAddTimeLog = segue.destination as? TimeLogViewController {
             viewControllerAddTimeLog.timeLogEditDelegate = self
             
             if timeLogToEdit != nil {
@@ -65,7 +65,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             } else {
                 viewControllerAddTimeLog.timeLogEntityPersistence = AddNewTimeLogEntity()
                 
-                let dateForNewTimeLog = self.calendarView.selectedDates.first ?? NSDate()
+                let dateForNewTimeLog = self.calendarView.selectedDates.first ?? Date()
                 
                 viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData(Activity: "", From: dateForNewTimeLog, Until: dateForNewTimeLog)
             }
@@ -74,7 +74,7 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     
     // MARK: Actions
-    @IBAction func actionToolbarAddTimeLog(sender: AnyObject) {
+    @IBAction func actionToolbarAddTimeLog(_ sender: AnyObject) {
         
         timeLogToEdit = nil
         
@@ -91,9 +91,9 @@ class MainViewController: UIViewController, SegueHandlerType {
         calendarView.delegate = self
     }
     
-    func deleteTimeLog(tableView: UITableView, indexPath: NSIndexPath) {
+    func deleteTimeLog(_ tableView: UITableView, indexPath: IndexPath) {
         
-        let timeLogToDelete = tableViewTimeLogs[indexPath.row]
+        let timeLogToDelete = tableViewTimeLogs[(indexPath as NSIndexPath).row]
         let deleteResult = timeLogRepository.delete(timeLogToDelete)
         
         if !deleteResult.isSucessful {
@@ -101,14 +101,14 @@ class MainViewController: UIViewController, SegueHandlerType {
             return
         }
         
-        tableViewTimeLogs.removeAtIndex(indexPath.row)
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableViewTimeLogs.remove(at: (indexPath as NSIndexPath).row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         
         calendarView.timeLogs = tableViewTimeLogs
         calendarView.reloadData()
     }
     
-    func updateViewForDate(date: NSDate) {
+    func updateViewForDate(_ date: Date) {
         
         let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
         
@@ -122,7 +122,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         self.tableViewTimeLogs = timeLogsInMonth
         self.calendarView.timeLogs = timeLogsInMonth
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.tableViewActivities.reloadData()
             self.calendarView.reloadData()
         });
@@ -132,17 +132,17 @@ class MainViewController: UIViewController, SegueHandlerType {
 
 extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewTimeLogs.count
     }
     
-    func tableView(tableView: UITableView,
-                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =
-            tableView.dequeueReusableCellWithIdentifier(
-                "CellPrototypeActivity", forIndexPath: indexPath) as! TableViewActivityCell
+            tableView.dequeueReusableCell(
+                withIdentifier: "CellPrototypeActivity", for: indexPath) as! TableViewActivityCell
         
-        let timeLog = tableViewTimeLogs[indexPath.row]
+        let timeLog = tableViewTimeLogs[(indexPath as NSIndexPath).row]
         
         if let activity = timeLog.activity {
             cell.textViewActivity?.setTextWithHashtagLinks(activity)
@@ -151,10 +151,10 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
             cell.textViewActivity.setTextWithHashtagLinks("n/a")
         }
         
-        cell.textViewActivity?.selectable = true
+        cell.textViewActivity?.isSelectable = true
         cell.textViewActivity?.delegate = self
         cell.textViewActivity?.contentInset = UIEdgeInsetsMake(0,-4,0,0);
-        cell.textViewActivity?.textContainerInset = UIEdgeInsetsZero
+        cell.textViewActivity?.textContainerInset = UIEdgeInsets.zero
         let tap = UITapGestureRecognizer(target: self, action: #selector(textViewActiviyTapped))
         cell.textViewActivity.addGestureRecognizer(tap)
         
@@ -165,13 +165,13 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         return cell
     }
     
-    func textViewActiviyTapped(sender: UITapGestureRecognizer) {
+    func textViewActiviyTapped(_ sender: UITapGestureRecognizer) {
         
-        let touch = sender.locationInView(self.tableViewActivities)
+        let touch = sender.location(in: self.tableViewActivities)
         
-        if let indexPath = self.tableViewActivities.indexPathForRowAtPoint(touch) {
+        if let indexPath = self.tableViewActivities.indexPathForRow(at: touch) {
             
-            timeLogToEdit = tableViewTimeLogs[indexPath.row]
+            timeLogToEdit = tableViewTimeLogs[(indexPath as NSIndexPath).row]
             
             showNavigationBar()
             
@@ -179,10 +179,10 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         }
     }
     
-    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         
         let tappedHashtag =
-            textView.attributedText.attributedSubstringFromRange(characterRange).string
+            textView.attributedText.attributedSubstring(from: characterRange).string
         
         showAlertDialog(tappedHashtag)
         
@@ -190,18 +190,18 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
     }
     
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        timeLogToEdit = tableViewTimeLogs[indexPath.row]
+        timeLogToEdit = tableViewTimeLogs[(indexPath as NSIndexPath).row]
         
         showNavigationBar()
         
         performSegueWithIdentifier(.ShowSegueToAddTimeLog, sender: self)
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             deleteTimeLog(tableView, indexPath: indexPath)
         }
     }
@@ -210,27 +210,27 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
 
 extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     
-    func startDate() -> NSDate? {
+    func startDate() -> Date? {
         
-        let dateComponents = NSDateComponents()
+        var dateComponents = DateComponents()
         dateComponents.month = -1
         
-        let today = NSDate()
+        let today = Date()
         
-        let threeMonthsAgo = self.calendarView.calendar.dateByAddingComponents(dateComponents, toDate: today, options: NSCalendarOptions())
+        let threeMonthsAgo = (self.calendarView.calendar as NSCalendar).date(byAdding: dateComponents, to: today, options: NSCalendar.Options())
         
         
         return threeMonthsAgo
     }
     
-    func endDate() -> NSDate? {
+    func endDate() -> Date? {
         
-        let dateComponents = NSDateComponents()
+        var dateComponents = DateComponents()
         
         dateComponents.year = 2;
-        let today = NSDate()
+        let today = Date()
         
-        let twoYearsFromNow = self.calendarView.calendar.dateByAddingComponents(dateComponents, toDate: today, options: NSCalendarOptions())
+        let twoYearsFromNow = (self.calendarView.calendar as NSCalendar).date(byAdding: dateComponents, to: today, options: NSCalendar.Options())
         
         return twoYearsFromNow
         
@@ -246,7 +246,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     }
     
     
-    func calendar(calendar: CalendarView, didSelectDate date : NSDate, with selectedTimeLogs: [TimeLog]) {
+    func calendar(_ calendar: CalendarView, didSelectDate date : Date, with selectedTimeLogs: [TimeLog]) {
         
         NSLog("Calender.didSelectDate: \(date), with \(selectedTimeLogs.count) timeLogs")
         
@@ -254,7 +254,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
         self.tableViewActivities.reloadData()
     }
     
-    func calendar(calendar: CalendarView, didScrollToMonth date : NSDate) {
+    func calendar(_ calendar: CalendarView, didScrollToMonth date : Date) {
         
         NSLog("Calender.didScrollToMonth: \(date)")
       
@@ -265,7 +265,7 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
 
 extension MainViewController : TimeLogEditDelegate {
     
-    func timeLogModified(withStartDate: NSDate) {
+    func timeLogModified(_ withStartDate: Date) {
         updateViewForDate(withStartDate)
     }
 }

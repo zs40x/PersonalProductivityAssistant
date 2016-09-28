@@ -9,10 +9,10 @@
 import Foundation
 
 enum DatePickTargetField {
-    case From
-    case Until
+    case from
+    case until
 }
 
 protocol DateTimePickDelegate {
-    func confirmedPick(pickedDate: PickableDate, date: NSDate)
+    func confirmedPick(_ pickedDate: PickableDate, date: Date)
 }

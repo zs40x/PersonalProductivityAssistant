@@ -10,7 +10,7 @@ import Foundation
 
 class ChartSourceHashtags : ChartDataValueProvider {
     
-    private let timeLogRepository = TimeLogRepository();
+    fileprivate let timeLogRepository = TimeLogRepository();
     
     func getChartData() -> ChartDataValues {
         
@@ -28,7 +28,7 @@ class ChartSourceHashtags : ChartDataValueProvider {
         );
     }
     
-    private func getHashtagTotals() -> [String: Double] {
+    fileprivate func getHashtagTotals() -> [String: Double] {
         var hashtagTotalsDictionary = [String: Double]()
         
         let getAllTimeLogsResult = timeLogRepository.getAll()
@@ -44,8 +44,8 @@ class ChartSourceHashtags : ChartDataValueProvider {
             }
             
             for hashtag in assignedHashtags {
-                hashtagTotalsDictionary[hashtag.name]
-                    = ( hashtagTotalsDictionary[hashtag.name] ?? 0 ) + Double(timeLog.durationInMinutes())
+                hashtagTotalsDictionary[(hashtag as AnyObject).name]
+                    = ( hashtagTotalsDictionary[(hashtag as AnyObject).name] ?? 0 ) + Double(timeLog.durationInMinutes())
             }
         }
         

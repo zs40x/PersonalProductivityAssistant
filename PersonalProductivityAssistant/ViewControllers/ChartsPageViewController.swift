@@ -11,16 +11,16 @@ import UIKit
 class ChartsPageViewController: UIPageViewController {
     
     
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
+    fileprivate(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newPieChartViewController(ChartSourceHashtags()),
                 self.newPieChartViewController(ChartSourceFreeVsUsedTime())]
     }()
     
-    private func newPieChartViewController(chartDataValueProvider: ChartDataValueProvider) -> PieChartViewController {
+    fileprivate func newPieChartViewController(_ chartDataValueProvider: ChartDataValueProvider) -> PieChartViewController {
         
         let uiViewController =
             UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewControllerWithIdentifier("PieChartViewController")
+                .instantiateViewController(withIdentifier: "PieChartViewController")
         
         let pieChartViewController = uiViewController as! PieChartViewController
         pieChartViewController.chartDataValueProvider = chartDataValueProvider
@@ -36,7 +36,7 @@ class ChartsPageViewController: UIPageViewController {
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
-                               direction: .Forward,
+                               direction: .forward,
                                animated: true,
                                completion: nil)
         }
@@ -52,9 +52,9 @@ class ChartsPageViewController: UIPageViewController {
     
 
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
-        if segue.destinationViewController is MainViewController {
+        if segue.destination is MainViewController {
             hideNavigationBar()
         }
     }
@@ -64,10 +64,10 @@ class ChartsPageViewController: UIPageViewController {
 
 extension ChartsPageViewController: UIPageViewControllerDataSource {
     
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
         }
         
@@ -84,10 +84,10 @@ extension ChartsPageViewController: UIPageViewControllerDataSource {
         return orderedViewControllers[previousIndex]
     }
     
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
             return nil
         }
         
@@ -105,13 +105,13 @@ extension ChartsPageViewController: UIPageViewControllerDataSource {
         return orderedViewControllers[nextIndex]
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return orderedViewControllers.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
-            firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) else {
+            let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController) else {
                 return 0
         }
         

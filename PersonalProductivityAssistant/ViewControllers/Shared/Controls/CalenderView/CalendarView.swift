@@ -24,16 +24,16 @@ let DATE_SELECTED_INDEX = 2
 
 protocol CalendarViewDataSource {
     
-    func startDate() -> NSDate?
-    func endDate() -> NSDate?
+    func startDate() -> Date?
+    func endDate() -> Date?
 }
 
 @objc protocol CalendarViewDelegate {
     
-    optional func calendar(calendar : CalendarView, canSelectDate date : NSDate) -> Bool
-    func calendar(calendar : CalendarView, didScrollToMonth date : NSDate) -> Void
-    func calendar(calendar : CalendarView, didSelectDate date : NSDate, with selectedTimelogs: [TimeLog])
-    optional func calendar(calendar : CalendarView, didDeselectDate date : NSDate) -> Void
+    @objc optional func calendar(_ calendar : CalendarView, canSelectDate date : Date) -> Bool
+    func calendar(_ calendar : CalendarView, didScrollToMonth date : Date) -> Void
+    func calendar(_ calendar : CalendarView, didSelectDate date : Date, with selectedTimelogs: [TimeLog])
+    @objc optional func calendar(_ calendar : CalendarView, didDeselectDate date : Date) -> Void
 }
 
 
@@ -42,20 +42,20 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var dataSource  : CalendarViewDataSource?
     var delegate    : CalendarViewDelegate?
     
-    lazy var gregorian : NSCalendar = {
+    lazy var gregorian : Calendar = {
         
-        let cal = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        var cal = Calendar(identifier: Calendar.Identifier.gregorian)
         
-        cal.timeZone = NSTimeZone(abbreviation: "UTC")!
+        cal.timeZone = TimeZone(abbreviation: "UTC")!
         
         return cal
     }()
     
-    var calendar : NSCalendar {
+    var calendar : Calendar {
         return self.gregorian
     }
     
-    var direction : UICollectionViewScrollDirection = .Horizontal {
+    var direction : UICollectionViewScrollDirection = .horizontal {
         didSet {
             if let layout = self.calendarView.collectionViewLayout as? CalendarFlowLayout {
                 layout.scrollDirection = direction
@@ -64,42 +64,42 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    private var startDateCache : NSDate = NSDate()
-    private var endDateCache : NSDate = NSDate()
-    private var startOfMonthCache : NSDate = NSDate()
-    private var todayIndexPath : NSIndexPath?
-    var displayDate : NSDate?
+    fileprivate var startDateCache : Date = Date()
+    fileprivate var endDateCache : Date = Date()
+    fileprivate var startOfMonthCache : Date = Date()
+    fileprivate var todayIndexPath : IndexPath?
+    var displayDate : Date?
     
-    private(set) var selectedIndexPaths : [NSIndexPath] = [NSIndexPath]()
-    private(set) var selectedDates : [NSDate] = [NSDate]()
+    fileprivate(set) var selectedIndexPaths : [IndexPath] = [IndexPath]()
+    fileprivate(set) var selectedDates : [Date] = [Date]()
     
     
-    private var timeLogsByIndexPath = [NSIndexPath:[TimeLog]]()
+    fileprivate var timeLogsByIndexPath = [IndexPath:[TimeLog]]()
     
     var timeLogs : [TimeLog]? {
         
         didSet {
             
-            timeLogsByIndexPath = [NSIndexPath:[TimeLog]]()
+            timeLogsByIndexPath = [IndexPath:[TimeLog]]()
             
             guard let currentTimeLogs = self.timeLogs else {
                 return
             }
             
-            let secondsFromGMTDifference = NSTimeInterval(NSTimeZone.localTimeZone().secondsFromGMT)
+            let secondsFromGMTDifference = TimeInterval(NSTimeZone.local.secondsFromGMT())
             
             for timeLog in currentTimeLogs {
                 
                 guard let dateFrom = timeLog.from else { continue }
                 
-                let startDate = dateFrom.dateByAddingTimeInterval(secondsFromGMTDifference)
+                let startDate = dateFrom.addingTimeInterval(secondsFromGMTDifference)
                 
                 let distanceFromStartComponent =
-                    self.gregorian.components(
-                        [.Month, .Day], fromDate: startOfMonthCache, toDate: startDate, options: NSCalendarOptions() )
+                    (self.gregorian as NSCalendar).components(
+                        [.month, .day], from: startOfMonthCache, to: startDate as Date, options: NSCalendar.Options() )
                 
                 let indexPath =
-                    NSIndexPath(forItem: distanceFromStartComponent.day, inSection: distanceFromStartComponent.month)
+                    IndexPath(item: distanceFromStartComponent.day!, section: distanceFromStartComponent.month!)
                 
                 if var timeLogsInIndexPath : [TimeLog] = timeLogsByIndexPath[indexPath] {
                     timeLogsInIndexPath.append(timeLog)
@@ -114,7 +114,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     lazy var headerView : CalendarHeaderView = {
         
-        let hv = CalendarHeaderView(frame:CGRectZero)
+        let hv = CalendarHeaderView(frame:CGRect.zero)
         
         return hv
         
@@ -127,11 +127,11 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         
-        let cv = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.dataSource = self
         cv.delegate = self
-        cv.pagingEnabled = true
-        cv.backgroundColor = UIColor.clearColor()
+        cv.isPagingEnabled = true
+        cv.backgroundColor = UIColor.clear
         cv.showsHorizontalScrollIndicator = false
         cv.showsVerticalScrollIndicator = false
         cv.allowsMultipleSelection = false
@@ -150,7 +150,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             self.calendarView.frame = CGRect(x:0.0, y:HEADER_DEFAULT_HEIGHT, width: width, height: heigh)
             
             let layout = self.calendarView.collectionViewLayout as! UICollectionViewFlowLayout
-            layout.itemSize = CGSizeMake(width / CGFloat(NUMBER_OF_DAYS_IN_WEEK), heigh / CGFloat(MAXIMUM_NUMBER_OF_ROWS))
+            layout.itemSize = CGSize(width: width / CGFloat(NUMBER_OF_DAYS_IN_WEEK), height: heigh / CGFloat(MAXIMUM_NUMBER_OF_ROWS))
             
         }
     }
@@ -158,7 +158,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     
     override init(frame: CGRect) {
-        super.init(frame : CGRectMake(0.0, 0.0, 200.0, 200.0))
+        super.init(frame : CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
         self.initialSetup()
     }
     
@@ -173,11 +173,11 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     
     // MARK: Helper Methods
-    private func initialSetup() {
+    fileprivate func initialSetup() {
         
         self.clipsToBounds = true
         
-        self.calendarView.registerClass(CalendarDayCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        self.calendarView.register(CalendarDayCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         
         self.addSubview(self.headerView)
@@ -188,9 +188,9 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     // MARK: UICollectionViewDataSource
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        guard let startDate = self.dataSource?.startDate(), endDate = self.dataSource?.endDate() else {
+        guard let startDate = self.dataSource?.startDate(), let endDate = self.dataSource?.endDate() else {
             return 0
         }
         
@@ -198,54 +198,54 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         endDateCache = endDate
         
         // check if the dates are in correct order
-        if self.gregorian.compareDate(startDate, toDate: endDate, toUnitGranularity: .Nanosecond) != NSComparisonResult.OrderedAscending {
+        if (self.gregorian as NSCalendar).compare(startDate, to: endDate, toUnitGranularity: .nanosecond) != ComparisonResult.orderedAscending {
             return 0
         }
         
-        let firstDayOfStartMonth = self.gregorian.components( [.Era, .Year, .Month], fromDate: startDateCache)
+        var firstDayOfStartMonth = (self.gregorian as NSCalendar).components( [.era, .year, .month], from: startDateCache)
         firstDayOfStartMonth.day = 1
         
-        guard let dateFromDayOneComponents = self.gregorian.dateFromComponents(firstDayOfStartMonth) else {
+        guard let dateFromDayOneComponents = self.gregorian.date(from: firstDayOfStartMonth) else {
             return 0
         }
         
         startOfMonthCache = dateFromDayOneComponents
 
-        let today = NSDate()
+        let today = Date()
         
-        if  startOfMonthCache.compare(today) == NSComparisonResult.OrderedAscending &&
-            endDateCache.compare(today) == NSComparisonResult.OrderedDescending {
+        if  startOfMonthCache.compare(today) == ComparisonResult.orderedAscending &&
+            endDateCache.compare(today) == ComparisonResult.orderedDescending {
             
-            let differenceFromTodayComponents = self.gregorian.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: startOfMonthCache, toDate: today, options: NSCalendarOptions())
+            let differenceFromTodayComponents = (self.gregorian as NSCalendar).components([NSCalendar.Unit.month, NSCalendar.Unit.day], from: startOfMonthCache, to: today, options: NSCalendar.Options())
             
-            self.todayIndexPath = NSIndexPath(forItem: differenceFromTodayComponents.day, inSection: differenceFromTodayComponents.month)
+            self.todayIndexPath = IndexPath(item: differenceFromTodayComponents.day!, section: differenceFromTodayComponents.month!)
             
         }
         
-        let differenceComponents = self.gregorian.components(NSCalendarUnit.Month, fromDate: startDateCache, toDate: endDateCache, options: NSCalendarOptions())
+        let differenceComponents = (self.gregorian as NSCalendar).components(NSCalendar.Unit.month, from: startDateCache, to: endDateCache, options: NSCalendar.Options())
         
         
-        return differenceComponents.month + 1 // if we are for example on the same month and the difference is 0 we still need 1 to display it
+        return differenceComponents.month! + 1 // if we are for example on the same month and the difference is 0 we still need 1 to display it
         
     }
     
     var monthInfo : [Int:[Int]] = [Int:[Int]]()
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let monthOffsetComponents = NSDateComponents()
+        var monthOffsetComponents = DateComponents()
         
         
         // offset by the number of months
         monthOffsetComponents.month = section;
         
-        guard let correctMonthForSectionDate = self.gregorian.dateByAddingComponents(monthOffsetComponents, toDate: startOfMonthCache, options: NSCalendarOptions()) else {
+        guard let correctMonthForSectionDate = (self.gregorian as NSCalendar).date(byAdding: monthOffsetComponents, to: startOfMonthCache, options: NSCalendar.Options()) else {
             return 0
         }
         
-        let numberOfDaysInMonth = self.gregorian.rangeOfUnit(.Day, inUnit: .Month, forDate: correctMonthForSectionDate).length
+        let numberOfDaysInMonth = (self.gregorian as NSCalendar).range(of: .day, in: .month, for: correctMonthForSectionDate).length
         
-        var firstWeekdayOfMonthIndex = self.gregorian.component(NSCalendarUnit.Weekday, fromDate: correctMonthForSectionDate)
+        var firstWeekdayOfMonthIndex = (self.gregorian as NSCalendar).component(NSCalendar.Unit.weekday, from: correctMonthForSectionDate)
         firstWeekdayOfMonthIndex = firstWeekdayOfMonthIndex - 1 // firstWeekdayOfMonthIndex should be 0-Indexed
         firstWeekdayOfMonthIndex = (firstWeekdayOfMonthIndex + 6) % 7 // push it modularly so that we take it back one day so that the first day is Monday instead of Sunday which is the default
         
@@ -255,40 +255,40 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let dayCell =
-            collectionView.dequeueReusableCellWithReuseIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! CalendarDayCell
-        let currentMonthInfo : [Int] = monthInfo[indexPath.section]!
+            collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! CalendarDayCell
+        let currentMonthInfo : [Int] = monthInfo[(indexPath as NSIndexPath).section]!
         
         let fdIndex = currentMonthInfo[FIRST_DAY_INDEX]
         let nDays = currentMonthInfo[NUMBER_OF_DAYS_INDEX]
         
-        let fromStartOfMonthIndexPath = NSIndexPath(forItem: indexPath.item - fdIndex, inSection: indexPath.section) // if the first is wednesday, add 2
+        let fromStartOfMonthIndexPath = IndexPath(item: (indexPath as NSIndexPath).item - fdIndex, section: (indexPath as NSIndexPath).section) // if the first is wednesday, add 2
         
         guard self.dataSource != nil else {
             dayCell.textLabel.text="-"
             return dayCell
         }
         
-        if indexPath.item >= fdIndex && indexPath.item < fdIndex + nDays {
-            dayCell.textLabel.text = String(fromStartOfMonthIndexPath.item + 1)
-            dayCell.hidden = false
+        if (indexPath as NSIndexPath).item >= fdIndex && (indexPath as NSIndexPath).item < fdIndex + nDays {
+            dayCell.textLabel.text = String((fromStartOfMonthIndexPath as NSIndexPath).item + 1)
+            dayCell.isHidden = false
             
         }
         else {
             dayCell.textLabel.text = ""
-            dayCell.hidden = true
+            dayCell.isHidden = true
         }
         
-        dayCell.selected = selectedIndexPaths.contains(indexPath)
+        dayCell.isSelected = selectedIndexPaths.contains(indexPath)
         
-        if indexPath.section == 0 && indexPath.item == 0 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).item == 0 {
             self.scrollViewDidEndDecelerating(collectionView)
         }
         
         if let idx = todayIndexPath {
-            dayCell.isToday = (idx.section == indexPath.section && idx.item + fdIndex == indexPath.item)
+            dayCell.isToday = ((idx as NSIndexPath).section == (indexPath as NSIndexPath).section && (idx as NSIndexPath).item + fdIndex == (indexPath as NSIndexPath).item)
         }
         
         if let timeLogsForDay = timeLogsByIndexPath[fromStartOfMonthIndexPath] {
@@ -302,17 +302,17 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     // MARK: UIScrollViewDelegate
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.calculateDateBasedOnScrollViewPosition(scrollView)
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.calculateDateBasedOnScrollViewPosition(scrollView)
     }
     
     
-    private var previousYearDate: NSDate?
-    func calculateDateBasedOnScrollViewPosition(scrollView: UIScrollView) {
+    fileprivate var previousYearDate: Date?
+    func calculateDateBasedOnScrollViewPosition(_ scrollView: UIScrollView) {
         
         let cvbounds = self.calendarView.bounds
         
@@ -320,7 +320,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         page = page > 0 ? page : 0
         
-        let monthsOffsetComponents = NSDateComponents()
+        var monthsOffsetComponents = DateComponents()
         monthsOffsetComponents.month = page
         
         guard let delegate = self.delegate else {
@@ -328,13 +328,13 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
         
         
-        guard let yearDate = self.gregorian.dateByAddingComponents(monthsOffsetComponents, toDate: self.startOfMonthCache, options: NSCalendarOptions()) else {
+        guard let yearDate = (self.gregorian as NSCalendar).date(byAdding: monthsOffsetComponents, to: self.startOfMonthCache, options: NSCalendar.Options()) else {
             return
         }
         
-        let month = self.gregorian.component(NSCalendarUnit.Month, fromDate: yearDate) // get month
-        let monthName = NSDateFormatter().monthSymbols[(month-1) % 12] // 0 indexed array
-        let year = self.gregorian.component(NSCalendarUnit.Year, fromDate: yearDate)
+        let month = (self.gregorian as NSCalendar).component(NSCalendar.Unit.month, from: yearDate) // get month
+        let monthName = DateFormatter().monthSymbols[(month-1) % 12] // 0 indexed array
+        let year = (self.gregorian as NSCalendar).component(NSCalendar.Unit.year, from: yearDate)
         
         
         self.headerView.monthLabel.text = monthName + " " + String(year)
@@ -355,19 +355,19 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     // MARK: UICollectionViewDelegate
     
-    private var dateBeingSelectedByUser : NSDate?
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    fileprivate var dateBeingSelectedByUser : Date?
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         
-        let currentMonthInfo : [Int] = monthInfo[indexPath.section]!
+        let currentMonthInfo : [Int] = monthInfo[(indexPath as NSIndexPath).section]!
         let firstDayInMonth = currentMonthInfo[FIRST_DAY_INDEX]
         
-        let offsetComponents = NSDateComponents()
-        offsetComponents.month = indexPath.section
-        offsetComponents.day = indexPath.item - firstDayInMonth
+        var offsetComponents = DateComponents()
+        offsetComponents.month = (indexPath as NSIndexPath).section
+        offsetComponents.day = (indexPath as NSIndexPath).item - firstDayInMonth
         
         
         
-        if let dateUserSelected = self.gregorian.dateByAddingComponents(offsetComponents, toDate: startOfMonthCache, options: NSCalendarOptions()) {
+        if let dateUserSelected = (self.gregorian as NSCalendar).date(byAdding: offsetComponents, to: startOfMonthCache, options: NSCalendar.Options()) {
             
             dateBeingSelectedByUser = dateUserSelected
             
@@ -384,73 +384,73 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
     }
     
-    func selectDate(date : NSDate) {
+    func selectDate(_ date : Date) {
         
         guard let indexPath = self.indexPathForDate(date) else {
             return
         }
         
-        guard self.calendarView.indexPathsForSelectedItems()?.contains(indexPath) == false else {
+        guard self.calendarView.indexPathsForSelectedItems?.contains(indexPath) == false else {
             return
         }
         
-        self.calendarView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+        self.calendarView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
         
         selectedIndexPaths.append(indexPath)
         selectedDates.append(date)
         
     }
     
-    func deselectDate(date : NSDate) {
+    func deselectDate(_ date : Date) {
         
         guard let indexPath = self.indexPathForDate(date) else {
             return
         }
         
-        guard self.calendarView.indexPathsForSelectedItems()?.contains(indexPath) == true else {
+        guard self.calendarView.indexPathsForSelectedItems?.contains(indexPath) == true else {
             return
         }
         
         
-        self.calendarView.deselectItemAtIndexPath(indexPath, animated: false)
+        self.calendarView.deselectItem(at: indexPath, animated: false)
         
-        guard let index = selectedIndexPaths.indexOf(indexPath) else {
+        guard let index = selectedIndexPaths.index(of: indexPath) else {
             return
         }
         
         
-        selectedIndexPaths.removeAtIndex(index)
-        selectedDates.removeAtIndex(index)
+        selectedIndexPaths.remove(at: index)
+        selectedDates.remove(at: index)
         
         
     }
     
-    func indexPathForDate(date : NSDate) -> NSIndexPath? {
+    func indexPathForDate(_ date : Date) -> IndexPath? {
         
-        let distanceFromStartComponent = self.gregorian.components( [.Month, .Day], fromDate:startOfMonthCache, toDate: date, options: NSCalendarOptions() )
+        let distanceFromStartComponent = (self.gregorian as NSCalendar).components( [.month, .day], from:startOfMonthCache, to: date, options: NSCalendar.Options() )
         
-        guard let currentMonthInfo : [Int] = monthInfo[distanceFromStartComponent.month] else {
+        guard let currentMonthInfo : [Int] = monthInfo[distanceFromStartComponent.month!] else {
             return nil
         }
         
         
-        let item = distanceFromStartComponent.day + currentMonthInfo[FIRST_DAY_INDEX]
-        let indexPath = NSIndexPath(forItem: item, inSection: distanceFromStartComponent.month)
+        let item = distanceFromStartComponent.day! + currentMonthInfo[FIRST_DAY_INDEX]
+        let indexPath = IndexPath(item: item, section: distanceFromStartComponent.month!)
         
         return indexPath
         
     }
     
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let dateBeingSelectedByUser = dateBeingSelectedByUser else {
             return
         }
         
-        let currentMonthInfo : [Int] = monthInfo[indexPath.section]!
+        let currentMonthInfo : [Int] = monthInfo[(indexPath as NSIndexPath).section]!
         
-        let fromStartOfMonthIndexPath = NSIndexPath(forItem: indexPath.item - currentMonthInfo[FIRST_DAY_INDEX], inSection: indexPath.section)
+        let fromStartOfMonthIndexPath = IndexPath(item: (indexPath as NSIndexPath).item - currentMonthInfo[FIRST_DAY_INDEX], section: (indexPath as NSIndexPath).section)
         
         var timeLogsOnSelectedDate = [TimeLog]()
         
@@ -465,20 +465,20 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         selectedDates.append(dateBeingSelectedByUser)
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
         guard let dateBeingSelectedByUser = dateBeingSelectedByUser else {
             return
         }
         
-        guard let index = selectedIndexPaths.indexOf(indexPath) else {
+        guard let index = selectedIndexPaths.index(of: indexPath) else {
             return
         }
         
         delegate?.calendar?(self, didDeselectDate: dateBeingSelectedByUser)
         
-        selectedIndexPaths.removeAtIndex(index)
-        selectedDates.removeAtIndex(index)
+        selectedIndexPaths.remove(at: index)
+        selectedDates.remove(at: index)
         
     }
     
@@ -488,26 +488,26 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     
-    func setDisplayDate(date : NSDate, animated: Bool) {
+    func setDisplayDate(_ date : Date, animated: Bool) {
         
         if let dispDate = self.displayDate {
             
             // skip is we are trying to set the same date
-            if  date.compare(dispDate) == NSComparisonResult.OrderedSame {
+            if  date.compare(dispDate) == ComparisonResult.orderedSame {
                 return
             }
             
             
             // check if the date is within range
-            if  date.compare(startDateCache) == NSComparisonResult.OrderedAscending ||
-                date.compare(endDateCache) == NSComparisonResult.OrderedDescending   {
+            if  date.compare(startDateCache) == ComparisonResult.orderedAscending ||
+                date.compare(endDateCache) == ComparisonResult.orderedDescending   {
                 return
             }
             
             
-            let difference = self.gregorian.components([NSCalendarUnit.Month], fromDate: startOfMonthCache, toDate: date, options: NSCalendarOptions())
+            let difference = (self.gregorian as NSCalendar).components([NSCalendar.Unit.month], from: startOfMonthCache, to: date, options: NSCalendar.Options())
             
-            let distance : CGFloat = CGFloat(difference.month) * self.calendarView.frame.size.width
+            let distance : CGFloat = CGFloat(difference.month!) * self.calendarView.frame.size.width
             
             self.calendarView.setContentOffset(CGPoint(x: distance, y: 0.0), animated: animated)
         }

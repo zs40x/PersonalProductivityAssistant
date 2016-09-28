@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import CoreData
 
-public class PPAModel : NSObject {
+open class PPAModel : NSObject {
     
-    public static func New() -> PPAModel {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    open static func New() -> PPAModel {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         return PPAModel(managedObjectContext:appDelegate.managedObjectContext)
     }
@@ -52,9 +52,9 @@ public class PPAModel : NSObject {
 
 internal class AbstractModel {
     
-    private let managedObjectContext : NSManagedObjectContext
+    fileprivate let managedObjectContext : NSManagedObjectContext
     
-    private init(managedObjectContext : NSManagedObjectContext) {
+    fileprivate init(managedObjectContext : NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
     }
     
@@ -64,12 +64,12 @@ internal class TimeLogModel : AbstractModel {
     
     func getAllTimeLogs() throws -> [TimeLog] {
         
-        let request = NSFetchRequest(entityName: TimeLog.EntityName)
+        let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
         
         request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
         
         do {
-            return try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
+            return try managedObjectContext.fetch(request)
         }
         catch let error as NSError {
             NSLog("Error fetching: %@", error)
@@ -77,16 +77,16 @@ internal class TimeLogModel : AbstractModel {
         }
     }
     
-    func getTimeLogsForDateRange(dateFrom: NSDate, dateUntil: NSDate) throws -> [TimeLog] {
+    func getTimeLogsForDateRange(_ dateFrom: Date, dateUntil: Date) throws -> [TimeLog] {
         
-        let request = NSFetchRequest(entityName: TimeLog.EntityName)
+        let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
         
-        request.predicate = NSPredicate(format: "((from >= %@) AND (from < %@)) || (from = nil)", dateFrom, dateUntil)
+        request.predicate = NSPredicate(format: "((from >= %@) AND (from < %@)) || (from = nil)", dateFrom as CVarArg, dateUntil as CVarArg)
         
         request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
         
         do {
-            return try managedObjectContext.executeFetchRequest(request) as! [TimeLog]
+            return try managedObjectContext.fetch(request)
         }
         catch let error as NSError {
             NSLog("Error fetching: %@", error)
@@ -94,11 +94,11 @@ internal class TimeLogModel : AbstractModel {
         }
     }
     
-    func createTimeLog(timeLogData: TimeLogData) -> TimeLog {
+    func createTimeLog(_ timeLogData: TimeLogData) -> TimeLog {
         
         let timeLog =
-            NSEntityDescription.insertNewObjectForEntityForName(
-                TimeLog.EntityName, inManagedObjectContext: self.managedObjectContext) as! TimeLog
+            NSEntityDescription.insertNewObject(
+                forEntityName: TimeLog.EntityName, into: self.managedObjectContext) as! TimeLog
         
         timeLog.activity = timeLogData.Activity
         timeLog.from = timeLogData.From
@@ -107,19 +107,19 @@ internal class TimeLogModel : AbstractModel {
         return timeLog
     }
     
-    func deleteTimeLog(timeLogToDelete: TimeLog) {
-        managedObjectContext.deleteObject(timeLogToDelete)
+    func deleteTimeLog(_ timeLogToDelete: TimeLog) {
+        managedObjectContext.delete(timeLogToDelete)
     }
 }
 
 internal class HashtagModel : AbstractModel {
     
     func getAllHashtags() throws -> [Hashtag] {
-        let request = NSFetchRequest(entityName: Hashtag.EntityName)
+        let request = NSFetchRequest<Hashtag>(entityName: Hashtag.EntityName)
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         do {
-            let result = try managedObjectContext.executeFetchRequest(request) as! [Hashtag]
+            let result = try managedObjectContext.fetch(request)
             return result
         }
         catch let error as NSError {
@@ -130,7 +130,7 @@ internal class HashtagModel : AbstractModel {
     
     func createHashtag(withName name: String) -> Hashtag {
         let hashTag =
-            NSEntityDescription.insertNewObjectForEntityForName(Hashtag.EntityName, inManagedObjectContext: self.managedObjectContext) as! Hashtag
+            NSEntityDescription.insertNewObject(forEntityName: Hashtag.EntityName, into: self.managedObjectContext) as! Hashtag
         
         hashTag.name = name
         

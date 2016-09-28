@@ -41,14 +41,14 @@ class PieChartViewController: UIViewController, ChartViewDelegate  {
         let chartData = dataProvider.getChartData()
         setChart(chartData.dataPoints, values: chartData.values)
         
-        pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInCirc)
+        pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCirc)
     }
     
-    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlighter) {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlighter) {
         
     }
     
-    func setChart(dataPoints: [String], values: [Double]) {
+    func setChart(_ dataPoints: [String], values: [Double]) {
         
         var dataEntries: [ChartDataEntry] = []
         
@@ -65,7 +65,7 @@ class PieChartViewController: UIViewController, ChartViewDelegate  {
         
         
         pieChartDataSet.colors
-            = [UIColor.greenColor(), UIColor.redColor(), UIColor.brownColor(), UIColor.cyanColor(),
-               UIColor.purpleColor(), UIColor.orangeColor(), UIColor.magentaColor()]
+            = [UIColor.green, UIColor.red, UIColor.brown, UIColor.cyan,
+               UIColor.purple, UIColor.orange, UIColor.magenta]
     }
 }

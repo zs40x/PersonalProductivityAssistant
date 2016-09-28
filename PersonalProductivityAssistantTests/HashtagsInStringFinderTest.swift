@@ -20,7 +20,7 @@ class HashtagsInStringFinderTest: XCTestCase {
         super.tearDown()
     }
 
-    func excerciseHashtagsInString(searchString: String) -> [String] {
+    func excerciseHashtagsInString(_ searchString: String) -> [String] {
         return searchString.hashtags
     }
 

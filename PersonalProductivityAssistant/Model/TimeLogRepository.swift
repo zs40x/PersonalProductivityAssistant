@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 
-public class TimeLogRepository {
+open class TimeLogRepository {
     
-    private var model = PPAModel.New()
+    fileprivate var model = PPAModel.New()
     
     
     func getManagedObjectContext() -> NSManagedObjectContext {
@@ -28,7 +28,7 @@ public class TimeLogRepository {
         }
     }
     
-    func forMonthOf(date: NSDate) -> ResultValue<[TimeLog]> {
+    func forMonthOf(_ date: Date) -> ResultValue<[TimeLog]> {
         
         do {
             let firstOfMonthDate = date.firstDayOfMonth()
@@ -46,7 +46,7 @@ public class TimeLogRepository {
     }
 
     
-    func addNew(timeLogData: TimeLogData) -> ResultValue<TimeLog> {
+    func addNew(_ timeLogData: TimeLogData) -> ResultValue<TimeLog> {
   
         do {
             let newTimeLog = model.TimeLogs.createTimeLog(timeLogData)
@@ -60,7 +60,7 @@ public class TimeLogRepository {
         }
     }
     
-    func delete(timeLogToDelete: TimeLog) -> Result {
+    func delete(_ timeLogToDelete: TimeLog) -> Result {
         
         do {
             model.TimeLogs.deleteTimeLog(timeLogToDelete)
