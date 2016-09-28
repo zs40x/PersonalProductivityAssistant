@@ -11,8 +11,10 @@ import CoreData
 
 open class TimeLogRepository {
     
+
     fileprivate var model = PPAModel.New()
     
+
     func getManagedObjectContext() -> NSManagedObjectContext {
         return model.managedObjectContext
     }
