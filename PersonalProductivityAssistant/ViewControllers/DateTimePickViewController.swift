@@ -36,7 +36,7 @@ class DateTimePickViewController: UIViewController {
     @IBAction func actionTappedUse(_ sender: AnyObject) {
         
         defer {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
         
         guard let pickedDate = dateToPick else { return }
