@@ -86,7 +86,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
                 return
             }
             
-            let secondsFromGMTDifference = TimeInterval(NSTimeZone.local.secondsFromGMT())
+            let secondsFromGMTDifference = TimeInterval(TimeZone.current.secondsFromGMT())
             
             for timeLog in currentTimeLogs {
                 
@@ -95,8 +95,8 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
                 let startDate = dateFrom.addingTimeInterval(secondsFromGMTDifference)
                 
                 let distanceFromStartComponent =
-                    (self.gregorian as NSCalendar).components(
-                        [.month, .day], from: startOfMonthCache, to: startDate as Date, options: NSCalendar.Options() )
+                    self.gregorian.dateComponents(
+                        [.month, .day], from: startOfMonthCache, to: startDate )
                 
                 let indexPath =
                     IndexPath(item: distanceFromStartComponent.day!, section: distanceFromStartComponent.month!)
@@ -198,11 +198,11 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         endDateCache = endDate
         
         // check if the dates are in correct order
-        if (self.gregorian as NSCalendar).compare(startDate, to: endDate, toUnitGranularity: .nanosecond) != ComparisonResult.orderedAscending {
+        if (self.gregorian as Calendar).compare(startDate, to: endDate, toGranularity: .nanosecond) != ComparisonResult.orderedAscending {
             return 0
         }
         
-        var firstDayOfStartMonth = (self.gregorian as NSCalendar).components( [.era, .year, .month], from: startDateCache)
+        var firstDayOfStartMonth = (self.gregorian as Calendar).dateComponents( [.era, .year, .month], from: startDateCache)
         firstDayOfStartMonth.day = 1
         
         guard let dateFromDayOneComponents = self.gregorian.date(from: firstDayOfStartMonth) else {
@@ -216,13 +216,13 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         if  startOfMonthCache.compare(today) == ComparisonResult.orderedAscending &&
             endDateCache.compare(today) == ComparisonResult.orderedDescending {
             
-            let differenceFromTodayComponents = (self.gregorian as NSCalendar).components([NSCalendar.Unit.month, NSCalendar.Unit.day], from: startOfMonthCache, to: today, options: NSCalendar.Options())
+            let differenceFromTodayComponents = self.gregorian.dateComponents([.month, .day], from: startOfMonthCache, to: today)
             
             self.todayIndexPath = IndexPath(item: differenceFromTodayComponents.day!, section: differenceFromTodayComponents.month!)
             
         }
         
-        let differenceComponents = (self.gregorian as NSCalendar).components(NSCalendar.Unit.month, from: startDateCache, to: endDateCache, options: NSCalendar.Options())
+        let differenceComponents = self.gregorian.dateComponents([.month], from: startDateCache, to: endDateCache)
         
         
         return differenceComponents.month! + 1 // if we are for example on the same month and the difference is 0 we still need 1 to display it
@@ -239,13 +239,14 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         // offset by the number of months
         monthOffsetComponents.month = section;
         
-        guard let correctMonthForSectionDate = (self.gregorian as NSCalendar).date(byAdding: monthOffsetComponents, to: startOfMonthCache, options: NSCalendar.Options()) else {
+        guard let correctMonthForSectionDate = self.gregorian.date(byAdding: monthOffsetComponents, to: startOfMonthCache) else {
             return 0
         }
         
-        let numberOfDaysInMonth = (self.gregorian as NSCalendar).range(of: .day, in: .month, for: correctMonthForSectionDate).length
+        let numberOfDaysInMonth =
+            self.gregorian.range(of: .day, in: .month, for: correctMonthForSectionDate)!.count
         
-        var firstWeekdayOfMonthIndex = (self.gregorian as NSCalendar).component(NSCalendar.Unit.weekday, from: correctMonthForSectionDate)
+        var firstWeekdayOfMonthIndex = self.gregorian.component(.weekday, from: correctMonthForSectionDate)
         firstWeekdayOfMonthIndex = firstWeekdayOfMonthIndex - 1 // firstWeekdayOfMonthIndex should be 0-Indexed
         firstWeekdayOfMonthIndex = (firstWeekdayOfMonthIndex + 6) % 7 // push it modularly so that we take it back one day so that the first day is Monday instead of Sunday which is the default
         
@@ -328,13 +329,13 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
         
         
-        guard let yearDate = (self.gregorian as NSCalendar).date(byAdding: monthsOffsetComponents, to: self.startOfMonthCache, options: NSCalendar.Options()) else {
+        guard let yearDate = self.gregorian.date(byAdding: monthsOffsetComponents, to: self.startOfMonthCache) else {
             return
         }
         
-        let month = (self.gregorian as NSCalendar).component(NSCalendar.Unit.month, from: yearDate) // get month
+        let month = self.gregorian.component(.month, from: yearDate) // get month
         let monthName = DateFormatter().monthSymbols[(month-1) % 12] // 0 indexed array
-        let year = (self.gregorian as NSCalendar).component(NSCalendar.Unit.year, from: yearDate)
+        let year = self.gregorian.component(.year, from: yearDate)
         
         
         self.headerView.monthLabel.text = monthName + " " + String(year)
@@ -367,7 +368,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         
         
-        if let dateUserSelected = (self.gregorian as NSCalendar).date(byAdding: offsetComponents, to: startOfMonthCache, options: NSCalendar.Options()) {
+        if let dateUserSelected = self.gregorian.date(byAdding: offsetComponents, to: startOfMonthCache) {
             
             dateBeingSelectedByUser = dateUserSelected
             
@@ -427,7 +428,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     func indexPathForDate(_ date : Date) -> IndexPath? {
         
-        let distanceFromStartComponent = (self.gregorian as NSCalendar).components( [.month, .day], from:startOfMonthCache, to: date, options: NSCalendar.Options() )
+        let distanceFromStartComponent = self.gregorian.dateComponents( [.month, .day], from:startOfMonthCache, to: date )
         
         guard let currentMonthInfo : [Int] = monthInfo[distanceFromStartComponent.month!] else {
             return nil
@@ -505,7 +506,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             }
             
             
-            let difference = (self.gregorian as NSCalendar).components([NSCalendar.Unit.month], from: startOfMonthCache, to: date, options: NSCalendar.Options())
+            let difference = self.gregorian.dateComponents([.month], from: startOfMonthCache, to: date)
             
             let distance : CGFloat = CGFloat(difference.month!) * self.calendarView.frame.size.width
             
