@@ -44,7 +44,7 @@ class CalendarFlowLayout: UICollectionViewFlowLayout {
             
             let stride = (self.scrollDirection == .horizontal) ? collectionView.frame.size.width : collectionView.frame.size.height
             
-            let offset = CGFloat((attributes.indexPath as NSIndexPath).section) * stride
+            let offset = CGFloat((attributes.indexPath as IndexPath).section) * stride
             
             var xCellOffset : CGFloat = CGFloat((attributes.indexPath as NSIndexPath).item % 7) * self.itemSize.width
             

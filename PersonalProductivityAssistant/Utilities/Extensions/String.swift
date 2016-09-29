@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    public func findOccurencesOf(text:String) -> [NSRange] {
+    public func findOccurencesOf(_ text:String) -> [NSRange] {
         
         guard !text.isEmpty else { return [] }
         

@@ -52,7 +52,7 @@ class PersonalProductivityAssistantUITests: XCTestCase {
     
     func testCanAddAndEditAndDeleteActivityFromTable() {
         //
-        // Swipe calender to August
+        // Swipe calender
         //
         calendarViewFirstDay?.swipeLeft()
         
@@ -70,11 +70,11 @@ class PersonalProductivityAssistantUITests: XCTestCase {
         labelActivity?.tap()
         
         buttonPickDateTimeFrom?.tap()
-        setDatePickerValues(monthAndDay: "Aug 1", hour: "10", minute: "30", amPm: "AM")
+        setDatePickerValues(monthAndDay: "Sep 1", hour: "10", minute: "30", amPm: "AM")
         setDateTimeFromButton?.tap()
         
         buttonPickDateTimeUntil?.tap()
-        setDatePickerValues(monthAndDay: "Aug 1", hour: "11", minute: "15", amPm: "AM")
+        setDatePickerValues(monthAndDay: "Sep 1", hour: "11", minute: "15", amPm: "AM")
         setDateTimeUntilButton?.tap()
         
         timeLogSaveButton?.tap()

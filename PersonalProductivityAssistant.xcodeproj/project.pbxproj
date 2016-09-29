@@ -59,6 +59,8 @@
 		D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */; };
 		D4F84C2D1D15BEDB0041FCF0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2C1D15BEDB0041FCF0 /* Result.swift */; };
 		D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2F1D15C76A0041FCF0 /* NSError.swift */; };
+		D4FA29FF1D9CBE7D0044F9F2 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B0BA551D9C3D9C0007E59F /* Charts.framework */; };
+		D4FA2A001D9CBE7D0044F9F2 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4B0BA551D9C3D9C0007E59F /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,12 @@
 			proxyType = 1;
 			remoteGlobalIDString = D4C8E4701D714CFD0069EC94;
 			remoteInfo = PersonalProductivityAssistantWidget;
+		D4FA2A011D9CBE7D0044F9F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -113,6 +121,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D4FA2A001D9CBE7D0044F9F2 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FA29FF1D9CBE7D0044F9F2 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +552,7 @@
 			dependencies = (
 				D40B48941D6F6C7D00C350C4 /* PBXTargetDependency */,
 				D4C8E47D1D714CFD0069EC94 /* PBXTargetDependency */,
+				D4FA2A021D9CBE7D0044F9F2 /* PBXTargetDependency */,
 			);
 			name = PersonalProductivityAssistant;
 			productName = PersonalProductivityAssistant;
@@ -820,7 +831,11 @@
 		D4C8E47D1D714CFD0069EC94 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D4C8E4701D714CFD0069EC94 /* PersonalProductivityAssistantWidget */;
-			targetProxy = D4C8E47C1D714CFD0069EC94 /* PBXContainerItemProxy */;
+			targetProxy = D4C8E47C1D714CFD0069EC94 /* PBXContainerItemProxy */
+		D4FA2A021D9CBE7D0044F9F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = D4FA2A011D9CBE7D0044F9F2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -948,6 +963,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PersonalProductivityAssistant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -964,6 +980,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PersonalProductivityAssistant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";

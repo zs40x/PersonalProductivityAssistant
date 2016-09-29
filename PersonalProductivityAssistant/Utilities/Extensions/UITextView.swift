@@ -17,7 +17,7 @@ extension UITextView {
         
         text.hashtags.forEach { (hashtag) in
             
-            text.findOccurencesOf(text: hashtag).forEach { (hashtagRange ) in
+            text.findOccurencesOf(hashtag).forEach { (hashtagRange ) in
                 
                 let withoutDash = hashtag.characters.dropFirst()
                 
