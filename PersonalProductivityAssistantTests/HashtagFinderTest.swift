@@ -26,7 +26,7 @@ class HashtagFinderTest: XCTestCaseCoreDataInMemory {
     }
     
     func testNoHashtags() {
-        excersiseHashtagFinder(forString: "test")
+        _ = excersiseHashtagFinder(forString: "test")
         
         XCTAssertEqual(hashtagRepository.getAll().value!.count, 0)
     }
@@ -43,8 +43,8 @@ class HashtagFinderTest: XCTestCaseCoreDataInMemory {
     }
     
     func testPersistsNewHashtagsInDb() {
-        excersiseHashtagFinder(forString: "#test_1")
-        excersiseHashtagFinder(forString: "#test_2")
+        _ = excersiseHashtagFinder(forString: "#test_1")
+        _ = excersiseHashtagFinder(forString: "#test_2")
         
         XCTAssertTrue(existsHashtagWithNameInDatabase("#test_1"))
         XCTAssertTrue(existsHashtagWithNameInDatabase("#test_2"))
@@ -59,7 +59,7 @@ class HashtagFinderTest: XCTestCaseCoreDataInMemory {
     }
     
     func testAddsMultiple() {
-        excersiseHashtagFinder(forString: "#this is a #test")
+        _ = excersiseHashtagFinder(forString: "#this is a #test")
         
         XCTAssertTrue(existsHashtagWithNameInDatabase("#this"))
         XCTAssertTrue(existsHashtagWithNameInDatabase("#test"))
