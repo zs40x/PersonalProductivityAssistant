@@ -11,7 +11,7 @@ import CoreData
 
 class HashtagRepository {
     
-    fileprivate var model = PPAModel.New()
+    fileprivate var model = PPAModel.sharedInstance()
     
     
     func replaceManagedObjectContext(_ context: NSManagedObjectContext) {

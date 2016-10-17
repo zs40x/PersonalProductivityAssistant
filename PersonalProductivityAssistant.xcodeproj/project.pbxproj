@@ -14,6 +14,21 @@
 		D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E31D26AFFB002F15A4 /* Hashtag.swift */; };
 		D41726E71D28EF7E002F15A4 /* HashtagFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */; };
 		D41726EB1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */; };
+		D41A06B11DB551AD0088745C /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4B660871D142B18000FE897 /* PPADataModel.xcdatamodeld */; };
+		D41A06B21DB551B20088745C /* PPAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C201D15516F0041FCF0 /* PPAModel.swift */; };
+		D41A06B31DB551B60088745C /* HashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */; };
+		D41A06B41DB551B90088745C /* TimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */; };
+		D41A06B51DB551BE0088745C /* TimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C221D15516F0041FCF0 /* TimeLog.swift */; };
+		D41A06B61DB551C10088745C /* TimeLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */; };
+		D41A06B71DB551C50088745C /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E31D26AFFB002F15A4 /* Hashtag.swift */; };
+		D41A06B81DB551C80088745C /* Hashtag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E21D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift */; };
+		D41A06B91DB551CE0088745C /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
+		D41A06BA1DB551E40088745C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2C1D15BEDB0041FCF0 /* Result.swift */; };
+		D41A06BB1DB551F70088745C /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2F1D15C76A0041FCF0 /* NSError.swift */; };
+		D41A06BC1DB551FA0088745C /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* NSDate.swift */; };
+		D41A06BE1DB552040088745C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE09A1D3546A300CD797F /* String.swift */; };
+		D41A06BF1DB552200088745C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6F1D38A08A000F678A /* Config.swift */; };
+		D41A06C01DB5522F0088745C /* HashtagFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */; };
 		D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */; };
 		D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */; };
 		D4355E701D38A08A000F678A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6F1D38A08A000F678A /* Config.swift */; };
@@ -747,7 +762,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41A06B31DB551B60088745C /* HashtagRepository.swift in Sources */,
 				D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */,
+				D41A06B51DB551BE0088745C /* TimeLog.swift in Sources */,
+				D41A06BC1DB551FA0088745C /* NSDate.swift in Sources */,
+				D41A06B71DB551C50088745C /* Hashtag.swift in Sources */,
+				D41A06B41DB551B90088745C /* TimeLogRepository.swift in Sources */,
+				D41A06BA1DB551E40088745C /* Result.swift in Sources */,
+				D41A06B81DB551C80088745C /* Hashtag+CoreDataProperties.swift in Sources */,
+				D41A06BB1DB551F70088745C /* NSError.swift in Sources */,
+				D41A06B11DB551AD0088745C /* PPADataModel.xcdatamodeld in Sources */,
+				D41A06B61DB551C10088745C /* TimeLog+CoreDataProperties.swift in Sources */,
+				D41A06BE1DB552040088745C /* String.swift in Sources */,
+				D41A06BF1DB552200088745C /* Config.swift in Sources */,
+				D41A06B21DB551B20088745C /* PPAModel.swift in Sources */,
+				D41A06C01DB5522F0088745C /* HashtagFinder.swift in Sources */,
+				D41A06B91DB551CE0088745C /* TimeLogData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
