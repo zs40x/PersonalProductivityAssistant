@@ -33,7 +33,7 @@
                             <constraint firstItem="iDc-xt-Jgz" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="GUL-z9-x2X"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iDc-xt-Jgz" secondAttribute="trailing" id="OWX-8U-srW"/>
                             <constraint firstItem="iDc-xt-Jgz" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="iVG-gz-8Oa"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="iDc-xt-Jgz" secondAttribute="bottom" constant="27" id="rTf-xZ-wBU"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="iDc-xt-Jgz" secondAttribute="bottom" constant="8" id="rTf-xZ-wBU"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
