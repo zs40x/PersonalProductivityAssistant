@@ -196,6 +196,7 @@
 		D4DD6AA21D2A2CF400FC6B0E /* HashtagRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagRepository.swift; sourceTree = "<group>"; };
 		D4DD6AA41D30BAA600FC6B0E /* HashtagFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagFinderTest.swift; sourceTree = "<group>"; };
 		D4DF0F831D647A1E00E17AE4 /* NSDate_firstDayOfCurrentAndNextMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate_firstDayOfCurrentAndNextMonth.swift; sourceTree = "<group>"; };
+		D4F6AF9E1DB54CA5006BDAFF /* PersonalProductivityAssistantTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalProductivityAssistantTodayExtension.entitlements; sourceTree = "<group>"; };
 		D4F84C201D15516F0041FCF0 /* PPAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPAModel.swift; sourceTree = "<group>"; };
 		D4F84C211D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D4F84C221D15516F0041FCF0 /* TimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLog.swift; sourceTree = "<group>"; };
@@ -334,6 +335,7 @@
 		D46170341DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension */ = {
 			isa = PBXGroup;
 			children = (
+				D4F6AF9E1DB54CA5006BDAFF /* PersonalProductivityAssistantTodayExtension.entitlements */,
 				D46170351DB5481F004EA412 /* TodayViewController.swift */,
 				D46170371DB5481F004EA412 /* MainInterface.storyboard */,
 				D461703A1DB5481F004EA412 /* Info.plist */,
@@ -622,6 +624,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = Y6U8S5243G;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D4B660521D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -861,6 +868,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = PersonalProductivityAssistantTodayExtension/PersonalProductivityAssistantTodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6U8S5243G;
 				INFOPLIST_FILE = PersonalProductivityAssistantTodayExtension/Info.plist;
@@ -879,6 +887,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = PersonalProductivityAssistantTodayExtension/PersonalProductivityAssistantTodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = Y6U8S5243G;
 				INFOPLIST_FILE = PersonalProductivityAssistantTodayExtension/Info.plist;
