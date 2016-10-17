@@ -11,9 +11,15 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
+    @IBOutlet weak var labelHelloWorld: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateWidgetContent()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,7 +38,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
+        updateWidgetContent()
+        
         completionHandler(NCUpdateResult.newData)
     }
     
+    func updateWidgetContent() {
+        
+        let timeLogRepository = TimeLogRepository()
+        
+       let result = timeLogRepository.forMonthOf(Date())
+        
+        guard result.isSucessful else {
+            return
+        }
+        
+        guard let firstTimeLog = result.value?.last else {
+            return
+        }
+        
+        self.labelHelloWorld.text = firstTimeLog.activity!
+    }
 }
