@@ -24,6 +24,10 @@
 		D4355E7D1D3953A4000F678A /* ChartDataValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreevsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */; };
 		D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */; };
+		D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46170321DB5481F004EA412 /* NotificationCenter.framework */; };
+		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
+		D46170391DB5481F004EA412 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46170371DB5481F004EA412 /* MainInterface.storyboard */; };
+		D461703D1DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
 		D46CE0971D34BB7C00CD797F /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0961D34BB7C00CD797F /* NSDate.swift */; };
@@ -60,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D461703B1DB5481F004EA412 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4B6604B1D142AAE000FE897 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D461702F1DB5481F004EA412;
+			remoteInfo = PersonalProductivityAssistantTodayExtension;
+		};
 		D4B0BA541D9C3D9C0007E59F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */;
@@ -116,6 +127,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D46170431DB5481F004EA412 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D461703D1DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +159,11 @@
 		D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataValueProvider.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreevsUsedTime.swift; path = Reporting/ChartSourceFreevsUsedTime.swift; sourceTree = "<group>"; };
 		D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogPersistence.swift; path = ViewControllers/Shared/TimeLogPersistence.swift; sourceTree = "<group>"; };
+		D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalProductivityAssistantTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46170321DB5481F004EA412 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D46170351DB5481F004EA412 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		D46170381DB5481F004EA412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D461703A1DB5481F004EA412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Utilities/Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
 		D46CE0961D34BB7C00CD797F /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
@@ -178,6 +205,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D461702D1DB5481F004EA412 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4B660501D142AAE000FE897 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +323,24 @@
 			name = Reporting;
 			sourceTree = "<group>";
 		};
+		D46170311DB5481F004EA412 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D46170321DB5481F004EA412 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D46170341DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				D46170351DB5481F004EA412 /* TodayViewController.swift */,
+				D46170371DB5481F004EA412 /* MainInterface.storyboard */,
+				D461703A1DB5481F004EA412 /* Info.plist */,
+			);
+			path = PersonalProductivityAssistantTodayExtension;
+			sourceTree = "<group>";
+		};
 		D46CE0921D34BB3700CD797F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +422,8 @@
 				D4B660551D142AAE000FE897 /* PersonalProductivityAssistant */,
 				D4B6606D1D142AAE000FE897 /* PersonalProductivityAssistantTests */,
 				D4B660781D142AAE000FE897 /* PersonalProductivityAssistantUITests */,
+				D46170341DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension */,
+				D46170311DB5481F004EA412 /* Frameworks */,
 				D4B660541D142AAE000FE897 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -379,6 +434,7 @@
 				D4B660531D142AAE000FE897 /* PersonalProductivityAssistant.app */,
 				D4B6606A1D142AAE000FE897 /* PersonalProductivityAssistantTests.xctest */,
 				D4B660751D142AAE000FE897 /* PersonalProductivityAssistantUITests.xctest */,
+				D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -478,6 +534,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D461702F1DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D46170421DB5481F004EA412 /* Build configuration list for PBXNativeTarget "PersonalProductivityAssistantTodayExtension" */;
+			buildPhases = (
+				D461702C1DB5481F004EA412 /* Sources */,
+				D461702D1DB5481F004EA412 /* Frameworks */,
+				D461702E1DB5481F004EA412 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersonalProductivityAssistantTodayExtension;
+			productName = PersonalProductivityAssistantTodayExtension;
+			productReference = D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D4B660521D142AAE000FE897 /* PersonalProductivityAssistant */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4B6607E1D142AAE000FE897 /* Build configuration list for PBXNativeTarget "PersonalProductivityAssistant" */;
@@ -486,11 +559,13 @@
 				D4B660501D142AAE000FE897 /* Frameworks */,
 				D4B660511D142AAE000FE897 /* Resources */,
 				D40B48951D6F6C7D00C350C4 /* Embed Frameworks */,
+				D46170431DB5481F004EA412 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D4FA2A021D9CBE7D0044F9F2 /* PBXTargetDependency */,
+				D461703C1DB5481F004EA412 /* PBXTargetDependency */,
 			);
 			name = PersonalProductivityAssistant;
 			productName = PersonalProductivityAssistant;
@@ -539,10 +614,15 @@
 		D4B6604B1D142AAE000FE897 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Stefan Mehnert";
 				TargetAttributes = {
+					D461702F1DB5481F004EA412 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = Y6U8S5243G;
+						ProvisioningStyle = Automatic;
+					};
 					D4B660521D142AAE000FE897 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = Y6U8S5243G;
@@ -584,6 +664,7 @@
 				D4B660521D142AAE000FE897 /* PersonalProductivityAssistant */,
 				D4B660691D142AAE000FE897 /* PersonalProductivityAssistantTests */,
 				D4B660741D142AAE000FE897 /* PersonalProductivityAssistantUITests */,
+				D461702F1DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -613,6 +694,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D461702E1DB5481F004EA412 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46170391DB5481F004EA412 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4B660511D142AAE000FE897 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -640,6 +729,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D461702C1DB5481F004EA412 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4B6604F1D142AAE000FE897 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -709,6 +806,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D461703C1DB5481F004EA412 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D461702F1DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension */;
+			targetProxy = D461703B1DB5481F004EA412 /* PBXContainerItemProxy */;
+		};
 		D4B6606C1D142AAE000FE897 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D4B660521D142AAE000FE897 /* PersonalProductivityAssistant */;
@@ -727,6 +829,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D46170371DB5481F004EA412 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D46170381DB5481F004EA412 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		D4B6605A1D142AAE000FE897 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -746,6 +856,41 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D461703E1DB5481F004EA412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y6U8S5243G;
+				INFOPLIST_FILE = PersonalProductivityAssistantTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant.PersonalProductivityAssistantTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D461703F1DB5481F004EA412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y6U8S5243G;
+				INFOPLIST_FILE = PersonalProductivityAssistantTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistant.PersonalProductivityAssistantTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		D4B6607C1D142AAE000FE897 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -920,6 +1065,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D46170421DB5481F004EA412 /* Build configuration list for PBXNativeTarget "PersonalProductivityAssistantTodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D461703E1DB5481F004EA412 /* Debug */,
+				D461703F1DB5481F004EA412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D4B6604E1D142AAE000FE897 /* Build configuration list for PBXProject "PersonalProductivityAssistant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

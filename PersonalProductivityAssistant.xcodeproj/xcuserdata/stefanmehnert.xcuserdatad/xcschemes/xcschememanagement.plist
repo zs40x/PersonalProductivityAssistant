@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>PersonalProductivityAssistantTodayExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>D461702F1DB5481F004EA412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D4B660521D142AAE000FE897</key>
 		<dict>
 			<key>primary</key>
