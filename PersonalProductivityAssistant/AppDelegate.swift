@@ -48,7 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "de.sme.PersonalProductivityAssistant" in the application's documents Application Support directory.
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        let fileManager = FileManager.default
+        
+        if let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.de.sme.ppa") {
+            return url
+        }
+        
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1]
     }()
 
