@@ -19,7 +19,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateWidgetContent()
+        _ = updateWidgetContent()
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,32 +31,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         return UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 8.0)
     }
     
-    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
+    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
         
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
-        updateWidgetContent()
-        
-        completionHandler(NCUpdateResult.newData)
+        DispatchQueue.main.async {
+            [unowned self] in
+            
+            let updateResult = self.updateWidgetContent()
+            
+            completionHandler(updateResult)
+        }
     }
     
-    func updateWidgetContent() {
+    func updateWidgetContent() -> NCUpdateResult {
         
         let timeLogRepository = TimeLogRepository()
         
        let result = timeLogRepository.forMonthOf(Date())
         
         guard result.isSucessful else {
-            return
+            return .failed
         }
         
         guard let firstTimeLog = result.value?.last else {
-            return
+            return .noData
         }
         
         self.labelHelloWorld.text = firstTimeLog.activity!
+        
+        return .newData
     }
 }
