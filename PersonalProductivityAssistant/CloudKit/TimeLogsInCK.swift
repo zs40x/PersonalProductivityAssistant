@@ -31,8 +31,20 @@ class TimeLogsInCK {
             let ckrTimeLog = CKRecord(recordType: "TimeLog", recordID: CKRecordID(recordName: timeLog.uuid!))
             
             
+            if let activity = timeLog.activity {
+                ckrTimeLog.setObject(activity as NSString, forKey: "activity")
+                
+            }
             
-            
+            cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: { (record, error) in
+                
+                if let error = error {
+                    NSLog("Saving to iCloud failed: \(error.localizedDescription)")
+                } else {
+                    NSLog("Stored record \(record?.recordID)")
+                }
+                
+            })
         }
     }
 

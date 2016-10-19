@@ -267,5 +267,7 @@ extension MainViewController : TimeLogEditDelegate {
     
     func timeLogModified(_ withStartDate: Date) {
         updateViewForDate(withStartDate)
+        
+        TimeLogsInCK().exportTimeLogsToCK()
     }
 }
