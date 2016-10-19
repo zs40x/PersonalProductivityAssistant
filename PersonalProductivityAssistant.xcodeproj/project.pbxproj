@@ -30,6 +30,7 @@
 		D41A06BF1DB552200088745C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6F1D38A08A000F678A /* Config.swift */; };
 		D41A06C01DB5522F0088745C /* HashtagFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */; };
 		D41A06C21DB6A3920088745C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41A06C11DB6A3920088745C /* CloudKit.framework */; };
+		D41A06C51DB6ABD90088745C /* TimeLogsInCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41A06C41DB6ABD90088745C /* TimeLogsInCK.swift */; };
 		D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */; };
 		D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */; };
 		D4355E701D38A08A000F678A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6F1D38A08A000F678A /* Config.swift */; };
@@ -165,6 +166,7 @@
 		D41726E61D28EF7E002F15A4 /* HashtagFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HashtagFinder.swift; path = Logic/Hashtags/HashtagFinder.swift; sourceTree = "<group>"; };
 		D41726EA1D28F0A0002F15A4 /* HashtagsInStringFinderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagsInStringFinderTest.swift; sourceTree = "<group>"; };
 		D41A06C11DB6A3920088745C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D41A06C41DB6ABD90088745C /* TimeLogsInCK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogsInCK.swift; path = CloudKit/TimeLogsInCK.swift; sourceTree = "<group>"; };
 		D41DE9C61D34253D007A9B03 /* PPADataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PPADataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4355E6B1D374C92000F678A /* DateTimePickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickViewController.swift; path = ViewControllers/DateTimePickViewController.swift; sourceTree = "<group>"; };
 		D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickDelegate.swift; path = ViewControllers/Shared/DateTimePickDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +295,14 @@
 				D4355E771D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift */,
 			);
 			name = Hashtags;
+			sourceTree = "<group>";
+		};
+		D41A06C31DB6AB9B0088745C /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				D41A06C41DB6ABD90088745C /* TimeLogsInCK.swift */,
+			);
+			name = CloudKit;
 			sourceTree = "<group>";
 		};
 		D4355E7B1D39527F000F678A /* Shared */ = {
@@ -465,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				D4F6AF9F1DB54D09006BDAFF /* PersonalProductivityAssistant.entitlements */,
+				D41A06C31DB6AB9B0088745C /* CloudKit */,
 				D43AF1D21D252EF20084B9C7 /* Libraries */,
 				D4F84C2B1D15BECD0041FCF0 /* Utilities */,
 				D4F84C1F1D15516F0041FCF0 /* Model */,
@@ -797,6 +808,7 @@
 			files = (
 				D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */,
 				D4F84C241D15516F0041FCF0 /* TimeLog+CoreDataProperties.swift in Sources */,
+				D41A06C51DB6ABD90088745C /* TimeLogsInCK.swift in Sources */,
 				D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */,
 				D4C392381D395B6700F0062E /* ChartsPageViewController.swift in Sources */,
 				D486C05B1D49ECF80043500C /* CalendarFlowLayout.swift in Sources */,

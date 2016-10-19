@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Hashtag" representedClassName=".Hashtag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TimeLog" representedClassName=".TimeLog" syncable="YES">
         <attribute name="activity" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="from" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="until" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="from" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="until" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hashtags" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Hashtag" syncable="YES"/>
     </entity>
     <elements>
         <element name="Hashtag" positionX="-63" positionY="9" width="128" height="60"/>
-        <element name="TimeLog" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="TimeLog" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

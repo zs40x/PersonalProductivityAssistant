@@ -14,6 +14,7 @@ import CoreData
 
 extension TimeLog {
 
+    @NSManaged var uuid: String?
     @NSManaged var activity: String?
     @NSManaged var from: Date?
     @NSManaged var until: Date?
