@@ -28,12 +28,20 @@ class TimeLogsInCK {
         
         for timeLog in allTimeLogs {
             
-            let ckrTimeLog = CKRecord(recordType: "TimeLog", recordID: CKRecordID(recordName: timeLog.uuid!))
+            let ckrTimeLog = CKRecord(recordType: "TimeLogs", recordID: CKRecordID(recordName: timeLog.uuid!))
             
             
             if let activity = timeLog.activity {
                 ckrTimeLog.setObject(activity as NSString, forKey: "activity")
                 
+            }
+            
+            if let from = timeLog.from {
+                ckrTimeLog.setObject(from as NSDate, forKey: "from")
+            }
+            
+            if let until = timeLog.until {
+                ckrTimeLog.setObject(until as NSDate, forKey: "until")
             }
             
             cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: { (record, error) in
