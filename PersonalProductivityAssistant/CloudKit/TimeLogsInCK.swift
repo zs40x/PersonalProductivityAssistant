@@ -11,8 +11,9 @@ import CloudKit
 
 class TimeLogsInCK {
 
-    let timeLogRepository = TimeLogRepository()
-    let cloudKitContainer = CKContainer.default()
+    private let timeLogRepository = TimeLogRepository()
+    private let cloudKitContainer = CKContainer.default()
+    private let recordTypeTimeLogs = "TimeLogs"
     
     public func exportTimeLogsToCK() {
         
@@ -28,7 +29,7 @@ class TimeLogsInCK {
         
         for timeLog in allTimeLogs {
             
-            let ckrTimeLog = CKRecord(recordType: "TimeLogs", recordID: CKRecordID(recordName: timeLog.uuid!))
+            let ckrTimeLog = CKRecord(recordType: recordTypeTimeLogs, recordID: CKRecordID(recordName: timeLog.uuid!))
             
             
             if let activity = timeLog.activity {
