@@ -155,6 +155,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     func getTimeLogData() -> TimeLogData {
         
         return TimeLogData(
+            UUID: timeLogDataToEdit?.UUID ?? UUID(),
             Activity: textEditActivity.text!,
             From: from.date,
             Until: until.date )

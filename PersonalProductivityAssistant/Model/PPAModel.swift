@@ -141,6 +141,21 @@ internal class TimeLogModel : AbstractModel {
         }
     }
     
+    func getTimeLogByUuid(uuid: UUID) throws -> TimeLog? {
+        
+        let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
+        
+        request.predicate = NSPredicate(format: "uuid = %@", uuid as CVarArg)
+        
+        do {
+            return try managedObjectContext.fetch(request).first
+        }
+        catch let error as NSError {
+            NSLog("Error fetching: %@", error)
+            throw error
+        }
+    }
+    
     func createTimeLog(_ timeLogData: TimeLogData) -> TimeLog {
         
         let timeLog =

@@ -35,6 +35,8 @@ class MainViewController: UIViewController, SegueHandlerType {
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        loadTimeLogsFromCloudKitAsync()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +69,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                 
                 let dateForNewTimeLog = self.calendarView.selectedDates.first ?? Date()
                 
-                viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData(Activity: "", From: dateForNewTimeLog, Until: dateForNewTimeLog)
+                viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData(UUID: UUID(), Activity: "", From: dateForNewTimeLog, Until: dateForNewTimeLog)
             }
         }
     }
@@ -125,6 +127,16 @@ class MainViewController: UIViewController, SegueHandlerType {
         DispatchQueue.main.async(execute: {
             self.tableViewActivities.reloadData()
             self.calendarView.reloadData()
+        });
+    }
+    
+    func loadTimeLogsFromCloudKitAsync() {
+        
+        DispatchQueue.main.async(execute: {
+            
+            let timeLogsInCk = TimeLogsInCK()
+            timeLogsInCk.dataSyncCompletedDelegate = self
+            timeLogsInCk.importTimeLogsFromCkToDb()
         });
     }
 }
@@ -268,6 +280,19 @@ extension MainViewController : TimeLogEditDelegate {
     func timeLogModified(_ withStartDate: Date) {
         updateViewForDate(withStartDate)
         
-        TimeLogsInCK().exportTimeLogsToCK()
+        let timeLogsInCk = TimeLogsInCK()
+        timeLogsInCk.exportTimeLogsToCK()
+    }
+}
+
+
+extension MainViewController : CKDataSyncCompletedDelegate {
+    
+    func dataSyncCompleted() {
+        
+        DispatchQueue.main.async(execute: {
+            self.tableViewActivities.reloadData()
+            self.calendarView.reloadData()
+        });
     }
 }

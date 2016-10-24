@@ -26,7 +26,7 @@ class TimeLog: NSManagedObject {
     }
     
     func asTimeLogData() -> TimeLogData {
-        return TimeLogData(Activity: activity!, From: from!, Until: until!)
+        return TimeLogData(UUID: UUID(), Activity: activity!, From: from!, Until: until!)
     }
     
     func updateFromTimeLogData(_ timeLogData: TimeLogData) {

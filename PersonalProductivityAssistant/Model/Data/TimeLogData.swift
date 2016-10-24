@@ -9,6 +9,7 @@
 import Foundation
 
 struct TimeLogData {
+    var UUID: UUID
     var Activity: String
     var From: Date
     var Until: Date

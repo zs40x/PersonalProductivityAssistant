@@ -44,8 +44,19 @@ open class TimeLogRepository {
             return ResultValue.Failure(error.getDefaultErrorMessage())
         }
     }
-
     
+    func withUUID(uuid: UUID) -> ResultValue<TimeLog?> {
+        
+        do {
+            let timeLog = try model.TimeLogs.getTimeLogByUuid(uuid: uuid)
+            
+            return ResultValue.Success(timeLog)
+        } catch let error as NSError {
+            return ResultValue.Failure(error.getDefaultErrorMessage())
+        }
+    }
+
+
     func addNew(_ timeLogData: TimeLogData) -> ResultValue<TimeLog> {
   
         do {
