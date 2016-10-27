@@ -51,6 +51,7 @@ class TimeLogsInCK {
                 ckrTimeLog.setObject(until as NSDate, forKey: "until")
             }
             
+            
             cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: { (record, error) in
                 
                 if let error = error {

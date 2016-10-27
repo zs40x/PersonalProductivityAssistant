@@ -5,6 +5,7 @@
     </entity>
     <entity name="TimeLog" representedClassName=".TimeLog" syncable="YES">
         <attribute name="activity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cloudSyncPending" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="from" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="until" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,6 +13,6 @@
     </entity>
     <elements>
         <element name="Hashtag" positionX="-63" positionY="9" width="128" height="60"/>
-        <element name="TimeLog" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="TimeLog" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

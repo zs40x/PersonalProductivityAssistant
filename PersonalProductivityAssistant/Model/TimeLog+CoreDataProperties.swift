@@ -19,5 +19,5 @@ extension TimeLog {
     @NSManaged var from: Date?
     @NSManaged var until: Date?
     @NSManaged var hashtags: NSSet?
-
+    @NSManaged var cloudSyncPending: NSNumber?
 }

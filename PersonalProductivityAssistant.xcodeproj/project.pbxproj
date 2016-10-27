@@ -178,6 +178,7 @@
 		D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataValueProvider.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreevsUsedTime.swift; path = Reporting/ChartSourceFreevsUsedTime.swift; sourceTree = "<group>"; };
 		D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogPersistence.swift; path = ViewControllers/Shared/TimeLogPersistence.swift; sourceTree = "<group>"; };
+		D45027281DC28C9D00B9251F /* PersonalProductivityAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalProductivityAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
 		D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalProductivityAssistantTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46170321DB5481F004EA412 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		D46170351DB5481F004EA412 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +458,7 @@
 				D46170341DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension */,
 				D46170311DB5481F004EA412 /* Frameworks */,
 				D4B660541D142AAE000FE897 /* Products */,
+				D45027281DC28C9D00B9251F /* PersonalProductivityAssistant-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1061,6 +1063,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PersonalProductivityAssistant-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1080,6 +1083,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PersonalProductivityAssistant-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
