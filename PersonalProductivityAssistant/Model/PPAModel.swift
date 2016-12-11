@@ -162,12 +162,12 @@ internal class TimeLogModel : AbstractModel {
             NSEntityDescription.insertNewObject(
                 forEntityName: TimeLog.EntityName, into: self.managedObjectContext) as! TimeLog
         
-        timeLog.uuid = NSUUID().uuidString
+        timeLog.uuid = timeLogData.UUID.uuidString
         timeLog.activity = timeLogData.Activity
         timeLog.from = timeLogData.From
         timeLog.until = timeLogData.Until
         timeLog.cloudSyncPending = timeLogData.CloudSyncPending
-        timeLog.cloudSyncStatus = .New
+        timeLog.cloudSyncStatus = timeLogData.CloudSyncStatus
         
         return timeLog
     }

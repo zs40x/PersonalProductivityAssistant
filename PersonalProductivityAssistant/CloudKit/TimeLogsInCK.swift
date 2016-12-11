@@ -118,7 +118,7 @@ class TimeLogsInCK {
                 let activity = ckTimeLog.object(forKey: "activity") as? String ?? ""
                 let from = ckTimeLog.object(forKey: "from") as? Date ?? Date()
                 let until = ckTimeLog.object(forKey: "until") as? Date ?? Date()
-                let uuid = ckTimeLog.object(forKey: "uuid") as? UUID ?? UUID()
+                let uuid = UUID.init(uuidString: ckTimeLog.recordID.recordName)!
                 
                 let fetchedTimeLog = timeLogRepository.withUUID(uuid: uuid).value!
                 
@@ -128,7 +128,14 @@ class TimeLogsInCK {
                 }
                 
                 let timeLogData =
-                    TimeLogData(UUID: uuid, Activity: activity, From: from, Until: until, CloudSyncPending: false, CloudSyncStatus: .Unchanged)
+                    TimeLogData(
+                            UUID: uuid,
+                            Activity: activity,
+                            From: from,
+                            Until: until,
+                            CloudSyncPending: false,
+                            CloudSyncStatus: .Unchanged
+                        )
                 
                 let result = timeLogRepository.addNew(timeLogData)
                 
