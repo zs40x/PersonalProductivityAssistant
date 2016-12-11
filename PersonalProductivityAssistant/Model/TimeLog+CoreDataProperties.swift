@@ -12,6 +12,14 @@
 import Foundation
 import CoreData
 
+@objc public enum CloudSyncStatus : Int16
+{
+    case Unchanged = 1,
+         New,
+         Modified,
+         Deleted
+}
+
 extension TimeLog {
 
     @NSManaged var uuid: String?
@@ -20,4 +28,5 @@ extension TimeLog {
     @NSManaged var until: Date?
     @NSManaged var hashtags: NSSet?
     @NSManaged var cloudSyncPending: NSNumber?
+    @NSManaged var cloudSyncStatus: CloudSyncStatus
 }

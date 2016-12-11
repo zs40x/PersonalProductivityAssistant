@@ -13,5 +13,6 @@ struct TimeLogData {
     var Activity: String
     var From: Date
     var Until: Date
-    var CloudKitSyncPending: NSNumber
+    var CloudSyncPending: NSNumber
+    var CloudSyncStatus: CloudSyncStatus
 }

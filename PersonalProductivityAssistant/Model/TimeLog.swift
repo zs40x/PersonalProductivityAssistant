@@ -26,7 +26,13 @@ class TimeLog: NSManagedObject {
     }
     
     func asTimeLogData() -> TimeLogData {
-        return TimeLogData(UUID: UUID(uuidString: uuid!)!, Activity: activity!, From: from!, Until: until!, CloudKitSyncPending: true)
+        return TimeLogData(
+            UUID: UUID(uuidString: uuid!)!,
+            Activity: activity!,
+            From: from!,
+            Until: until!,
+            CloudSyncPending: cloudSyncPending!,
+            CloudSyncStatus: cloudSyncStatus)
     }
     
     func updateFromTimeLogData(_ timeLogData: TimeLogData) {
