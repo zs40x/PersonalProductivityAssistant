@@ -69,7 +69,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                 
                 let dateForNewTimeLog = self.calendarView.selectedDates.first ?? Date()
                 
-                viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData(UUID: UUID(), Activity: "", From: dateForNewTimeLog, Until: dateForNewTimeLog)
+                viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData(UUID: UUID(), Activity: "", From: dateForNewTimeLog, Until: dateForNewTimeLog, CloudKitSyncPending: true)
             }
         }
     }

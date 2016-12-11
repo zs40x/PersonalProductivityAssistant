@@ -166,6 +166,7 @@ internal class TimeLogModel : AbstractModel {
         timeLog.activity = timeLogData.Activity
         timeLog.from = timeLogData.From
         timeLog.until = timeLogData.Until
+        timeLog.cloudSyncPending = timeLogData.CloudKitSyncPending
         
         return timeLog
     }

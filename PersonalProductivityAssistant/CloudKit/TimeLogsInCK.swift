@@ -35,8 +35,11 @@ class TimeLogsInCK {
         
         for timeLog in allTimeLogs {
             
-            let ckrTimeLog = CKRecord(recordType: recordTypeTimeLogs, recordID: CKRecordID(recordName: timeLog.uuid!))
+            guard let isCloudSyncPending = timeLog.cloudSyncPending else { continue }
             
+            guard isCloudSyncPending == NSNumber.init(booleanLiteral: true) else { continue }
+        
+            let ckrTimeLog = CKRecord(recordType: recordTypeTimeLogs, recordID: CKRecordID(recordName: timeLog.uuid!))
             
             if let activity = timeLog.activity {
                 ckrTimeLog.setObject(activity as NSString, forKey: "activity")
@@ -51,13 +54,34 @@ class TimeLogsInCK {
                 ckrTimeLog.setObject(until as NSDate, forKey: "until")
             }
             
+            let recordUUID = timeLog.uuid!
             
-            cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: { (record, error) in
+            cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: {
+                [recordUUID] (record, error) in
                 
                 if let error = error {
                     NSLog("Saving to iCloud failed: \(error.localizedDescription)")
                 } else {
                     NSLog("Stored record \(record?.recordID)")
+                    
+                    let timeLogRepository = TimeLogRepository()
+                    
+                    let getTimeLogResult = timeLogRepository.withUUID(uuid: UUID.init(uuidString: recordUUID)!)
+                    
+                    guard getAllTimeLogsResult.isSucessful else {
+                        NSLog("Unable to load timeLog \(recordUUID): \(getTimeLogResult.errorMessage)")
+                        return
+                    }
+                    
+                    let timeLog = getTimeLogResult.value!!
+                    
+                    // remove flag sync pending
+                    timeLog.cloudSyncPending = NSNumber.init(booleanLiteral: false)
+                    let saveResult = timeLogRepository.save()
+                    
+                    if !saveResult.isSucessful {
+                        NSLog("Error saving timeLogs to coreData: \(saveResult.errorMessage)")
+                    }
                 }
                 
             })
@@ -99,7 +123,7 @@ class TimeLogsInCK {
                 }
                 
                 let timeLogData =
-                    TimeLogData(UUID: uuid, Activity: activity, From: from, Until: until)
+                    TimeLogData(UUID: uuid, Activity: activity, From: from, Until: until, CloudKitSyncPending: false)
                 
                 let result = timeLogRepository.addNew(timeLogData)
                 

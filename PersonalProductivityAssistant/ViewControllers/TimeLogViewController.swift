@@ -158,7 +158,8 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
             UUID: timeLogDataToEdit?.UUID ?? UUID(),
             Activity: textEditActivity.text!,
             From: from.date,
-            Until: until.date )
+            Until: until.date,
+            CloudKitSyncPending: true)
     }
     
     func displayFromAndUntilDateTime() {
