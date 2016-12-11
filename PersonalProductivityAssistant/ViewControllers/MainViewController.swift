@@ -296,10 +296,7 @@ extension MainViewController : TimeLogEditDelegate {
 extension MainViewController : CKDataSyncCompletedDelegate {
     
     func dataSyncCompleted() {
-        
-        DispatchQueue.main.async(execute: {
-            self.tableViewActivities.reloadData()
-            self.calendarView.reloadData()
-        });
+    
+        updateViewForDate(self.calendarView.displayDate!)
     }
 }
