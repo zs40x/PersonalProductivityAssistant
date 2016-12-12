@@ -9,6 +9,11 @@
 import Foundation
 import CloudKit
 
+protocol TimeLogCkUpsteamSync {
+    
+    func syncChanges();
+}
+
 class TimeLogsInCKUpload {
     
     private var cloudKitContainer: CKContainer
@@ -33,12 +38,27 @@ class TimeLogsInCKUpload {
         }).filter({
             $0.cloudSyncStatus == .New
         }).forEach { (timeLog) in
-            saveNewCkRecord(timeLog: timeLog)
+            CkSyncTimeLogNew(
+                    timeLog: timeLog,
+                    cloudKitContainer: cloudKitContainer
+                ).syncChanges()
         }
 
     }
+}
+
+class CkSyncTimeLogNew : TimeLogCkUpsteamSync {
     
-    private func saveNewCkRecord(timeLog: TimeLog) {
+    private var timeLog: TimeLog
+    private var cloudKitContainer: CKContainer
+    
+    
+    init(timeLog: TimeLog, cloudKitContainer: CKContainer) {
+        self.timeLog = timeLog
+        self.cloudKitContainer = cloudKitContainer
+    }
+    
+    func syncChanges() {
         
         guard let ckrTimeLog = timeLog.asCKRecord() else {
             NSLog("Abored saveNewCkRecord - probaply due to nil UUID")
@@ -50,14 +70,28 @@ class TimeLogsInCKUpload {
         cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: {
             [recordUUID] (record, error) in
             
-                if let error = error {
-                    NSLog("Saving to iCloud failed: \(error.localizedDescription)")
-                } else {
-                    NSLog("Stored record \(record?.recordID)")
+            if let error = error {
+                NSLog("Saving to iCloud failed: \(error.localizedDescription)")
+            } else {
+                NSLog("Stored record \(record?.recordID)")
                 
                 UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).saveState()
             }
         })
+
+    }
+}
+
+class CkSycNotImplemented : TimeLogCkUpsteamSync {
+    
+    private var syncStatus: CloudSyncStatus
+    
+    init(syncStatus: CloudSyncStatus) {
+        self.syncStatus = syncStatus
+    }
+    
+    func syncChanges() {
+        NSLog("Sync not implemented - syncStatus: \(syncStatus)")
     }
 }
 
