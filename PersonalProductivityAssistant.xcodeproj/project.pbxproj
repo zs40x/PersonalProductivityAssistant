@@ -41,6 +41,7 @@
 		D4355E7D1D3953A4000F678A /* ChartDataValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreevsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */; };
 		D443636F1DFDE784008EAB37 /* TimeLogsInCKDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */; };
+		D44363711DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */; };
 		D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */; };
 		D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46170321DB5481F004EA412 /* NotificationCenter.framework */; };
 		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
@@ -179,6 +180,7 @@
 		D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataValueProvider.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreevsUsedTime.swift; path = Reporting/ChartSourceFreevsUsedTime.swift; sourceTree = "<group>"; };
 		D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogsInCKDownload.swift; sourceTree = "<group>"; };
+		D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogsInCKUpload.swift; sourceTree = "<group>"; };
 		D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogPersistence.swift; path = ViewControllers/Shared/TimeLogPersistence.swift; sourceTree = "<group>"; };
 		D45027281DC28C9D00B9251F /* PersonalProductivityAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalProductivityAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
 		D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalProductivityAssistantTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +307,7 @@
 			children = (
 				D41A06C41DB6ABD90088745C /* TimeLogsInCK.swift */,
 				D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */,
+				D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				D443636F1DFDE784008EAB37 /* TimeLogsInCKDownload.swift in Sources */,
 				D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */,
 				D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */,
+				D44363711DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift in Sources */,
 				D4B660591D142AAE000FE897 /* MainViewController.swift in Sources */,
 				D41726E71D28EF7E002F15A4 /* HashtagFinder.swift in Sources */,
 				D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */,
