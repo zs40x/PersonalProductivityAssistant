@@ -43,9 +43,13 @@ class ChartSourceHashtags : ChartDataValueProvider {
                 continue
             }
             
-            for hashtag in assignedHashtags {
-                hashtagTotalsDictionary[(hashtag as AnyObject).name]
-                    = ( hashtagTotalsDictionary[(hashtag as AnyObject).name] ?? 0 ) + Double(timeLog.durationInMinutes())
+            for assignedHashtag in assignedHashtags {
+                
+                guard let hashtag = assignedHashtag as? Hashtag else { continue }
+                guard let hashtagName = hashtag.name else { continue }
+                
+                hashtagTotalsDictionary[hashtagName]
+                    = ( hashtagTotalsDictionary[hashtagName] ?? 0 ) + Double(timeLog.durationInMinutes())
             }
         }
         
