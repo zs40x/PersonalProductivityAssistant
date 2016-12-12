@@ -80,6 +80,11 @@ class CkSyncTimeLogNew : TimeLogCkUpsteamSync {
     }
 }
 
+// Add timeLog modified
+
+// Add timeLog deleted
+
+// Nothing toDo!?
 class CkSycNotImplemented : TimeLogCkUpsteamSync {
     
     private var syncStatus: CloudSyncStatus
