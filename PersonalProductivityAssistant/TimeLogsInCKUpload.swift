@@ -35,15 +35,13 @@ class TimeLogsInCKUpload {
         
         allTimeLogs.filter({
             $0.cloudSyncPending == NSNumber.init(booleanLiteral: true)
-        }).filter({
-            $0.cloudSyncStatus == .New
         }).forEach { (timeLog) in
-            CkSyncTimeLogNew(
-                    timeLog: timeLog,
-                    cloudKitContainer: cloudKitContainer
+            CkTimeLogSyncFactory(
+                    cloudKitContainer: cloudKitContainer,
+                    timeLog: timeLog
+                ).makeSync(
                 ).syncChanges()
         }
-
     }
 }
 
@@ -92,6 +90,27 @@ class CkSycNotImplemented : TimeLogCkUpsteamSync {
     
     func syncChanges() {
         NSLog("Sync not implemented - syncStatus: \(syncStatus)")
+    }
+}
+
+class CkTimeLogSyncFactory {
+    
+    private var cloudKitContainer: CKContainer
+    private var timeLog: TimeLog
+    
+    init(cloudKitContainer: CKContainer, timeLog: TimeLog) {
+        self.cloudKitContainer = cloudKitContainer
+        self.timeLog = timeLog
+    }
+    
+    func makeSync() -> TimeLogCkUpsteamSync {
+        
+        switch timeLog.cloudSyncStatus {
+        case .New:
+            return CkSyncTimeLogNew(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
+        default:
+            return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
+        }
     }
 }
 
