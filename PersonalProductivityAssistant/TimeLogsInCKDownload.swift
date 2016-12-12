@@ -38,7 +38,7 @@ class TimeLogsInCKDownload {
             
             
             records.forEach({ (ckTimeLog) in
-                self.importCKRecord(ckTimeLog: ckTimeLog)
+                CkTimeLogRecordImport(ckTimeLog: ckTimeLog).importTimeLog()
             })
             
             if let delegate = self.dataSyncCompletedDelegate {
@@ -47,19 +47,24 @@ class TimeLogsInCKDownload {
         })
     }
     
-    private func importCKRecord(ckTimeLog: CKRecord) {
+   
+}
+
+class CkTimeLogRecordImport {
+    
+    private var ckTimeLog: CKRecord
+    
+    private let timeLogRepository = TimeLogRepository()
+    
+    
+    init(ckTimeLog: CKRecord) {
+        self.ckTimeLog = ckTimeLog
+    }
+    
+    
+    public func importTimeLog() {
         
-        let timeLogRepository = TimeLogRepository()
-        
-        let timeLogData =
-            TimeLogData(
-                    UUID: UUID.init(uuidString: ckTimeLog.recordID.recordName)!,
-                    Activity: ckTimeLog.object(forKey: "activity") as! String,
-                    From: ckTimeLog.object(forKey: "from") as! Date,
-                    Until: ckTimeLog.object(forKey: "until") as! Date,
-                    CloudSyncPending: false,
-                    CloudSyncStatus: .Unchanged
-                )
+        let timeLogData = asTimeLogData()
         
         
         let fetchedTimeLog = timeLogRepository.withUUID(uuid: timeLogData.UUID).value!
@@ -77,5 +82,17 @@ class TimeLogsInCKDownload {
         } else {
             NSLog("iCloud download: Successfully persisted timeLog with uuid \(timeLogData.UUID)")
         }
+    }
+    
+    private func asTimeLogData() -> TimeLogData {
+        
+        return TimeLogData(
+            UUID: UUID.init(uuidString: ckTimeLog.recordID.recordName)!,
+            Activity: ckTimeLog.object(forKey: "activity") as! String,
+            From: ckTimeLog.object(forKey: "from") as! Date,
+            Until: ckTimeLog.object(forKey: "until") as! Date,
+            CloudSyncPending: false,
+            CloudSyncStatus: .Unchanged
+        )
     }
 }
