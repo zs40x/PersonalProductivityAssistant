@@ -42,6 +42,9 @@
 		D43B89701D24444C0065248D /* ChartSourceFreevsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */; };
 		D443636F1DFDE784008EAB37 /* TimeLogsInCKDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */; };
 		D44363711DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */; };
+		D44363721DFF30E8008EAB37 /* TimeLogsInCK.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41A06C41DB6ABD90088745C /* TimeLogsInCK.swift */; };
+		D44363731DFF30FF008EAB37 /* TimeLogsInCKDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */; };
+		D44363741DFF3103008EAB37 /* TimeLogsInCKUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */; };
 		D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */; };
 		D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46170321DB5481F004EA412 /* NotificationCenter.framework */; };
 		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
@@ -791,6 +794,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D44363731DFF30FF008EAB37 /* TimeLogsInCKDownload.swift in Sources */,
 				D41A06B31DB551B60088745C /* HashtagRepository.swift in Sources */,
 				D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */,
 				D41A06B51DB551BE0088745C /* TimeLog.swift in Sources */,
@@ -799,9 +803,11 @@
 				D41A06B41DB551B90088745C /* TimeLogRepository.swift in Sources */,
 				D41A06BA1DB551E40088745C /* Result.swift in Sources */,
 				D41A06B81DB551C80088745C /* Hashtag+CoreDataProperties.swift in Sources */,
+				D44363741DFF3103008EAB37 /* TimeLogsInCKUpload.swift in Sources */,
 				D41A06BB1DB551F70088745C /* NSError.swift in Sources */,
 				D41A06B11DB551AD0088745C /* PPADataModel.xcdatamodeld in Sources */,
 				D41A06B61DB551C10088745C /* TimeLog+CoreDataProperties.swift in Sources */,
+				D44363721DFF30E8008EAB37 /* TimeLogsInCK.swift in Sources */,
 				D41A06BE1DB552040088745C /* String.swift in Sources */,
 				D41A06BF1DB552200088745C /* Config.swift in Sources */,
 				D41A06B21DB551B20088745C /* PPAModel.swift in Sources */,

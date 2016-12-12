@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import CloudKit
 
 class TimeLog: NSManagedObject {
 
@@ -33,6 +34,31 @@ class TimeLog: NSManagedObject {
             Until: until!,
             CloudSyncPending: cloudSyncPending!,
             CloudSyncStatus: cloudSyncStatus)
+    }
+    
+    func asCKRecord() -> CKRecord? {
+    
+        guard let recordUUID = uuid else { return nil }
+    
+        let ckrTimeLog =
+            CKRecord(
+                recordType: TimeLogsInCK.RecordTypeTimeLogs,
+                recordID: CKRecordID(recordName: recordUUID)
+            )
+    
+        if let activity = activity {
+            ckrTimeLog.setObject(activity as NSString, forKey: "activity")
+        }
+    
+        if let from = from {
+            ckrTimeLog.setObject(from as NSDate, forKey: "from")
+        }
+    
+        if let until = until {
+            ckrTimeLog.setObject(until as NSDate, forKey: "until")
+        }
+        
+        return ckrTimeLog
     }
     
     func updateFromTimeLogData(_ timeLogData: TimeLogData) {

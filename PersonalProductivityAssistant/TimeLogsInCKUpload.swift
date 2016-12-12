@@ -24,42 +24,28 @@ class TimeLogsInCKUpload {
         
         let getAllTimeLogsResult = timeLogRepository.getAll()
         
-        guard getAllTimeLogsResult.isSucessful else {
-            return
-        }
-        
         guard let allTimeLogs = getAllTimeLogsResult.value else {
             return
         }
         
         allTimeLogs.filter({
             $0.cloudSyncPending == NSNumber.init(booleanLiteral: true)
+        }).filter({
+            $0.cloudSyncStatus == .New
         }).forEach { (timeLog) in
-            //saveNewCkRecord(timeLog: timeLog)
+            saveNewCkRecord(timeLog: timeLog)
         }
 
     }
     
     private func saveNewCkRecord(timeLog: TimeLog) {
         
+        guard let ckrTimeLog = timeLog.asCKRecord() else {
+            NSLog("Abored saveNewCkRecord - probaply due to nil UUID")
+            return
+        }
+        
         let recordUUID = timeLog.uuid!
-        
-        
-        let ckrTimeLog = CKRecord(recordType: TimeLogsInCK.RecordTypeTimeLogs, recordID: CKRecordID(recordName: recordUUID))
-        
-        if let activity = timeLog.activity {
-            ckrTimeLog.setObject(activity as NSString, forKey: "activity")
-            
-        }
-        
-        if let from = timeLog.from {
-            ckrTimeLog.setObject(from as NSDate, forKey: "from")
-        }
-        
-        if let until = timeLog.until {
-            ckrTimeLog.setObject(until as NSDate, forKey: "until")
-        }
-        
         
         cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: {
             [recordUUID] (record, error) in

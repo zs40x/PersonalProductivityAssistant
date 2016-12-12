@@ -13,7 +13,7 @@ protocol CKDataSyncCompletedDelegate {
     func dataSyncCompleted()
 }
 
-class TimeLogsInCK {
+public class TimeLogsInCK {
 
     private let timeLogRepository = TimeLogRepository()
     private let cloudKitContainer = CKContainer.default()
