@@ -103,11 +103,18 @@ class MainViewController: UIViewController, SegueHandlerType {
     func deleteTimeLog(_ tableView: UITableView, indexPath: IndexPath) {
         
         let timeLogToDelete = tableViewTimeLogs[(indexPath as NSIndexPath).row]
-        let deleteResult = timeLogRepository.delete(timeLogToDelete)
         
-        if !deleteResult.isSucessful {
-            showAlertDialog("Failed to delete TimeLog \(deleteResult.errorMessage)")
+        timeLogToDelete.hidden = NSNumber(booleanLiteral: true)
+        timeLogToDelete.cloudSyncStatus = .Deleted
+        timeLogToDelete.cloudSyncPending = NSNumber(booleanLiteral: true)
+        
+        let saveResult = timeLogRepository.save()
+        
+        if !saveResult.isSucessful {
+            showAlertDialog("Failed to delete TimeLog \(saveResult.errorMessage)")
             return
+        } else {
+            NSLog("Updated timeLog as hidden, because it was deleted by the user: \(timeLogToDelete.uuid)")
         }
         
         tableViewTimeLogs.remove(at: (indexPath as NSIndexPath).row)
