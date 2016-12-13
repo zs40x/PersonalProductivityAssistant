@@ -66,7 +66,8 @@ class TimeLog: NSManagedObject {
         self.from = timeLogData.From
         self.until = timeLogData.Until
         self.uuid = timeLogData.UUID.uuidString
-        self.cloudSyncPending = NSNumber.init(booleanLiteral: true)
+        self.cloudSyncPending = timeLogData.CloudSyncPending
+        self.cloudSyncStatus = timeLogData.CloudSyncStatus
         
         self.updateHashtags()
     }

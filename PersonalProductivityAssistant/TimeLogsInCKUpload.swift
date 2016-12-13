@@ -36,6 +36,7 @@ class TimeLogsInCKUpload {
         allTimeLogs.filter({
             $0.cloudSyncPending == NSNumber.init(booleanLiteral: true)
         }).forEach { (timeLog) in
+            
             CkTimeLogSyncFactory(
                     cloudKitContainer: cloudKitContainer,
                     timeLog: timeLog
@@ -80,7 +81,47 @@ class CkSyncTimeLogNew : TimeLogCkUpsteamSync {
     }
 }
 
-// Add timeLog modified
+class CkSyncTimeLogModified : TimeLogCkUpsteamSync {
+    
+    private var timeLog: TimeLog
+    private var cloudKitContainer: CKContainer
+    
+    init(timeLog: TimeLog, cloudKitContainer: CKContainer) {
+        self.timeLog = timeLog
+        self.cloudKitContainer = cloudKitContainer
+    }
+    
+    func syncChanges() {
+        
+        let recordUUID = timeLog.uuid!
+        
+        cloudKitContainer.privateCloudDatabase.fetch(withRecordID: CKRecordID.init(recordName: recordUUID), completionHandler: {
+            (record, error) in
+            
+                if let error = error {
+                    NSLog("Loading recored to modify from iCloud failed: \(error.localizedDescription)")
+                } else {
+                    NSLog("Loaded record \(record?.recordID)")
+                
+                    
+                }
+            })
+        
+        /*cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: {
+            [recordUUID] (record, error) in
+            
+            if let error = error {
+                NSLog("Update saving to iCloud failed: \(error.localizedDescription)")
+            } else {
+                NSLog("Modified record \(record?.recordID)")
+                
+                UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).saveState()
+            }
+        })*/
+        
+    }
+
+}
 
 // Add timeLog deleted
 
@@ -94,7 +135,7 @@ class CkSycNotImplemented : TimeLogCkUpsteamSync {
     }
     
     func syncChanges() {
-        NSLog("Sync not implemented - syncStatus: \(syncStatus)")
+        NSLog("Sync not implemented - syncStatus: \(syncStatus.rawValue)")
     }
 }
 
@@ -113,6 +154,8 @@ class CkTimeLogSyncFactory {
         switch timeLog.cloudSyncStatus {
         case .New:
             return CkSyncTimeLogNew(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
+        case .Modified:
+            return CkSyncTimeLogModified(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
         default:
             return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
         }
