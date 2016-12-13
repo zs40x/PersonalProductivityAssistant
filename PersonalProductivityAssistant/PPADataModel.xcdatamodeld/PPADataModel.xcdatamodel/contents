@@ -7,6 +7,7 @@
         <attribute name="activity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cloudSyncPending" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="cloudSyncStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="from" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="until" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +15,6 @@
     </entity>
     <elements>
         <element name="Hashtag" positionX="-63" positionY="9" width="128" height="60"/>
-        <element name="TimeLog" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="TimeLog" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>
