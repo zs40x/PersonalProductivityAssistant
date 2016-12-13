@@ -102,23 +102,34 @@ class CkSyncTimeLogModified : TimeLogCkUpsteamSync {
                     NSLog("Loading recored to modify from iCloud failed: \(error.localizedDescription)")
                 } else {
                     NSLog("Loaded record \(record?.recordID)")
-                
                     
+                    let modifiedRecored = record!
+                    
+                    if let activity = self.timeLog.activity {
+                        modifiedRecored.setObject(activity as NSString, forKey: "activity")
+                    }
+                    
+                    if let from = self.timeLog.from {
+                        modifiedRecored.setObject(from as NSDate, forKey: "from")
+                    }
+                    
+                    if let until = self.timeLog.until {
+                        modifiedRecored.setObject(until as NSDate, forKey: "until")
+                    }
+                    
+                    self.cloudKitContainer.privateCloudDatabase.save(modifiedRecored, completionHandler: {
+                        [recordUUID] (record, error) in
+                     
+                        if let error = error {
+                            NSLog("Update saving to iCloud failed: \(error.localizedDescription)")
+                        } else {
+                            NSLog("Modified record \(record?.recordID)")
+                     
+                            UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).saveState()
+                        }
+                     })
                 }
             })
-        
-        /*cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: {
-            [recordUUID] (record, error) in
-            
-            if let error = error {
-                NSLog("Update saving to iCloud failed: \(error.localizedDescription)")
-            } else {
-                NSLog("Modified record \(record?.recordID)")
-                
-                UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).saveState()
-            }
-        })*/
-        
     }
 
 }
