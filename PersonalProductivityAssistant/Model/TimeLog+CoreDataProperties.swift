@@ -29,4 +29,5 @@ extension TimeLog {
     @NSManaged var hashtags: NSSet?
     @NSManaged var cloudSyncPending: NSNumber?
     @NSManaged var cloudSyncStatus: CloudSyncStatus
+    @NSManaged var Deleted: NSNumber?
 }
