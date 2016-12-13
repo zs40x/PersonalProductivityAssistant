@@ -122,6 +122,10 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         calendarView.timeLogs = tableViewTimeLogs
         calendarView.reloadData()
+        
+        DispatchQueue.main.async {
+            TimeLogsInCK().exportTimeLogsToCK()
+        }
     }
     
     func updateViewForDate(_ date: Date) {
