@@ -128,7 +128,7 @@ internal class TimeLogModel : AbstractModel {
         
         let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
         
-        request.predicate = NSPredicate(format: "((from >= %@) AND (from < %@)) || (from = nil)", dateFrom as CVarArg, dateUntil as CVarArg)
+        request.predicate = NSPredicate(format: "(hidden = nil OR hidden = 0) AND ((from >= %@) AND (from < %@)) || (from = nil)", dateFrom as CVarArg, dateUntil as CVarArg)
         
         request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
         

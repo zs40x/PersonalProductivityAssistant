@@ -137,8 +137,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             return
         }
     
-        let timeLogsInMonth =
-            timeLogsInMonthResult.value!.filter({ $0.hidden != NSNumber(booleanLiteral: false) })
+        let timeLogsInMonth = timeLogsInMonthResult.value!
         
         self.tableViewTimeLogs = timeLogsInMonth
         self.calendarView.timeLogs = timeLogsInMonth
