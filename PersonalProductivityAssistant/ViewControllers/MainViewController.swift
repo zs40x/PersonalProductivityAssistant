@@ -132,8 +132,9 @@ class MainViewController: UIViewController, SegueHandlerType {
             showAlertDialog("Error loading time logs \(timeLogsInMonthResult.errorMessage)")
             return
         }
-        
-        let timeLogsInMonth = timeLogsInMonthResult.value!
+    
+        let timeLogsInMonth =
+            timeLogsInMonthResult.value!.filter({ $0.hidden != NSNumber(booleanLiteral: false) })
         
         self.tableViewTimeLogs = timeLogsInMonth
         self.calendarView.timeLogs = timeLogsInMonth
