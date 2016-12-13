@@ -134,7 +134,35 @@ class CkSyncTimeLogModified : TimeLogCkUpsteamSync {
 
 }
 
-// Add timeLog deleted
+class CkSyncTimeLogDelete : TimeLogCkUpsteamSync {
+    
+    private var timeLog: TimeLog
+    private var cloudKitContainer: CKContainer
+    
+    
+    init(timeLog: TimeLog, cloudKitContainer: CKContainer) {
+        self.timeLog = timeLog
+        self.cloudKitContainer = cloudKitContainer
+    }
+    
+    func syncChanges() {
+        
+        let recordUUID = timeLog.uuid!
+        
+        cloudKitContainer.privateCloudDatabase.delete(withRecordID: CKRecordID.init(recordName: recordUUID), completionHandler: {
+            [recordUUID] (record, error) in
+            
+            if let error = error {
+                NSLog("Deleting from iCloud failed: \(error.localizedDescription)")
+            } else {
+                NSLog("Deleted record \(recordUUID)")
+                
+                UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).saveState()
+            }
+        })
+    }
+}
+
 
 // Nothing toDo!?
 class CkSycNotImplemented : TimeLogCkUpsteamSync {
@@ -167,6 +195,8 @@ class CkTimeLogSyncFactory {
             return CkSyncTimeLogNew(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
         case .Modified:
             return CkSyncTimeLogModified(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
+        case .Deleted:
+            return CkSyncTimeLogDelete(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
         default:
             return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
         }
