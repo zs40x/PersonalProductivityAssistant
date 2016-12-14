@@ -19,16 +19,15 @@ protocol TimeLogSyncStatusUpdate{
     func updateStatusIsSynced()
 }
 
+
 class TimeLogsInCKUpload {
     
     private var cloudKitContainer: CKContainer
-    
     private let timeLogRepository = TimeLogRepository()
 
     init(cloudKitContainer: CKContainer) {
         self.cloudKitContainer = cloudKitContainer
     }
-    
     
     func syncChangesToCloud() {
         
@@ -105,7 +104,7 @@ class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     func syncChanges() {
         
         guard let ckrTimeLog = timeLog.asCKRecord() else {
-            NSLog("Abored saveNewCkRecord - probaply due to nil UUID")
+            NSLog("Aborted saveNewCkRecord - probably due to nil UUID")
             return
         }
         
@@ -116,7 +115,6 @@ class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
                 NSLog("Saving to iCloud failed: \(error.localizedDescription)")
             } else {
                 NSLog("Stored record \(record?.recordID)")
-                
                 self.syncStatusUpdate.updateStatusIsSynced()
             }
         })
