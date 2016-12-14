@@ -11,7 +11,25 @@ import CloudKit
 
 protocol TimeLogCkUpsteamSync {
     
-    func syncChanges();
+    func syncChanges()
+}
+
+protocol TimeLogSyncStatusUpdate{
+    
+    func updateStatusIsSynced()
+}
+
+class TimeLogsUpstreamSync {
+    
+    private var syncStatusUpdate: TimeLogSyncStatusUpdate
+    private var cloudKitContainer: CKContainer
+    
+    private let timeLogRepository = TimeLogRepository()
+
+    init(cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
+        self.cloudKitContainer = cloudKitContainer
+        self.syncStatusUpdate = syncStatusUpdate
+    }
 }
 
 class TimeLogsInCKUpload {
@@ -163,8 +181,6 @@ class CkSyncTimeLogDelete : TimeLogCkUpsteamSync {
     }
 }
 
-
-// Nothing toDo!?
 class CkSycNotImplemented : TimeLogCkUpsteamSync {
     
     private var syncStatus: CloudSyncStatus
