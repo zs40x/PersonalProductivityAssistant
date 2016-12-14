@@ -61,6 +61,25 @@ class TimeLog: NSManagedObject {
         return ckrTimeLog
     }
     
+    func modifyCkRecord(ckRecord: CKRecord) -> CKRecord {
+        
+        let modifiedRecord = ckRecord
+        
+        if let activity = self.activity {
+            modifiedRecord.setObject(activity as NSString, forKey: "activity")
+        }
+        
+        if let from = self.from {
+            modifiedRecord.setObject(from as NSDate, forKey: "from")
+        }
+        
+        if let until = self.until {
+            modifiedRecord.setObject(until as NSDate, forKey: "until")
+        }
+        
+        return modifiedRecord
+    }
+    
     func updateFromTimeLogData(_ timeLogData: TimeLogData) {
         self.activity = timeLogData.Activity
         self.from = timeLogData.From

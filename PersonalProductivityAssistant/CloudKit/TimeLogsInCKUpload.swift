@@ -138,20 +138,8 @@ class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync
             
                 NSLog("Loaded record \(record?.recordID)")
                     
-                let modifiedRecored = record!
-                    
-                if let activity = self.timeLog.activity {
-                    modifiedRecored.setObject(activity as NSString, forKey: "activity")
-                }
-                    
-                if let from = self.timeLog.from {
-                    modifiedRecored.setObject(from as NSDate, forKey: "from")
-                }
-                    
-                if let until = self.timeLog.until {
-                    modifiedRecored.setObject(until as NSDate, forKey: "until")
-                }
-                    
+                let modifiedRecored = self.timeLog.modifyCkRecord(ckRecord: record!)
+            
                 self.cloudKitContainer.privateCloudDatabase.save(modifiedRecored, completionHandler: {
                     (record, error) in
                      
