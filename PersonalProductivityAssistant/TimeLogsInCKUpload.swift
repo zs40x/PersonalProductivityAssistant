@@ -32,21 +32,17 @@ class TimeLogsInCKUpload {
     
     func syncChangesToCloud() {
         
-        let getAllTimeLogsResult = timeLogRepository.getAll()
+        guard let allTimeLogs = timeLogRepository.getAll().value else { return }
         
-        guard let allTimeLogs = getAllTimeLogsResult.value else {
-            return
-        }
-        
-        allTimeLogs.filter({
+        allTimeLogs.filter {
             $0.cloudSyncPending == NSNumber.init(booleanLiteral: true)
-        }).forEach { (timeLog) in
-            
+        }.map{
             CkTimeLogSyncFactory(
                     cloudKitContainer: cloudKitContainer,
-                    timeLog: timeLog
-                ).makeSync(
-                ).syncChanges()
+                    timeLog: $0
+                ).makeSync( )
+        }.forEach{
+            $0.syncChanges()
         }
     }
 }
