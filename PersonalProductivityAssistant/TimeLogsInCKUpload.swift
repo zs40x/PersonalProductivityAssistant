@@ -64,15 +64,16 @@ class AbstractTimeLogsUpstreamSync {
     }
 }
 
-class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync {
+class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     
     private var timeLog: TimeLog
     
     init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
         
-        self.cloudKitContainer = cloudKitContainer
-        self.syncStatusUpdate = syncStatusUpdate
+        
         self.timeLog = timeLog
+        
+        super.init(cloudKitContainer: cloudKitContainer, syncStatusUpdate: syncStatusUpdate)
     }
     
     func syncChanges() {
@@ -141,7 +142,7 @@ class CkSyncTimeLogModified : TimeLogCkUpsteamSync {
                         } else {
                             NSLog("Modified record \(record?.recordID)")
                      
-                            UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).saveState()
+                            UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).updateStatusIsSynced()
                         }
                      })
                 }
@@ -173,7 +174,7 @@ class CkSyncTimeLogDelete : TimeLogCkUpsteamSync {
             } else {
                 NSLog("Deleted record \(recordUUID)")
                 
-                UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).saveState()
+                UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).updateStatusIsSynced()
             }
         })
     }
@@ -206,7 +207,10 @@ class CkTimeLogSyncFactory {
         
         switch timeLog.cloudSyncStatus {
         case .New:
-            return CkSyncTimeLogNew(timeLog: timeLog, cloudKitContainer: cloudKitContainer, syncStatusUpdate: UpdateSyncedTimeLogStatus(ckRecordUUID: timeLog.uuid!)) as! TimeLogCkUpsteamSync
+            return CkSyncTimeLogNew(
+                timeLog: timeLog,
+                cloudKitContainer: cloudKitContainer,
+                syncStatusUpdate: UpdateSyncedTimeLogStatus(ckRecordUUID: timeLog.uuid!))
         case .Modified:
             return CkSyncTimeLogModified(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
         case .Deleted:
