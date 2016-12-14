@@ -53,27 +53,20 @@ class TimeLogsInCKUpload {
 
 class AbstractTimeLogsUpstreamSync {
     
+    fileprivate var timeLog: TimeLog
     fileprivate var syncStatusUpdate: TimeLogSyncStatusUpdate
     fileprivate var cloudKitContainer: CKContainer
     
     fileprivate let timeLogRepository = TimeLogRepository()
     
-    init(cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
+    init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
+        self.timeLog = timeLog
         self.cloudKitContainer = cloudKitContainer
         self.syncStatusUpdate = syncStatusUpdate
     }
 }
 
 class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
-    
-    private var timeLog: TimeLog
-    
-    init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
-        
-        self.timeLog = timeLog
-        
-        super.init(cloudKitContainer: cloudKitContainer, syncStatusUpdate: syncStatusUpdate)
-    }
     
     func syncChanges() {
         
@@ -97,15 +90,7 @@ class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     }
 }
 
-class CkSyncTimeLogModified : TimeLogCkUpsteamSync {
-    
-    private var timeLog: TimeLog
-    private var cloudKitContainer: CKContainer
-    
-    init(timeLog: TimeLog, cloudKitContainer: CKContainer) {
-        self.timeLog = timeLog
-        self.cloudKitContainer = cloudKitContainer
-    }
+class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     
     func syncChanges() {
         
@@ -134,14 +119,14 @@ class CkSyncTimeLogModified : TimeLogCkUpsteamSync {
                     }
                     
                     self.cloudKitContainer.privateCloudDatabase.save(modifiedRecored, completionHandler: {
-                        [recordUUID] (record, error) in
+                        (record, error) in
                      
                         if let error = error {
                             NSLog("Update saving to iCloud failed: \(error.localizedDescription)")
                         } else {
                             NSLog("Modified record \(record?.recordID)")
                      
-                            UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).updateStatusIsSynced()
+                            self.syncStatusUpdate.updateStatusIsSynced()
                         }
                      })
                 }
@@ -211,7 +196,10 @@ class CkTimeLogSyncFactory {
                 cloudKitContainer: cloudKitContainer,
                 syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         case .Modified:
-            return CkSyncTimeLogModified(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
+            return CkSyncTimeLogModified(
+                timeLog: timeLog,
+                cloudKitContainer: cloudKitContainer,
+                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         case .Deleted:
             return CkSyncTimeLogDelete(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
         default:
@@ -233,7 +221,6 @@ class UpdateSyncedTimeLogStatus : TimeLogSyncStatusUpdate {
     init(ckRecordUUID: String) {
         self.ckRecordUUID = ckRecordUUID
     }
-    
     
     func updateStatusIsSynced() {
         
