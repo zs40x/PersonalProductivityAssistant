@@ -135,16 +135,7 @@ class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync
 
 }
 
-class CkSyncTimeLogDelete : TimeLogCkUpsteamSync {
-    
-    private var timeLog: TimeLog
-    private var cloudKitContainer: CKContainer
-    
-    
-    init(timeLog: TimeLog, cloudKitContainer: CKContainer) {
-        self.timeLog = timeLog
-        self.cloudKitContainer = cloudKitContainer
-    }
+class CkSyncTimeLogDelete : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     
     func syncChanges() {
         
@@ -158,7 +149,7 @@ class CkSyncTimeLogDelete : TimeLogCkUpsteamSync {
             } else {
                 NSLog("Deleted record \(recordUUID)")
                 
-                UpdateSyncedTimeLogStatus(ckRecordUUID: recordUUID).updateStatusIsSynced()
+                self.syncStatusUpdate.updateStatusIsSynced()
             }
         })
     }
@@ -201,7 +192,10 @@ class CkTimeLogSyncFactory {
                 cloudKitContainer: cloudKitContainer,
                 syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         case .Deleted:
-            return CkSyncTimeLogDelete(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
+            return CkSyncTimeLogDelete(
+                timeLog: timeLog,
+                cloudKitContainer: cloudKitContainer,
+                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         default:
             return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
         }
