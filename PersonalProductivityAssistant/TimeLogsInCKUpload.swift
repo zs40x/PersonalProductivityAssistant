@@ -47,6 +47,44 @@ class TimeLogsInCKUpload {
     }
 }
 
+class CkTimeLogSyncFactory {
+    
+    private var cloudKitContainer: CKContainer
+    private var timeLog: TimeLog
+    
+    init(cloudKitContainer: CKContainer, timeLog: TimeLog) {
+        self.cloudKitContainer = cloudKitContainer
+        self.timeLog = timeLog
+    }
+    
+    func makeSync() -> TimeLogCkUpsteamSync {
+        
+        switch timeLog.cloudSyncStatus {
+        case .New:
+            return CkSyncTimeLogNew(
+                timeLog: timeLog,
+                cloudKitContainer: cloudKitContainer,
+                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
+        case .Modified:
+            return CkSyncTimeLogModified(
+                timeLog: timeLog,
+                cloudKitContainer: cloudKitContainer,
+                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
+        case .Deleted:
+            return CkSyncTimeLogDelete(
+                timeLog: timeLog,
+                cloudKitContainer: cloudKitContainer,
+                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
+        default:
+            return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
+        }
+    }
+    
+    private func makeUpdateSyncedTimeLogStatus() -> TimeLogSyncStatusUpdate {
+        return UpdateSyncedTimeLogStatus(ckRecordUUID: timeLog.uuid!)
+    }
+}
+
 class AbstractTimeLogsUpstreamSync {
     
     fileprivate var timeLog: TimeLog
@@ -161,44 +199,6 @@ class CkSycNotImplemented : TimeLogCkUpsteamSync {
     
     func syncChanges() {
         NSLog("Sync not implemented - syncStatus: \(syncStatus.rawValue)")
-    }
-}
-
-class CkTimeLogSyncFactory {
-    
-    private var cloudKitContainer: CKContainer
-    private var timeLog: TimeLog
-    
-    init(cloudKitContainer: CKContainer, timeLog: TimeLog) {
-        self.cloudKitContainer = cloudKitContainer
-        self.timeLog = timeLog
-    }
-    
-    func makeSync() -> TimeLogCkUpsteamSync {
-        
-        switch timeLog.cloudSyncStatus {
-        case .New:
-            return CkSyncTimeLogNew(
-                timeLog: timeLog,
-                cloudKitContainer: cloudKitContainer,
-                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
-        case .Modified:
-            return CkSyncTimeLogModified(
-                timeLog: timeLog,
-                cloudKitContainer: cloudKitContainer,
-                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
-        case .Deleted:
-            return CkSyncTimeLogDelete(
-                timeLog: timeLog,
-                cloudKitContainer: cloudKitContainer,
-                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
-        default:
-            return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
-        }
-    }
-    
-    private func makeUpdateSyncedTimeLogStatus() -> TimeLogSyncStatusUpdate {
-        return UpdateSyncedTimeLogStatus(ckRecordUUID: timeLog.uuid!)
     }
 }
 
