@@ -70,7 +70,6 @@ class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     
     init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
         
-        
         self.timeLog = timeLog
         
         super.init(cloudKitContainer: cloudKitContainer, syncStatusUpdate: syncStatusUpdate)
@@ -210,7 +209,7 @@ class CkTimeLogSyncFactory {
             return CkSyncTimeLogNew(
                 timeLog: timeLog,
                 cloudKitContainer: cloudKitContainer,
-                syncStatusUpdate: UpdateSyncedTimeLogStatus(ckRecordUUID: timeLog.uuid!))
+                syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         case .Modified:
             return CkSyncTimeLogModified(timeLog: timeLog, cloudKitContainer: cloudKitContainer)
         case .Deleted:
@@ -218,6 +217,10 @@ class CkTimeLogSyncFactory {
         default:
             return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
         }
+    }
+    
+    private func makeUpdateSyncedTimeLogStatus() -> TimeLogSyncStatusUpdate {
+        return UpdateSyncedTimeLogStatus(ckRecordUUID: timeLog.uuid!)
     }
 }
 
