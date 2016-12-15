@@ -50,7 +50,7 @@ class TimeLogsInCKDownload {
    
 }
 
-class CkTimeLogRecordImport {
+fileprivate class CkTimeLogRecordImport {
     
     private var ckTimeLog: CKRecord
     

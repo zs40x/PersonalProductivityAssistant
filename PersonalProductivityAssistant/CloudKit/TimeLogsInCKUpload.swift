@@ -9,12 +9,12 @@
 import Foundation
 import CloudKit
 
-protocol TimeLogCkUpsteamSync {
+fileprivate protocol TimeLogCkUpsteamSync {
     
     func syncChanges()
 }
 
-protocol TimeLogSyncStatusUpdate{
+fileprivate protocol TimeLogSyncStatusUpdate{
     
     func updateStatusIsSynced()
 }
@@ -46,7 +46,7 @@ class TimeLogsInCKUpload {
     }
 }
 
-class CkTimeLogSyncFactory {
+fileprivate class CkTimeLogSyncFactory {
     
     private var cloudKitContainer: CKContainer
     private var timeLog: TimeLog
@@ -84,7 +84,7 @@ class CkTimeLogSyncFactory {
     }
 }
 
-class AbstractTimeLogsUpstreamSync {
+fileprivate class AbstractTimeLogsUpstreamSync {
     
     fileprivate var timeLog: TimeLog
     fileprivate var syncStatusUpdate: TimeLogSyncStatusUpdate
@@ -92,14 +92,14 @@ class AbstractTimeLogsUpstreamSync {
     
     fileprivate let timeLogRepository = TimeLogRepository()
     
-    fileprivate init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
+    init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
         self.timeLog = timeLog
         self.cloudKitContainer = cloudKitContainer
         self.syncStatusUpdate = syncStatusUpdate
     }
 }
 
-class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
+fileprivate class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     
     func syncChanges() {
         
@@ -122,7 +122,7 @@ class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     }
 }
 
-class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
+fileprivate class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     
     func syncChanges() {
         
@@ -156,7 +156,7 @@ class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync
 
 }
 
-class CkSyncTimeLogDelete : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
+fileprivate class CkSyncTimeLogDelete : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     
     func syncChanges() {
         
@@ -176,7 +176,7 @@ class CkSyncTimeLogDelete : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
     }
 }
 
-class CkSycNotImplemented : TimeLogCkUpsteamSync {
+fileprivate class CkSycNotImplemented : TimeLogCkUpsteamSync {
     
     private var syncStatus: CloudSyncStatus
     
@@ -189,7 +189,7 @@ class CkSycNotImplemented : TimeLogCkUpsteamSync {
     }
 }
 
-class UpdateSyncedTimeLogStatus : TimeLogSyncStatusUpdate {
+fileprivate class UpdateSyncedTimeLogStatus : TimeLogSyncStatusUpdate {
     
     private var ckRecordUUID: String
     
