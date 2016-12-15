@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import CloudKit
 
 struct TimeLogData {
-    var UUID: UUID
+    var Uuid: UUID
     var Activity: String
     var From: Date
     var Until: Date

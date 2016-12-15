@@ -71,7 +71,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                 
                 viewControllerAddTimeLog.timeLogDataToEdit =
                     TimeLogData(
-                        UUID: UUID(),
+                        Uuid: UUID(),
                         Activity: "",
                         From: dateForNewTimeLog,
                         Until: dateForNewTimeLog,

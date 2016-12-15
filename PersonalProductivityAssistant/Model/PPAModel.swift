@@ -162,7 +162,7 @@ internal class TimeLogModel : AbstractModel {
             NSEntityDescription.insertNewObject(
                 forEntityName: TimeLog.EntityName, into: self.managedObjectContext) as! TimeLog
         
-        timeLog.uuid = timeLogData.UUID.uuidString
+        timeLog.uuid = timeLogData.Uuid.uuidString
         timeLog.activity = timeLogData.Activity
         timeLog.from = timeLogData.From
         timeLog.until = timeLogData.Until
