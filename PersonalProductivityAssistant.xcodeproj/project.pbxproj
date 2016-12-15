@@ -39,6 +39,8 @@
 		D4355E781D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E771D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift */; };
 		D4355E7A1D393439000F678A /* ChartSourceHashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E791D393439000F678A /* ChartSourceHashtags.swift */; };
 		D4355E7D1D3953A4000F678A /* ChartDataValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */; };
+		D436A8341E0250C500D4F5B2 /* NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436A8331E0250C500D4F5B2 /* NSNumber.swift */; };
+		D436A8351E02542700D4F5B2 /* NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436A8331E0250C500D4F5B2 /* NSNumber.swift */; };
 		D43B89701D24444C0065248D /* ChartSourceFreevsUsedTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */; };
 		D443636F1DFDE784008EAB37 /* TimeLogsInCKDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */; };
 		D44363711DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */; };
@@ -181,6 +183,7 @@
 		D4355E771D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagAutoCompleteAssistant_appendHashtag.swift; sourceTree = "<group>"; };
 		D4355E791D393439000F678A /* ChartSourceHashtags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceHashtags.swift; path = Reporting/ChartSourceHashtags.swift; sourceTree = "<group>"; };
 		D4355E7C1D3953A4000F678A /* ChartDataValueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataValueProvider.swift; sourceTree = "<group>"; };
+		D436A8331E0250C500D4F5B2 /* NSNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSNumber.swift; path = Utilities/Extensions/NSNumber.swift; sourceTree = "<group>"; };
 		D43B896F1D24444C0065248D /* ChartSourceFreevsUsedTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSourceFreevsUsedTime.swift; path = Reporting/ChartSourceFreevsUsedTime.swift; sourceTree = "<group>"; };
 		D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogsInCKDownload.swift; path = CloudKit/TimeLogsInCKDownload.swift; sourceTree = "<group>"; };
 		D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogsInCKUpload.swift; path = CloudKit/TimeLogsInCKUpload.swift; sourceTree = "<group>"; };
@@ -572,6 +575,7 @@
 				D46CE0901D3499DF00CD797F /* UIViewController.swift */,
 				D46CE09A1D3546A300CD797F /* String.swift */,
 				D4130B361D41D1AE00F08828 /* UITextView.swift */,
+				D436A8331E0250C500D4F5B2 /* NSNumber.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -797,6 +801,7 @@
 				D44363731DFF30FF008EAB37 /* TimeLogsInCKDownload.swift in Sources */,
 				D41A06B31DB551B60088745C /* HashtagRepository.swift in Sources */,
 				D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */,
+				D436A8351E02542700D4F5B2 /* NSNumber.swift in Sources */,
 				D41A06B51DB551BE0088745C /* TimeLog.swift in Sources */,
 				D41A06BC1DB551FA0088745C /* NSDate.swift in Sources */,
 				D41A06B71DB551C50088745C /* Hashtag.swift in Sources */,
@@ -854,6 +859,7 @@
 				D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */,
 				D4B660891D142B18000FE897 /* PPADataModel.xcdatamodeld in Sources */,
 				D4B660571D142AAE000FE897 /* AppDelegate.swift in Sources */,
+				D436A8341E0250C500D4F5B2 /* NSNumber.swift in Sources */,
 				D4355E7D1D3953A4000F678A /* ChartDataValueProvider.swift in Sources */,
 				D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */,
 				D43B89701D24444C0065248D /* ChartSourceFreevsUsedTime.swift in Sources */,

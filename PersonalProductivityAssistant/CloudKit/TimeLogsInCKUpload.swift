@@ -203,7 +203,7 @@ class UpdateSyncedTimeLogStatus : TimeLogSyncStatusUpdate {
         
         guard let timeLog = timeLogRecord() else { return }
         
-        timeLog.cloudSyncPending = NSNumber.init(booleanLiteral: false)
+        timeLog.cloudSyncPending = NSNumber.bool_false
         timeLog.cloudSyncStatus = .Unchanged
         
         saveTimeLogChanges()
