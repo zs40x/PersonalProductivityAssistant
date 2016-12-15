@@ -64,7 +64,7 @@ fileprivate class CkTimeLogRecordImport {
     
     public func importTimeLog() {
         
-        let timeLogData = asTimeLogData()
+        let timeLogData = TimeLogData(ckTimeLog: self.ckTimeLog)
         
         
         let fetchedTimeLog = timeLogRepository.withUUID(uuid: timeLogData.Uuid).value!
@@ -82,17 +82,5 @@ fileprivate class CkTimeLogRecordImport {
         } else {
             NSLog("iCloud download: Successfully persisted timeLog with uuid \(timeLogData.Uuid)")
         }
-    }
-    
-    private func asTimeLogData() -> TimeLogData {
-        
-        return TimeLogData(
-            Uuid: UUID.init(uuidString: ckTimeLog.recordID.recordName)!,
-            Activity: ckTimeLog.object(forKey: "activity") as! String,
-            From: ckTimeLog.object(forKey: "from") as! Date,
-            Until: ckTimeLog.object(forKey: "until") as! Date,
-            CloudSyncPending: false,
-            CloudSyncStatus: .Unchanged
-        )
     }
 }
