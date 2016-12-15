@@ -155,6 +155,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             let timeLogsInCk = TimeLogsInCK()
             timeLogsInCk.dataSyncCompletedDelegate = self
             timeLogsInCk.importTimeLogsFromCkToDb()
+            timeLogsInCk.registerTimeLogChanges()
         });
     }
 }

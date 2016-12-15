@@ -40,4 +40,23 @@ public class TimeLogsInCK {
                 cloudKitContainer: cloudKitContainer
             ).downloadAndImportTimeLogs()
     }
+    
+    public func registerTimeLogChanges() {
+        
+        NSLog("TimeLogsInCk.registerTimeLogChanges")
+        
+        let predicate = NSPredicate.init(value: true)
+        let subscription = CKQuerySubscription(recordType: TimeLogsInCK.RecordTypeTimeLogs, predicate: predicate, options: [CKQuerySubscriptionOptions.firesOnRecordCreation, CKQuerySubscriptionOptions.firesOnRecordUpdate, CKQuerySubscriptionOptions.firesOnRecordDeletion])
+        
+        self.cloudKitContainer.privateCloudDatabase.save(subscription, completionHandler: {
+            (subscription, error) in
+            
+            if let error = error {
+                NSLog("Subscription failed: \(error)")
+                return
+            }
+            
+            NSLog("TimeLog subscription saved")
+        })
+    }
 }
