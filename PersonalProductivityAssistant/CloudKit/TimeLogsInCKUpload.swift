@@ -92,7 +92,7 @@ class AbstractTimeLogsUpstreamSync {
     
     fileprivate let timeLogRepository = TimeLogRepository()
     
-    init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
+    fileprivate init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
         self.timeLog = timeLog
         self.cloudKitContainer = cloudKitContainer
         self.syncStatusUpdate = syncStatusUpdate
