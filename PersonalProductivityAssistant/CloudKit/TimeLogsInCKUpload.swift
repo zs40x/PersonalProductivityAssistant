@@ -34,7 +34,7 @@ class TimeLogsInCKUpload {
         guard let allTimeLogs = timeLogRepository.getAll().value else { return }
         
         allTimeLogs.filter {
-            $0.cloudSyncPending == NSNumber.init(booleanLiteral: true)
+            $0.cloudSyncPending == NSNumber.bool_true
         }.map{
             CkTimeLogSyncFactory(
                     cloudKitContainer: cloudKitContainer,
