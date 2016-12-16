@@ -45,12 +45,54 @@ public class TimeLogsInCK {
         
         NSLog("TimeLogsInCk.registerTimeLogChanges")
         
+        // Delete existing subscriptions
+        
+        self.cloudKitContainer.privateCloudDatabase.fetchAllSubscriptions {
+            [unowned self] (subscriptions, error) in
+            
+            if let error = error {
+                NSLog("Failed downloading existing subscriptions from iCloud: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let subscriptions = subscriptions else { return }
+            
+            // self is no longer available below - maybe I should word with CkContainer.default() in general
+            subscriptions.forEach({
+                (subscription) in
+                
+                NSLog("Will delete subscription with ID \(subscription.subscriptionID)")
+                
+                CKContainer.default().privateCloudDatabase.delete(withSubscriptionID: subscription.subscriptionID, completionHandler: {
+                    (subscriptionID, error) in
+                    
+                    if let error = error {
+                        NSLog("Error deleting subscription with ID \(subscriptionID): \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    NSLog("Successfully deleted subscription with ID \(subscriptionID)")
+                })
+            })
+            
+            TimeLogsInCK().registerTimeLogSubscription()
+        }
+        
+    }
+    
+    fileprivate func registerTimeLogSubscription() {
+        
         let predicate = NSPredicate.init(value: true)
-        let subscription = CKQuerySubscription(recordType: TimeLogsInCK.RecordTypeTimeLogs, predicate: predicate, options: [CKQuerySubscriptionOptions.firesOnRecordCreation, CKQuerySubscriptionOptions.firesOnRecordUpdate, CKQuerySubscriptionOptions.firesOnRecordDeletion])
+        let subscription =
+            CKQuerySubscription(
+                recordType: TimeLogsInCK.RecordTypeTimeLogs,
+                predicate: predicate,
+                options: [CKQuerySubscriptionOptions.firesOnRecordCreation, CKQuerySubscriptionOptions.firesOnRecordUpdate, CKQuerySubscriptionOptions.firesOnRecordDeletion])
         
         let notificationInfo = CKNotificationInfo()
         notificationInfo.alertLocalizationKey = "Changed TimeLogs"
         notificationInfo.shouldBadge = true
+        notificationInfo.soundName = "default"
         subscription.notificationInfo = notificationInfo
         
         self.cloudKitContainer.privateCloudDatabase.save(subscription, completionHandler: {
@@ -63,5 +105,6 @@ public class TimeLogsInCK {
             
             NSLog("TimeLog subscription saved")
         })
+
     }
 }
