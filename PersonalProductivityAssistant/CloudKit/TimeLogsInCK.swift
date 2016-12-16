@@ -48,6 +48,11 @@ public class TimeLogsInCK {
         let predicate = NSPredicate.init(value: true)
         let subscription = CKQuerySubscription(recordType: TimeLogsInCK.RecordTypeTimeLogs, predicate: predicate, options: [CKQuerySubscriptionOptions.firesOnRecordCreation, CKQuerySubscriptionOptions.firesOnRecordUpdate, CKQuerySubscriptionOptions.firesOnRecordDeletion])
         
+        let notificationInfo = CKNotificationInfo()
+        notificationInfo.alertLocalizationKey = "Changed TimeLogs"
+        notificationInfo.shouldBadge = true
+        subscription.notificationInfo = notificationInfo
+        
         self.cloudKitContainer.privateCloudDatabase.save(subscription, completionHandler: {
             (subscription, error) in
             

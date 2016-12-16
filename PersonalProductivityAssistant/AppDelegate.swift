@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch let error as NSError {
             NSLog("Error saving coreData: \(error.localizedDescription)")
         }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        guard let stringUserInfo = userInfo as? [String : NSObject] else {
+            NSLog("Received remoteNotification with unexpected data")
+            return
+        }
+        
+        NSLog("Received changed records nofitication from cloudKit")
+        
+        let notification = CKNotification(fromRemoteNotificationDictionary: stringUserInfo)
+        
+        guard notification.notificationType == .query else { return }
+        
+        guard let mainWindow = UIApplication.shared.windows.first else { return }
+        
+        guard let mainWindowAsDelegate = mainWindow as? CKDataSyncCompletedDelegate else { return }
+        
+        DispatchQueue.main.async(execute: {
+            
+            let timeLogsInCk = TimeLogsInCK()
+            timeLogsInCk.dataSyncCompletedDelegate = mainWindowAsDelegate
+            timeLogsInCk.importTimeLogsFromCkToDb()
+        });
     }
 }
 
