@@ -82,7 +82,7 @@ public class TimeLogsInCK {
     
     fileprivate func registerTimeLogSubscription() {
         
-        let predicate = NSPredicate.init(value: true)
+        let predicate = NSPredicate(format: "TRUEPREDICATE")
         let subscription =
             CKQuerySubscription(
                 recordType: TimeLogsInCK.RecordTypeTimeLogs,
