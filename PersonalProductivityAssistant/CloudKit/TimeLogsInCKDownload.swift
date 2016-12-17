@@ -70,6 +70,7 @@ fileprivate class CkTimeLogRecordImport {
         let fetchedTimeLog = timeLogRepository.withUUID(uuid: timeLogData.Uuid).value!
         
         if let timeLog = fetchedTimeLog {
+            // ToDo: we have to check if the remote record looks different then the local version
             NSLog("iCloud download: Skipped already existing recored with UUID \(timeLog.uuid)")
             return
         }
