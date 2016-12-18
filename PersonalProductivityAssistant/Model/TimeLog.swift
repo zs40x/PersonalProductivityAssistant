@@ -98,4 +98,15 @@ class TimeLog: NSManagedObject {
         
         self.hashtags = NSSet(array: foundHashtags)
     }
+    
+    func isEqualTo(_ timeLogData: TimeLogData) -> Bool {
+        
+        if self.activity == timeLogData.Activity &&
+            self.from == timeLogData.From &&
+            self.until == timeLogData.Until {
+            return true
+        }
+        
+        return false
+    }
 }
