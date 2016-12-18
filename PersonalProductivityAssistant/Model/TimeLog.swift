@@ -76,6 +76,7 @@ class TimeLog: NSManagedObject {
         self.from = timeLogData.From
         self.until = timeLogData.Until
         self.uuid = timeLogData.Uuid.uuidString
+        self.hidden = timeLogData.Hidden
         self.cloudSyncPending = timeLogData.CloudSyncPending
         self.cloudSyncStatus = timeLogData.CloudSyncStatus
         
