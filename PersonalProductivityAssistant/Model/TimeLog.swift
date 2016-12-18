@@ -45,20 +45,8 @@ class TimeLog: NSManagedObject {
                 recordType: TimeLogsInCK.RecordTypeTimeLogs,
                 recordID: CKRecordID(recordName: recordUUID)
             )
-    
-        if let activity = activity {
-            ckrTimeLog.setObject(activity as NSString, forKey: "activity")
-        }
-    
-        if let from = from {
-            ckrTimeLog.setObject(from as NSDate, forKey: "from")
-        }
-    
-        if let until = until {
-            ckrTimeLog.setObject(until as NSDate, forKey: "until")
-        }
         
-        return ckrTimeLog
+        return modifyCkRecord(ckRecord: ckrTimeLog)
     }
     
     func modifyCkRecord(ckRecord: CKRecord) -> CKRecord {
