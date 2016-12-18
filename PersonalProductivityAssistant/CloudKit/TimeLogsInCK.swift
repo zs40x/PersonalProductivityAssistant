@@ -48,7 +48,7 @@ public class TimeLogsInCK {
         // Delete existing subscriptions
         
         self.cloudKitContainer.privateCloudDatabase.fetchAllSubscriptions {
-            [unowned self] (subscriptions, error) in
+            (subscriptions, error) in
             
             if let error = error {
                 NSLog("Failed downloading existing subscriptions from iCloud: \(error.localizedDescription)")
