@@ -83,11 +83,14 @@ public class TimeLogsInCK {
     fileprivate func registerTimeLogSubscription() {
         
         let predicate = NSPredicate(format: "TRUEPREDICATE")
+        
         let subscription =
             CKQuerySubscription(
                 recordType: TimeLogsInCK.RecordTypeTimeLogs,
                 predicate: predicate,
-                options: [CKQuerySubscriptionOptions.firesOnRecordCreation, CKQuerySubscriptionOptions.firesOnRecordUpdate, CKQuerySubscriptionOptions.firesOnRecordDeletion])
+                options: [CKQuerySubscriptionOptions.firesOnRecordCreation,
+                          CKQuerySubscriptionOptions.firesOnRecordUpdate,
+                          CKQuerySubscriptionOptions.firesOnRecordDeletion])
         
         let notificationInfo = CKNotificationInfo()
         notificationInfo.alertLocalizationKey = "Changed TimeLogs"
