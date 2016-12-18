@@ -30,10 +30,12 @@ class MainViewController: UIViewController, SegueHandlerType {
     @IBOutlet weak var tableViewActivities: UITableView!
     @IBOutlet weak var calendarView: CalendarView!
     
+    public static var mainViewController: MainViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MainViewController.mainViewController = self
         self.automaticallyAdjustsScrollViewInsets = false
         
         loadTimeLogsFromCloudKitAsync()

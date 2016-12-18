@@ -12,7 +12,7 @@ import CloudKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -34,8 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     NSLog("Notifications not granted")
                 }
         })
-        application.registerForRemoteNotifications()
-        application.registerForRemoteNotifications()
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+       application.registerForRemoteNotifications()
         
         return true
     }
@@ -82,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard notification.notificationType == .query else { return }
         
-        guard let mainWindow = UIApplication.shared.windows.first else { return }
+        guard let mainWindow = MainViewController.mainViewController else { return }
         
         guard let mainWindowAsDelegate = mainWindow as? CKDataSyncCompletedDelegate else { return }
         
@@ -92,6 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             timeLogsInCk.dataSyncCompletedDelegate = mainWindowAsDelegate
             timeLogsInCk.importTimeLogsFromCkToDb()
         });
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        return
     }
 }
 
