@@ -78,11 +78,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        NSLog("Received changed records nofitication from cloudKit")
-        
         let notification = CKNotification(fromRemoteNotificationDictionary: stringUserInfo)
         
         guard notification.notificationType == .query else { return }
+        
+        
+        timeLogCkUpdateReceived()
+        
+        completionHandler(.newData)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        timeLogCkUpdateReceived()
+        
+        completionHandler();
+    }
+    
+    private func timeLogCkUpdateReceived() {
+        
+        NSLog("Received changed records nofitication from cloudKit")
+        
         
         guard let mainWindow = MainViewController.mainViewController else { return }
         
@@ -94,11 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             timeLogsInCk.dataSyncCompletedDelegate = mainWindowAsDelegate
             timeLogsInCk.importTimeLogsFromCkToDb()
         });
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        return
+
     }
 }
 
