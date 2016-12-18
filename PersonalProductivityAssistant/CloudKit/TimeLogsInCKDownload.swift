@@ -76,7 +76,14 @@ fileprivate class CkTimeLogRecordImport {
             }
             
             fetchedTimeLog!.updateFromTimeLogData(timeLogData)
-            timeLogRepository.save()
+            
+            let saveResult = timeLogRepository.save()
+            
+            if !saveResult.isSucessful {
+                NSLog("Failed to save timeLog changes: \(saveResult.errorMessage)")
+                return
+            }
+            
             NSLog("Updated exiting timeLog from CkRecord: \(timeLogData.Uuid)")
             return;
         }
