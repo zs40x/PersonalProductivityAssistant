@@ -100,14 +100,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NSLog("Received changed records nofitication from cloudKit")
         
         
-        guard let mainWindow = MainViewController.mainViewController else { return }
-        
-        guard let mainWindowAsDelegate = mainWindow as? CKDataSyncCompletedDelegate else { return }
+        guard let mainWindow = MainViewController.mainViewController as? CKDataSyncCompletedDelegate else { return }
         
         DispatchQueue.main.async(execute: {
             
             let timeLogsInCk = TimeLogsInCK()
-            timeLogsInCk.dataSyncCompletedDelegate = mainWindowAsDelegate
+            timeLogsInCk.dataSyncCompletedDelegate = mainWindow
             timeLogsInCk.importTimeLogsFromCkToDb()
         });
 
