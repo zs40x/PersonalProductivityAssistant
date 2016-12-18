@@ -32,6 +32,7 @@ class TimeLog: NSManagedObject {
             Activity: activity!,
             From: from!,
             Until: until!,
+            Hidden: hidden ?? 0,
             CloudSyncPending: cloudSyncPending!,
             CloudSyncStatus: cloudSyncStatus)
     }
@@ -65,9 +66,7 @@ class TimeLog: NSManagedObject {
             modifiedRecord.setObject(until as NSDate, forKey: "until")
         }
         
-        if let hidden = self.hidden {
-            modifiedRecord.setObject(hidden as NSNumber, forKey: "hidden")
-        }
+        modifiedRecord.setObject(self.hidden ?? 0, forKey: "hidden")
         
         return modifiedRecord
     }

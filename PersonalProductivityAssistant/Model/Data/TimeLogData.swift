@@ -14,14 +14,16 @@ struct TimeLogData {
     var Activity: String
     var From: Date
     var Until: Date
+    var Hidden: NSNumber
     var CloudSyncPending: NSNumber
     var CloudSyncStatus: CloudSyncStatus
     
-    init(Uuid: UUID, Activity: String, From: Date, Until: Date, CloudSyncPending: NSNumber, CloudSyncStatus: CloudSyncStatus) {
+    init(Uuid: UUID, Activity: String, From: Date, Until: Date, Hidden: NSNumber, CloudSyncPending: NSNumber, CloudSyncStatus: CloudSyncStatus) {
         self.Uuid = Uuid
         self.Activity = Activity
         self.From = From
         self.Until = Until
+        self.Hidden = Hidden
         self.CloudSyncPending = CloudSyncPending
         self.CloudSyncStatus = CloudSyncStatus
     }
@@ -32,6 +34,7 @@ struct TimeLogData {
             Activity: ckTimeLog.object(forKey: "activity") as! String,
             From: ckTimeLog.object(forKey: "from") as! Date,
             Until: ckTimeLog.object(forKey: "until") as! Date,
+            Hidden: ckTimeLog.object(forKey: "hidden") as? NSNumber ?? 0,
             CloudSyncPending: false,
             CloudSyncStatus: .Unchanged)
     }

@@ -77,6 +77,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                         Activity: "",
                         From: dateForNewTimeLog,
                         Until: dateForNewTimeLog,
+                        Hidden: NSNumber.bool_false,
                         CloudSyncPending: true,
                         CloudSyncStatus: .New)
             }
@@ -106,9 +107,9 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         let timeLogToDelete = tableViewTimeLogs[(indexPath as NSIndexPath).row]
         
-        timeLogToDelete.hidden = NSNumber(booleanLiteral: true)
+        timeLogToDelete.hidden = NSNumber.bool_true
         timeLogToDelete.cloudSyncStatus = .Modified
-        timeLogToDelete.cloudSyncPending = NSNumber(booleanLiteral: true)
+        timeLogToDelete.cloudSyncPending = NSNumber.bool_true
         
         let saveResult = timeLogRepository.save()
         

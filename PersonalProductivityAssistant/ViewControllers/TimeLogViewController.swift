@@ -159,6 +159,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
             Activity: textEditActivity.text!,
             From: from.date,
             Until: until.date,
+            Hidden: NSNumber.bool_false,
             CloudSyncPending: true,
             CloudSyncStatus: timeLogCkSyncStatus(timeLogDataToEdit!.CloudSyncStatus) )
     }
