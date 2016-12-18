@@ -94,7 +94,8 @@ class TimeLog: NSManagedObject {
         
         if self.activity == timeLogData.Activity &&
             self.from == timeLogData.From &&
-            self.until == timeLogData.Until {
+            self.until == timeLogData.Until &&
+            self.hidden == timeLogData.Hidden {
             return true
         }
         
