@@ -77,6 +77,10 @@ class TimeLog: NSManagedObject {
             modifiedRecord.setObject(until as NSDate, forKey: "until")
         }
         
+        if let hidden = self.hidden {
+            modifiedRecord.setObject(hidden as NSNumber, forKey: "hidden")
+        }
+        
         return modifiedRecord
     }
     
