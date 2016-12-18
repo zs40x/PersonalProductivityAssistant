@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CloudKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,9 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let notificationSettings = UIUserNotificationSettings(types: .alert, categories: nil)
-        
-        application.registerUserNotificationSettings(notificationSettings)
+        UNUserNotificationCenter.current().requestAuthorization(options:
+            [[.alert, .sound, .badge]],
+            completionHandler: {
+                (granted, error) in
+            
+                if let error = error {
+                    NSLog("Error requesting notification permissions: \(error)")
+                    return
+                }
+                
+                if(!granted) {
+                    NSLog("Notifications not granted")
+                }
+        })
+        application.registerForRemoteNotifications()
         application.registerForRemoteNotifications()
         
         return true
