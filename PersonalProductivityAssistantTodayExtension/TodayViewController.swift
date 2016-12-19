@@ -42,17 +42,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func updateWidgetContent() -> NCUpdateResult {
         
-        let timeLogRepository = TimeLogRepository()
+        let result = TimeLogRepository().forMonthOf(Date())
         
-       let result = timeLogRepository.forMonthOf(Date())
+        guard result.isSucessful else { return .failed }
         
-        guard result.isSucessful else {
-            return .failed
-        }
-        
-        guard let firstTimeLog = result.value?.last else {
-            return .noData
-        }
+        guard let firstTimeLog = result.value?.last else { return .noData }
         
         self.labelHelloWorld.text = firstTimeLog.activity!
         
