@@ -48,13 +48,27 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         guard let firstTimeLog = result.value?.last else { return .noData }
         
-        self.labelHelloWorld.text = firstTimeLog.activity!
+        self.labelHelloWorld.text =
+            "\(firstTimeLog.activity!), \(firstTimeLog.durationInMinutes()) minutes"
         
         return .newData
     }
     
     @IBAction func actionStartActivity(_ sender: Any) {
         NSLog("Button add activity clicked")
+        
+        let result = TimeLogRepository().addNew(
+                        TimeLogData(Uuid: UUID(),
+                                    Activity: "New activity",
+                                    From: Date(),
+                                    Until: Date(),
+                                    Hidden: NSNumber.bool_false,
+                                    CloudSyncPending: NSNumber.bool_true,
+                                    CloudSyncStatus: .New))
+        
+        if result.isSucessful {
+            _ = updateWidgetContent()
+        }
     }
     
 }

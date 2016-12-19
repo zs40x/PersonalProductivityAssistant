@@ -61,6 +61,8 @@ open class TimeLogRepository {
   
         do {
             let newTimeLog = model.TimeLogs.createTimeLog(timeLogData)
+            
+            newTimeLog.hashtags = NSSet()
             newTimeLog.updateHashtags()
             
             try model.save()

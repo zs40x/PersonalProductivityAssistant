@@ -12,7 +12,7 @@
         <attribute name="hidden" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="until" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="hashtags" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Hashtag" inverseName="timeLogs" inverseEntity="Hashtag" syncable="YES"/>
+        <relationship name="hashtags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hashtag" inverseName="timeLogs" inverseEntity="Hashtag" syncable="YES"/>
     </entity>
     <elements>
         <element name="Hashtag" positionX="-63" positionY="9" width="128" height="75"/>
