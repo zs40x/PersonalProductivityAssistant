@@ -36,9 +36,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         DispatchQueue.main.async {
             [unowned self] in
             
-            let updateResult = self.updateWidgetContent()
-            
-            completionHandler(updateResult)
+            completionHandler(self.updateWidgetContent())
         }
     }
     
