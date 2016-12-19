@@ -13,8 +13,7 @@ class TimeLogsInCKDownload {
     
     private var dataSyncCompletedDelegate: CKDataSyncCompletedDelegate?
     private var cloudKitContainer: CKContainer
-    
-    
+        
     init(dataSyncCompletedDelegate: CKDataSyncCompletedDelegate?, cloudKitContainer: CKContainer) {
         self.dataSyncCompletedDelegate = dataSyncCompletedDelegate
         self.cloudKitContainer = cloudKitContainer
@@ -53,19 +52,15 @@ class TimeLogsInCKDownload {
 fileprivate class CkTimeLogRecordImport {
     
     private var ckTimeLog: CKRecord
-    
-    private let timeLogRepository = TimeLogRepository()
-    
+    private let timeLogRepository = TimeLogRepository()    
     
     init(ckTimeLog: CKRecord) {
         self.ckTimeLog = ckTimeLog
-    }
-    
+    }    
     
     public func importTimeLog() {
         
         let timeLogData = TimeLogData(ckTimeLog: self.ckTimeLog)
-        
         
         let fetchedTimeLog = timeLogRepository.withUUID(uuid: timeLogData.Uuid).value!
         
