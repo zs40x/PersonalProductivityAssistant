@@ -52,4 +52,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         return .newData
     }
+    
+    @IBAction func actionStartActivity(_ sender: Any) {
+        NSLog("Button add activity clicked")
+    }
+    
 }
