@@ -6,6 +6,7 @@ target 'PersonalProductivityAssistant' do
   use_frameworks!
 
   # Pods for PersonalProductivityAssistant
+  pod 'JTCalendar', '~> 2.0'
 
   target 'PersonalProductivityAssistantTests' do
     inherit! :search_paths

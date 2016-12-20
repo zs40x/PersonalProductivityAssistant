@@ -1,0 +1,6 @@
+framework module Pods_PersonalProductivityAssistantUITests {
+  umbrella header "Pods-PersonalProductivityAssistantUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

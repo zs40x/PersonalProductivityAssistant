@@ -1,0 +1,6 @@
+framework module Pods_PersonalProductivityAssistantTodayExtension {
+  umbrella header "Pods-PersonalProductivityAssistantTodayExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}
