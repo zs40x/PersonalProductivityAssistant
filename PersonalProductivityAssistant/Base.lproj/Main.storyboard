@@ -26,18 +26,26 @@
                                 <rect key="frame" x="0.0" y="64" width="383" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lmv-Qg-aof">
-                                        <rect key="frame" x="0.0" y="0.0" width="383" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="383" height="559"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" userLabel="CalendarView" customClass="JTCalendarMenuView">
-                                                <rect key="frame" x="0.0" y="0.0" width="383" height="201"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-Cz-ub9" userLabel="CalendarView" customClass="JTHorizontalCalendarView">
-                                                <rect key="frame" x="0.0" y="201" width="383" height="201"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="740-dk-iUE">
+                                                <rect key="frame" x="0.0" y="0.0" width="383" height="279.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" userLabel="CalendarView" customClass="JTCalendarMenuView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="383" height="25"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="6cn-PY-e0v"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-Cz-ub9" userLabel="CalendarView" customClass="JTHorizontalCalendarView">
+                                                        <rect key="frame" x="0.0" y="25" width="383" height="254.5"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NbO-cw-QcK" userLabel="tableViewActivities">
-                                                <rect key="frame" x="0.0" y="402" width="383" height="201"/>
+                                                <rect key="frame" x="0.0" y="279.5" width="383" height="279.5"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellPrototypeActivity" id="xXs-KY-Gl3" userLabel="CellPrototypeActivity" customClass="TableViewActivityCell" customModule="PersonalProductivityAssistant" customModuleProvider="target">
@@ -127,7 +135,7 @@
                                         </subviews>
                                     </stackView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-7U-mgS">
-                                        <rect key="frame" x="0.0" y="603" width="383" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="559" width="383" height="44"/>
                                         <items>
                                             <barButtonItem title="Log Time" id="FXj-6K-ONI" userLabel="toolbarButtonLogTime">
                                                 <connections>
