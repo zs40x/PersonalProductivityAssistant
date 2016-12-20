@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JTCalendar
 
 class TableViewActivityCell : UITableViewCell {
     @IBOutlet weak var textViewUntil: UILabel!
@@ -21,6 +22,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     fileprivate let timeLogRepository = TimeLogRepository()
     fileprivate var tableViewTimeLogs = [TimeLog]()
     fileprivate var timeLogToEdit: TimeLog?
+    fileprivate var calendarManager = JTCalendarManager()
     
     enum SegueIdentifier: String {
         case ShowSegueToAddTimeLog
@@ -28,7 +30,7 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     
     @IBOutlet weak var tableViewActivities: UITableView!
-    @IBOutlet weak var calendarView: CalendarView!
+    @IBOutlet weak var calendarView: JTHorizontalCalendarView!
     
     public static var mainViewController: MainViewController?
     
@@ -69,7 +71,8 @@ class MainViewController: UIViewController, SegueHandlerType {
             } else {
                 viewControllerAddTimeLog.timeLogEntityPersistence = AddNewTimeLogEntity()
                 
-                let dateForNewTimeLog = self.calendarView.selectedDates.first ?? Date()
+                
+                /*let dateForNewTimeLog = self.calendarView.selectedDates.first ?? Date()
                 
                 viewControllerAddTimeLog.timeLogDataToEdit =
                     TimeLogData(
@@ -79,7 +82,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                         Until: dateForNewTimeLog,
                         Hidden: NSNumber.bool_false,
                         CloudSyncPending: true,
-                        CloudSyncStatus: .New)
+                        CloudSyncStatus: .New)*/
             }
         }
     }
@@ -99,8 +102,9 @@ class MainViewController: UIViewController, SegueHandlerType {
     // MARK: Helper methods
     func initializeCalendar() {
         
-        calendarView.dataSource = self
-        calendarView.delegate = self
+        calendarManager.delegate = self
+        calendarManager.contentView = self.calendarView
+        calendarManager.setDate(Date())
     }
     
     func deleteTimeLog(_ tableView: UITableView, indexPath: IndexPath) {
@@ -123,8 +127,10 @@ class MainViewController: UIViewController, SegueHandlerType {
         tableViewTimeLogs.remove(at: (indexPath as NSIndexPath).row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
+        /*
+        ToDo Migrate
         calendarView.timeLogs = tableViewTimeLogs
-        calendarView.reloadData()
+        calendarView.reloadData()*/
         
         DispatchQueue.main.async {
             TimeLogsInCK().exportTimeLogsToCK()
@@ -143,11 +149,15 @@ class MainViewController: UIViewController, SegueHandlerType {
         let timeLogsInMonth = timeLogsInMonthResult.value!
         
         self.tableViewTimeLogs = timeLogsInMonth
-        self.calendarView.timeLogs = timeLogsInMonth
+        
+        // ToDo: Migrate
+        //self.calendarView.timeLogs = timeLogsInMonth
         
         DispatchQueue.main.async(execute: {
             self.tableViewActivities.reloadData()
-            self.calendarView.reloadData()
+            
+            // ToDo: Migrate
+            //self.calendarView.reloadData()
         });
     }
     
@@ -242,7 +252,7 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
 }
 
 
-extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
+/*extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
     
     func startDate() -> Date? {
         
@@ -294,8 +304,21 @@ extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
       
         updateViewForDate(date)
     }
-}
+}*/
 
+extension MainViewController : JTCalendarDelegate {
+    
+    func calendar(_ calendar: JTCalendarManager!, prepareDayView dayView: UIView!) {
+     
+        dayView.isHidden = false
+        
+    }
+    
+    func calendar(_ calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
+        
+    }
+    
+}
 
 extension MainViewController : TimeLogEditDelegate {
     
@@ -312,6 +335,7 @@ extension MainViewController : CKDataSyncCompletedDelegate {
     
     func dataSyncCompleted() {
     
-        updateViewForDate(self.calendarView.displayDate!)
+        // ToDo: Migrate
+        //updateViewForDate(self.calendarView.displayDate!)
     }
 }
