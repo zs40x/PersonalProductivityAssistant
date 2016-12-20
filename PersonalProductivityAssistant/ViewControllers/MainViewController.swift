@@ -310,8 +310,13 @@ extension MainViewController : JTCalendarDelegate {
     
     func calendar(_ calendar: JTCalendarManager!, prepareDayView dayView: UIView!) {
      
+        guard let dayView = dayView as? JTCalendarDayView else { return }
+        
         dayView.isHidden = false
         
+        if dayView.isFromAnotherMonth {
+            dayView.textLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        }
     }
     
     func calendar(_ calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
