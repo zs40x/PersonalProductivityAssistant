@@ -317,6 +317,12 @@ extension MainViewController : JTCalendarDelegate {
         if dayView.isFromAnotherMonth {
             dayView.textLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         }
+        else if calendarManager.dateHelper.date(Date(), isTheSameDayThan: dayView.date) {
+            dayView.circleView.isHidden = false
+            dayView.circleView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+            dayView.dotView.isHidden = false
+            dayView.dotView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
     }
     
     func calendar(_ calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
