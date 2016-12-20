@@ -30,6 +30,7 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     
     @IBOutlet weak var tableViewActivities: UITableView!
+    @IBOutlet weak var calendarMenuView: JTCalendarMenuView!
     @IBOutlet weak var calendarView: JTHorizontalCalendarView!
     
     public static var mainViewController: MainViewController?
@@ -106,6 +107,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         calendarManager.delegate = self
         calendarManager.contentView = self.calendarView
+        calendarManager.menuView = self.calendarMenuView
         calendarManager.setDate(Date())
     }
     

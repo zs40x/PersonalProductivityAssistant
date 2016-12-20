@@ -26,14 +26,18 @@
                                 <rect key="frame" x="0.0" y="64" width="383" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lmv-Qg-aof">
-                                        <rect key="frame" x="0.0" y="0.0" width="383" height="559"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="383" height="603"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" userLabel="CalendarView" customClass="JTHorizontalCalendarView">
-                                                <rect key="frame" x="0.0" y="0.0" width="383" height="279.5"/>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" userLabel="CalendarView" customClass="JTCalendarMenuView">
+                                                <rect key="frame" x="0.0" y="0.0" width="383" height="201"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-Cz-ub9" userLabel="CalendarView" customClass="JTHorizontalCalendarView">
+                                                <rect key="frame" x="0.0" y="201" width="383" height="201"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NbO-cw-QcK" userLabel="tableViewActivities">
-                                                <rect key="frame" x="0.0" y="279.5" width="383" height="279.5"/>
+                                                <rect key="frame" x="0.0" y="402" width="383" height="201"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellPrototypeActivity" id="xXs-KY-Gl3" userLabel="CellPrototypeActivity" customClass="TableViewActivityCell" customModule="PersonalProductivityAssistant" customModuleProvider="target">
@@ -123,7 +127,7 @@
                                         </subviews>
                                     </stackView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-7U-mgS">
-                                        <rect key="frame" x="0.0" y="559" width="383" height="44"/>
+                                        <rect key="frame" x="0.0" y="603" width="383" height="0.0"/>
                                         <items>
                                             <barButtonItem title="Log Time" id="FXj-6K-ONI" userLabel="toolbarButtonLogTime">
                                                 <connections>
@@ -152,7 +156,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Time Logs" id="sJp-xU-5aS"/>
                     <connections>
-                        <outlet property="calendarView" destination="zdN-EN-VWL" id="aEE-RV-f00"/>
+                        <outlet property="calendarMenuView" destination="zdN-EN-VWL" id="H0t-Cv-713"/>
+                        <outlet property="calendarView" destination="t1Y-Cz-ub9" id="f3B-Mb-uqW"/>
                         <outlet property="tableViewActivities" destination="NbO-cw-QcK" id="a6f-N7-fzs"/>
                         <segue destination="wEc-tL-ERe" kind="show" identifier="ShowSegueToAddTimeLog" id="yMS-gh-ZoW"/>
                     </connections>
