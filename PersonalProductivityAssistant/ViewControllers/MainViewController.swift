@@ -49,6 +49,8 @@ class MainViewController: UIViewController, SegueHandlerType {
         self.initializeCalendar()
         
         hideNavigationBar()
+    
+        loadTimeLogs(Date())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -137,7 +139,8 @@ class MainViewController: UIViewController, SegueHandlerType {
         }
     }
     
-    func updateViewForDate(_ date: Date) {
+
+    func loadTimeLogs(_ date: Date) {
         
         let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
         
@@ -150,8 +153,9 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         self.tableViewTimeLogs = timeLogsInMonth
         
-        // ToDo: Migrate
-        //self.calendarView.timeLogs = timeLogsInMonth
+    }
+    
+    func refreshControlsAync() {
         
         DispatchQueue.main.async(execute: {
             self.tableViewActivities.reloadData()
@@ -159,7 +163,9 @@ class MainViewController: UIViewController, SegueHandlerType {
             // ToDo: Migrate
             //self.calendarView.reloadData()
         });
+
     }
+    
     
     func loadTimeLogsFromCloudKitAsync() {
         
@@ -323,18 +329,23 @@ extension MainViewController : JTCalendarDelegate {
             dayView.dotView.isHidden = false
             dayView.dotView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
+     
+        
     }
     
     func calendar(_ calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
         
     }
     
+    
+    
 }
 
 extension MainViewController : TimeLogEditDelegate {
     
     func timeLogModified(_ withStartDate: Date) {
-        updateViewForDate(withStartDate)
+        loadTimeLogs(withStartDate)
+        refreshControlsAync()
         
         let timeLogsInCk = TimeLogsInCK()
         timeLogsInCk.exportTimeLogsToCK()
