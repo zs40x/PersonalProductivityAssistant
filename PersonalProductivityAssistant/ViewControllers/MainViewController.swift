@@ -341,8 +341,21 @@ extension MainViewController : JTCalendarDelegate {
         
     }
     
+    func calendar(_ calendar: JTCalendarManager!, dateForNextPageWithCurrentDate currentDate: Date!) -> Date! {
+        NSLog("dateForNextPageWithCurrentDate: \(currentDate)")
+        
+        loadTimeLogs(currentDate)
+        
+        return currentDate.addMonthCount(1)
+    }
     
-    
+    func calendar(_ calendar: JTCalendarManager!, dateForPreviousPageWithCurrentDate currentDate: Date!) -> Date! {
+        NSLog("dateForNextPageWithCurrentDate: \(currentDate)")
+        
+        loadTimeLogs(currentDate)
+        
+        return currentDate.addMonthCount(-1)
+    }
 }
 
 extension MainViewController : TimeLogEditDelegate {
