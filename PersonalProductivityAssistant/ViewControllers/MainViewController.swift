@@ -74,7 +74,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                 viewControllerAddTimeLog.timeLogEntityPersistence = AddNewTimeLogEntity()
                 
                 
-                /*let dateForNewTimeLog = self.calendarView.selectedDates.first ?? Date()
+                let dateForNewTimeLog = calendarManager.date() ?? Date()
                 
                 viewControllerAddTimeLog.timeLogDataToEdit =
                     TimeLogData(
@@ -84,7 +84,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                         Until: dateForNewTimeLog,
                         Hidden: NSNumber.bool_false,
                         CloudSyncPending: true,
-                        CloudSyncStatus: .New)*/
+                        CloudSyncStatus: .New)
             }
         }
     }
@@ -129,12 +129,10 @@ class MainViewController: UIViewController, SegueHandlerType {
         tableViewTimeLogs.remove(at: (indexPath as NSIndexPath).row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
-        /*
-        ToDo Migrate
-        calendarView.timeLogs = tableViewTimeLogs
-        calendarView.reloadData()*/
-        
+    
         DispatchQueue.main.async {
+            self.calendarManager.reload()
+            
             TimeLogsInCK().exportTimeLogsToCK()
         }
     }
@@ -159,9 +157,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         DispatchQueue.main.async(execute: {
             self.tableViewActivities.reloadData()
-            
-            // ToDo: Migrate
-            //self.calendarView.reloadData()
+            self.calendarManager.reload()
         });
 
     }
@@ -258,59 +254,6 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
 }
 
 
-/*extension MainViewController : CalendarViewDataSource, CalendarViewDelegate {
-    
-    func startDate() -> Date? {
-        
-        var dateComponents = DateComponents()
-        dateComponents.month = -1
-        
-        let today = Date()
-        
-        let threeMonthsAgo = (self.calendarView.calendar as Calendar).date(byAdding: dateComponents, to: today)
-        
-        
-        return threeMonthsAgo
-    }
-    
-    func endDate() -> Date? {
-        
-        var dateComponents = DateComponents()
-        
-        dateComponents.year = 2;
-        let today = Date()
-        
-        let twoYearsFromNow = (self.calendarView.calendar as Calendar).date(byAdding: dateComponents, to: today)
-        
-        return twoYearsFromNow
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        
-        super.viewDidLayoutSubviews()
-        
-        let width = self.view.frame.size.width - 16.0 * 2
-        let height = width
-        self.calendarView.frame = CGRect(x: ((self.view.frame.width - width) / 2), y: 0.0, width: width, height: height)
-    }
-    
-    
-    func calendar(_ calendar: CalendarView, didSelectDate date : Date, with selectedTimeLogs: [TimeLog]) {
-        
-        NSLog("Calender.didSelectDate: \(date), with \(selectedTimeLogs.count) timeLogs")
-        
-        self.tableViewTimeLogs = selectedTimeLogs
-        self.tableViewActivities.reloadData()
-    }
-    
-    func calendar(_ calendar: CalendarView, didScrollToMonth date : Date) {
-        
-        NSLog("Calender.didScrollToMonth: \(date)")
-      
-        updateViewForDate(date)
-    }
-}*/
 
 extension MainViewController : JTCalendarDelegate {
     
@@ -374,7 +317,6 @@ extension MainViewController : CKDataSyncCompletedDelegate {
     
     func dataSyncCompleted() {
     
-        // ToDo: Migrate
-        //updateViewForDate(self.calendarView.displayDate!)
+        calendarManager.reload()
     }
 }
