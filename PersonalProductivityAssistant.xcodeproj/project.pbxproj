@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14F54D48A684C2AE364B1C3B /* Pods_PersonalProductivityAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176A954DACCC52B217B669B8 /* Pods_PersonalProductivityAssistant.framework */; };
-		AA2952485001842675320CCE /* Pods_PersonalProductivityAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE69AE76CAEEF2FB7710BCB4 /* Pods_PersonalProductivityAssistantUITests.framework */; };
 		C77E2FDD4475A9D406B39B8B /* Pods_PersonalProductivityAssistantTodayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296C3C9DB990CC6386718191 /* Pods_PersonalProductivityAssistantTodayExtension.framework */; };
-		CCF74AA4C9B63943653CB494 /* Pods_PersonalProductivityAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F432E4FB110C647CA678E2F1 /* Pods_PersonalProductivityAssistantTests.framework */; };
 		D4088EEB1D49ED880059685B /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4088EEA1D49ED880059685B /* CalendarHeaderView.swift */; };
 		D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */; };
 		D4130B371D41D1AE00F08828 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4130B361D41D1AE00F08828 /* UITextView.swift */; };
@@ -86,8 +84,6 @@
 		D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C291D15BD0D0041FCF0 /* TimeLogRepository.swift */; };
 		D4F84C2D1D15BEDB0041FCF0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2C1D15BEDB0041FCF0 /* Result.swift */; };
 		D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F84C2F1D15C76A0041FCF0 /* NSError.swift */; };
-		D4FA29FF1D9CBE7D0044F9F2 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B0BA551D9C3D9C0007E59F /* Charts.framework */; };
-		D4FA2A001D9CBE7D0044F9F2 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4B0BA551D9C3D9C0007E59F /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,27 +129,9 @@
 			remoteGlobalIDString = D4B660521D142AAE000FE897;
 			remoteInfo = PersonalProductivityAssistant;
 		};
-		D4FA2A011D9CBE7D0044F9F2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 06165F231D8110E600722320;
-			remoteInfo = Charts;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D40B48951D6F6C7D00C350C4 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D4FA2A001D9CBE7D0044F9F2 /* Charts.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D46170431DB5481F004EA412 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,7 +152,6 @@
 		4870F3FA869076FE817C3421 /* Pods-PersonalProductivityAssistantTodayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalProductivityAssistantTodayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalProductivityAssistantTodayExtension/Pods-PersonalProductivityAssistantTodayExtension.release.xcconfig"; sourceTree = "<group>"; };
 		79FA1C0148DD39EA941BB6B7 /* Pods-PersonalProductivityAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalProductivityAssistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalProductivityAssistant/Pods-PersonalProductivityAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		947A105826BFE0AAA7923503 /* Pods-PersonalProductivityAssistantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalProductivityAssistantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalProductivityAssistantTests/Pods-PersonalProductivityAssistantTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AE69AE76CAEEF2FB7710BCB4 /* Pods_PersonalProductivityAssistantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalProductivityAssistantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB96B7BD0D1BE124CED04F4 /* Pods-PersonalProductivityAssistantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalProductivityAssistantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalProductivityAssistantUITests/Pods-PersonalProductivityAssistantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C35D1FE29543333B72FB7C25 /* Pods-PersonalProductivityAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalProductivityAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalProductivityAssistant/Pods-PersonalProductivityAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		D4088EEA1D49ED880059685B /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
@@ -246,7 +223,6 @@
 		D4F84C2C1D15BEDB0041FCF0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Utilities/Result.swift; sourceTree = "<group>"; };
 		D4F84C2F1D15C76A0041FCF0 /* NSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSError.swift; path = Utilities/Extensions/NSError.swift; sourceTree = "<group>"; };
 		E33A746ABE533F2731ECDA84 /* Pods-PersonalProductivityAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalProductivityAssistantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalProductivityAssistantTests/Pods-PersonalProductivityAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
-		F432E4FB110C647CA678E2F1 /* Pods_PersonalProductivityAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalProductivityAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A2D1E80913D584CCF32E58 /* Pods-PersonalProductivityAssistantTodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalProductivityAssistantTodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalProductivityAssistantTodayExtension/Pods-PersonalProductivityAssistantTodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,7 +240,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4FA29FF1D9CBE7D0044F9F2 /* Charts.framework in Frameworks */,
 				D41A06C21DB6A3920088745C /* CloudKit.framework in Frameworks */,
 				14F54D48A684C2AE364B1C3B /* Pods_PersonalProductivityAssistant.framework in Frameworks */,
 			);
@@ -274,7 +249,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCF74AA4C9B63943653CB494 /* Pods_PersonalProductivityAssistantTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +256,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA2952485001842675320CCE /* Pods_PersonalProductivityAssistantUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,9 +378,7 @@
 				D41A06C11DB6A3920088745C /* CloudKit.framework */,
 				D46170321DB5481F004EA412 /* NotificationCenter.framework */,
 				176A954DACCC52B217B669B8 /* Pods_PersonalProductivityAssistant.framework */,
-				F432E4FB110C647CA678E2F1 /* Pods_PersonalProductivityAssistantTests.framework */,
 				296C3C9DB990CC6386718191 /* Pods_PersonalProductivityAssistantTodayExtension.framework */,
-				AE69AE76CAEEF2FB7710BCB4 /* Pods_PersonalProductivityAssistantUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -649,7 +620,6 @@
 				D4B6604F1D142AAE000FE897 /* Sources */,
 				D4B660501D142AAE000FE897 /* Frameworks */,
 				D4B660511D142AAE000FE897 /* Resources */,
-				D40B48951D6F6C7D00C350C4 /* Embed Frameworks */,
 				D46170431DB5481F004EA412 /* Embed App Extensions */,
 				75E16F9D181A34393D766E0E /* [CP] Embed Pods Frameworks */,
 				379C81F1226D0480DCB5ED46 /* [CP] Copy Pods Resources */,
@@ -657,7 +627,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D4FA2A021D9CBE7D0044F9F2 /* PBXTargetDependency */,
 				D461703C1DB5481F004EA412 /* PBXTargetDependency */,
 			);
 			name = PersonalProductivityAssistant;
@@ -1127,11 +1096,6 @@
 			isa = PBXTargetDependency;
 			target = D4B660521D142AAE000FE897 /* PersonalProductivityAssistant */;
 			targetProxy = D4B660761D142AAE000FE897 /* PBXContainerItemProxy */;
-		};
-		D4FA2A021D9CBE7D0044F9F2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = D4FA2A011D9CBE7D0044F9F2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

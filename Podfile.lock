@@ -1,12 +1,17 @@
 PODS:
+  - Charts (3.0.1):
+    - Charts/Core (= 3.0.1)
+  - Charts/Core (3.0.1)
   - JTCalendar (2.1.9)
 
 DEPENDENCIES:
+  - Charts
   - JTCalendar (~> 2.0)
 
 SPEC CHECKSUMS:
+  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   JTCalendar: beb2f4c1b639bf6880f680b4858227acf83a049c
 
-PODFILE CHECKSUM: f63973450b835f7a5d10992511b6a51d06ab3ec1
+PODFILE CHECKSUM: 44512f970f60868f03ff52cfefd2432750126cd9
 
 COCOAPODS: 1.0.1

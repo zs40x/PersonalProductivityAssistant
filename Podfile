@@ -7,6 +7,7 @@ target 'PersonalProductivityAssistant' do
 
   # Pods for PersonalProductivityAssistant
   pod 'JTCalendar', '~> 2.0'
+  pod 'Charts'	
 
   target 'PersonalProductivityAssistantTests' do
     inherit! :search_paths
