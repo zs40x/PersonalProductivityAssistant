@@ -296,6 +296,11 @@ extension MainViewController : JTCalendarDelegate {
         
         loadTimeLogs(currentDate)
         
+        DispatchQueue.main.async {
+            [unowned self] in
+            self.tableViewActivities.reloadData()
+        }
+        
         return currentDate.addMonthCount(1)
     }
     
@@ -303,6 +308,11 @@ extension MainViewController : JTCalendarDelegate {
         NSLog("dateForNextPageWithCurrentDate: \(currentDate)")
         
         loadTimeLogs(currentDate)
+        
+        DispatchQueue.main.async {
+            [unowned self] in
+            self.tableViewActivities.reloadData()
+        }
         
         return currentDate.addMonthCount(-1)
     }
