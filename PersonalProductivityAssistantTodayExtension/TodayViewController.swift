@@ -10,6 +10,8 @@ import UIKit
 import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
+    
+    var timeLogsToDispay = [TimeLog]()
         
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,9 +46,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         let result = TimeLogRepository().forMonthOf(Date())
         
-        guard result.isSucessful else { return .failed }
+        guard let timeLogs = result.value else { return .failed }
         
-        guard let firstTimeLog = result.value?.last else { return .noData }
+        for _ in 1..<5 {
+            
+            guard let popped = timeLogs.popLast() else { return }
+            
+            timeLogsToDispay.append(popped)
+        }
+        
+        self.tableView.reloadData()
         
         return .newData
     }
