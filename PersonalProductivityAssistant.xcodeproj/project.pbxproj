@@ -580,7 +580,6 @@
 				D461702C1DB5481F004EA412 /* Sources */,
 				D461702D1DB5481F004EA412 /* Frameworks */,
 				D461702E1DB5481F004EA412 /* Resources */,
-				92C0DF566ABF4CE4CFD3B118 /* [CP] Embed Pods Frameworks */,
 				127B48B3C7740533391E4A8A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -915,21 +914,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalProductivityAssistantTests/Pods-PersonalProductivityAssistantTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		92C0DF566ABF4CE4CFD3B118 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalProductivityAssistantTodayExtension/Pods-PersonalProductivityAssistantTodayExtension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A6CB3F87FFFA3602B653CE77 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1248,7 +1232,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "PersonalProductivityAssistant-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1269,7 +1253,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PersonalProductivityAssistant-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
