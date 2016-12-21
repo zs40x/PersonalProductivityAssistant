@@ -129,10 +129,13 @@ class MainViewController: UIViewController, SegueHandlerType {
         }
         
         tableViewTimeLogs.remove(at: (indexPath as NSIndexPath).row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
         
-    
+        
         DispatchQueue.main.async {
+            [unowned self, indexPathToDelete = indexPath] in
+            
+            tableView.deleteRows(at: [indexPathToDelete], with: .automatic)
+            
             self.calendarManager.reload()
             
             TimeLogsInCK().exportTimeLogsToCK()
