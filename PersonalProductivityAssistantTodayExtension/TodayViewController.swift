@@ -17,7 +17,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,11 +50,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         let result = TimeLogRepository().forMonthOf(Date())
         
-        guard let timeLogs = result.value else { return .failed }
+        guard var timeLogs = result.value else { return .failed }
         
-        for _ in 1..<5 {
+        timeLogsToDispay.removeAll()
+        
+        for _ in 1..<3 {
             
-            guard let popped = timeLogs.popLast() else { return }
+            guard let popped = timeLogs.popLast() else { break }
             
             timeLogsToDispay.append(popped)
         }
@@ -76,5 +82,24 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             _ = updateWidgetContent()
         }
     }
+}
+
+extension TodayViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        
+        cell.textLabel?.text = self.timeLogsToDispay[indexPath.row].activity
+        
+        return cell
+    }
+
+}
+
+extension TodayViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return timeLogsToDispay.count
+    }
 }
