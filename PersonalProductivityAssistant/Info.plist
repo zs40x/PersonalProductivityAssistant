@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ppa</string>
+				<string>personal_productivity_assistant</string>
 			</array>
 		</dict>
 	</array>

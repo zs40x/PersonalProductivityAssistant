@@ -11,7 +11,6 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
-    @IBOutlet weak var labelHelloWorld: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +46,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         guard result.isSucessful else { return .failed }
         
         guard let firstTimeLog = result.value?.last else { return .noData }
-        
-        self.labelHelloWorld.text =
-            "\(firstTimeLog.activity!), \(firstTimeLog.durationInMinutes()) minutes"
         
         return .newData
     }
