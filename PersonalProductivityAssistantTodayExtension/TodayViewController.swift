@@ -28,11 +28,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         _ = updateWidgetContent()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 8.0)
     }
@@ -61,7 +56,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             timeLogsToDispay.append(popped)
         }
         
-        self.tableView.reloadData()
+        tableView.reloadData()
         
         return .newData
     }
@@ -69,14 +64,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBAction func actionStartActivity(_ sender: Any) {
         NSLog("Button add activity clicked")
         
-        let result = TimeLogRepository().addNew(
-                        TimeLogData(Uuid: UUID(),
-                                    Activity: "New activity",
-                                    From: Date(),
-                                    Until: Date(),
-                                    Hidden: NSNumber.bool_false,
-                                    CloudSyncPending: NSNumber.bool_true,
-                                    CloudSyncStatus: .New))
+        let result =
+            TimeLogRepository().addNew(
+                TimeLogData(
+                        Uuid: UUID(),
+                        Activity: "New activity",
+                        From: Date(),
+                        Until: Date(),
+                        Hidden: NSNumber.bool_false,
+                        CloudSyncPending: NSNumber.bool_true,
+                        CloudSyncStatus: .New)
+                    )
         
         if result.isSucessful {
             _ = updateWidgetContent()
@@ -90,7 +88,7 @@ extension TodayViewController: UITableViewDataSource {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         
-        cell.textLabel?.text = self.timeLogsToDispay[indexPath.row].activity
+        cell.textLabel?.text = timeLogsToDispay[indexPath.row].activity
         
         return cell
     }
