@@ -49,6 +49,7 @@
 		D44363731DFF30FF008EAB37 /* TimeLogsInCKDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */; };
 		D44363741DFF3103008EAB37 /* TimeLogsInCKUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */; };
 		D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */; };
+		D457FDE91E0B056F001C76BD /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D436A83C1E02F41A00D4F5B2 /* PPADataModel.xcdatamodeld */; };
 		D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46170321DB5481F004EA412 /* NotificationCenter.framework */; };
 		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
 		D46170391DB5481F004EA412 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46170371DB5481F004EA412 /* MainInterface.storyboard */; };
@@ -968,6 +969,7 @@
 				D41A06BE1DB552040088745C /* String.swift in Sources */,
 				D41A06BF1DB552200088745C /* Config.swift in Sources */,
 				D41A06B21DB551B20088745C /* PPAModel.swift in Sources */,
+				D457FDE91E0B056F001C76BD /* PPADataModel.xcdatamodeld in Sources */,
 				D41A06C01DB5522F0088745C /* HashtagFinder.swift in Sources */,
 				D41A06B91DB551CE0088745C /* TimeLogData.swift in Sources */,
 			);
