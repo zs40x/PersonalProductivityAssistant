@@ -19,14 +19,14 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-xt-Jgz">
-                                <rect key="frame" x="16" y="8" width="288" height="73"/>
+                                <rect key="frame" x="16" y="8" width="288" height="182"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ou-xA-Xwa">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="73"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="152"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cvB-UK-ikU">
@@ -56,8 +56,8 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehQ-Zd-7ti">
-                                        <rect key="frame" x="0.0" y="73" width="288" height="0.0"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehQ-Zd-7ti">
+                                        <rect key="frame" x="0.0" y="152" width="288" height="30"/>
                                         <state key="normal" title="Start activity"/>
                                         <connections>
                                             <action selector="actionStartActivity:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Z8E-15-q2K"/>
@@ -78,7 +78,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="89"/>
+                    <size key="freeformSize" width="320" height="198"/>
                     <connections>
                         <outlet property="tableView" destination="1Ou-xA-Xwa" id="FbX-Zk-XTQ"/>
                     </connections>
