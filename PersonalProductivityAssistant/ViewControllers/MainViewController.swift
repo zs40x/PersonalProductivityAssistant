@@ -128,12 +128,12 @@ class MainViewController: UIViewController, SegueHandlerType {
             NSLog("Updated timeLog as hidden, because it was deleted by the user: \(timeLogToDelete.uuid)")
         }
         
-        tableViewTimeLogs.remove(at: (indexPath as NSIndexPath).row)
         
         
         DispatchQueue.main.async {
-            [unowned self, indexPathToDelete = indexPath] in
+            [unowned self, tableView = tableView, indexPathToDelete = indexPath] in
             
+            self.tableViewTimeLogs.remove(at: (indexPathToDelete as NSIndexPath).row)
             tableView.deleteRows(at: [indexPathToDelete], with: .automatic)
             
             self.calendarManager.reload()
@@ -267,6 +267,8 @@ extension MainViewController : JTCalendarDelegate {
         guard let dayView = dayView as? JTCalendarDayView else { return }
         
         dayView.isHidden = false
+        dayView.dotView.isHidden = true
+        dayView.circleView.isHidden = true
         
         if dayView.isFromAnotherMonth {
             dayView.textLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
