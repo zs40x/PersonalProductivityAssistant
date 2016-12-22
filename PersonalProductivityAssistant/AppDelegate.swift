@@ -71,6 +71,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        NSLog("App was opened with url \(url)")
+        
+        guard url.host == "show" else { return false }
+        guard url.path == "/uuid" else { return false }
+        guard let uuid = url.query else { return false }
+        
+        NSLog("Opened app via URL with uuid: \(uuid)")
+        
+        return true
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         guard let stringUserInfo = userInfo as? [String : NSObject] else {
