@@ -124,7 +124,7 @@ extension TodayViewController : UITableViewDelegate {
         
         guard let selectedTimeLogUuid = timeLogsToDispay[indexPath.row].uuid else { return }
         
-        guard let url = URL(string: "ppa://") else { return }
+        guard let url = URL(string: "ppa://show/uuid?\(selectedTimeLogUuid)") else { return }
         
         extensionContext?.open(url, completionHandler: { (success) in
             if (!success) {
