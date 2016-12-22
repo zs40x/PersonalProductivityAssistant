@@ -22,6 +22,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         tableView.dataSource = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        self.extensionContext?.widgetLargestAvailableDisplayMode = NCWidgetDisplayMode.expanded
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +36,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
        
-        if (activeDisplayMode == NCWidgetDisplayMode.compact) {
+        if (activeDisplayMode == NCWidgetDisplayMode.expanded) {
             preferredContentSize = maxSize;
             return
         }
