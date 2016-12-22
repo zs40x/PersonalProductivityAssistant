@@ -23,10 +23,14 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>de.sme.ppa.personal_productivity_assistant</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>personal_productivity_assistant</string>
 			</array>
+			<key>uuid</key>
+			<string></string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
