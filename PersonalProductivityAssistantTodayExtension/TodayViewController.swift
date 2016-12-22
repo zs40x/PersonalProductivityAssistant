@@ -27,6 +27,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        NSLog("viewWillAppear()")
+        
         _ = updateWidgetContent()
     }
     
@@ -35,6 +38,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        
+        NSLog("widgetActiveDisplayModeDidChange()")
        
         guard activeDisplayMode == NCWidgetDisplayMode.expanded else { return }
             
@@ -44,6 +49,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
         
+        NSLog("widgetPerformUpdate()")
+        
         DispatchQueue.main.async {
             [unowned self] in
             
@@ -52,6 +59,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func updateWidgetContent() -> NCUpdateResult {
+        
+        NSLog("updateWidgetContent()")
         
         let result = TimeLogRepository().forMonthOf(Date())
         
@@ -109,5 +118,21 @@ extension TodayViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return timeLogsToDispay.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let selectedTimeLogUuid = timeLogsToDispay[indexPath.row].uuid else { return }
+        
+        guard let url = URL(string: "personal_productivity_assistant://\(selectedTimeLogUuid)") else { return }
+        
+        extensionContext?.open(url, completionHandler: { (success) in
+            if (!success) {
+                NSLog("Failed to open app with URL \(url)")
+                return
+            }
+            
+            NSLog("Opened app with URL \(url)")
+        })
     }
 }
