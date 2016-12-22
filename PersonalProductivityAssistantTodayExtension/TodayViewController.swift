@@ -59,7 +59,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         timeLogsToDispay.removeAll()
         
-        for _ in 1..<3 {
+        for _ in 1..<4 {
             
             guard let popped = timeLogs.popLast() else { break }
             
