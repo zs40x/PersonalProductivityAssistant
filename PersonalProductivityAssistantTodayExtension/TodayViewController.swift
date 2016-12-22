@@ -36,12 +36,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
        
-        if (activeDisplayMode == NCWidgetDisplayMode.expanded) {
-            preferredContentSize = maxSize;
-            return
-        }
+        guard activeDisplayMode == NCWidgetDisplayMode.expanded else { return }
+            
+        preferredContentSize = CGSize(width: 0, height: 175)
         
-        preferredContentSize = CGSize(width: 0, height: 200)
     }
     
     func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
