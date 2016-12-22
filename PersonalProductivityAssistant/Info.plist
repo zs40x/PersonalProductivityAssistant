@@ -27,10 +27,8 @@
 			<string>de.sme.ppa.personal_productivity_assistant</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>personal_productivity_assistant</string>
+				<string>ppa</string>
 			</array>
-			<key>uuid</key>
-			<string></string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
