@@ -314,6 +314,27 @@ extension MainViewController : JTCalendarDelegate {
     
     func calendar(_ calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {
         
+        guard let dayView = dayView as? JTCalendarDayView else { return }
+        
+        NSLog("calendar.didTouchDayView: \(dayView.date)")
+        
+        DispatchQueue.main.async {
+            [unowned self, dayView] in
+            
+            let timeLogSelectResult = TimeLogRepository().forMonthOf(dayView.date)
+            
+            guard let selectedTimeLogs = timeLogSelectResult.value else {
+                NSLog("Error selecting timeLogs for month of date \(dayView.date): \(timeLogSelectResult.errorMessage)")
+                return
+            }
+            
+            self.tableViewTimeLogs =
+                selectedTimeLogs.filter({
+                    self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
+                })
+            
+            self.refreshControlsAync()
+        }
     }
     
     func calendar(_ calendar: JTCalendarManager!, dateForNextPageWithCurrentDate currentDate: Date!) -> Date! {
