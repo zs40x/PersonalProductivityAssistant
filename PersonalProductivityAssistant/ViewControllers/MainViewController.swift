@@ -23,6 +23,8 @@ class MainViewController: UIViewController, SegueHandlerType {
     fileprivate var tableViewTimeLogs = [TimeLog]()
     fileprivate var timeLogToEdit: TimeLog?
     fileprivate var calendarManager = JTCalendarManager()
+    fileprivate var lastCurrentDate: Date?
+    
     
     enum SegueIdentifier: String {
         case ShowSegueToAddTimeLog
@@ -338,29 +340,44 @@ extension MainViewController : JTCalendarDelegate {
     }
     
     func calendar(_ calendar: JTCalendarManager!, dateForNextPageWithCurrentDate currentDate: Date!) -> Date! {
+        
         NSLog("dateForNextPageWithCurrentDate: \(currentDate)")
         
-        loadTimeLogs(currentDate)
-        
-        DispatchQueue.main.async {
-            [unowned self] in
-            self.tableViewActivities.reloadData()
-        }
+        self.reloadIfMonthChanged(currentDate: currentDate)
         
         return currentDate.addMonthCount(1)
     }
     
     func calendar(_ calendar: JTCalendarManager!, dateForPreviousPageWithCurrentDate currentDate: Date!) -> Date! {
+        
         NSLog("dateForNextPageWithCurrentDate: \(currentDate)")
         
-        loadTimeLogs(currentDate)
+        self.reloadIfMonthChanged(currentDate: currentDate)
+        
+        return currentDate.addMonthCount(-1)
+    }
+    
+    private func reloadIfMonthChanged(currentDate: Date) {
+        
+        if let lastCurrentDate = self.lastCurrentDate {
+            if calendarManager.dateHelper.date(lastCurrentDate, isTheSameDayThan: currentDate) {
+                return
+            }
+        }
+        
+        NSLog("Reloading, currentDate has changed")
         
         DispatchQueue.main.async {
-            [unowned self] in
+            [unowned self, currentDate] in
+            
+            
+            self.loadTimeLogs(currentDate)
+        
+            
             self.tableViewActivities.reloadData()
         }
         
-        return currentDate.addMonthCount(-1)
+        self.lastCurrentDate = currentDate
     }
 }
 
