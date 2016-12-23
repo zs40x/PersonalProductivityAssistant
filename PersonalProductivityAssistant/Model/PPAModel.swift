@@ -141,6 +141,22 @@ internal class TimeLogModel : AbstractModel {
         }
     }
     
+    func getLatestTimeLogs(count: Int) throws -> [TimeLog] {
+    
+        let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
+    
+        request.sortDescriptors = [NSSortDescriptor(key: "from", ascending: true)]
+        request.fetchLimit = count
+    
+        do {
+            return try managedObjectContext.fetch(request)
+        }
+        catch let error as NSError {
+        NSLog("Error fetching: %@", error)
+            throw error
+        }
+    }
+    
     func getTimeLogByUuid(uuid: UUID) throws -> TimeLog? {
         
         let request = NSFetchRequest<TimeLog>(entityName: TimeLog.EntityName)
