@@ -161,6 +161,8 @@ class MainViewController: UIViewController, SegueHandlerType {
     func refreshControlsAync() {
         
         DispatchQueue.main.async(execute: {
+            [unowned self] in
+            
             self.tableViewActivities.reloadData()
             self.calendarManager.reload()
         });
@@ -185,6 +187,9 @@ class MainViewController: UIViewController, SegueHandlerType {
             }
             
             NSLog("Will prepare view to see timeLog with from date \(fromDate)")
+            
+            self.loadTimeLogs(fromDate)
+            self.refreshControlsAync()
         }
     }
     
