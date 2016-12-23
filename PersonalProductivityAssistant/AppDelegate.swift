@@ -81,6 +81,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         NSLog("Opened app via URL with uuid: \(uuid)")
         
+        guard let mainViewController = MainViewController.mainViewController else { return false }
+        
+        mainViewController.setUuidVisible(uuid)
+        
         return true
     }
     

@@ -167,6 +167,26 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     }
     
+    func setUuidVisible(_ uuid: String) {
+        
+        NSLog("MainViewController.setUuidVisiuble(\(uuid))")
+        
+        DispatchQueue.main.async {
+            [unowned self] in
+            
+            guard let uuid = UUID.init(uuidString: uuid) else { return }
+            guard let requestTimeLog = TimeLogRepository().withUUID(uuid: uuid).value else {
+                NSLog("Requeset timeLog not found, uuid was: \(uuid)")
+                return
+            }
+            guard let fromDate = requestTimeLog?.from else {
+                NSLog("TimeLog has no from date")
+                return
+            }
+            
+            NSLog("Will prepare view to see timeLog with from date \(fromDate)")
+        }
+    }
     
     func loadTimeLogsFromCloudKitAsync() {
         
