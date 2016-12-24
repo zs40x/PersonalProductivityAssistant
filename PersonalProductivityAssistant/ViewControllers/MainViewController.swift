@@ -171,7 +171,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     func refreshControls() {
         
-        NSLog("refreshControlsAsync")
+        NSLog("refreshControls")
             
         self.tableViewActivities.reloadData()
             
@@ -302,8 +302,6 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
         }
     }
 }
-
-
 
 extension MainViewController : JTCalendarDelegate {
     
