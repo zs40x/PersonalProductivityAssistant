@@ -181,6 +181,7 @@
                     <connections>
                         <outlet property="calendarMenuView" destination="zdN-EN-VWL" id="H0t-Cv-713"/>
                         <outlet property="calendarView" destination="t1Y-Cz-ub9" id="f3B-Mb-uqW"/>
+                        <outlet property="displayDateRange" destination="RlE-5B-rtI" id="HgY-Ga-I0a"/>
                         <outlet property="tableViewActivities" destination="NbO-cw-QcK" id="a6f-N7-fzs"/>
                         <segue destination="wEc-tL-ERe" kind="show" identifier="ShowSegueToAddTimeLog" id="yMS-gh-ZoW"/>
                     </connections>

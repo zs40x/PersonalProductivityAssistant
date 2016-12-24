@@ -35,6 +35,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     @IBOutlet weak var tableViewActivities: UITableView!
     @IBOutlet weak var calendarMenuView: JTCalendarMenuView!
     @IBOutlet weak var calendarView: JTHorizontalCalendarView!
+    @IBOutlet weak var displayDateRange: UILabel!
     
     public static var mainViewController: MainViewController?
     
