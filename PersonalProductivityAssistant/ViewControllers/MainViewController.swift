@@ -176,6 +176,8 @@ class MainViewController: UIViewController, SegueHandlerType {
         DispatchQueue.main.async(execute: {
             [unowned self] in
             
+            NSLog("refreshControlsAsync")
+            
             self.tableViewActivities.reloadData()
             self.calendarManager.reload()
             self.updateDisplayedDateRange()
@@ -392,7 +394,7 @@ extension MainViewController : JTCalendarDelegate {
     private func reloadIfMonthChanged(currentDate: Date) {
         
         DispatchQueue.main.async {
-            [unowned self] in
+            [unowned self, currentDate] in
             
             if let lastCurrentDate = self.lastCurrentDate {
                 if self.calendarManager.dateHelper.date(lastCurrentDate, isTheSameDayThan: currentDate) {
@@ -402,11 +404,12 @@ extension MainViewController : JTCalendarDelegate {
         
             NSLog("Reloading, currentDate has changed")
             
+            self.tappedDay = nil
             self.loadTimeLogs(currentDate)
             self.refreshControlsAync()
+            
+            self.lastCurrentDate = currentDate
         }
-        
-        self.lastCurrentDate = currentDate
     }
 }
 
