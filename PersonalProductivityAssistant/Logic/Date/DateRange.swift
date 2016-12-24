@@ -28,7 +28,7 @@ class DateRange {
             return "\(dayOfFrom()). - \(until.asFormattedString(format: Config.shortDateFormat))"
         }
         
-        return ""
+        return "- not implemented - "
     }
     
     func sameDay() -> Bool {
