@@ -394,7 +394,6 @@ extension MainViewController : JTCalendarDelegate {
         
             NSLog("Reloading, currentDate has changed")
             
-            self.tappedDay = nil
             self.lastCurrentDate = currentDate
             self.loadTimeLogs(currentDate)
             self.refreshControls()
