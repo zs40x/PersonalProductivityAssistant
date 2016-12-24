@@ -85,7 +85,7 @@ class MainViewController: UIViewController, SegueHandlerType {
                 viewControllerAddTimeLog.timeLogEntityPersistence = AddNewTimeLogEntity()
                 
                 
-                let dateForNewTimeLog = calendarManager.date() ?? Date()
+                let dateForNewTimeLog = self.tappedDay ?? Date()
                 
                 viewControllerAddTimeLog.timeLogDataToEdit =
                     TimeLogData(
