@@ -351,12 +351,17 @@ extension MainViewController : JTCalendarDelegate {
             
             self.tappedDay = dayView.date
             
-            self.tableViewTimeLogs =
-                self.timeLogsOfTheCurrentMonth.filter({
-                    self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
-                })
+            if self.calendarManager.dateHelper.date(self.lastCurrentDate, isTheSameMonthThan: dayView.date) {
+                
+                self.tableViewTimeLogs =
+                    self.timeLogsOfTheCurrentMonth.filter({
+                        self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
+                    })
+                
+                self.refreshControlsAync()
+                return
+            }
             
-            self.refreshControlsAync()
         }
     }
     
