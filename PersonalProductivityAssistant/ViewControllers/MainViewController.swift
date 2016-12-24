@@ -354,8 +354,11 @@ extension MainViewController : JTCalendarDelegate {
             if !self.calendarManager.dateHelper.date(self.lastCurrentDate, isTheSameMonthThan: dayView.date) {
                 NSLog("Selected a day in another month, updateing view")
                 
-                self.calendarManager.setDate(dayView.date)
-                self.refreshControlsAync()
+                if self.lastCurrentDate!.compare(dayView.date) == .orderedAscending {
+                    self.calendarView.loadNextPageWithAnimation()
+                } else {
+                    self.calendarView.loadPreviousPageWithAnimation()
+                }
                 return
             }
             
