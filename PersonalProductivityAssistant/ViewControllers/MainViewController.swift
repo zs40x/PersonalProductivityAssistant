@@ -401,10 +401,9 @@ extension MainViewController : JTCalendarDelegate {
             NSLog("Reloading, currentDate has changed")
             
             self.tappedDay = nil
+            self.lastCurrentDate = currentDate
             self.loadTimeLogs(currentDate)
             self.refreshControlsAync()
-            
-            self.lastCurrentDate = currentDate
         }
     }
 }
@@ -424,7 +423,12 @@ extension MainViewController : TimeLogEditDelegate {
 extension MainViewController : CKDataSyncCompletedDelegate {
     
     func dataSyncCompleted() {
-    
-        calendarManager.reload()
+        
+        DispatchQueue.main.async {
+            [unowned self] in
+            
+            self.loadTimeLogs(Date())
+            self.refreshControlsAync()
+        }
     }
 }
