@@ -354,7 +354,7 @@ extension MainViewController : JTCalendarDelegate {
             self.tappedDay = dayView.date
             
             if !self.calendarManager.dateHelper.date(self.lastCurrentDate, isTheSameMonthThan: dayView.date) {
-                NSLog("Selected a day in another month, updateing view")
+                NSLog("Selected a day in another month, updating view")
                 
                 if self.lastCurrentDate!.compare(dayView.date) == .orderedAscending {
                     self.calendarView.loadNextPageWithAnimation()
@@ -375,16 +375,12 @@ extension MainViewController : JTCalendarDelegate {
     
     func calendar(_ calendar: JTCalendarManager!, dateForNextPageWithCurrentDate currentDate: Date!) -> Date! {
         
-        NSLog("dateForNextPageWithCurrentDate: \(currentDate)")
-        
         self.reloadIfMonthChanged(currentDate: currentDate)
         
         return currentDate.addMonthCount(1)
     }
     
     func calendar(_ calendar: JTCalendarManager!, dateForPreviousPageWithCurrentDate currentDate: Date!) -> Date! {
-        
-        NSLog("dateForNextPageWithCurrentDate: \(currentDate)")
         
         self.reloadIfMonthChanged(currentDate: currentDate)
         
