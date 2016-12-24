@@ -51,6 +51,7 @@
 		D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */; };
 		D457FDE91E0B056F001C76BD /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D436A83C1E02F41A00D4F5B2 /* PPADataModel.xcdatamodeld */; };
 		D457FDEC1E0E2EE8001C76BD /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457FDEB1E0E2EE8001C76BD /* DateRange.swift */; };
+		D457FDEF1E0E306C001C76BD /* DateRange_asString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457FDEE1E0E306C001C76BD /* DateRange_asString.swift */; };
 		D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46170321DB5481F004EA412 /* NotificationCenter.framework */; };
 		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
 		D46170391DB5481F004EA412 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46170371DB5481F004EA412 /* MainInterface.storyboard */; };
@@ -176,6 +177,7 @@
 		D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogPersistence.swift; path = ViewControllers/Shared/TimeLogPersistence.swift; sourceTree = "<group>"; };
 		D45027281DC28C9D00B9251F /* PersonalProductivityAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalProductivityAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
 		D457FDEB1E0E2EE8001C76BD /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateRange.swift; path = Logic/Date/DateRange.swift; sourceTree = "<group>"; };
+		D457FDEE1E0E306C001C76BD /* DateRange_asString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange_asString.swift; sourceTree = "<group>"; };
 		D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalProductivityAssistantTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46170321DB5481F004EA412 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		D46170351DB5481F004EA412 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		D41726E81D28F04F002F15A4 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				D457FDED1E0E305B001C76BD /* Date */,
 				D41726E91D28F057002F15A4 /* Hashtags */,
 			);
 			name = Logic;
@@ -371,6 +374,14 @@
 			isa = PBXGroup;
 			children = (
 				D457FDEB1E0E2EE8001C76BD /* DateRange.swift */,
+			);
+			name = Date;
+			sourceTree = "<group>";
+		};
+		D457FDED1E0E305B001C76BD /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				D457FDEE1E0E306C001C76BD /* DateRange_asString.swift */,
 			);
 			name = Date;
 			sourceTree = "<group>";
@@ -1026,6 +1037,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4355E781D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift in Sources */,
+				D457FDEF1E0E306C001C76BD /* DateRange_asString.swift in Sources */,
 				D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */,
 				D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */,
 				D4355E761D38D1A0000F678A /* HashtagAutoCompleteAssistant_isAutocompletePossible_Tests.swift in Sources */,
@@ -1269,6 +1281,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PersonalProductivityAssistantTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1283,6 +1296,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PersonalProductivityAssistantTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sme.PersonalProductivityAssistantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
