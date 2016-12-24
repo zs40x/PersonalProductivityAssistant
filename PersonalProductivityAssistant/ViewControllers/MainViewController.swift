@@ -371,20 +371,6 @@ extension MainViewController : JTCalendarDelegate {
         }
     }
     
-    func calendar(_ calendar: JTCalendarManager!, dateForNextPageWithCurrentDate currentDate: Date!) -> Date! {
-        
-        //self.reloadIfMonthChanged(currentDate: currentDate)
-        
-        return currentDate.addMonthCount(1)
-    }
-    
-    func calendar(_ calendar: JTCalendarManager!, dateForPreviousPageWithCurrentDate currentDate: Date!) -> Date! {
-        
-        //self.reloadIfMonthChanged(currentDate: currentDate)
-        
-        return currentDate.addMonthCount(-1)
-    }
-    
     func calendarDidLoadNextPage(_ calendar: JTCalendarManager!) {
         
         self.reloadIfMonthChanged(currentDate: calendar.date())
