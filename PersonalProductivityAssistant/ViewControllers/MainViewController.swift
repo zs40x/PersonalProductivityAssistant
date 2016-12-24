@@ -172,16 +172,17 @@ class MainViewController: UIViewController, SegueHandlerType {
             
             self.tableViewActivities.reloadData()
             self.calendarManager.reload()
+            self.updateDisplayedDateRange()
         });
 
     }
     
-    private func updateSelectedDateRange() {
+    private func updateDisplayedDateRange() {
         
         guard let firstTimeLogFrom = timeLogsOfTheCurrentMonth.first?.from else { return }
         guard let lastTimeLogFrom = timeLogsOfTheCurrentMonth.last?.from else { return }
         
-        
+        displayDateRange.text = DateRange(from: firstTimeLogFrom, until: lastTimeLogFrom).asString()
     }
     
     func setUuidVisible(_ uuid: String) {
