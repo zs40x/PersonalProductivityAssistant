@@ -45,6 +45,8 @@ class MainViewController: UIViewController, SegueHandlerType {
         MainViewController.mainViewController = self
         self.automaticallyAdjustsScrollViewInsets = false
         
+        self.initializeCalendar()
+        
         loadTimeLogsFromCloudKitAsync()
     }
     
@@ -55,9 +57,9 @@ class MainViewController: UIViewController, SegueHandlerType {
             [unowned self] in
             
             self.loadTimeLogs(Date())
-            self.initializeCalendar()
             self.hideNavigationBar()
-            self.updateDisplayedDateRange()
+            
+            self.refreshControlsAync()
         }
     }
     
