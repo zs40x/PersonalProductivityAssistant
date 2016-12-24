@@ -20,6 +20,26 @@ class DateRange {
     
     func asString() -> String {
         
-        return from.asFormattedString(format: Config.shortDateFormat)
+        if sameDay() {
+            return from.asFormattedString(format: Config.shortDateFormat)
+        }
+        
+        if sameMonth() {
+            return "\(dayOfFrom()). - \(until.asFormattedString(format: Config.shortDateFormat))"
+        }
+        
+        return ""
+    }
+    
+    func sameDay() -> Bool {
+        return Calendar.current.compare(from, to: until, toGranularity: .day) == .orderedSame
+    }
+    
+    func sameMonth() -> Bool {
+        return Calendar.current.compare(from, to: until, toGranularity: .month) == .orderedSame
+    }
+    
+    func dayOfFrom() -> String {
+        return String(Calendar.current.dateComponents([.day], from: from).day!)
     }
 }
