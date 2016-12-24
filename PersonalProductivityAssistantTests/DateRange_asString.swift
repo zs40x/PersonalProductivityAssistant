@@ -15,6 +15,13 @@ class DateRange_asStringTest: XCTestCase {
     
     func testSameDay_onlyTheFirstDate() {
         
-        XCTAssertEqual("24.12.2106", DateRange(from: Date., until: <#T##Date#>)
+        let christmasDay = Date.makeDateFromComponents(day: 24, month: 12, year: 2016)
+        
+        XCTAssertEqual("24.12.2106", exerciseAndReturnFormattedDate(from: christmasDay, until: christmasDay))
+    }
+    
+    private func exerciseAndReturnFormattedDate(from: Date, until: Date) -> String {
+        
+        return DateRange(from: from, until: until).asString()
     }
 }

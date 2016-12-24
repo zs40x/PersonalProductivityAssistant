@@ -47,7 +47,7 @@ extension Date {
         return (calendar as NSCalendar).date(byAdding: .month, value: monthCount, to: self, options: [])!
     }
     
-    func makeDateFromComponents(_ day: Int, month: Int, year: Int) -> Date {
+    static func makeDateFromComponents(day: Int, month: Int, year: Int) -> Date {
         
         let calendar = Calendar.current
         
