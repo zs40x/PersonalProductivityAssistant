@@ -113,10 +113,12 @@ class MainViewController: UIViewController, SegueHandlerType {
     // MARK: Helper methods
     func initializeCalendar() {
         
+        self.lastCurrentDate = Date()
+        
         calendarManager.delegate = self
         calendarManager.contentView = self.calendarView
         calendarManager.menuView = self.calendarMenuView
-        calendarManager.setDate(Date())
+        calendarManager.setDate(self.lastCurrentDate)
     }
     
     func deleteTimeLog(_ tableView: UITableView, indexPath: IndexPath) {
@@ -349,12 +351,14 @@ extension MainViewController : JTCalendarDelegate {
         DispatchQueue.main.async {
             [unowned self, dayView] in
             
-            self.tappedDay = dayView.date
+            guard let tappedDay = dayView.date else { return }
+            
+            self.tappedDay = tappedDay
             
             if !self.calendarManager.dateHelper.date(self.lastCurrentDate, isTheSameMonthThan: dayView.date) {
                 NSLog("Selected a day in another month, updating view")
                 
-                if self.lastCurrentDate!.compare(dayView.date) == .orderedAscending {
+                if dayView.date!.compare(self.lastCurrentDate ?? Date()) == .orderedAscending {
                     self.calendarView.loadNextPageWithAnimation()
                 } else {
                     self.calendarView.loadPreviousPageWithAnimation()
