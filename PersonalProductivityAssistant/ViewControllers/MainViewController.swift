@@ -368,6 +368,7 @@ extension MainViewController : JTCalendarDelegate {
                 })
             
             self.refreshControls()
+            self.calendarManager.reload()
         }
     }
     
