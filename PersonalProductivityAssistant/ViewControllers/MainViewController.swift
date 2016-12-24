@@ -51,11 +51,14 @@ class MainViewController: UIViewController, SegueHandlerType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadTimeLogs(Date())
-        
-        initializeCalendar()
-        
-        hideNavigationBar()
+        DispatchQueue.main.async {
+            [unowned self] in
+            
+            self.loadTimeLogs(Date())
+            self.initializeCalendar()
+            self.hideNavigationBar()
+            self.updateDisplayedDateRange()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
