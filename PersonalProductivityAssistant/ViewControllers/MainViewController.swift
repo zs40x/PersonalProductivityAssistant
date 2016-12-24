@@ -367,11 +367,7 @@ extension MainViewController : JTCalendarDelegate {
                     self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
                 })
             
-            DispatchQueue.main.async {
-                [unowned self] in
-                
-                self.refreshControls()
-            }
+            self.refreshControls()
         }
     }
     
