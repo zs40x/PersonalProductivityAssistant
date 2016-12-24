@@ -179,8 +179,8 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     private func updateDisplayedDateRange() {
         
-        guard let firstTimeLogFrom = timeLogsOfTheCurrentMonth.first?.from else { return }
-        guard let lastTimeLogFrom = timeLogsOfTheCurrentMonth.last?.from else { return }
+        guard let firstTimeLogFrom = tableViewTimeLogs.first?.from else { return }
+        guard let lastTimeLogFrom = tableViewTimeLogs.last?.from else { return }
         
         displayDateRange.text = DateRange(from: firstTimeLogFrom, until: lastTimeLogFrom).asString()
     }
