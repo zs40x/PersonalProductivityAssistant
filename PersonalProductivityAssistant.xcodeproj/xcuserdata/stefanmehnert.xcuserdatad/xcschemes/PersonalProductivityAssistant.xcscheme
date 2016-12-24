@@ -38,16 +38,6 @@
                ReferencedContainer = "container:PersonalProductivityAssistant.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D4B660741D142AAE000FE897"
-               BuildableName = "PersonalProductivityAssistantUITests.xctest"
-               BlueprintName = "PersonalProductivityAssistantUITests"
-               ReferencedContainer = "container:PersonalProductivityAssistant.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
