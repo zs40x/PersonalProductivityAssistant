@@ -21,7 +21,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     fileprivate let timeLogRepository = TimeLogRepository()
     fileprivate var tableViewTimeLogs = [TimeLog]()
-    fileprivate var timeLogsOfTheCurrentMonth = [TimeLog]()
+    fileprivate var currentLoadedTimeLogs = [TimeLog]()
     fileprivate var timeLogToEdit: TimeLog?
     fileprivate var calendarManager = JTCalendarManager()
     fileprivate var lastCurrentDate: Date?
@@ -144,8 +144,8 @@ class MainViewController: UIViewController, SegueHandlerType {
             self.tableViewTimeLogs.remove(at: (indexPathToDelete as NSIndexPath).row)
             tableView.deleteRows(at: [indexPathToDelete], with: .automatic)
             
-            self.timeLogsOfTheCurrentMonth =
-                self.timeLogsOfTheCurrentMonth.filter({ $0.uuid != uuid })
+            self.currentLoadedTimeLogs =
+                self.currentLoadedTimeLogs.filter({ $0.uuid != uuid })
             
             self.refreshControls()
             
@@ -163,10 +163,12 @@ class MainViewController: UIViewController, SegueHandlerType {
             return
         }
     
-        self.timeLogsOfTheCurrentMonth = timeLogsInMonthResult.value!
+        self.currentLoadedTimeLogs = timeLogsInMonthResult.value!
         
-        self.tableViewTimeLogs = self.timeLogsOfTheCurrentMonth
-        
+        self.tableViewTimeLogs =
+            self.currentLoadedTimeLogs.filter({
+                $0.from! >= date.startOfMonth() && $0.from! <= date.endOfMonth()
+            })
     }
     
     func refreshControls() {
@@ -316,7 +318,7 @@ extension MainViewController : JTCalendarDelegate {
             return
         }
             
-        if let _ = timeLogsOfTheCurrentMonth.filter({
+        if let _ = currentLoadedTimeLogs.filter({
             calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date) }
             ).first {
             dayView.dotView.isHidden = false
@@ -361,7 +363,7 @@ extension MainViewController : JTCalendarDelegate {
             }
             
             self.tableViewTimeLogs =
-                self.timeLogsOfTheCurrentMonth.filter({
+                self.currentLoadedTimeLogs.filter({
                     self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
                 })
             

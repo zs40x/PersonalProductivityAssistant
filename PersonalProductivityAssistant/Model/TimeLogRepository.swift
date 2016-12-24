@@ -31,8 +31,8 @@ open class TimeLogRepository {
     func forMonthOf(_ date: Date) -> ResultValue<[TimeLog]> {
         
         do {
-            let firstOfMonthDate = date.firstDayOfMonth().addMonthCount(-1)
-            let firstOfNextMonthDate = firstOfMonthDate.addMonthCount(3)
+            let firstOfMonthDate = date.startOfMonth().addMonthCount(-1)
+            let firstOfNextMonthDate = firstOfMonthDate.addMonthCount(3).endOfMonth()
             
             print("TimeLogRepository.forMonthOf() ->  >= \(firstOfMonthDate) && < \(firstOfNextMonthDate)")
             

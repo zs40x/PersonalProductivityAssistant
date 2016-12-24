@@ -26,18 +26,22 @@ extension Date {
         return dayRange.length
     }
     
-    func firstDayOfMonth() -> Date {
+    func startOfMonth() -> Date {
+        // ToDo - timeZone!?
+        let startOfMonthDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
         
-        let calendar = Calendar.current
-        
-        let startOfMonthDateComponents = (calendar as NSCalendar).components([.year, .month], from: self)
-        
-        let startOfMonthDate = calendar.date(from: startOfMonthDateComponents)!
-        
-        let startOfMonthDateMidnight =
-            (calendar as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: startOfMonthDate, options: [])!
+        let startOfMonthDateMidnight = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: startOfMonthDate)!
         
         return startOfMonthDateMidnight
+    }
+    
+    func endOfMonth() -> Date {
+        // ToDo - timeZone!?
+        let endOfMonthDate = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+        
+        let endOfMontDateMidnight = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: endOfMonthDate)!
+        
+        return endOfMontDateMidnight
     }
     
     func addMonthCount(_ monthCount: Int) -> Date {
