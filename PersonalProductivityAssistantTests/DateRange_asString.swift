@@ -15,6 +15,6 @@ class DateRange_asStringTest: XCTestCase {
     
     func testSameDay_onlyTheFirstDate() {
         
-        
+        XCTAssertEqual("24.12.2106", DateRange(from: Date., until: <#T##Date#>)
     }
 }
