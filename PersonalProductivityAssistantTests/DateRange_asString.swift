@@ -17,7 +17,7 @@ class DateRange_asStringTest: XCTestCase {
         
         let christmasDay = Date.makeDateFromComponents(day: 24, month: 12, year: 2016)
         
-        XCTAssertEqual("24.12.2106", exerciseAndReturnFormattedDate(from: christmasDay, until: christmasDay))
+        XCTAssertEqual("24.12.2016", exerciseAndReturnFormattedDate(from: christmasDay, until: christmasDay))
     }
     
     private func exerciseAndReturnFormattedDate(from: Date, until: Date) -> String {

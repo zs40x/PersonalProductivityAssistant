@@ -20,6 +20,6 @@ class DateRange {
     
     func asString() -> String {
         
-        return ""
+        return from.asFormattedString(format: Config.shortDateFormat)
     }
 }

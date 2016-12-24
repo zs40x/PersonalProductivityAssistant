@@ -10,7 +10,7 @@ import Foundation
 
 extension Date {
     
-    func asFormattedString(_ format: String = Config.defaultDateTimeFormat) -> String {
+    func asFormattedString(format: String = Config.defaultDateTimeFormat) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
