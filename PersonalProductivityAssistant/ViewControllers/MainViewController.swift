@@ -382,11 +382,8 @@ extension MainViewController : JTCalendarDelegate {
         DispatchQueue.main.async {
             [unowned self, currentDate] in
             
-            
             self.loadTimeLogs(currentDate)
-        
-            
-            self.tableViewActivities.reloadData()
+            self.refreshControlsAync()
         }
         
         self.lastCurrentDate = currentDate
