@@ -391,16 +391,16 @@ extension MainViewController : JTCalendarDelegate {
     
     private func reloadIfMonthChanged(currentDate: Date) {
         
-        if let lastCurrentDate = self.lastCurrentDate {
-            if calendarManager.dateHelper.date(lastCurrentDate, isTheSameDayThan: currentDate) {
-                return
-            }
-        }
-        
-        NSLog("Reloading, currentDate has changed")
-        
         DispatchQueue.main.async {
-            [unowned self, currentDate] in
+            [unowned self] in
+            
+            if let lastCurrentDate = self.lastCurrentDate {
+                if self.calendarManager.dateHelper.date(lastCurrentDate, isTheSameDayThan: currentDate) {
+                    return
+                }
+            }
+        
+            NSLog("Reloading, currentDate has changed")
             
             self.loadTimeLogs(currentDate)
             self.refreshControlsAync()
