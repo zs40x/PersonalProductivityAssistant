@@ -182,6 +182,8 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     private func updateDisplayedDateRange() {
         
+        displayDateRange.text = ""
+        
         guard let firstTimeLogFrom = tableViewTimeLogs.first?.from else { return }
         guard let lastTimeLogFrom = tableViewTimeLogs.last?.from else { return }
         
