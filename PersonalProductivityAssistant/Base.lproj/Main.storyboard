@@ -31,15 +31,15 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="740-dk-iUE">
                                                 <rect key="frame" x="0.0" y="0.0" width="333.5" height="293"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" userLabel="CalendarView" customClass="JTCalendarMenuView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="333.5" height="25"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <view contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zdN-EN-VWL" userLabel="CalendarView" customClass="JTCalendarMenuView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333.5" height="26"/>
+                                                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="6cn-PY-e0v"/>
+                                                            <constraint firstAttribute="height" constant="26" id="6cn-PY-e0v"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-Cz-ub9" userLabel="CalendarView" customClass="JTHorizontalCalendarView">
-                                                        <rect key="frame" x="0.0" y="25" width="333.5" height="268"/>
+                                                        <rect key="frame" x="0.0" y="26" width="333.5" height="267"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                 </subviews>
@@ -49,6 +49,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlE-5B-rtI">
                                                         <rect key="frame" x="0.0" y="0.0" width="333.5" height="26"/>
+                                                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="nAk-J7-rEQ"/>
                                                         </constraints>
