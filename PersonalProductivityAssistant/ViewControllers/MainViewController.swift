@@ -351,17 +351,20 @@ extension MainViewController : JTCalendarDelegate {
             
             self.tappedDay = dayView.date
             
-            if self.calendarManager.dateHelper.date(self.lastCurrentDate, isTheSameMonthThan: dayView.date) {
+            if !self.calendarManager.dateHelper.date(self.lastCurrentDate, isTheSameMonthThan: dayView.date) {
+                NSLog("Selected a day in another month, updateing view")
                 
-                self.tableViewTimeLogs =
-                    self.timeLogsOfTheCurrentMonth.filter({
-                        self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
-                    })
-                
+                self.calendarManager.setDate(dayView.date)
                 self.refreshControlsAync()
                 return
             }
             
+            self.tableViewTimeLogs =
+                self.timeLogsOfTheCurrentMonth.filter({
+                    self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
+                })
+            
+            self.refreshControlsAync()
         }
     }
     
