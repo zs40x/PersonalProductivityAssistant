@@ -174,9 +174,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         NSLog("refreshControls")
             
         self.tableViewActivities.reloadData()
-            
         self.updateDisplayedDateRange()
-        self.calendarManager.reload()
     }
     
     private func updateDisplayedDateRange() {
@@ -373,16 +371,26 @@ extension MainViewController : JTCalendarDelegate {
     
     func calendar(_ calendar: JTCalendarManager!, dateForNextPageWithCurrentDate currentDate: Date!) -> Date! {
         
-        self.reloadIfMonthChanged(currentDate: currentDate)
+        //self.reloadIfMonthChanged(currentDate: currentDate)
         
         return currentDate.addMonthCount(1)
     }
     
     func calendar(_ calendar: JTCalendarManager!, dateForPreviousPageWithCurrentDate currentDate: Date!) -> Date! {
         
-        self.reloadIfMonthChanged(currentDate: currentDate)
+        //self.reloadIfMonthChanged(currentDate: currentDate)
         
         return currentDate.addMonthCount(-1)
+    }
+    
+    func calendarDidLoadNextPage(_ calendar: JTCalendarManager!) {
+        
+        self.reloadIfMonthChanged(currentDate: calendar.date())
+    }
+    
+    func calendarDidLoadPreviousPage(_ calendar: JTCalendarManager!) {
+        
+        self.reloadIfMonthChanged(currentDate: calendar.date())
     }
     
     private func reloadIfMonthChanged(currentDate: Date) {
