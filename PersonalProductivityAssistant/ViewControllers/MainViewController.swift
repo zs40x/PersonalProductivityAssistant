@@ -175,6 +175,14 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     }
     
+    private func updateSelectedDateRange() {
+        
+        guard let firstTimeLogFrom = timeLogsOfTheCurrentMonth.first?.from else { return }
+        guard let lastTimeLogFrom = timeLogsOfTheCurrentMonth.last?.from else { return }
+        
+        
+    }
+    
     func setUuidVisible(_ uuid: String) {
         
         NSLog("setUuidVisible(\(uuid))")

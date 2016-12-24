@@ -50,6 +50,7 @@
 		D44363741DFF3103008EAB37 /* TimeLogsInCKUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */; };
 		D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */; };
 		D457FDE91E0B056F001C76BD /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D436A83C1E02F41A00D4F5B2 /* PPADataModel.xcdatamodeld */; };
+		D457FDEC1E0E2EE8001C76BD /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457FDEB1E0E2EE8001C76BD /* DateRange.swift */; };
 		D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46170321DB5481F004EA412 /* NotificationCenter.framework */; };
 		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
 		D46170391DB5481F004EA412 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46170371DB5481F004EA412 /* MainInterface.storyboard */; };
@@ -174,6 +175,7 @@
 		D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogsInCKUpload.swift; path = CloudKit/TimeLogsInCKUpload.swift; sourceTree = "<group>"; };
 		D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogPersistence.swift; path = ViewControllers/Shared/TimeLogPersistence.swift; sourceTree = "<group>"; };
 		D45027281DC28C9D00B9251F /* PersonalProductivityAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalProductivityAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
+		D457FDEB1E0E2EE8001C76BD /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateRange.swift; path = Logic/Date/DateRange.swift; sourceTree = "<group>"; };
 		D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalProductivityAssistantTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46170321DB5481F004EA412 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		D46170351DB5481F004EA412 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +275,7 @@
 		D41726E01D26AF7B002F15A4 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				D486C0591D48755F0043500C /* Calender */,
+				D457FDEA1E0E2E98001C76BD /* Date */,
 				D41726E11D26AF96002F15A4 /* Hashtags */,
 			);
 			name = Logic;
@@ -365,6 +367,14 @@
 			name = Reporting;
 			sourceTree = "<group>";
 		};
+		D457FDEA1E0E2E98001C76BD /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				D457FDEB1E0E2EE8001C76BD /* DateRange.swift */,
+			);
+			name = Date;
+			sourceTree = "<group>";
+		};
 		D46170311DB5481F004EA412 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,13 +432,6 @@
 			children = (
 			);
 			name = Controls;
-			sourceTree = "<group>";
-		};
-		D486C0591D48755F0043500C /* Calender */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Calender;
 			sourceTree = "<group>";
 		};
 		D48F19B21D1C36FA009BD069 /* Data */ = {
@@ -984,6 +987,7 @@
 				D41A06C51DB6ABD90088745C /* TimeLogsInCK.swift in Sources */,
 				D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */,
 				D4C392381D395B6700F0062E /* ChartsPageViewController.swift in Sources */,
+				D457FDEC1E0E2EE8001C76BD /* DateRange.swift in Sources */,
 				D443636F1DFDE784008EAB37 /* TimeLogsInCKDownload.swift in Sources */,
 				D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */,
 				D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */,
