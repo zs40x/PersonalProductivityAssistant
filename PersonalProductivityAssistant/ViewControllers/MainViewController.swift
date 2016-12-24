@@ -44,7 +44,9 @@ class MainViewController: UIViewController, SegueHandlerType {
         super.viewDidLoad()
         
         MainViewController.mainViewController = self
+        
         self.automaticallyAdjustsScrollViewInsets = false
+        self.initializeCalendar()
         
         loadTimeLogsFromCloudKitAsync()
     }
@@ -57,13 +59,12 @@ class MainViewController: UIViewController, SegueHandlerType {
             
             self.loadTimeLogs(Date())
             self.hideNavigationBar()
-            self.initializeCalendar()
             self.refreshControls()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,8 +117,8 @@ class MainViewController: UIViewController, SegueHandlerType {
         self.lastCurrentDate = Date()
         
         calendarManager.delegate = self
-        calendarManager.contentView = self.calendarView
         calendarManager.menuView = self.calendarMenuView
+        calendarManager.contentView = self.calendarView
         calendarManager.setDate(self.lastCurrentDate)
     }
     
