@@ -46,8 +46,6 @@ class MainViewController: UIViewController, SegueHandlerType {
         MainViewController.mainViewController = self
         self.automaticallyAdjustsScrollViewInsets = false
         
-        self.initializeCalendar()
-        
         loadTimeLogsFromCloudKitAsync()
     }
     
@@ -59,8 +57,8 @@ class MainViewController: UIViewController, SegueHandlerType {
             
             self.loadTimeLogs(Date())
             self.hideNavigationBar()
-            
-            self.refreshControlsAync()
+            self.initializeCalendar()
+            self.refreshControls()
         }
     }
     
@@ -149,7 +147,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             self.timeLogsOfTheCurrentMonth =
                 self.timeLogsOfTheCurrentMonth.filter({ $0.uuid != uuid })
             
-            self.calendarManager.reload()
+            self.refreshControls()
             
             TimeLogsInCK().exportTimeLogsToCK()
         }
@@ -171,18 +169,14 @@ class MainViewController: UIViewController, SegueHandlerType {
         
     }
     
-    func refreshControlsAync() {
+    func refreshControls() {
         
-        DispatchQueue.main.async(execute: {
-            [unowned self] in
+        NSLog("refreshControlsAsync")
             
-            NSLog("refreshControlsAsync")
+        self.tableViewActivities.reloadData()
             
-            self.tableViewActivities.reloadData()
-            self.calendarManager.reload()
-            self.updateDisplayedDateRange()
-        });
-
+        self.updateDisplayedDateRange()
+        self.calendarManager.reload()
     }
     
     private func updateDisplayedDateRange() {
@@ -215,7 +209,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             NSLog("Will prepare view to see timeLog with from date \(fromDate)")
             
             self.loadTimeLogs(fromDate)
-            self.refreshControlsAync()
+            self.refreshControls()
         }
     }
     
@@ -323,22 +317,28 @@ extension MainViewController : JTCalendarDelegate {
         
         if dayView.isFromAnotherMonth {
             dayView.textLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            return
         }
-        else if calendarManager.dateHelper.date(tappedDay, isTheSameDayThan: dayView.date) {
-            dayView.circleView.isHidden = false
-            dayView.circleView.backgroundColor = #colorLiteral(red: 0.8309050798, green: 0.9848287702, blue: 0.4713753462, alpha: 1)
+            
+        if let _ = timeLogsOfTheCurrentMonth.filter({
+            calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date) }
+            ).first {
+            dayView.dotView.isHidden = false
+            dayView.dotView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         }
+        
         else if calendarManager.dateHelper.date(Date(), isTheSameDayThan: dayView.date) {
             dayView.circleView.isHidden = false
             dayView.circleView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
             dayView.dotView.isHidden = false
             dayView.dotView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
-     
-        if let _ = timeLogsOfTheCurrentMonth.filter({
-                    calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date) }).first {
-            dayView.dotView.isHidden = false
-            dayView.dotView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            
+        guard let tappedDay = self.tappedDay else { return }
+        
+        if calendarManager.dateHelper.date(tappedDay, isTheSameDayThan: dayView.date) {
+            dayView.circleView.isHidden = false
+            dayView.circleView.backgroundColor = #colorLiteral(red: 0.8309050798, green: 0.9848287702, blue: 0.4713753462, alpha: 1)
         }
     }
     
@@ -369,7 +369,11 @@ extension MainViewController : JTCalendarDelegate {
                     self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
                 })
             
-            self.refreshControlsAync()
+            DispatchQueue.main.async {
+                [unowned self] in
+                
+                self.refreshControls()
+            }
         }
     }
     
@@ -403,7 +407,7 @@ extension MainViewController : JTCalendarDelegate {
             self.tappedDay = nil
             self.lastCurrentDate = currentDate
             self.loadTimeLogs(currentDate)
-            self.refreshControlsAync()
+            self.refreshControls()
         }
     }
 }
@@ -411,14 +415,19 @@ extension MainViewController : JTCalendarDelegate {
 extension MainViewController : TimeLogEditDelegate {
     
     func timeLogModified(_ withStartDate: Date) {
-        loadTimeLogs(withStartDate)
-        refreshControlsAync()
         
-        let timeLogsInCk = TimeLogsInCK()
-        timeLogsInCk.exportTimeLogsToCK()
+        DispatchQueue.main.async {
+            [unowned self, withStartDate] in
+            
+            self.loadTimeLogs(withStartDate)
+            
+            self.refreshControls()
+            
+            let timeLogsInCk = TimeLogsInCK()
+            timeLogsInCk.exportTimeLogsToCK()
+        }
     }
 }
-
 
 extension MainViewController : CKDataSyncCompletedDelegate {
     
@@ -428,7 +437,7 @@ extension MainViewController : CKDataSyncCompletedDelegate {
             [unowned self] in
             
             self.loadTimeLogs(Date())
-            self.refreshControlsAync()
+            self.refreshControls()
         }
     }
 }
