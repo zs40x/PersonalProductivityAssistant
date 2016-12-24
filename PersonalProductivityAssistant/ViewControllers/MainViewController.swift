@@ -177,7 +177,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     
     func setUuidVisible(_ uuid: String) {
         
-        NSLog("MainViewController.setUuidVisiuble(\(uuid))")
+        NSLog("setUuidVisible(\(uuid))")
         
         DispatchQueue.main.async {
             [unowned self] in
