@@ -28,12 +28,12 @@ struct TimeLogData {
         self.CloudSyncStatus = CloudSyncStatus
     }
     
-    init(Activity: String) {
+    init(Activity: String, From: Date, Until: Date) {
         self.init(
             Uuid: UUID(),
             Activity: Activity,
-            From: Date(),
-            Until: Date(),
+            From: From,
+            Until: Until,
             Hidden: NSNumber.bool_false,
             CloudSyncPending: NSNumber.bool_false,
             CloudSyncStatus: .Unchanged)

@@ -12,7 +12,12 @@ import XCTest
 
 class TimeLogViewControllerTest: XCTestCase {
     
-    let timeLogData = TimeLogData(Activity: "anActivity")
+    let timeLogData =
+        TimeLogData(
+                Activity: "anActivity",
+                From: Date.makeDateFromComponents(day: 2016, month: 12, year: 24),
+                Until: Date.makeDateFromComponents(day: 2016, month: 12, year: 25)
+            )
     let fakeTimeLogEditDelegate = FakeTimeLogEditDelegate()
     
     var viewController = TimeLogViewController()
