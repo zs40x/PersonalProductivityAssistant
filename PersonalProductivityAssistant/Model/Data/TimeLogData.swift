@@ -50,3 +50,16 @@ struct TimeLogData {
             CloudSyncStatus: .Unchanged)
     }
 }
+
+extension TimeLogData: Equatable {}
+
+func ==(lhs: TimeLogData, rhs: TimeLogData) -> Bool {
+    return
+           lhs.Uuid == rhs.Uuid
+        && lhs.Activity == rhs.Activity
+        && lhs.From == rhs.From
+        && lhs.Until == rhs.Until
+        && lhs.Hidden == rhs.Hidden
+        && lhs.CloudSyncStatus == rhs.CloudSyncStatus
+        && lhs.CloudSyncPending == rhs.CloudSyncPending
+}
