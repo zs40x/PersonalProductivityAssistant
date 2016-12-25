@@ -18,6 +18,8 @@ class TimeLogViewControllerTest: XCTestCase {
                 From: Date.makeDateFromComponents(day: 2016, month: 12, year: 24),
                 Until: Date.makeDateFromComponents(day: 2016, month: 12, year: 25)
             )
+    let pickedDate = Date.makeDateFromComponents(day: 2013, month: 07, year: 29)
+    
     let fakeTimeLogEditDelegate = FakeTimeLogEditDelegate()
     var viewController = TimeLogViewController()
     
@@ -42,14 +44,27 @@ class TimeLogViewControllerTest: XCTestCase {
         XCTAssertEqual(timeLogData.Activity, viewController.textEditActivity.text)
     }
     
-    func testFromSet() {
+    func testDisplaysFrom() {
         XCTAssertNotNil(viewController.buttonDateTimeFrom?.titleLabel)
         XCTAssertEqual(timeLogData.From.asFormattedString(), viewController.buttonDateTimeFrom.titleLabel!.text)
     }
     
-    func testUntilSet() {
+    func testDisplaysUntil() {
         XCTAssertNotNil(viewController.buttonDateTimeUntil?.titleLabel)
         XCTAssertEqual(timeLogData.Until.asFormattedString(), viewController.buttonDateTimeUntil.titleLabel!.text)
+    }
+    
+    
+    func testPickedDateChangesFromButtonText() {
+        viewController.confirmedPick(PickableDate(title: "", field: .from, date: timeLogData.From), date: pickedDate)
+    
+        XCTAssertEqual(pickedDate.asFormattedString(), viewController.buttonDateTimeFrom.titleLabel!.text)
+    }
+    
+    func testPickedDateChangesUntilButtonText() {
+        viewController.confirmedPick(PickableDate(title: "", field: .until, date: timeLogData.Until), date: pickedDate)
+        
+        XCTAssertEqual(pickedDate.asFormattedString(), viewController.buttonDateTimeUntil.titleLabel!.text)
     }
 }
 
