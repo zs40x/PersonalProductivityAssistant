@@ -36,7 +36,6 @@ class TimeLogViewControllerTest: XCTestCase {
         viewController.timeLogEditDelegate = fakeTimeLogEditDelegate
         viewController.timeLogEntityPersistence = fakeTimeLogEntityPersistence
         
-        //UIApplication.shared.keyWindow!.rootViewController = viewController
         let _ = viewController.view
     }
     
@@ -77,15 +76,13 @@ class TimeLogViewControllerTest: XCTestCase {
     }
     
     func testAddTimeLogButtonPersistsWithChangedCkStatus() {
+        
+        let changedActivity = "Another activity"
+        
+        viewController.textEditActivity.text = changedActivity
         sendActionAddButtonPressed()
         
-        /*var expectedTimeLogData = self.timeLogData
-        expectedTimeLogData.CloudSyncPending = NSNumber.bool_false
-        expectedTimeLogData.CloudSyncStatus = .Modified
-        
-        XCTAssertEqual(fakeTimeLogEntityPersistence.persistedTimeLogData!, timeLogData)*/
-        
-        XCTAssertEqual(CloudSyncStatus.Deleted, CloudSyncStatus.Deleted)
+        XCTAssertEqual(fakeTimeLogEntityPersistence.persistedTimeLogData!.Activity, changedActivity)
     }
     
     
