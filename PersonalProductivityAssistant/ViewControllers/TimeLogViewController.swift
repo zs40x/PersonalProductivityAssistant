@@ -54,16 +54,12 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
 
         initializeAutocomple()
         
+        textEditActivity.text = ""
         textEditActivity.resignFirstResponder()
         
         initializeViewContent()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         
@@ -85,25 +81,24 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     
     // MARK: Actions
     @IBAction func actionAddTimeLog(_ sender: AnyObject) {
+        
         view.endEditing(true)
         
-        let timeLogData = getTimeLogData()
         
         guard let persistence = timeLogEntityPersistence else { return }
         
-        guard let delegate = self.timeLogEditDelegate else { return }
+        let result = persistence.persist(getTimeLogData())
         
-    
-        let result = persistence.persist(timeLogData)
-            
-        if !result.isSucessful {
+        guard result.isSucessful else {
             showAlertDialog(result.errorMessage)
             return
         }
         
-        delegate.timeLogModified(timeLogData.From)
+        
+        guard let delegate = self.timeLogEditDelegate else { return }
+        
+        delegate.timeLogModified(getTimeLogData().From)
             
-        textEditActivity.text = ""
         
         if let navigationController = self.navigationController {
             navigationController.popViewController(animated: true)
@@ -153,13 +148,14 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     func getTimeLogData() -> TimeLogData {
         
         return TimeLogData(
-            Uuid: timeLogDataToEdit?.Uuid ?? UUID(),
-            Activity: textEditActivity.text!,
-            From: from.date,
-            Until: until.date,
-            Hidden: NSNumber.bool_false,
-            CloudSyncPending: true,
-            CloudSyncStatus: timeLogCkSyncStatus(timeLogDataToEdit!.CloudSyncStatus) )
+                Uuid: timeLogDataToEdit?.Uuid ?? UUID(),
+                Activity: textEditActivity.text!,
+                From: from.date,
+                Until: until.date,
+                Hidden: NSNumber.bool_false,
+                CloudSyncPending: true,
+                CloudSyncStatus: timeLogCkSyncStatus(timeLogDataToEdit!.CloudSyncStatus)
+            )
     }
     
     private func timeLogCkSyncStatus(_ current: CloudSyncStatus) -> CloudSyncStatus {
