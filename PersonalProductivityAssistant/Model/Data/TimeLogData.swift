@@ -28,6 +28,17 @@ struct TimeLogData {
         self.CloudSyncStatus = CloudSyncStatus
     }
     
+    init(Activity: String) {
+        self.init(
+            Uuid: UUID(),
+            Activity: Activity,
+            From: Date(),
+            Until: Date(),
+            Hidden: NSNumber.bool_false,
+            CloudSyncPending: NSNumber.bool_false,
+            CloudSyncStatus: .Unchanged)
+    }
+    
     init(ckTimeLog: CKRecord) {
         self.init(
             Uuid: UUID.init(uuidString: ckTimeLog.recordID.recordName)!,

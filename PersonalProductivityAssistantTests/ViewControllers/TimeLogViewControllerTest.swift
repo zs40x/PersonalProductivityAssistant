@@ -14,15 +14,23 @@ class TimeLogViewControllerTest: XCTestCase {
     
     func testDisplaysActivity() {
         
-        let viewController = makeTestInstance()
+        let timeLogData = TimeLogData(Activity: "anActivity")
+    
+        let viewController = makeTestInstance(withTimeLogData: timeLogData)
+        viewController.timeLogDataToEdit = timeLogData
         
+        UIApplication.shared.keyWindow!.rootViewController = viewController
+        let _ = viewController.view
+        
+        XCTAssertNotNil(viewController.textEditActivity?.text)
+        XCTAssertEqual(timeLogData.Activity, viewController.textEditActivity.text)
     }
     
-    private func makeTestInstance() -> TimeLogViewController {
+    private func makeTestInstance(withTimeLogData: TimeLogData?) -> TimeLogViewController {
         
         let viewController =
             UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "TimeLogViewController") as! TimeLogViewController
+                .instantiateViewController(withIdentifier: "TimeLogView") as! TimeLogViewController
         
         viewController.timeLogEditDelegate = FakeTimeLogEditDelegate()
         

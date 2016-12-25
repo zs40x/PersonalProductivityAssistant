@@ -34,7 +34,7 @@ class NSDate_firstDayOfCurrentAndNextMonth: XCTestCase {
     func testFirstDayInMonth() {
         
         let fivteenthsOfMonth = self.dayInMonth(15, month: self.currentMonth)
-        let actualFirstOfMonth = fivteenthsOfMonth.firstDayOfMonth()
+        let actualFirstOfMonth = fivteenthsOfMonth.startOfMonth()
         let expectedFirstOfMonth = self.dayInMonth(1, month: self.currentMonth)
         
         XCTAssertEqual(expectedFirstOfMonth, actualFirstOfMonth)
