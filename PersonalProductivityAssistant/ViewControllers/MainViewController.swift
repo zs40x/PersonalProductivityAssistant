@@ -191,6 +191,10 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         displayDateRange.text = ""
         
+        if let tappedDay = self.tappedDay {
+            displayDateRange.text = tappedDay.asFormattedString(format: Config.shortDateFormat)
+        }
+        
         guard let firstTimeLogFrom = tableViewTimeLogs.first?.from else { return }
         guard let lastTimeLogFrom = tableViewTimeLogs.last?.from else { return }
         
