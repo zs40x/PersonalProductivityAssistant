@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickableDate {
+class PickableDate: Equatable {
     
     fileprivate(set) var date: Date
     fileprivate(set) var title: String
@@ -22,6 +22,13 @@ class PickableDate {
     
     convenience init(title: String, field: DatePickTargetField) {
         self.init(title: title, field: field,date: Date())
+    }
+    
+    static func ==(lhs: PickableDate, rhs: PickableDate) -> Bool {
+        return
+            lhs.date == rhs.date
+                && lhs.title == rhs.title
+                && lhs.field == rhs.field
     }
 }
 

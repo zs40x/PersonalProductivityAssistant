@@ -56,6 +56,14 @@ class DateTimePickViewControllerTest: XCTestCase {
         XCTAssertEqual(selectedDate, fakeDateTimePickDelegate.date)
     }
     
+    func testDelegateReceivesPickedDate() {
+        sendActionSetButtonPressed()
+        
+        XCTAssertNotNil(fakeDateTimePickDelegate.pickedDate)
+        XCTAssertEqual(dateToPick, fakeDateTimePickDelegate.pickedDate!)
+    }
+    
+    
     private func sendActionSetButtonPressed() {
         UIApplication.shared.sendAction(
             viewController.navButtonSet.action!,
