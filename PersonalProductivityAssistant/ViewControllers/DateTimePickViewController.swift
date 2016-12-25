@@ -21,18 +21,12 @@ class DateTimePickViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let target = dateToPick else { fatalError() }
+        guard let dateToPick = dateToPick else { return }
         
-        datePicker.date = target.date as Date
+        datePicker.date = dateToPick.date as Date
         
-        navigationItem.title = target.title
+        navigationItem.title = dateToPick.title
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     @IBAction func actionTappedUse(_ sender: AnyObject) {
         
@@ -41,7 +35,6 @@ class DateTimePickViewController: UIViewController {
         }
         
         guard let pickedDate = dateToPick else { return }
-        
         guard let delegate = pickDelegate else { return }
         
         delegate.confirmedPick(pickedDate, date: datePicker.date)
