@@ -40,13 +40,39 @@ class DateTimePickViewControllerTest: XCTestCase {
         XCTAssertNotNil(viewController.datePicker)
         XCTAssertEqual(dateToPick.date, viewController.datePicker.date)
     }
+ 
+    func testSetButtonNotifiesDelegate() {
+        sendActionSetButtonPressed()
+        
+        XCTAssertNotNil(fakeDateTimePickDelegate.date)
+    }
     
+    func testDelegateReceivesChangedDate() {
+        let selectedDate = Date()
+        
+        viewController.datePicker.date = selectedDate
+        sendActionSetButtonPressed()
+        
+        XCTAssertEqual(selectedDate, fakeDateTimePickDelegate.date)
+    }
+    
+    private func sendActionSetButtonPressed() {
+        UIApplication.shared.sendAction(
+            viewController.navButtonSet.action!,
+            to: viewController.navButtonSet.target,
+            from: self,
+            for: nil)
+    }
 }
 
 
 class FakeDateTimePickDelegate: DateTimePickDelegate {
     
+    var pickedDate: PickableDate?
+    var date: Date?
+    
     func confirmedPick(_ pickedDate: PickableDate, date: Date) {
-        
+        self.pickedDate = pickedDate
+        self.date = date
     }
 }
