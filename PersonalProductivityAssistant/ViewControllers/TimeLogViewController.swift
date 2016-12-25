@@ -46,6 +46,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
     @IBOutlet weak var buttonDateTimeUntil: UIButton!
     @IBOutlet weak var buttonDateTimeFrom: UIButton!
     @IBOutlet weak var autoCompleteTableView: UITableView!
+    @IBOutlet weak var navButtonSave: UIBarButtonItem!
     
     
     override func viewDidLoad() {
@@ -109,7 +110,7 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         delegate.timeLogModified(timeLogData.From)
             
         textEditActivity.text = ""
-        self.navigationController!.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func actionActivityEditingChanged(_ sender: AnyObject) {

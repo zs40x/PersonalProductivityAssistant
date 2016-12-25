@@ -68,6 +68,19 @@ class TimeLogViewControllerTest: XCTestCase {
         
         XCTAssertEqual(pickedDate.asFormattedString(), viewController.buttonDateTimeUntil.titleLabel!.text)
     }
+    
+    
+    func testAddTimeLogButtonCallsPersistence() {
+        
+        UIApplication.shared.sendAction(
+            viewController.navButtonSave.action!,
+            to: viewController.navButtonSave.target,
+            from: self,
+            for: nil)
+        
+        XCTAssertNotNil(fakeTimeLogEntityPersistence.persistedTimeLogData)
+        //XCTAssertEqual(fakeTimeLogEntityPersistence.persistedTimeLogData!, timeLogData)
+    }
 }
 
 
