@@ -145,7 +145,6 @@ class MainViewController: UIViewController, SegueHandlerType {
         }
         
         
-        
         DispatchQueue.main.async {
             [unowned self, tableView = tableView, indexPathToDelete = indexPath, uuid = timeLogToDelete.uuid!] in
             

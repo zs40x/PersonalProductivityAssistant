@@ -110,7 +110,10 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         delegate.timeLogModified(timeLogData.From)
             
         textEditActivity.text = ""
-        self.navigationController?.popViewController(animated: true)
+        
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        }
     }
     
     @IBAction func actionActivityEditingChanged(_ sender: AnyObject) {
