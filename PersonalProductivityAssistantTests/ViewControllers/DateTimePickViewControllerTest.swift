@@ -12,7 +12,11 @@ import XCTest
 
 class DateTimePickViewControllerTest: XCTestCase {
     
-    let selectedDate = Date.makeDateFromComponents(day: 2015, month: 07, year: 27)
+    static let date = Date.makeDateFromComponents(day: 2015, month: 07, year: 27)
+    static let title = "TitleField"
+    static let targetField = DatePickTargetField.from
+    
+    let dateToPick = PickableDate(title: title, field: targetField, date: date)
     
     let fakeDateTimePickDelegate = FakeDateTimePickDelegate()
     var viewController = DateTimePickViewController()
@@ -25,13 +29,17 @@ class DateTimePickViewControllerTest: XCTestCase {
             UIStoryboard(name: "Main", bundle: nil)
                 .instantiateViewController(withIdentifier: "DateTimePickView") as! DateTimePickViewController
         
-        viewController.selectedDateTime = selectedDate
+        viewController.dateToPick = dateToPick
         viewController.pickDelegate = fakeDateTimePickDelegate
         
         let _ = viewController.view
     }
     
- 
+    
+    func testSelectedDateIsSetInPicker() {
+        XCTAssertNotNil(viewController.datePicker)
+        XCTAssertEqual(dateToPick.date, viewController.datePicker.date)
+    }
 }
 
 
