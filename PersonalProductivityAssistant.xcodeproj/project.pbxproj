@@ -95,27 +95,6 @@
 			remoteGlobalIDString = D461702F1DB5481F004EA412;
 			remoteInfo = PersonalProductivityAssistantTodayExtension;
 		};
-		D4B0BA541D9C3D9C0007E59F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06165F241D8110E600722320;
-			remoteInfo = Charts;
-		};
-		D4B0BA561D9C3D9C0007E59F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06B120D51D811E6200D14B02;
-			remoteInfo = ChartsRealm;
-		};
-		D4B0BA581D9C3D9C0007E59F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06165F2E1D8110E600722320;
-			remoteInfo = ChartsTests;
-		};
 		D4B6606B1D142AAE000FE897 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4B6604B1D142AAE000FE897 /* Project object */;
@@ -195,7 +174,6 @@
 		D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewController.swift; path = ViewControllers/TimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogData.swift; path = Model/Data/TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Utilities/Extensions/Date.swift; sourceTree = "<group>"; };
-		D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Library/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		D4B660531D142AAE000FE897 /* PersonalProductivityAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalProductivityAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B660561D142AAE000FE897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B660581D142AAE000FE897 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewControllers/MainViewController.swift; sourceTree = "<group>"; };
@@ -332,14 +310,6 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		D43AF1D21D252EF20084B9C7 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */,
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
 		D43AF1D31D252F1B0084B9C7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,16 +426,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		D4B0BA4F1D9C3D9C0007E59F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D4B0BA551D9C3D9C0007E59F /* Charts.framework */,
-				D4B0BA571D9C3D9C0007E59F /* ChartsRealm.framework */,
-				D4B0BA591D9C3D9C0007E59F /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D4B6604A1D142AAE000FE897 = {
 			isa = PBXGroup;
 			children = (
@@ -496,7 +456,6 @@
 			children = (
 				D4F6AF9F1DB54D09006BDAFF /* PersonalProductivityAssistant.entitlements */,
 				D41A06C31DB6AB9B0088745C /* CloudKit */,
-				D43AF1D21D252EF20084B9C7 /* Libraries */,
 				D4F84C2B1D15BECD0041FCF0 /* Utilities */,
 				D4F84C1F1D15516F0041FCF0 /* Model */,
 				D43B896E1D2444120065248D /* Reporting */,
@@ -735,12 +694,6 @@
 			mainGroup = D4B6604A1D142AAE000FE897;
 			productRefGroup = D4B660541D142AAE000FE897 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D4B0BA4F1D9C3D9C0007E59F /* Products */;
-					ProjectRef = D4B0BA3E1D9C3C9F0007E59F /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D4B660521D142AAE000FE897 /* PersonalProductivityAssistant */,
@@ -750,30 +703,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D4B0BA551D9C3D9C0007E59F /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = D4B0BA541D9C3D9C0007E59F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4B0BA571D9C3D9C0007E59F /* ChartsRealm.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ChartsRealm.framework;
-			remoteRef = D4B0BA561D9C3D9C0007E59F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4B0BA591D9C3D9C0007E59F /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = D4B0BA581D9C3D9C0007E59F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D461702E1DB5481F004EA412 /* Resources */ = {
