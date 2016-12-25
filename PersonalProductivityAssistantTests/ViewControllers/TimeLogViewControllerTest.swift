@@ -21,6 +21,7 @@ class TimeLogViewControllerTest: XCTestCase {
     let pickedDate = Date.makeDateFromComponents(day: 2013, month: 07, year: 29)
     
     let fakeTimeLogEditDelegate = FakeTimeLogEditDelegate()
+    let fakeTimeLogEntityPersistence = FakeTimeLogEntityPersistence()
     var viewController = TimeLogViewController()
     
     
@@ -33,6 +34,7 @@ class TimeLogViewControllerTest: XCTestCase {
         
         viewController.timeLogDataToEdit = timeLogData
         viewController.timeLogEditDelegate = fakeTimeLogEditDelegate
+        viewController.timeLogEntityPersistence = fakeTimeLogEntityPersistence
         
         UIApplication.shared.keyWindow!.rootViewController = viewController
         let _ = viewController.view
@@ -69,9 +71,19 @@ class TimeLogViewControllerTest: XCTestCase {
 }
 
 
-class FakeTimeLogEditDelegate : TimeLogEditDelegate {
+class FakeTimeLogEditDelegate: TimeLogEditDelegate {
     
     func timeLogModified(_ withStartDate: Date) {
         
+    }
+}
+
+class FakeTimeLogEntityPersistence: TimeLogEntityPersistence {
+    
+    var persistedTimeLogData: TimeLogData?
+    
+    func persist(_ timeLogData: TimeLogData) -> Result {
+        persistedTimeLogData = timeLogData
+        return Result.Success()
     }
 }
