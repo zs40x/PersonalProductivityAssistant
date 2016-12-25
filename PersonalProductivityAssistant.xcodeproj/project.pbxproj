@@ -66,6 +66,7 @@
 		D46CE09B1D3546A300CD797F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE09A1D3546A300CD797F /* String.swift */; };
 		D47B10481D262B720052A845 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B10471D262B720052A845 /* SegueHandlerType.swift */; };
 		D47B104B1D263C7F0052A845 /* TimeLogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */; };
+		D47DC5A51E1036B100D8BDB6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5A41E1036B100D8BDB6 /* main.swift */; };
 		D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */; };
 		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
 		D48F19B61D230FA9009BD069 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* Date.swift */; };
@@ -173,6 +174,7 @@
 		D46CE09A1D3546A300CD797F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Utilities/Extensions/String.swift; sourceTree = "<group>"; };
 		D47B10471D262B720052A845 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = ViewControllers/Shared/SegueHandlerType.swift; sourceTree = "<group>"; };
 		D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogDelegate.swift; path = ViewControllers/Shared/TimeLogDelegate.swift; sourceTree = "<group>"; };
+		D47DC5A41E1036B100D8BDB6 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewController.swift; path = ViewControllers/TimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogData.swift; path = Model/Data/TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Utilities/Extensions/Date.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				D4B660651D142AAE000FE897 /* Info.plist */,
 				D4B660561D142AAE000FE897 /* AppDelegate.swift */,
 				D4355E6F1D38A08A000F678A /* Config.swift */,
+				D47DC5A41E1036B100D8BDB6 /* main.swift */,
 			);
 			path = PersonalProductivityAssistant;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				D4355E6C1D374C92000F678A /* DateTimePickViewController.swift in Sources */,
 				D4F84C301D15C76A0041FCF0 /* NSError.swift in Sources */,
 				D44363711DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift in Sources */,
+				D47DC5A51E1036B100D8BDB6 /* main.swift in Sources */,
 				D4B660591D142AAE000FE897 /* MainViewController.swift in Sources */,
 				D41726E71D28EF7E002F15A4 /* HashtagFinder.swift in Sources */,
 				D4355E6E1D37E572000F678A /* DateTimePickDelegate.swift in Sources */,
