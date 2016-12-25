@@ -54,6 +54,7 @@
 		D457FDEF1E0E306C001C76BD /* DateRange_asString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457FDEE1E0E306C001C76BD /* DateRange_asString.swift */; };
 		D457FDF01E0E32B1001C76BD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* Date.swift */; };
 		D457FDF11E0E33F1001C76BD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4355E6F1D38A08A000F678A /* Config.swift */; };
+		D457FDF41E0FD4FA001C76BD /* TimeLogViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457FDF31E0FD4FA001C76BD /* TimeLogViewControllerTest.swift */; };
 		D46170331DB5481F004EA412 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46170321DB5481F004EA412 /* NotificationCenter.framework */; };
 		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
 		D46170391DB5481F004EA412 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46170371DB5481F004EA412 /* MainInterface.storyboard */; };
@@ -159,6 +160,7 @@
 		D45027281DC28C9D00B9251F /* PersonalProductivityAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalProductivityAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
 		D457FDEB1E0E2EE8001C76BD /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateRange.swift; path = Logic/Date/DateRange.swift; sourceTree = "<group>"; };
 		D457FDEE1E0E306C001C76BD /* DateRange_asString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange_asString.swift; sourceTree = "<group>"; };
+		D457FDF31E0FD4FA001C76BD /* TimeLogViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewControllerTest.swift; path = ViewControllers/TimeLogViewControllerTest.swift; sourceTree = "<group>"; };
 		D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalProductivityAssistantTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46170321DB5481F004EA412 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		D46170351DB5481F004EA412 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +360,14 @@
 			name = Date;
 			sourceTree = "<group>";
 		};
+		D457FDF21E0FD4BB001C76BD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D457FDF31E0FD4FA001C76BD /* TimeLogViewControllerTest.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		D46170311DB5481F004EA412 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,8 +485,9 @@
 			children = (
 				D4DF0F821D6479F000E17AE4 /* Extensions */,
 				D41726E81D28F04F002F15A4 /* Logic */,
-				D4B660701D142AAE000FE897 /* Info.plist */,
+				D457FDF21E0FD4BB001C76BD /* ViewControllers */,
 				D410C1931D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift */,
+				D4B660701D142AAE000FE897 /* Info.plist */,
 			);
 			path = PersonalProductivityAssistantTests;
 			sourceTree = "<group>";
@@ -969,6 +980,7 @@
 			files = (
 				D4355E781D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift in Sources */,
 				D457FDEF1E0E306C001C76BD /* DateRange_asString.swift in Sources */,
+				D457FDF41E0FD4FA001C76BD /* TimeLogViewControllerTest.swift in Sources */,
 				D457FDF11E0E33F1001C76BD /* Config.swift in Sources */,
 				D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */,
 				D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */,
