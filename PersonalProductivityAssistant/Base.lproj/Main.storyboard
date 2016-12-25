@@ -352,6 +352,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="200"/>
                     <connections>
                         <outlet property="datePicker" destination="Miz-0e-9Qt" id="pK2-6w-Kuf"/>
+                        <outlet property="navButtonSet" destination="oUY-2v-NzJ" id="aUJ-un-vJX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Utx-J5-KbB" userLabel="First Responder" sceneMemberID="firstResponder"/>

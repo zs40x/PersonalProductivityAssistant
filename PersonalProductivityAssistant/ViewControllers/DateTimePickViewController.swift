@@ -15,7 +15,8 @@ class DateTimePickViewController: UIViewController {
     var selectedDateTime: Date?
     
     @IBOutlet weak var datePicker: UIDatePicker!
-
+    @IBOutlet weak var navButtonSet: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
