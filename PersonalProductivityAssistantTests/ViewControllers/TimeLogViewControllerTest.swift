@@ -19,8 +19,8 @@ class TimeLogViewControllerTest: XCTestCase {
                 Until: Date.makeDateFromComponents(day: 2016, month: 12, year: 25)
             )
     let fakeTimeLogEditDelegate = FakeTimeLogEditDelegate()
-    
     var viewController = TimeLogViewController()
+    
     
     override func setUp() {
         super.setUp()
@@ -38,9 +38,18 @@ class TimeLogViewControllerTest: XCTestCase {
     
     
     func testDisplaysActivity() {
-        
         XCTAssertNotNil(viewController.textEditActivity?.text)
         XCTAssertEqual(timeLogData.Activity, viewController.textEditActivity.text)
+    }
+    
+    func testFromSet() {
+        XCTAssertNotNil(viewController.buttonDateTimeFrom?.titleLabel)
+        XCTAssertEqual(timeLogData.From.asFormattedString(), viewController.buttonDateTimeFrom.titleLabel!.text)
+    }
+    
+    func testUntilSet() {
+        XCTAssertNotNil(viewController.buttonDateTimeUntil?.titleLabel)
+        XCTAssertEqual(timeLogData.Until.asFormattedString(), viewController.buttonDateTimeUntil.titleLabel!.text)
     }
 }
 
