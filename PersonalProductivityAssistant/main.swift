@@ -9,7 +9,7 @@
 import UIKit
 
 private func delegateClassName() -> String? {
-    return NSClassFromString("XCTestCase") == nil ? NSStringFromClass(AppDelegate) : nil
+    return NSClassFromString("XCTestCase") == nil ? NSStringFromClass(AppDelegate.self) : nil
 }
 
 UIApplicationMain(
