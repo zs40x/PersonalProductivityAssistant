@@ -89,15 +89,9 @@ class TimeLogViewController: UIViewController, SegueHandlerType {
         
         let timeLogData = getTimeLogData()
         
-        guard let persistence = timeLogEntityPersistence else {
-            showAlertDialog("No Persistence set")
-            return
-        }
+        guard let persistence = timeLogEntityPersistence else { return }
         
-        guard let delegate = self.timeLogEditDelegate else {
-            showAlertDialog("Delegate not initialized")
-            return
-        }
+        guard let delegate = self.timeLogEditDelegate else { return }
         
     
         let result = persistence.persist(timeLogData)
