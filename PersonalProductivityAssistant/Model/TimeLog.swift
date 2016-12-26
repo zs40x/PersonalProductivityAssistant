@@ -93,7 +93,8 @@ class TimeLog: NSManagedObject {
     
     func isEqualTo(_ timeLogData: TimeLogData) -> Bool {
         
-        if self.activity == timeLogData.Activity &&
+        if self.uuid == timeLogData.Uuid.uuidString &&
+            self.activity == timeLogData.Activity &&
             self.from == timeLogData.From &&
             self.until == timeLogData.Until &&
             self.hidden == timeLogData.Hidden {
