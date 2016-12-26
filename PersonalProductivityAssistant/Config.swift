@@ -9,6 +9,6 @@
 import Foundation
 
 struct Config {
-    static let defaultDateTimeFormat = "dd.MM.YYYY HH:mm:ss"
+    static let defaultDateTimeFormat = "dd.MM.YYYY HH:mm"
     static let shortDateFormat = "dd.MM.YYYY"
 }
