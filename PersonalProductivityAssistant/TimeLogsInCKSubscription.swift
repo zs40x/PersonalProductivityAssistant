@@ -23,6 +23,8 @@ class TimeLogsInCKSubscription {
             
             guard let subscriptions = subscriptions else { return }
             
+            NSLog("Downloaded iCloud subscriptions")
+            
             subscriptions.forEach({
                 (subscription) in
                 
@@ -40,7 +42,10 @@ class TimeLogsInCKSubscription {
                 })
             })
             
-            self.registerSubscription()
+            // This is not okay, because the deletes of the existing subscriptions are done async and sometimes 
+            // the subscription is created before the old ones are deleted. So it failes to create a new, because
+            // it would create a duplicate and then the existing will be delted - the Result: no active subscription
+            self.registerTimeLogSubscription()
         }
     }
     
