@@ -14,11 +14,9 @@ protocol TimeLogEntityPersistence {
 
 class AddNewTimeLogEntity : TimeLogEntityPersistence {
     
-    var timeLogRepository =  TimeLogRepository()
-    
     func persist(_ timeLogData: TimeLogData) -> Result {
         
-        let newTimeLogResult = timeLogRepository.addNew(timeLogData)
+        let newTimeLogResult = TimeLogRepository().addNew(timeLogData)
         
         if !newTimeLogResult.isSucessful {
             return Result.Failure("Error adding a new time log \(newTimeLogResult.errorMessage)")
