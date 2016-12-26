@@ -118,7 +118,6 @@ fileprivate class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpst
                 self.syncStatusUpdate.updateStatusIsSynced()
             }
         })
-
     }
 }
 
@@ -153,7 +152,6 @@ fileprivate class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogC
                 })
             })
     }
-
 }
 
 fileprivate class CkSyncTimeLogDelete : AbstractTimeLogsUpstreamSync, TimeLogCkUpsteamSync {
