@@ -77,6 +77,15 @@ class TimeLogViewControllerTest: XCTestCase {
         XCTAssertEqual(pickedDate.asFormattedString(), viewController.buttonDateTimeUntil.titleLabel?.text)
     }
     
+    func testPickedUntilBeforeBeforeChangedBefore() {
+        let pickedDate = Date.makeDateFromComponents(day: 6, month: 12, year: 2016)
+        
+        viewController.confirmedPick(PickableDate(title: "", field: .until), date: pickedDate)
+        
+        XCTAssertEqual(pickedDate.asFormattedString(), viewController.buttonDateTimeUntil.titleLabel?.text)
+        XCTAssertEqual(pickedDate.asFormattedString(), viewController.buttonDateTimeFrom.titleLabel?.text)
+    }
+    
     
     func testAddTimeLogButtonCallsPersistence() {
         sendActionAddButtonPressed()
