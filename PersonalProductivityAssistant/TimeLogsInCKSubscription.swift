@@ -81,6 +81,20 @@ class TimeLogsInCKSubscriptionDeletion {
 class TimeLogsInCKSubscriptionRegistration {
     
     func register() {
+       
+        CKContainer.default().privateCloudDatabase.save(makeSubscription(), completionHandler: {
+            (subscription, error) in
+            
+            if let error = error {
+                NSLog("Subscription failed: \(error)")
+                return
+            }
+            
+            NSLog("TimeLog subscription saved")
+        })
+    }
+    
+    private func makeSubscription() -> CKSubscription {
         
         let allRecordsPredicate = NSPredicate(format: "TRUEPREDICATE")
         
@@ -97,16 +111,7 @@ class TimeLogsInCKSubscriptionRegistration {
         notificationInfo.shouldBadge = true
         notificationInfo.soundName = "default"
         subscription.notificationInfo = notificationInfo
-        
-        CKContainer.default().privateCloudDatabase.save(subscription, completionHandler: {
-            (subscription, error) in
-            
-            if let error = error {
-                NSLog("Subscription failed: \(error)")
-                return
-            }
-            
-            NSLog("TimeLog subscription saved")
-        })
+
+        return subscription
     }
 }
