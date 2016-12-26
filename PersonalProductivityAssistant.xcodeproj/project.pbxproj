@@ -69,6 +69,8 @@
 		D47DC5A51E1036B100D8BDB6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5A41E1036B100D8BDB6 /* main.swift */; };
 		D47DC5A71E10563100D8BDB6 /* DateTimePickViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5A61E10563100D8BDB6 /* DateTimePickViewControllerTest.swift */; };
 		D47DC5A91E1062E800D8BDB6 /* PickableDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5A81E1062E800D8BDB6 /* PickableDate.swift */; };
+		D47DC5AB1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5AA1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift */; };
+		D47DC5AC1E10E9A200D8BDB6 /* TimeLogsInCKSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5AA1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift */; };
 		D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */; };
 		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
 		D48F19B61D230FA9009BD069 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* Date.swift */; };
@@ -179,6 +181,7 @@
 		D47DC5A41E1036B100D8BDB6 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D47DC5A61E10563100D8BDB6 /* DateTimePickViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickViewControllerTest.swift; path = ViewControllers/DateTimePickViewControllerTest.swift; sourceTree = "<group>"; };
 		D47DC5A81E1062E800D8BDB6 /* PickableDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickableDate.swift; path = Model/Data/PickableDate.swift; sourceTree = "<group>"; };
+		D47DC5AA1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLogsInCKSubscription.swift; sourceTree = "<group>"; };
 		D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewController.swift; path = ViewControllers/TimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogData.swift; path = Model/Data/TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Utilities/Extensions/Date.swift; sourceTree = "<group>"; };
@@ -306,6 +309,7 @@
 				D41A06C41DB6ABD90088745C /* TimeLogsInCK.swift */,
 				D443636E1DFDE784008EAB37 /* TimeLogsInCKDownload.swift */,
 				D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */,
+				D47DC5AA1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -934,6 +938,7 @@
 				D41A06BE1DB552040088745C /* String.swift in Sources */,
 				D41A06BF1DB552200088745C /* Config.swift in Sources */,
 				D41A06B21DB551B20088745C /* PPAModel.swift in Sources */,
+				D47DC5AC1E10E9A200D8BDB6 /* TimeLogsInCKSubscription.swift in Sources */,
 				D457FDE91E0B056F001C76BD /* PPADataModel.xcdatamodeld in Sources */,
 				D41A06C01DB5522F0088745C /* HashtagFinder.swift in Sources */,
 				D41A06B91DB551CE0088745C /* TimeLogData.swift in Sources */,
@@ -973,6 +978,7 @@
 				D4355E741D38D138000F678A /* HashtagAutoCompleteAssistant.swift in Sources */,
 				D4F84C2D1D15BEDB0041FCF0 /* Result.swift in Sources */,
 				D47B104B1D263C7F0052A845 /* TimeLogDelegate.swift in Sources */,
+				D47DC5AB1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift in Sources */,
 				D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */,
 				D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */,
 				D436A83E1E02F41A00D4F5B2 /* PPADataModel.xcdatamodeld in Sources */,
