@@ -14,7 +14,7 @@ class TimeLogsInCKSubscription {
     func registerSubscription() {
         
         CKContainer.default().privateCloudDatabase.fetchAllSubscriptions {
-            (subscriptions, error) in
+            [unowned self] (subscriptions, error) in
             
             if let error = error {
                 NSLog("Failed downloading existing subscriptions from iCloud: \(error.localizedDescription)")
@@ -27,17 +27,17 @@ class TimeLogsInCKSubscription {
             
             guard subscriptions.count > 0 else {
                 NSLog("No existing subscriptions")
-                self.registerTimeLogSubscription()
+                self.registerNewTimeLogSubscription()
                 return
             }
             
             subscriptions.forEach({
-                (subscription) in
+                [unowned self] (subscription) in
                 
                 NSLog("Will delete subscription with ID \(subscription.subscriptionID)")
                 
                 CKContainer.default().privateCloudDatabase.delete(withSubscriptionID: subscription.subscriptionID, completionHandler: {
-                    (subscriptionID, error) in
+                    [unowned self] (subscriptionID, error) in
                     
                     if let error = error {
                         NSLog("Error deleting subscription with ID \(subscriptionID): \(error.localizedDescription)")
@@ -47,7 +47,7 @@ class TimeLogsInCKSubscription {
                     NSLog("Successfully deleted subscription with ID \(subscriptionID)")
                     
                     CKContainer.default().privateCloudDatabase.fetchAllSubscriptions(completionHandler: {
-                        (subscriptions, error) in
+                        [unowned self] (subscriptions, error) in
                         
                         if let error = error {
                             NSLog("Error fetching all subscriptions the verify that all have been deleted: \(error.localizedDescription)")
@@ -59,21 +59,21 @@ class TimeLogsInCKSubscription {
                         
                         NSLog("All existing subscriptions have beend deleted")
                         
-                        self.registerTimeLogSubscription()
+                        self.registerNewTimeLogSubscription()
                     })
                 })
             })
         }
     }
     
-    private func registerTimeLogSubscription() {
+    private func registerNewTimeLogSubscription() {
         
-        let predicate = NSPredicate(format: "TRUEPREDICATE")
+        let allRecordsPredicate = NSPredicate(format: "TRUEPREDICATE")
         
         let subscription =
             CKQuerySubscription(
                 recordType: TimeLogsInCK.RecordTypeTimeLogs,
-                predicate: predicate,
+                predicate: allRecordsPredicate,
                 options: [CKQuerySubscriptionOptions.firesOnRecordCreation,
                           CKQuerySubscriptionOptions.firesOnRecordUpdate,
                           CKQuerySubscriptionOptions.firesOnRecordDeletion])
