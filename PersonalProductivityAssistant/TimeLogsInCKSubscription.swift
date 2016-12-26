@@ -25,6 +25,12 @@ class TimeLogsInCKSubscription {
             
             NSLog("Downloaded iCloud subscriptions")
             
+            guard subscriptions.count > 0 else {
+                NSLog("No existing subscriptions")
+                self.registerTimeLogSubscription()
+                return
+            }
+            
             subscriptions.forEach({
                 (subscription) in
                 
@@ -39,13 +45,24 @@ class TimeLogsInCKSubscription {
                     }
                     
                     NSLog("Successfully deleted subscription with ID \(subscriptionID)")
+                    
+                    CKContainer.default().privateCloudDatabase.fetchAllSubscriptions(completionHandler: {
+                        (subscriptions, error) in
+                        
+                        if let error = error {
+                            NSLog("Error fetching all subscriptions the verify that all have been deleted: \(error.localizedDescription)")
+                            return
+                        }
+                        
+                        guard let subscriptions = subscriptions else { return }
+                        guard subscriptions.count == 0 else { return }
+                        
+                        NSLog("All existing subscriptions have beend deleted")
+                        
+                        self.registerTimeLogSubscription()
+                    })
                 })
             })
-            
-            // This is not okay, because the deletes of the existing subscriptions are done async and sometimes 
-            // the subscription is created before the old ones are deleted. So it failes to create a new, because
-            // it would create a duplicate and then the existing will be delted - the Result: no active subscription
-            self.registerTimeLogSubscription()
         }
     }
     
