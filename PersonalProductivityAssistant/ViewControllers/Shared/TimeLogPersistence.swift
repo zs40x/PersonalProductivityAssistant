@@ -30,8 +30,7 @@ class AddNewTimeLogEntity : TimeLogEntityPersistence {
 
 class UpdateTimeLogEntity : TimeLogEntityPersistence {
     
-    var timeLog: TimeLog
-    var timeLogRepository = TimeLogRepository()
+    weak var timeLog: TimeLog?
     
     init(timeLog: TimeLog) {
         self.timeLog = timeLog
@@ -39,9 +38,13 @@ class UpdateTimeLogEntity : TimeLogEntityPersistence {
     
     func persist(_ timeLogData: TimeLogData) -> Result {
         
+        guard let timeLog = timeLog else {
+            return Result.Failure("TimeLog was nil")
+        }
+        
         timeLog.updateFromTimeLogData(timeLogData)
         
-        let saveChangesResult = timeLogRepository.save()
+        let saveChangesResult = TimeLogRepository().save()
         
         if !saveChangesResult.isSucessful {
             return Result.Failure("Error saving timeLog changes \(saveChangesResult.errorMessage)")
