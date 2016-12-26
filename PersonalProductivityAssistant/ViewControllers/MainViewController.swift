@@ -337,7 +337,7 @@ extension MainViewController : JTCalendarDelegate {
             dayView.dotView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         }
         
-        else if calendarManager.dateHelper.date(Date(), isTheSameDayThan: dayView.date) {
+        if calendarManager.dateHelper.date(Date(), isTheSameDayThan: dayView.date) {
             dayView.circleView.isHidden = false
             dayView.circleView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
             dayView.dotView.isHidden = false
