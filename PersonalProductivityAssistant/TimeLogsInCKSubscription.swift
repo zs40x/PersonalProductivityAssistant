@@ -13,57 +13,10 @@ class TimeLogsInCKSubscription {
     
     func registerSubscription() {
         
-        CKContainer.default().privateCloudDatabase.fetchAllSubscriptions {
-            [unowned self] (subscriptions, error) in
+        TimeLogsInCKSubscriptionDeletion().deleteAllSubscriptions(completionHandler: {
             
-            if let error = error {
-                NSLog("Failed downloading existing subscriptions from iCloud: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let subscriptions = subscriptions else { return }
-            
-            NSLog("Downloaded iCloud subscriptions")
-            
-            guard subscriptions.count > 0 else {
-                NSLog("No existing subscriptions")
-                self.registerNewTimeLogSubscription()
-                return
-            }
-            
-            subscriptions.forEach({
-                (subscription) in
-                
-                NSLog("Will delete subscription with ID \(subscription.subscriptionID)")
-                
-                CKContainer.default().privateCloudDatabase.delete(withSubscriptionID: subscription.subscriptionID, completionHandler: {
-                    (subscriptionID, error) in
-                    
-                    if let error = error {
-                        NSLog("Error deleting subscription with ID \(subscriptionID): \(error.localizedDescription)")
-                        return
-                    }
-                    
-                    NSLog("Successfully deleted subscription with ID \(subscriptionID)")
-                    
-                    CKContainer.default().privateCloudDatabase.fetchAllSubscriptions(completionHandler: {
-                        (subscriptions, error) in
-                        
-                        if let error = error {
-                            NSLog("Error fetching all subscriptions the verify that all have been deleted: \(error.localizedDescription)")
-                            return
-                        }
-                        
-                        guard let subscriptions = subscriptions else { return }
-                        guard subscriptions.count == 0 else { return }
-                        
-                        NSLog("All existing subscriptions have beend deleted")
-                        
-                        TimeLogsInCKSubscription().registerNewTimeLogSubscription()
-                    })
-                })
-            })
-        }
+            TimeLogsInCKSubscription().registerNewTimeLogSubscription()
+        })
     }
     
     private func registerNewTimeLogSubscription() {
@@ -94,7 +47,63 @@ class TimeLogsInCKSubscription {
             
             NSLog("TimeLog subscription saved")
         })
-        
     }
+}
 
+class TimeLogsInCKSubscriptionDeletion {
+    
+    func deleteAllSubscriptions(completionHandler: @escaping ()->()) {
+        
+        CKContainer.default().privateCloudDatabase.fetchAllSubscriptions {
+            [completionHandler] (subscriptions, error) in
+            
+            if let error = error {
+                NSLog("Failed downloading existing subscriptions from iCloud: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let subscriptions = subscriptions else { return }
+            
+            NSLog("Downloaded iCloud subscriptions")
+            
+            guard subscriptions.count > 0 else {
+                NSLog("No existing subscriptions")
+                completionHandler()
+                return
+            }
+            
+            subscriptions.forEach({
+                [completionHandler] (subscription) in
+                
+                NSLog("Will delete subscription with ID \(subscription.subscriptionID)")
+                
+                CKContainer.default().privateCloudDatabase.delete(withSubscriptionID: subscription.subscriptionID, completionHandler: {
+                    [completionHandler](subscriptionID, error) in
+                    
+                    if let error = error {
+                        NSLog("Error deleting subscription with ID \(subscriptionID): \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    NSLog("Successfully deleted subscription with ID \(subscriptionID)")
+                    
+                    CKContainer.default().privateCloudDatabase.fetchAllSubscriptions(completionHandler: {
+                        [completionHandler] (subscriptions, error) in
+                        
+                        if let error = error {
+                            NSLog("Error fetching all subscriptions the verify that all have been deleted: \(error.localizedDescription)")
+                            return
+                        }
+                        
+                        guard let subscriptions = subscriptions else { return }
+                        guard subscriptions.count == 0 else { return }
+                        
+                        NSLog("All existing subscriptions have beend deleted")
+                        
+                        completionHandler()
+                    })
+                })
+            })
+        }
+    }
 }
