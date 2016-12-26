@@ -15,10 +15,10 @@ class TimeLogViewControllerTest: XCTestCase {
     let timeLogData =
         TimeLogData(
                 Activity: "anActivity",
-                From: Date.makeDateFromComponents(day: 2016, month: 12, year: 24),
-                Until: Date.makeDateFromComponents(day: 2016, month: 12, year: 25)
+                From: Date.makeDateFromComponents(day: 24, month: 12, year: 2016),
+                Until: Date.makeDateFromComponents(day: 25, month: 12, year: 2016)
             )
-    let pickedDate = Date.makeDateFromComponents(day: 2013, month: 07, year: 29)
+    let pickedDate = Date.makeDateFromComponents(day: 29, month: 07, year: 2016)
     
     let fakeTimeLogEditDelegate = FakeTimeLogEditDelegate()
     let fakeTimeLogEntityPersistence = FakeTimeLogEntityPersistence()

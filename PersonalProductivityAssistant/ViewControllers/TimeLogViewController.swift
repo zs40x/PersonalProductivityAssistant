@@ -210,6 +210,10 @@ extension TimeLogViewController : DateTimePickDelegate {
             }
         } else {
             until = newPickableDate
+            
+            if until.date < from.date {
+                from = PickableDate(title: from.title, field: from.field, date: until.date)
+            }
         }
         
         displayFromAndUntilDateTime()
