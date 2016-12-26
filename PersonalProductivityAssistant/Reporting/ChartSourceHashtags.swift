@@ -37,7 +37,12 @@ class ChartSourceHashtags : ChartDataValueProvider {
             return hashtagTotalsDictionary
         }
         
-        for timeLog in getAllTimeLogsResult.value! {
+        let allVisibleTimeLogs =
+            getAllTimeLogsResult.value!.filter({
+                $0.hidden == NSNumber.bool_false
+            })
+        
+        for timeLog in allVisibleTimeLogs {
             
             guard let assignedHashtags = timeLog.hashtags else {
                 continue
