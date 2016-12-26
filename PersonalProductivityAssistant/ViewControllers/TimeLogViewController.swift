@@ -204,6 +204,10 @@ extension TimeLogViewController : DateTimePickDelegate {
         
         if pickedDate.field == .from {
             from = newPickableDate
+            
+            if from.date > until.date {
+                until = PickableDate(title: until.title, field: until.field, date: from.date)
+            }
         } else {
             until = newPickableDate
         }
