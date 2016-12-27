@@ -404,11 +404,11 @@ extension MainViewController : TimeLogEditDelegate {
             [unowned self, withStartDate] in
             
             self.loadTimeLogs(withStartDate)
-            
             self.refreshDisplayTimeLogControls()
             
-            let timeLogsInCk = TimeLogsInCK()
-            timeLogsInCk.exportTimeLogsToCK()
+            self.calendarManager.reload()
+            
+            TimeLogsInCK().exportTimeLogsToCK()
         }
     }
 }
