@@ -331,8 +331,8 @@ extension MainViewController : JTCalendarDelegate {
         }
             
         if let _ = currentLoadedTimeLogs.filter({
-            calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date) }
-            ).first {
+                        calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
+                    }).first {
             dayView.dotView.isHidden = false
             dayView.dotView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         }
