@@ -343,12 +343,7 @@ extension MainViewController : JTCalendarDelegate {
                 return
             }
             
-            self.tableViewTimeLogs =
-                self.currentLoadedTimeLogs.filter({
-                    self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
-                })
-            
-            self.refreshDisplayTimeLogControls()
+            self.displayTimeLogsOnTapped(date: tappedDay)
         }
     }
     
@@ -359,6 +354,16 @@ extension MainViewController : JTCalendarDelegate {
         } else {
             self.calendarView.loadPreviousPageWithAnimation()
         }
+    }
+    
+    private func displayTimeLogsOnTapped(date: Date) {
+        
+        self.tableViewTimeLogs =
+            self.currentLoadedTimeLogs.filter({
+                self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: date)
+            })
+        
+        self.refreshDisplayTimeLogControls()
     }
     
     func calendarDidLoadNextPage(_ calendar: JTCalendarManager!) {
