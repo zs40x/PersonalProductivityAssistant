@@ -320,36 +320,7 @@ extension MainViewController : JTCalendarDelegate {
      
         guard let dayView = dayView as? JTCalendarDayView else { return }
         
-        dayView.isHidden = false
-        dayView.dotView.isHidden = true
-        dayView.circleView.isHidden = true
-        dayView.textLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
-        if dayView.isFromAnotherMonth {
-            dayView.textLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            return
-        }
-            
-        if let _ = currentLoadedTimeLogs.filter({
-                        calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
-                    }).first {
-            dayView.dotView.isHidden = false
-            dayView.dotView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        }
-        
-        if calendarManager.dateHelper.date(Date(), isTheSameDayThan: dayView.date) {
-            dayView.circleView.isHidden = false
-            dayView.circleView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-            dayView.dotView.isHidden = false
-            dayView.dotView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
-            
-        guard let tappedDay = self.tappedDay else { return }
-        
-        if calendarManager.dateHelper.date(tappedDay, isTheSameDayThan: dayView.date) {
-            dayView.circleView.isHidden = false
-            dayView.circleView.backgroundColor = #colorLiteral(red: 0.8309050798, green: 0.9848287702, blue: 0.4713753462, alpha: 1)
-        }
+        CalendarDayView(dayView, timeLogs: currentLoadedTimeLogs, tappedDay: tappedDay).configure()
     }
     
     func calendar(_ calendar: JTCalendarManager!, didTouchDayView dayView: UIView!) {

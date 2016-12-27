@@ -71,6 +71,7 @@
 		D47DC5A91E1062E800D8BDB6 /* PickableDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5A81E1062E800D8BDB6 /* PickableDate.swift */; };
 		D47DC5AB1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5AA1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift */; };
 		D47DC5AC1E10E9A200D8BDB6 /* TimeLogsInCKSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5AA1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift */; };
+		D47DC5AE1E124BC700D8BDB6 /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47DC5AD1E124BC700D8BDB6 /* CalendarDayView.swift */; };
 		D48740EB1D16D16D002D3918 /* TimeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */; };
 		D48F19B41D1C3714009BD069 /* TimeLogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B31D1C3714009BD069 /* TimeLogData.swift */; };
 		D48F19B61D230FA9009BD069 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F19B51D230FA9009BD069 /* Date.swift */; };
@@ -182,6 +183,7 @@
 		D47DC5A61E10563100D8BDB6 /* DateTimePickViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimePickViewControllerTest.swift; path = ViewControllers/DateTimePickViewControllerTest.swift; sourceTree = "<group>"; };
 		D47DC5A81E1062E800D8BDB6 /* PickableDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickableDate.swift; path = Model/Data/PickableDate.swift; sourceTree = "<group>"; };
 		D47DC5AA1E10E80100D8BDB6 /* TimeLogsInCKSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogsInCKSubscription.swift; path = CloudKit/TimeLogsInCKSubscription.swift; sourceTree = "<group>"; };
+		D47DC5AD1E124BC700D8BDB6 /* CalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarDayView.swift; path = ViewControllers/CalendarDayView.swift; sourceTree = "<group>"; };
 		D48740EA1D16D16D002D3918 /* TimeLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogViewController.swift; path = ViewControllers/TimeLogViewController.swift; sourceTree = "<group>"; };
 		D48F19B31D1C3714009BD069 /* TimeLogData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogData.swift; path = Model/Data/TimeLogData.swift; sourceTree = "<group>"; };
 		D48F19B51D230FA9009BD069 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Extensions/Date.swift; sourceTree = "<group>"; };
@@ -422,20 +424,13 @@
 		D47B10491D263C620052A845 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D486C04D1D4720900043500C /* Controls */,
 				D47B10471D262B720052A845 /* SegueHandlerType.swift */,
 				D47B104A1D263C7F0052A845 /* TimeLogDelegate.swift */,
 				D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */,
 				D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */,
+				D47DC5AD1E124BC700D8BDB6 /* CalendarDayView.swift */,
 			);
 			name = Shared;
-			sourceTree = "<group>";
-		};
-		D486C04D1D4720900043500C /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Controls;
 			sourceTree = "<group>";
 		};
 		D48F19B21D1C36FA009BD069 /* Data */ = {
@@ -968,6 +963,7 @@
 				D48F19B61D230FA9009BD069 /* Date.swift in Sources */,
 				D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */,
 				D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */,
+				D47DC5AE1E124BC700D8BDB6 /* CalendarDayView.swift in Sources */,
 				D4355E701D38A08A000F678A /* Config.swift in Sources */,
 				D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */,
 				D41726E41D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift in Sources */,
