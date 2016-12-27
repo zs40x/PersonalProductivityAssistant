@@ -15,8 +15,6 @@ protocol CKDataSyncCompletedDelegate {
 
 public class TimeLogsInCK {
 
-    private let timeLogRepository = TimeLogRepository()
-    private let cloudKitContainer = CKContainer.default()
     public static let RecordTypeTimeLogs = "TimeLogs"
     
     var dataSyncCompletedDelegate: CKDataSyncCompletedDelegate?
@@ -24,7 +22,7 @@ public class TimeLogsInCK {
     
     public func exportTimeLogsToCK() {
         
-        NSLog("exportTimeLogsToCK()")
+        NSLog("TimeLogsInCK.exportTimeLogsToCK()")
         
         TimeLogsInCKUpload().syncChangesToCloud()
     }
@@ -34,8 +32,7 @@ public class TimeLogsInCK {
         NSLog("TimeLogsInCK.importTimeLogsFromCkToDb()")
         
         TimeLogsInCKDownload(
-                dataSyncCompletedDelegate: dataSyncCompletedDelegate,
-                cloudKitContainer: cloudKitContainer
+                dataSyncCompletedDelegate: dataSyncCompletedDelegate
             ).downloadAndImportTimeLogs()
     }
     

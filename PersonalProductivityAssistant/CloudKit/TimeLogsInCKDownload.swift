@@ -12,11 +12,9 @@ import CloudKit
 class TimeLogsInCKDownload {
     
     private var dataSyncCompletedDelegate: CKDataSyncCompletedDelegate?
-    private var cloudKitContainer: CKContainer
-        
-    init(dataSyncCompletedDelegate: CKDataSyncCompletedDelegate?, cloudKitContainer: CKContainer) {
+    
+    init(dataSyncCompletedDelegate: CKDataSyncCompletedDelegate?) {
         self.dataSyncCompletedDelegate = dataSyncCompletedDelegate
-        self.cloudKitContainer = cloudKitContainer
     }
     
     public func downloadAndImportTimeLogs() {
@@ -24,7 +22,7 @@ class TimeLogsInCKDownload {
         let predicate = NSPredicate(value:true)
         let query = CKQuery(recordType: TimeLogsInCK.RecordTypeTimeLogs, predicate: predicate)
         
-        cloudKitContainer.privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
+        CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
             
             if let error = error {
                 NSLog("Downloading from iCloud failed: \(error.localizedDescription)")
