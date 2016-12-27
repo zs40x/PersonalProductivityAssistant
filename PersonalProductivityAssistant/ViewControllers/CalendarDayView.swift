@@ -25,7 +25,7 @@ class CalendarDayView {
     
     func configure() {
         
-        setDefaults()
+        resetToDefaults()
         
         if isDayFromOtherMonth() {
             dayView?.textLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -51,7 +51,7 @@ class CalendarDayView {
     }
     
     
-    private func setDefaults() {
+    private func resetToDefaults() {
         
         guard let dayView = self.dayView else { return }
         
