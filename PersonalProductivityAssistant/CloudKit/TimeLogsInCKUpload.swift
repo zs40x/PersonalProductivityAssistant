@@ -22,11 +22,9 @@ fileprivate protocol TimeLogSyncStatusUpdate{
 
 class TimeLogsInCKUpload {
     
-    private let timeLogRepository = TimeLogRepository()
-
     func syncChangesToCloud() {
         
-        guard let allTimeLogs = timeLogRepository.getAll().value else { return }
+        guard let allTimeLogs = TimeLogRepository().getAll().value else { return }
         
         allTimeLogs.filter {
             $0.cloudSyncPending == NSNumber.bool_true
