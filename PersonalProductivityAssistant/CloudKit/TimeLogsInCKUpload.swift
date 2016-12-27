@@ -22,13 +22,8 @@ fileprivate protocol TimeLogSyncStatusUpdate{
 
 class TimeLogsInCKUpload {
     
-    private var cloudKitContainer: CKContainer
     private let timeLogRepository = TimeLogRepository()
 
-    init(cloudKitContainer: CKContainer) {
-        self.cloudKitContainer = cloudKitContainer
-    }
-    
     func syncChangesToCloud() {
         
         guard let allTimeLogs = timeLogRepository.getAll().value else { return }
@@ -36,10 +31,7 @@ class TimeLogsInCKUpload {
         allTimeLogs.filter {
             $0.cloudSyncPending == NSNumber.bool_true
         }.map{
-            CkTimeLogSyncFactory(
-                    cloudKitContainer: cloudKitContainer,
-                    timeLog: $0
-                ).makeSync( )
+            CkTimeLogSyncFactory( timeLog: $0 ).makeSync( )
         }.forEach{
             $0.syncChanges()
         }
@@ -48,11 +40,9 @@ class TimeLogsInCKUpload {
 
 fileprivate class CkTimeLogSyncFactory {
     
-    private var cloudKitContainer: CKContainer
     private var timeLog: TimeLog
     
-    init(cloudKitContainer: CKContainer, timeLog: TimeLog) {
-        self.cloudKitContainer = cloudKitContainer
+    init(timeLog: TimeLog) {
         self.timeLog = timeLog
     }
     
@@ -62,17 +52,14 @@ fileprivate class CkTimeLogSyncFactory {
         case .New:
             return CkSyncTimeLogNew(
                 timeLog: timeLog,
-                cloudKitContainer: cloudKitContainer,
                 syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         case .Modified:
             return CkSyncTimeLogModified(
                 timeLog: timeLog,
-                cloudKitContainer: cloudKitContainer,
                 syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         case .Deleted:
             return CkSyncTimeLogDelete(
                 timeLog: timeLog,
-                cloudKitContainer: cloudKitContainer,
                 syncStatusUpdate: makeUpdateSyncedTimeLogStatus())
         default:
             return CkSycNotImplemented(syncStatus:  timeLog.cloudSyncStatus)
@@ -88,13 +75,11 @@ fileprivate class AbstractTimeLogsUpstreamSync {
     
     fileprivate var timeLog: TimeLog
     fileprivate var syncStatusUpdate: TimeLogSyncStatusUpdate
-    fileprivate var cloudKitContainer: CKContainer
     
     fileprivate let timeLogRepository = TimeLogRepository()
     
-    init(timeLog: TimeLog, cloudKitContainer: CKContainer, syncStatusUpdate: TimeLogSyncStatusUpdate) {
+    init(timeLog: TimeLog, syncStatusUpdate: TimeLogSyncStatusUpdate) {
         self.timeLog = timeLog
-        self.cloudKitContainer = cloudKitContainer
         self.syncStatusUpdate = syncStatusUpdate
     }
 }
@@ -108,7 +93,7 @@ fileprivate class CkSyncTimeLogNew : AbstractTimeLogsUpstreamSync, TimeLogCkUpst
             return
         }
         
-        cloudKitContainer.privateCloudDatabase.save(ckrTimeLog, completionHandler: {
+        CKContainer.default().privateCloudDatabase.save(ckrTimeLog, completionHandler: {
             (record, error) in
             
             if let error = error {
@@ -127,7 +112,7 @@ fileprivate class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogC
         
         let recordUUID = timeLog.uuid!
         
-        cloudKitContainer.privateCloudDatabase.fetch(withRecordID: CKRecordID.init(recordName: recordUUID), completionHandler: {
+        CKContainer.default().privateCloudDatabase.fetch(withRecordID: CKRecordID.init(recordName: recordUUID), completionHandler: {
             (record, error) in
             
                 if let error = error {
@@ -139,7 +124,7 @@ fileprivate class CkSyncTimeLogModified : AbstractTimeLogsUpstreamSync, TimeLogC
                     
                 let modifiedRecored = self.timeLog.modifyCkRecord(ckRecord: record!)
             
-                self.cloudKitContainer.privateCloudDatabase.save(modifiedRecored, completionHandler: {
+                CKContainer.default().privateCloudDatabase.save(modifiedRecored, completionHandler: {
                     (record, error) in
                      
                     if let error = error {
@@ -160,7 +145,7 @@ fileprivate class CkSyncTimeLogDelete : AbstractTimeLogsUpstreamSync, TimeLogCkU
         
         let recordUUID = timeLog.uuid!
         
-        cloudKitContainer.privateCloudDatabase.delete(withRecordID: CKRecordID.init(recordName: recordUUID), completionHandler: {
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: CKRecordID.init(recordName: recordUUID), completionHandler: {
             [recordUUID] (record, error) in
             
             if let error = error {

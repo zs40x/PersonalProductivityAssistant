@@ -26,9 +26,7 @@ public class TimeLogsInCK {
         
         NSLog("exportTimeLogsToCK()")
         
-        TimeLogsInCKUpload(
-            cloudKitContainer: cloudKitContainer
-            ).syncChangesToCloud()
+        TimeLogsInCKUpload().syncChangesToCloud()
     }
 
     public func importTimeLogsFromCkToDb() {
