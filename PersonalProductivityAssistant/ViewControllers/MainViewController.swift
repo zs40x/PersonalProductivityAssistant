@@ -64,7 +64,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             [unowned self] in
             
             self.hideNavigationBar()
-            self.refreshControls()
+            self.refreshDisplayTimeLogControls()
         }
     }
     
@@ -154,7 +154,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             self.currentLoadedTimeLogs =
                 self.currentLoadedTimeLogs.filter({ $0.uuid != uuid })
             
-            self.refreshControls()
+            self.refreshDisplayTimeLogControls()
             
             TimeLogsInCK().exportTimeLogsToCK()
         }
@@ -178,9 +178,9 @@ class MainViewController: UIViewController, SegueHandlerType {
             })
     }
     
-    func refreshControls() {
+    func refreshDisplayTimeLogControls() {
         
-        NSLog("refreshControls")
+        NSLog("refreshDisplayTimeLogControls")
             
         self.tableViewActivities.reloadData()
         self.updateDisplayedDateRange()
@@ -220,7 +220,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             NSLog("Will prepare view to see timeLog with from date \(fromDate)")
             
             self.loadTimeLogs(fromDate)
-            self.refreshControls()
+            self.refreshDisplayTimeLogControls()
         }
     }
     
@@ -348,7 +348,7 @@ extension MainViewController : JTCalendarDelegate {
                     self.calendarManager.dateHelper.date($0.from, isTheSameDayThan: dayView.date)
                 })
             
-            self.refreshControls()
+            self.refreshDisplayTimeLogControls()
         }
     }
     
@@ -386,7 +386,7 @@ extension MainViewController : JTCalendarDelegate {
             
             self.lastCurrentDate = currentDate
             self.loadTimeLogs(currentDate)
-            self.refreshControls()
+            self.refreshDisplayTimeLogControls()
         }
     }
 }
@@ -400,7 +400,7 @@ extension MainViewController : TimeLogEditDelegate {
             
             self.loadTimeLogs(withStartDate)
             
-            self.refreshControls()
+            self.refreshDisplayTimeLogControls()
             
             let timeLogsInCk = TimeLogsInCK()
             timeLogsInCk.exportTimeLogsToCK()
@@ -416,7 +416,7 @@ extension MainViewController : CKDataSyncCompletedDelegate {
             [unowned self] in
             
             self.loadTimeLogs(Date())
-            self.refreshControls()
+            self.refreshDisplayTimeLogControls()
         }
     }
 }
