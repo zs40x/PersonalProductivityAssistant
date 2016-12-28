@@ -12,6 +12,8 @@ import XCTest
 
 class MainViewControllerTest: XCTestCaseCoreDataInMemory {
     
+    private let firstActivityName = "NameOfActivity"
+    
     var viewController = MainViewController()
     
     
@@ -30,9 +32,16 @@ class MainViewControllerTest: XCTestCaseCoreDataInMemory {
     
     func testTimeLogIsDisplayedInTablView() {
         
-        var cell = viewController.tableViewActivities.cellForRow(at: IndexPath(row: 0, section: 0))
+        let cell = viewController.tableViewActivities.cellForRow(at: IndexPath(row: 0, section: 0))
         
         XCTAssertNotNil(cell)
+        
+        guard let timeLogCell = cell as? TableViewActivityCell else {
+            XCTFail("tableViewCell of unexpected type")
+            return
+        }
+        
+        XCTAssertEqual(firstActivityName, timeLogCell.textViewActivity.text)
     }
 
     
@@ -40,7 +49,7 @@ class MainViewControllerTest: XCTestCaseCoreDataInMemory {
         
         let timeLogRepository = TimeLogRepository()
         
-        let addResult = timeLogRepository.addNew(TimeLogData(Activity: "Name", From: Date(), Until: Date()))
+        let addResult = timeLogRepository.addNew(TimeLogData(Activity: firstActivityName, From: Date(), Until: Date()))
         
         XCTAssert(addResult.isSucessful)
     }
