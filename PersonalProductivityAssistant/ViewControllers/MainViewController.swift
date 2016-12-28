@@ -146,6 +146,8 @@ class MainViewController: UIViewController, SegueHandlerType {
     
         currentLoadedTimeLogs = timeLogsInMonthResult.value!
         
+        // currentViewTimeLogs contains records for the current month +/- 1
+        // -- so we have to filter out the records for the current month
         tableViewTimeLogs =
             currentLoadedTimeLogs.filter({
                 $0.from! >= date.startOfMonth() && $0.from! <= date.endOfMonth()
@@ -174,7 +176,7 @@ class MainViewController: UIViewController, SegueHandlerType {
         displayDateRange.text = DateRange(from: firstTimeLogFrom, until: lastTimeLogFrom).asString()
     }
     
-    func setUuidVisible(_ uuid: String) {
+    func showTimeLogWithUuid(_ uuid: String) {
         
         NSLog("setUuidVisible(\(uuid))")
         

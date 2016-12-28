@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         guard let mainViewController = MainViewController.mainViewController else { return false }
         
-        mainViewController.setUuidVisible(uuid)
+        mainViewController.showTimeLogWithUuid(uuid)
         
         return true
     }
