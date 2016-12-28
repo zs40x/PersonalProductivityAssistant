@@ -50,6 +50,7 @@
 		D44363741DFF3103008EAB37 /* TimeLogsInCKUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */; };
 		D44B99441D6CA85300794E91 /* TimeLogPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */; };
 		D44E856A1E14431100D2299E /* CalendarDayViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E85691E14431100D2299E /* CalendarDayViewTest.swift */; };
+		D44E856C1E144B2000D2299E /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E856B1E144B2000D2299E /* CalendarDay.swift */; };
 		D457FDE91E0B056F001C76BD /* PPADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D436A83C1E02F41A00D4F5B2 /* PPADataModel.xcdatamodeld */; };
 		D457FDEC1E0E2EE8001C76BD /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457FDEB1E0E2EE8001C76BD /* DateRange.swift */; };
 		D457FDEF1E0E306C001C76BD /* DateRange_asString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D457FDEE1E0E306C001C76BD /* DateRange_asString.swift */; };
@@ -166,6 +167,7 @@
 		D44363701DFF1DB5008EAB37 /* TimeLogsInCKUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogsInCKUpload.swift; path = CloudKit/TimeLogsInCKUpload.swift; sourceTree = "<group>"; };
 		D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeLogPersistence.swift; path = ViewControllers/Shared/TimeLogPersistence.swift; sourceTree = "<group>"; };
 		D44E85691E14431100D2299E /* CalendarDayViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayViewTest.swift; sourceTree = "<group>"; };
+		D44E856B1E144B2000D2299E /* CalendarDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarDay.swift; path = ViewControllers/Shared/CalendarDay.swift; sourceTree = "<group>"; };
 		D45027281DC28C9D00B9251F /* PersonalProductivityAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalProductivityAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
 		D457FDEB1E0E2EE8001C76BD /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateRange.swift; path = Logic/Date/DateRange.swift; sourceTree = "<group>"; };
 		D457FDEE1E0E306C001C76BD /* DateRange_asString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateRange_asString.swift; path = Logic/Date/DateRange_asString.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				D4355E6D1D37E572000F678A /* DateTimePickDelegate.swift */,
 				D44B99431D6CA85300794E91 /* TimeLogPersistence.swift */,
 				D47DC5AD1E124BC700D8BDB6 /* CalendarDayView.swift */,
+				D44E856B1E144B2000D2299E /* CalendarDay.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				D41726E51D26AFFB002F15A4 /* Hashtag.swift in Sources */,
 				D4F84C231D15516F0041FCF0 /* PPAModel.swift in Sources */,
 				D47DC5AE1E124BC700D8BDB6 /* CalendarDayView.swift in Sources */,
+				D44E856C1E144B2000D2299E /* CalendarDay.swift in Sources */,
 				D4355E701D38A08A000F678A /* Config.swift in Sources */,
 				D4F84C2A1D15BD0D0041FCF0 /* TimeLogRepository.swift in Sources */,
 				D41726E41D26AFFB002F15A4 /* Hashtag+CoreDataProperties.swift in Sources */,
