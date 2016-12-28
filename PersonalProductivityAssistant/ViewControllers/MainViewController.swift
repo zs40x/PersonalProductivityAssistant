@@ -120,6 +120,7 @@ class MainViewController: UIViewController, SegueHandlerType {
     func deleteTimeLog(_ tableView: UITableView, indexPath: IndexPath) {
         
         let timeLogToDelete = tableViewTimeLogs[(indexPath as NSIndexPath).row]
+        let uuid = timeLogToDelete.uuid!
         
         timeLogToDelete.hidden = NSNumber.bool_true
         timeLogToDelete.cloudSyncStatus = .Modified
@@ -134,18 +135,13 @@ class MainViewController: UIViewController, SegueHandlerType {
             NSLog("Updated timeLog as hidden, because it was deleted by the user: \(timeLogToDelete.uuid)")
         }
         
-        
+        tableViewTimeLogs.remove(at: (indexPath as NSIndexPath).row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        currentLoadedTimeLogs = currentLoadedTimeLogs.filter({ $0.uuid != uuid })
+        refreshDisplayTimeLogControls()
+            
         DispatchQueue.main.async {
-            [unowned self, tableView = tableView, indexPathToDelete = indexPath, uuid = timeLogToDelete.uuid!] in
-            
-            self.tableViewTimeLogs.remove(at: (indexPathToDelete as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPathToDelete], with: .automatic)
-            
-            self.currentLoadedTimeLogs =
-                self.currentLoadedTimeLogs.filter({ $0.uuid != uuid })
-            
-            self.refreshDisplayTimeLogControls()
-            
             TimeLogsInCK().exportTimeLogsToCK()
         }
     }

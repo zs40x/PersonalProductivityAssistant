@@ -13,6 +13,7 @@ import XCTest
 class MainViewControllerTest: XCTestCaseCoreDataInMemory {
     
     private let firstActivityName = "NameOfActivity"
+    private let firstRowIndexPath = IndexPath(row: 0, section: 0)
     
     var viewController = MainViewController()
     
@@ -32,7 +33,7 @@ class MainViewControllerTest: XCTestCaseCoreDataInMemory {
     
     func testTimeLogIsDisplayedInTableView() {
         
-        let cell = viewController.tableViewActivities.cellForRow(at: IndexPath(row: 0, section: 0))
+        let cell = viewController.tableViewActivities.cellForRow(at: firstRowIndexPath)
         
         XCTAssertNotNil(cell)
         
@@ -47,6 +48,13 @@ class MainViewControllerTest: XCTestCaseCoreDataInMemory {
     func testTableViewRecordDateRangeIsDisplayed() {
         
         XCTAssertEqual(Date().asFormattedString(format: Config.shortDateFormat), viewController.displayDateRange.text)
+    }
+    
+    func testTimeLogIsDeleted() {
+        
+        viewController.tableView(viewController.tableViewActivities, commit: .delete, forRowAt: firstRowIndexPath)
+        
+        XCTAssertEqual(0, viewController.tableViewActivities.visibleCells.count)
     }
 
     
