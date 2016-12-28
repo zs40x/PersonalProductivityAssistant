@@ -13,11 +13,6 @@ class HashtagRepository {
     
     fileprivate var model = PPAModel.sharedInstance()
     
-    
-    func replaceManagedObjectContext(_ context: NSManagedObjectContext) {
-        model.managedObjectContext = context
-    }
-    
     func getAll() -> ResultValue<[Hashtag]> {
         
         do {

@@ -11,13 +11,10 @@ import XCTest
 
 class HashtagFinderTest: XCTestCaseCoreDataInMemory {
     
-    var hashtagRepository: HashtagRepository!
+    let hashtagRepository = HashtagRepository()
     
     override func setUp() {
         super.setUp()
-        
-        hashtagRepository = HashtagRepository()
-        hashtagRepository.replaceManagedObjectContext(managedObjectContext)
     }
     
     

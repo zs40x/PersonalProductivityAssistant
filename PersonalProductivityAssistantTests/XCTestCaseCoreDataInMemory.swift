@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreData
+@testable import PersonalProductivityAssistant
 
 class XCTestCaseCoreDataInMemory: XCTestCase {
 
@@ -31,6 +32,8 @@ class XCTestCaseCoreDataInMemory: XCTestCase {
         
         managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = storeCoordinator
+        
+        PPAModel.sharedInstance().managedObjectContext = managedObjectContext
         
         super.setUp()
     }
