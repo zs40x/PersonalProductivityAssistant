@@ -69,15 +69,14 @@ class MainViewController: UIViewController, SegueHandlerType {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let viewControllerAddTimeLog = segue.destination as? TimeLogViewController {
+            
             viewControllerAddTimeLog.timeLogEditDelegate = self
             
             if timeLogToEdit != nil {
                 viewControllerAddTimeLog.timeLogEntityPersistence = UpdateTimeLogEntity(timeLog: timeLogToEdit!)
-                
                 viewControllerAddTimeLog.timeLogDataToEdit = timeLogToEdit?.asTimeLogData()
             } else {
                 viewControllerAddTimeLog.timeLogEntityPersistence = AddNewTimeLogEntity()
-                
                 viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData.NewRecord(forDate: self.tappedDay ?? Date())
             }
         }
@@ -98,12 +97,12 @@ class MainViewController: UIViewController, SegueHandlerType {
     // MARK: Helper methods
     func initializeCalendar() {
         
-        self.lastCurrentDate = Date()
+        lastCurrentDate = Date()
         
         calendarManager.delegate = self
         calendarManager.menuView = self.calendarMenuView
-        calendarManager.contentView = self.calendarView
-        calendarManager.setDate(self.lastCurrentDate)
+        calendarManager.contentView = calendarView
+        calendarManager.setDate(lastCurrentDate)
     }
     
     func deleteTimeLog(_ tableView: UITableView, indexPath: IndexPath) {
@@ -138,17 +137,17 @@ class MainViewController: UIViewController, SegueHandlerType {
 
     func loadTimeLogs(_ date: Date) {
         
-        let timeLogsInMonthResult = self.timeLogRepository.forMonthOf(date)
+        let timeLogsInMonthResult = timeLogRepository.forMonthOf(date)
         
-        if !timeLogsInMonthResult.isSucessful {
+        guard timeLogsInMonthResult.isSucessful else {
             showAlertDialog("Error loading time logs \(timeLogsInMonthResult.errorMessage)")
             return
         }
     
-        self.currentLoadedTimeLogs = timeLogsInMonthResult.value!
+        currentLoadedTimeLogs = timeLogsInMonthResult.value!
         
-        self.tableViewTimeLogs =
-            self.currentLoadedTimeLogs.filter({
+        tableViewTimeLogs =
+            currentLoadedTimeLogs.filter({
                 $0.from! >= date.startOfMonth() && $0.from! <= date.endOfMonth()
             })
     }
@@ -262,11 +261,8 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate, UITex
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        
-        let tappedHashtag =
-            textView.attributedText.attributedSubstring(from: characterRange).string
-        
-        showAlertDialog(tappedHashtag)
+
+        showAlertDialog(textView.attributedText.attributedSubstring(from: characterRange).string)
         
         return false
     }
