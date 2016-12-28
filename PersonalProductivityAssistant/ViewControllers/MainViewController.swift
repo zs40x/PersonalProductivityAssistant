@@ -78,18 +78,7 @@ class MainViewController: UIViewController, SegueHandlerType {
             } else {
                 viewControllerAddTimeLog.timeLogEntityPersistence = AddNewTimeLogEntity()
                 
-                
-                let dateForNewTimeLog = self.tappedDay ?? Date()
-                
-                viewControllerAddTimeLog.timeLogDataToEdit =
-                    TimeLogData(
-                        Uuid: UUID(),
-                        Activity: "",
-                        From: dateForNewTimeLog,
-                        Until: dateForNewTimeLog,
-                        Hidden: NSNumber.bool_false,
-                        CloudSyncPending: true,
-                        CloudSyncStatus: .New)
+                viewControllerAddTimeLog.timeLogDataToEdit = TimeLogData.NewRecord(forDate: self.tappedDay ?? Date())
             }
         }
     }

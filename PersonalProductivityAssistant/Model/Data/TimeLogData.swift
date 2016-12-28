@@ -49,6 +49,18 @@ struct TimeLogData {
             CloudSyncPending: false,
             CloudSyncStatus: .Unchanged)
     }
+    
+    static func NewRecord(forDate: Date) -> TimeLogData {
+        return TimeLogData(
+                    Uuid: UUID(),
+                    Activity: "",
+                    From: forDate,
+                    Until: forDate,
+                    Hidden: NSNumber.bool_false,
+                    CloudSyncPending: true,
+                    CloudSyncStatus: .New
+                )
+    }
 }
 
 extension TimeLogData: Equatable {}
