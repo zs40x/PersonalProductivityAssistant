@@ -30,7 +30,7 @@ class MainViewControllerTest: XCTestCaseCoreDataInMemory {
     }
     
     
-    func testTimeLogIsDisplayedInTablView() {
+    func testTimeLogIsDisplayedInTableView() {
         
         let cell = viewController.tableViewActivities.cellForRow(at: IndexPath(row: 0, section: 0))
         
@@ -42,6 +42,11 @@ class MainViewControllerTest: XCTestCaseCoreDataInMemory {
         }
         
         XCTAssertEqual(firstActivityName, timeLogCell.textViewActivity.text)
+    }
+    
+    func testTableViewRecordDateRangeIsDisplayed() {
+        
+        XCTAssertEqual(Date().asFormattedString(format: Config.shortDateFormat), viewController.displayDateRange.text)
     }
 
     
