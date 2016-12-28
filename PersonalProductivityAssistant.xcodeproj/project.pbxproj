@@ -59,6 +59,7 @@
 		D46170361DB5481F004EA412 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46170351DB5481F004EA412 /* TodayViewController.swift */; };
 		D46170391DB5481F004EA412 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46170371DB5481F004EA412 /* MainInterface.storyboard */; };
 		D461703D1DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D46170301DB5481F004EA412 /* PersonalProductivityAssistantTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D468A5461E13D0F800BBBCA8 /* MainViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468A5451E13D0F800BBBCA8 /* MainViewControllerTest.swift */; };
 		D46CE0911D3499DF00CD797F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0901D3499DF00CD797F /* UIViewController.swift */; };
 		D46CE0951D34BB5F00CD797F /* XCUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0941D34BB5F00CD797F /* XCUIElement.swift */; };
 		D46CE0971D34BB7C00CD797F /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CE0961D34BB7C00CD797F /* NSDate.swift */; };
@@ -172,6 +173,7 @@
 		D46170351DB5481F004EA412 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		D46170381DB5481F004EA412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		D461703A1DB5481F004EA412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D468A5451E13D0F800BBBCA8 /* MainViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewControllerTest.swift; path = ViewControllers/MainViewControllerTest.swift; sourceTree = "<group>"; };
 		D46CE0901D3499DF00CD797F /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		D46CE0941D34BB5F00CD797F /* XCUIElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCUIElement.swift; path = Utilities/Extensions/XCUIElement.swift; sourceTree = "<group>"; };
 		D46CE0961D34BB7C00CD797F /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			children = (
 				D457FDF31E0FD4FA001C76BD /* TimeLogViewControllerTest.swift */,
 				D47DC5A61E10563100D8BDB6 /* DateTimePickViewControllerTest.swift */,
+				D468A5451E13D0F800BBBCA8 /* MainViewControllerTest.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -994,6 +997,7 @@
 				D4355E781D390D1C000F678A /* HashtagAutoCompleteAssistant_appendHashtag.swift in Sources */,
 				D457FDEF1E0E306C001C76BD /* DateRange_asString.swift in Sources */,
 				D457FDF41E0FD4FA001C76BD /* TimeLogViewControllerTest.swift in Sources */,
+				D468A5461E13D0F800BBBCA8 /* MainViewControllerTest.swift in Sources */,
 				D457FDF11E0E33F1001C76BD /* Config.swift in Sources */,
 				D4DD6AA51D30BAA600FC6B0E /* HashtagFinderTest.swift in Sources */,
 				D410C1941D325A8100C2CF68 /* XCTestCaseCoreDataInMemory.swift in Sources */,
