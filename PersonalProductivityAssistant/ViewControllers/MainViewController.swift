@@ -19,6 +19,8 @@ class TableViewActivityCell : UITableViewCell {
 
 class MainViewController: UIViewController, SegueHandlerType {
     
+    public static var mainViewController: MainViewController?
+    
     fileprivate let timeLogRepository = TimeLogRepository()
     fileprivate var tableViewTimeLogs = [TimeLog]()
     fileprivate var currentLoadedTimeLogs = [TimeLog]()
@@ -27,18 +29,15 @@ class MainViewController: UIViewController, SegueHandlerType {
     fileprivate var lastCurrentDate: Date?
     fileprivate var tappedDay: Date?
     
-    
     enum SegueIdentifier: String {
         case ShowSegueToAddTimeLog
     }
-
     
     @IBOutlet weak var tableViewActivities: UITableView!
     @IBOutlet weak var calendarMenuView: JTCalendarMenuView!
     @IBOutlet weak var calendarView: JTHorizontalCalendarView!
     @IBOutlet weak var displayDateRange: UILabel!
     
-    public static var mainViewController: MainViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,10 +65,6 @@ class MainViewController: UIViewController, SegueHandlerType {
             self.hideNavigationBar()
             self.refreshDisplayTimeLogControls()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-    
     }
 
     override func didReceiveMemoryWarning() {
