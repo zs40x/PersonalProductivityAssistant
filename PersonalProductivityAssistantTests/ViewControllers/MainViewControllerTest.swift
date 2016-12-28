@@ -10,7 +10,7 @@ import XCTest
 @testable import PersonalProductivityAssistant
 
 
-class MainViewControllerTest: XCTestCase {
+class MainViewControllerTest: XCTestCaseCoreDataInMemory {
     
     var viewController = MainViewController()
     
