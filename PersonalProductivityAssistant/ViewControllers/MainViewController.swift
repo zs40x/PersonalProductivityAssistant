@@ -44,14 +44,13 @@ class MainViewController: UIViewController, SegueHandlerType {
         
         MainViewController.mainViewController = self
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        automaticallyAdjustsScrollViewInsets = false
         
-        self.initializeCalendar()
+        initializeCalendar()
         
-        DispatchQueue.main.async {
-            self.loadTimeLogs(Date())
-            self.calendarManager.reload()
-        }
+        loadTimeLogs(Date())
+        calendarManager.reload()
+        refreshDisplayTimeLogControls()
         
         loadTimeLogsFromCloudKitAsync()
     }
@@ -59,12 +58,8 @@ class MainViewController: UIViewController, SegueHandlerType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.main.async {
-            [unowned self] in
-            
-            self.hideNavigationBar()
-            self.refreshDisplayTimeLogControls()
-        }
+        hideNavigationBar()
+        refreshDisplayTimeLogControls()
     }
 
     override func didReceiveMemoryWarning() {
